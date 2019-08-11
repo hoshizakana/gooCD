@@ -1,22 +1,8 @@
 Rails.application.routes.draw do
 
   get '/' => 'homes#top'
-<<<<<<< HEAD
-  get '/ranking/:id' => 'homes#ranking'
-  get 'admin_products/new'
-  get 'admin_products/index'
-  get 'admin_products/show'
-  get 'admin_products/edit'
-  get 'admin_orders/index'
-  get 'admin_orders/show'
-  get 'admin_orders/edit'
-  get 'admin_users/show'
-  get 'admin_users/edit'
-  get '/carts/:id' => 'cart#index'
-=======
   get '/ranking/:genre_id' => 'homes#ranking'
   get '/carts/:user_id' => 'cart#index'
->>>>>>> 342cd9eba31445f4c5e62214f09f229ea90f3bf6
   post '/cart_items' => 'cart#create'
   patch '/cart_items/:id' => 'cart#update'
   delete '/cart_items/:id' => 'cart#destroy'
@@ -46,10 +32,8 @@ Rails.application.routes.draw do
   get '/users/:id/edit' => 'users#edit'
   get '/users/:id/confirm' => 'users#destroy_confirm'
   get 'users/:id/orders' => 'users#orders'
-<<<<<<< HEAD
   post '/adresses' => 'adresses#create'
   get '/adresses/:id' => 'adresses#destroy'
-  get 'homes/ranking' => ''
 
 #Saddy's
   # admin_products
@@ -70,26 +54,6 @@ Rails.application.routes.draw do
   get '/admin/users/:id/edit' => 'admin_users#edit'
   patch '/admin/useres/:id' => 'admin_users#update'
 #end
-  get 'cart/index'
-  get 'orders/process'
-  get 'orders/confirm'
-  get 'orders/complete'
-  get '/genres/index'
-  get '/labels/index'
-  get 'artists/index'
-  get 'products/index'
-  get 'products/show'
-  get 'products/search'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy_confirm'
-  get 'users/orders'
-=======
-  post '/addresses' => 'addresses#create'
-  delete '/addresses/:id' => 'addresses#destroy'
-
->>>>>>> 342cd9eba31445f4c5e62214f09f229ea90f3bf6
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :admins, controllers: {
