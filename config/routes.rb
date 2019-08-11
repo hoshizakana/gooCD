@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get '/' => 'homes#top'
-<<<<<<< HEAD
   get '/ranking/:id' => 'homes#ranking'
   get 'admin_products/new'
   get 'admin_products/index'
@@ -44,7 +43,6 @@ Rails.application.routes.draw do
   get 'users/:id/orders' => 'users#orders'
   post '/adresses' => 'adresses#create'
   get '/adresses/:id' => 'adresses#destroy'
-=======
   get 'homes/ranking' => ''
 
 #Saddy's
@@ -81,7 +79,6 @@ Rails.application.routes.draw do
   get 'users/update'
   get 'users/destroy_confirm'
   get 'users/orders'
->>>>>>> 17fd052341dce98848c0d66def71f679d43ccc3c
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :admins, controllers: {
