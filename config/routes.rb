@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'homes/top' => '/'
-  get 'homes/ranking'
+  get '/' => 'homes#top'
+  get 'homes/ranking' => ''
   get 'admin_products/new'
   get 'admin_products/index'
   get 'admin_products/show'
