@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
    }
 
+   get 'admin/users' => 'admin_users#index'
+
 end
