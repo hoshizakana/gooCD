@@ -2,6 +2,24 @@
 
 one:
   user_id: 1
+  shipping_status: MyString
+  last_name: MyString
+  first_name: MyString
+  last_name_kana: MyString
+  first_name_kana: MyString
+  postal_code: MyString
+  address: MyString
+  phone: MyString
+  total_price: 1
 
 two:
   user_id: 1
+  shipping_status: MyString
+  last_name: MyString
+  first_name: MyString
+  last_name_kana: MyString
+  first_name_kana: MyString
+  postal_code: MyString
+  address: MyString
+  phone: MyString
+  total_price: 1
