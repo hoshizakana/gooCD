@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   get '/products' => 'products#index'
   get '/products/:id' => 'products#show'
   get '/products/' =>'products#search' #担当者が自分で修正 
-  get '/users/:id' => 'users#show'
   patch '/users/:id' => 'users#update'
   get '/users/:id/edit' => 'users#edit'
   get '/users/:id/confirm' => 'users#destroy_confirm'
@@ -66,6 +65,9 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
    }
+
+   #ユーザサインアップ画面を表示させるため
+   get '/users/:id' => 'users#show'
 
 
 end
