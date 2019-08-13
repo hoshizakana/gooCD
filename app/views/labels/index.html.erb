@@ -1,2 +1,21 @@
-<h1>Labels#index</h1>
-<p>Find me in app/views/labels/index.html.erb</p>
+<h1>レーベルマスタ編集</h1>
+
+<%# レーベルが登録された場合、「投稿されました」の文字を表示 %>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+ <% end %> 
+
+<%# レーベルの投稿フォーム %>
+<%= form_for(@label) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "追加する" %>
+<% end %>
+
+<%# レーベルの一覧表示 %>
+<h3>レーベル一覧</h3>
+<% @labels.each do |label| %>
+  <div>
+    <%= label.id %>
+    <%= label.name %>
+  </div>
+<% end %>
