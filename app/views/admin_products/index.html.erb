@@ -1,7 +1,10 @@
+<%= render 'layouts/admin-nav' %>
+
 <%# 商品の一覧表示 %>
 <h3>商品一覧</h3>
 <% @products.each do |product| %>
   <div>
     <%= product.id %>
-    <%= product.name %>
+    <%= link_to product.name, "/admin/products/#{product.id}" %>
   </div>
+<% end %>

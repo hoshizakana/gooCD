@@ -14,13 +14,16 @@ class AdminProductsController < ApplicationController
     product.stock.to_i
     product.save
     flash[:notice] = "保存されました。"
-    redirect_to ('/admin/products/index')
+    redirect_to ('/admin/products')
   end
 
   def index
+    @products = Product.all
   end
 
   def show
+    @product = Product.find(params[:id])
+    @artist = Artist.find(@product.artist_id)
   end
 
   def edit
@@ -34,7 +37,7 @@ class AdminProductsController < ApplicationController
       :label_id, 
       :genre_id, 
       :status, 
-      :image_id, 
+      :image, 
       :price, 
       :stock, 
       :release_date, 

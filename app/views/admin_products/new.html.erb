@@ -1,9 +1,11 @@
+<%= render 'layouts/admin-nav' %>
+
 <h1>商品新規登録</h1>
 
 <%# 商品が登録された場合、「投稿されました」の文字を表示 %>
 <% if flash[:notice] %>
   <%= flash[:notice] %>
- <% end %> 
+ <% end %>
 
 <%# 商品の投稿フォーム %>
 <%= form_for @product,url: '/admin/products' do |f| %>
@@ -23,7 +25,7 @@
     <div>
       <%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'200x200' %>
     </div>
-    <%= f.attachment_field :image, placeholder:"ジャケット画像を選択"  %>
+    <%= f.attachment_field :image  %>
   </div>
 
   <div>

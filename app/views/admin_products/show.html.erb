@@ -1,2 +1,11 @@
-<h1>AdminProducts#show</h1>
-<p>Find me in app/views/admin_products/show.html.erb</p>
+<%= render 'layouts/admin-nav' %>
+
+<h1>商品詳細</h1>
+<p>商品ID</p>
+<%= @product.id %>
+<p>アーティスト名</p>
+<%= @artist.name %>
+<p>シングル/アルバム名</p>
+<%= @product.name %>
+<p>ジャケット画像</p>
+<%= attachment_image_tag @product, :image %>
