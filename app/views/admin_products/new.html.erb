@@ -1,2 +1,81 @@
-<h1>AdminProducts#new</h1>
-<p>Find me in app/views/admin_products/new.html.erb</p>
+<%= render 'layouts/admin-nav' %>
+
+<h1>商品新規登録</h1>
+
+<%# 商品が登録された場合、「投稿されました」の文字を表示 %>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+ <% end %>
+
+<%# 商品の投稿フォーム %>
+<%= form_for @product,url: '/admin/products' do |f| %>
+
+  <div>
+  　<label for="artist-name">アーティスト名</label>
+  　<%= f.collection_select(:artist_id,@artists,:id,:name) %>
+  </div>
+
+  <div>
+  　<label for="album-name">シングル/アルバム名</label>
+    <%= f.text_field :name, id:"album-name" %>
+  </div>
+
+  <div>
+    <label>ジャケット画像</label>
+    <div>
+      <%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'200x200' %>
+    </div>
+    <%= f.attachment_field :image  %>
+  </div>
+
+  <div>
+  　<label for="price">価格（税別価格）</label>
+    <%= f.text_field :price, id:"price" %>
+  </div>
+
+  <div>
+  　<label for="stock">在庫数</label>
+    <%= f.text_field :stock, id:"stock" %>
+  </div>
+
+  <div>
+  　<label for="artist-name">レーベル名</label>
+  　<%= f.collection_select(:label_id,@labels,:id,:name) %>
+  </div>
+
+  <div>
+　<label for="genre">ジャンル</label>
+  　<%= f.collection_select(:genre_id,@genres,:id,:name) %>
+  </div>
+
+  <div>
+　<label for="status">ステータス</label>
+　　<%= f.select :status, ["販売中", "販売停止中"], :prompt => "選択してください", id:"status"%>
+  </div>
+
+  <div>
+　<label for="release_date">発売日</label>
+  <%= f.date_field :release_date, id:"release_date" %>
+  </div>
+
+  <div>
+　<label>収録曲</label>
+  <%= f.fields_for :songs do |s| %>
+
+  <%# <% for num in 1..8 do %> 
+
+  　<div>
+　    <label>曲名</label>
+      <%= s.text_field :name %>
+
+　    <label>ディスク番号</label>
+      <%= s.text_field :disk ,placeholder:"1" %>
+    </div>
+
+  <%# <% end %>   
+
+    
+  <% end %>
+
+  <%= f.submit "新規登録" %>
+<% end %>
