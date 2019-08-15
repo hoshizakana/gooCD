@@ -20,7 +20,12 @@ class AdminProductsController < ApplicationController
   def index
     @search = Product.ransack(params[:q])
     @genres = Genre.all
-    @products = @search.result.includes(:genre)
+    if params[:product] && params[:product][:name]
+      product_name = params[:product][:name]
+      @products = Product.where("name LIKE '%#{product_name}%'")
+    else
+      @products = @search.result.includes(:genre)
+    end
   end
 
   def search
