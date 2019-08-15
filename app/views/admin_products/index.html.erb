@@ -1,10 +1,56 @@
 <%= render 'layouts/admin-nav' %>
 
 <%# 商品の一覧表示 %>
+
+<%= search_form_for @search, url: '/admin/products' do |f| %>
+  <p>
+  <%= f.label :name_cont, 'シングル/アルバム名' %>
+  <%= f.search_field :name_cont %>
+  </p>
+
+  <p>
+  <%= f.label :name_cont, 'アーティスト名' %>
+  <%= f.search_field :artist_name_cont %>
+  </p>
+
+  <p>
+  <%= f.label :genre_name_eq, 'ジャンル' %>
+  <%= f.collection_select :genre_name_eq, @genres, :name, :name, include_blank: '全てのジャンル' %>
+  </p>
+
+  <p>
+  <%= f.label :name_cont, 'レーベル名' %>
+  <%= f.search_field :label_name_cont %>
+  </p>
+
+  <p>
+  <%= f.label :name_cont, '在庫数' %>
+  <%= f.search_field :stock_gteq %>
+
+  <%= f.label :name_cont, '~' %>
+  <%= f.search_field :stock_lteq %>
+  </p>
+
+  <p>
+  <%= f.label :starus_eq, 'ステータス' %>
+  <%= f.radio_button :status_eq, '', {:checked => true} %>指定なし
+  <%= f.radio_button :status_eq, '販売中' %>販売中
+  <%= f.radio_button :status_eq, '販売停止中' %>販売停止中
+  </p>
+
+  <p><%= f.submit '検索' %></p>
+
+<% end %>
+
+
 <h3>商品一覧</h3>
 <% @products.each do |product| %>
   <div>
     <%= product.id %>
     <%= link_to product.name, "/admin/products/#{product.id}" %>
+    <%= product.genre.name %>
+    <%= product.stock %>
+    <%= product.status %>
+
   </div>
 <% end %>

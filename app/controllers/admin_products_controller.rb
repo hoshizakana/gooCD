@@ -18,7 +18,14 @@ class AdminProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @search = Product.ransack(params[:q])
+    @genres = Genre.all
+    @products = @search.result.includes(:genre)
+  end
+
+  def search
+    @q = Product.search(search_params)
+    @product = @q.result
   end
 
   def show
@@ -28,6 +35,7 @@ class AdminProductsController < ApplicationController
 
   def edit
   end
+
 
   private
   def product_params
@@ -44,6 +52,10 @@ class AdminProductsController < ApplicationController
       songs_attributes:[:id, :product_id, :name, :disk]
     )
 
+  end
+
+  def search_params
+    params.require(:q).permit(:genre_name_eq)
   end
 
 end
