@@ -30,10 +30,22 @@ class AdminProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @artist = Artist.find(@product.artist_id)
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @artists = Artist.all  #リスト選択でなく、検索フォームからの検索に後で置き換え
+    @genres = Genre.all
+    @labels = Label.all   #リスト選択でなく、検索フォームからの検索に後で置き換え
+  end
+
+  def update
+    product = Product.find(params[:id])
+    product.price.to_i
+    product.stock.to_i
+    product.update(product_params)
+    flash[:notice] = "更新されました。"
+    redirect_to ("/admin/products/#{product.id}")
   end
 
 

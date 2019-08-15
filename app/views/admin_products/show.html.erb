@@ -4,38 +4,68 @@
         <h1>商品詳細</h1>
   <div class='container'>
     <div class='row'>
-      <div class='col-lg-4' style='float: left'>
+      <div class='col-lg-3' style='float: left'>
 
         <p>
-        「商品ID」
+        <label>「商品ID」</label>
         <%= @product.id %>
         </p>
-        <p>「アーティスト名」</p>
-        <%= @artist.name %>
-        <p>「シングル/アルバム名」</p>
+        <p>
+        <label>「アーティスト名」</label>
+        <%= @product.artist.name %>
+        <p>
+        <label>「シングル/アルバム名」</label>
         <%= @product.name %>
-        <p>「価格（税別価格）」</p>
+        </p>
+        <p>
+        <label>「ジャケット画像」</label>
+      <%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'200x200' %>
+        </p>
+        <p>
+        <label>「価格（税別価格）」</label>
         <%= @product.price %>
-        <p>「在庫数」</p>
+        </p>
+        <p>
+        <label>「在庫数」</label>
         <%= @product.stock %>
-        <p>「レーベル名」</p>
+        </p>
+        <p>
+        <label>「レーベル名」</label>
         <%= @product.label.name %>
-        <p>「ジャンル」</p>
+        </p>
+        <p>
+        <label>「ジャンル」</label>
         <%= @product.genre.name %>
-        <p>「ステータス」</p>
+        </p>
+        <p>
+        <label>「ステータス」</label>
         <%= @product.status %>
-        <p>「削除フラグ」</p>
+        </p>
+        <p>
+        <label>「削除フラグ」</label>
         <%=  %>
+        </p>
 
       </div>
 
       <div class='col-lg-6' style='float: right'>
-
         <div>
-          <p>シングル/アルバムの曲名</p>
+        　<label>収録曲</label>
+          <% @product.songs.each do |song| %>
+              <div>
+          　    <label>曲名</label>
+                <%= song.name %>
+          　    <label>ディスク番号</label>
+                <%= song.disk %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+        <div>
+          <%= link_to '編集', "/admin/products/#{@product.id}/edit", class:'btn btn-primary' %>
         </div>
 
-      </div>
-    </div>
   </div>
 </div>
