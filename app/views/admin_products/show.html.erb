@@ -1,11 +1,78 @@
 <%= render 'layouts/admin-nav' %>
 
-<h1>商品詳細</h1>
-<p>商品ID</p>
-<%= @product.id %>
-<p>アーティスト名</p>
-<%= @artist.name %>
-<p>シングル/アルバム名</p>
-<%= @product.name %>
-<p>ジャケット画像</p>
-<%= attachment_image_tag @product, :image %>
+<div class='body'>
+        <h1>商品詳細</h1>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-lg-3' style='float: left'>
+
+        <p>
+        <label>「商品ID」</label>
+        <%= @product.id %>
+        </p>
+        <p>
+        <label>「アーティスト名」</label>
+        <%= @product.artist.name %>
+        <p>
+        <label>「シングル/アルバム名」</label>
+        <%= @product.name %>
+        </p>
+        <p>
+        <label>「ジャケット画像」</label>
+      <%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'200x200' %>
+        </p>
+        <p>
+        <label>「価格（税別価格）」</label>
+        <%= @product.price %>
+        </p>
+        <p>
+        <label>「在庫数」</label>
+        <%= @product.stock %>
+        </p>
+        <p>
+        <label>「レーベル名」</label>
+        <%= @product.label.name %>
+        </p>
+        <p>
+        <label>「ジャンル」</label>
+        <%= @product.genre.name %>
+        </p>
+        <p>
+        <label>「ステータス」</label>
+        <%= @product.status %>
+        </p>
+        <p>
+        <label>「削除フラグ」</label>
+        <%=  %>
+        </p>
+
+      </div>
+
+      <!-- 右側に収録曲表示 -->
+      <div class='col-lg-6' style='float: right'>
+        <div>
+        　<label>収録曲</label>
+          <table class="table">
+                <thead>
+            　    <th></th>
+            　    <th>曲名</th>
+            　    <th>ディスク番号</th>
+                </thead>
+                  <% @product.songs.each do |song| %>
+                    <tr>
+                      <td><%= song.id %></td>
+                      <td><%= song.name %></td>
+                      <td><%= song.disk %></td>
+                    </tr>
+                  <% end %>
+          </table>
+        </div>
+      </div>
+
+    </div>
+        <div>
+          <%= link_to '編集', "/admin/products/#{@product.id}/edit", class:'btn btn-primary' %>
+        </div>
+
+  </div>
+</div>

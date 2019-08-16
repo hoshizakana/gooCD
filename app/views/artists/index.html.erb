@@ -7,11 +7,20 @@
   <%= flash[:notice] %>
  <% end %> 
 
+
+<%# 検索フォーム（オートコンプリート) %>
+ <%= search_form_for @search, url: '/artists', method: :get, enforce_utf8: false do |f| %>
+   <%= autocomplete_field_tag 'artist[name]', nil, '/artists/autocomplete_product_name' %>
+   <%= f.submit '検索' %>
+ <% end %>
+
+
 <%# アーティストの投稿フォーム %>
-<%= form_for(@artist) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit "追加する" %>
-<% end %>
+  <%= form_for(@artist) do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "追加する" %>
+  <% end %>
+
 
 <%# アーティストの一覧表示 %>
 <h3>アーティスト一覧</h3>
@@ -19,5 +28,10 @@
   <div>
     <%= artist.id %>
     <%= artist.name %>
+
+    <%= '---------' %>
+    <%= '編集' %>
+    <%= '保存'%>
+    <%= link_to '削除', "/artists/#{artist.id}", method: :delete %>
   </div>
 <% end %>
