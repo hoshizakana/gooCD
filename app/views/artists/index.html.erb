@@ -9,7 +9,7 @@
 
 
 <%# 検索フォーム（オートコンプリート) %>
- <%= search_form_for @search, url: '/artists', method: :get, enforce_utf8: false do |f| %>
+ <%= search_form_for @search, url: '/artists', method: :get, enforce_utf8: false, remote: true do |f| %>
    <%= autocomplete_field_tag 'artist[name]', nil, '/artists/autocomplete_product_name' %>
    <%= f.submit '検索' %>
  <% end %>
