@@ -13,9 +13,13 @@
 	<div class="row">
 		<div class="col-lg-10 col-lg-offset-1">
 			<h2>会員一覧</h2>
-			<%= form_tag(search_path, :method => 'get') do %>
-				<%= txt_field_tag :search %>
-				<%= submit_tag '検索',  %>
+
+<!-- form_with試す -->
+			<%= form_with(scope: :search, url: '/admin/users', method: :get local: true) do |f| %>
+				<%= f.label(:) %>
+				<%= f.label(:name User) %>
+				<%= f.text_field :name, value: @search_params[:id, :email, :phone, :name] %>
+
 		</div>
 	</div>
 </div>
