@@ -1,2 +1,25 @@
+<%if @user.id == current_user.id %>
+<%= link_to "会員情報編集", "/users/#{@user.id}/edit" %>
+<%= link_to "パスワード変更", "" %>
 <h1>マイページ</h1>
+    <h4>会員番号</h4>
+    <%= @user.id %>
+
+
+    <h4>名前</h4>
+    <%= @user.last_name %> 
+    <%= @user.first_name %>
+    <h4>電話番号</h4>
+    <%= @user.phone %>
+    <h4>メールアドレス</h4>
+    <%= @user.email %>
+    <h4>規定住所</h4>
+    <%= @user.postal_code %> 
+    
+<%= @useraddresses.each do |f| %>
+    <h4>その他住所</h4>
+    <%= f.postal_code %> 
+    <%= f.address %>
+<% end %>
+<% end %>
 
