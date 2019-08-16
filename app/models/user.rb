@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+         has_many :addresses, dependent: :destroy
+
+
 	# admin_user検索用, 動かず
 	# scope :search, -> (search_params) do
 	# 	return if search_params.blank?
@@ -17,4 +20,5 @@ class User < ApplicationRecord
 	# 	scope :email_like, -> (email) {where('email LIKE ?', "%#{email}%") if email.present? }
 	# 	scope :phone_like, -> (like) {where('like LIKE ?', "%#{like}%") if like.present? }
 	# 	scope :name_like, -> (name) {where ('name LIKE ?', "%#{name}%") if name.present? }
+
 end
