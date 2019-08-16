@@ -1,2 +1,16 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<%= @product.name %>
+<%= attachment_image_tag @product, :image, :fill, 50, 50, format: 'jpeg',fallback: 'no_image.jpg', size: "40x40" %>
+<h4>発売日</h4>
+<%= @product.release_date %>
+<h4>曲数</h4>
+<%= @product.songs.count %><br>
+¥<%= @product.price %>税込価格
+<h4>カートに入れる</h4>
+<%= @product.artist.name %>
+<%= @product.label.name %>
+<%= @product.genre.name %>
+<h4>シングル名/アルバム名</h4>
+<% @product.songs.each do |song| %>
+    <%= song.disk %>
+    <%= song.name %>
+<% end %>
