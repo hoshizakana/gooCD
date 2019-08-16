@@ -34,6 +34,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :'電話番号' %><br />
+    <%= f.text_field :phone, autofocus: true, autocomplete: "" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "" %>
   </div>
