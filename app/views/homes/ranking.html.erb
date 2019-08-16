@@ -1,2 +1,63 @@
-<h1>Homes#ranking</h1>
-<p>Find me in app/views/homes/ranking.html.erb</p>
+<h1>
+	Homes#ranking
+	Saddy
+</h1>
+
+<div class="container">
+	<!-- render 'homes/nav_bar' -->
+	<!-- render 'homes/search_bar' -->
+
+	<div class="row">
+		<div class="col-lg-2">
+			<!-- render 'ジャンルガイド' 共用化せねば… -->
+		</div>
+		<div class="col-lg-10">
+			<div class="row">
+				<h2>いいね！ランキング</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-7">
+					<p>No.1</p>
+					<!-- ジャケット画像 -->
+				</div>
+				<div class="col-lg-5">
+					<div class="row">
+						<div class="col-lg-12">
+							<p>
+								<%= @ranking[0].name %>
+							</p>
+							<p>
+								<%= @ranking[0].artist.name %>
+							</p>
+							<label>
+								<%= @ranking[0].genre.name %>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<p>
+								発売日：<%= @ranking[0].release_date %>
+							</p>
+						</div>
+						<div class="col-lg-6">
+							<p>
+								税込価格：<%= @ranking[0].price * 1.08 %>円
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<p>いいね数ってどうやって数えるんだ？</p>
+						</div>
+						<div class="col-lg-6">
+							<p>いいねボタン</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
