@@ -1,2 +1,25 @@
-<h1>AdminUsers#show</h1>
-<p>Find me in app/views/admin_users/show.html.erb</p>
+<h1>
+	AdminUsers#show
+	Saddy
+</h1>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<%= render 'layouts/admin_nav' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<h2>会員一覧</h2>
+
+<!-- form_with試す -->
+			<%= form_with(scope: :search, url: '/admin/users', method: :get local: true) do |f| %>
+				<%= f.label(:) %>
+				<%= f.label(:name User) %>
+				<%= f.text_field :name, value: @search_params[:id, :email, :phone, :name] %>
+
+		</div>
+	</div>
+</div>

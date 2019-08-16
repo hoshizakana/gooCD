@@ -39,6 +39,7 @@ class AdminProductsController < ApplicationController
   end
 
   def edit
+
     @product = Product.find(params[:id])
     @artists = Artist.all  #リスト選択でなく、検索フォームからの検索に後で置き換え
     @genres = Genre.all
@@ -57,21 +58,22 @@ class AdminProductsController < ApplicationController
   def destroy
     self.deleted = true
     save
+
   end
 
 
   private
   def product_params
     params.require(:product).permit(
-      :name, 
-      :artist_id, 
-      :label_id, 
-      :genre_id, 
-      :status, 
-      :image, 
-      :price, 
-      :stock, 
-      :release_date, 
+      :name,
+      :artist_id,
+      :label_id,
+      :genre_id,
+      :status,
+      :image,
+      :price,
+      :stock,
+      :release_date,
       songs_attributes:[:id, :product_id, :name, :disk]
     )
 
