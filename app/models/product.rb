@@ -5,4 +5,8 @@ class Product < ApplicationRecord
   belongs_to :artist
   belongs_to :label
   accepts_nested_attributes_for :songs
+
+  #削除フラグ用
+  scope :active,where(deleted:false)
+
 end

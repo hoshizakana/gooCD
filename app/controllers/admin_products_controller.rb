@@ -28,6 +28,7 @@ class AdminProductsController < ApplicationController
     end
   end
 
+  #管理者商品検索機能
   def search
     @q = Product.search(search_params)
     @product = @q.result
@@ -53,6 +54,11 @@ class AdminProductsController < ApplicationController
     redirect_to ("/admin/products/#{product.id}")
   end
 
+  def destroy
+    self.deleted = true
+    save
+  end
+
 
   private
   def product_params
@@ -71,6 +77,7 @@ class AdminProductsController < ApplicationController
 
   end
 
+  #管理者商品検索機能のストロングパラメーター
   def search_params
     params.require(:q).permit(:genre_name_eq)
   end

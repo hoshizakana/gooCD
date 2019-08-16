@@ -7,7 +7,7 @@
   <%= flash[:notice] %>
  <% end %> 
 
-<%# 検索フォーム %>
+<%# 検索フォーム（オートコンプリート） %>
  <%= search_form_for @search, url: '/genres', method: :get, enforce_utf8: false do |f| %>
    <%= autocomplete_field_tag 'genre[name]', nil, '/genres/autocomplete_product_name' %>
    <%= f.submit '検索' %>

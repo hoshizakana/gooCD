@@ -1,56 +1,82 @@
 <%= render 'layouts/admin-nav' %>
 
-<%# 商品の一覧表示 %>
+<%# 商品の検索フォーム %>
 
 <%= search_form_for @search, url: '/admin/products' do |f| %>
-  <p>
+  <div>
   <%= f.label :name_cont, 'シングル/アルバム名' %>
   <%= f.search_field :name_cont %>
-  </p>
+  </div>
 
-  <p>
+  <div>
   <%= f.label :name_cont, 'アーティスト名' %>
   <%= f.search_field :artist_name_cont %>
-  </p>
+  </div>
 
-  <p>
+  <div>
   <%= f.label :genre_name_eq, 'ジャンル' %>
   <%= f.collection_select :genre_name_eq, @genres, :name, :name, include_blank: '全てのジャンル' %>
-  </p>
+  </div>
 
-  <p>
+  <div>
   <%= f.label :name_cont, 'レーベル名' %>
   <%= f.search_field :label_name_cont %>
-  </p>
+  </div>
 
-  <p>
+  <div>
   <%= f.label :name_cont, '在庫数' %>
   <%= f.search_field :stock_gteq %>
 
   <%= f.label :name_cont, '~' %>
   <%= f.search_field :stock_lteq %>
-  </p>
+  </div>
 
   <p>
   <%= f.label :starus_eq, 'ステータス' %>
   <%= f.radio_button :status_eq, '', {:checked => true} %>指定なし
   <%= f.radio_button :status_eq, '販売中' %>販売中
   <%= f.radio_button :status_eq, '販売停止中' %>販売停止中
-  </p>
+  </div>
 
-  <p><%= f.submit '検索' %></p>
+  <div><%= f.submit '検索' %></div>
 
 <% end %>
 
 
 <h3>商品一覧</h3>
-<% @products.each do |product| %>
-  <div>
-    <%= product.id %>
-    <%= link_to product.name, "/admin/products/#{product.id}" %>
-    <%= product.genre.name %>
-    <%= product.stock %>
-    <%= product.status %>
-
-  </div>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>画像</th>
+          <th>シングル/アーティスト名</th>
+          <th>ジャンル</th>
+          <th>レーベル</th>
+          <th>アーティスト</th>
+          <th>価格</th>
+          <th>在庫数</th>
+          <th>ステータス</th>
+          <th>登録日</th>
+          <th>更新日</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tr>
+       <% @products.each do |product| %>
+        <td><%= product.id %></td>
+        <td><%= '画像' %></td>
+        <td><%= link_to product.name, "/admin/products/#{product.id}" %></td>
+        <td><%= product.genre.name %></td>
+        <td><%= product.label.name %></td>
+        <td><%= product.artist.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.status %></td>
+        <td><%= product.created_at %></td>
+        <td><%= product.updated_at %></td>
+        <td><%= link_to '詳細', "/admin/products/#{product.id}" %></td>
+        <td><%= link_to '編集', "/admin/products/#{product.id}/edit" %></td>
+      </tr>
 <% end %>
+    </table>

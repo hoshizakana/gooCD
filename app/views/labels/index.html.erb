@@ -8,7 +8,7 @@
  <% end %> 
 
 
-<%# 検索フォーム %>
+<%# 検索フォーム（オートコンプリート） %>
  <%= search_form_for @search, url: '/labels', method: :get, enforce_utf8: false do |f| %>
    <%= autocomplete_field_tag 'label[name]', nil, '/labels/autocomplete_product_name' %>
    <%= f.submit '検索' %>
