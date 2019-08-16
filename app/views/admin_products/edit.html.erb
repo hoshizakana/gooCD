@@ -56,14 +56,22 @@
       <div class='col-lg-7' style='float: right'>
       　<label>収録曲</label>
           <div>
-            <%= f.fields_for :songs do |s| %>
             　<div>
-          　    <label>曲名</label>
-                <%= s.text_field :name %>
-          　    <label>ディスク番号</label>
-                <%= s.text_field :disk ,placeholder:"1" %>
+              <table class='table'>
+                <thead>
+            　    <th>曲名</th>
+            　    <th>ディスク番号</th>
+                </thead>
+                  <tr>
+                    <%= f.nested_fields_for :songs, wrapper_tag: :tr do |q| %>
+                      <td><%= q.text_field :name %></td>
+                      <td><%= q.text_field :disk ,placeholder:"1" %></td>
+                      <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
+                    <% end %>
+                  </tr>
+              </table>
+              <%= f.add_nested_fields_link :songs, '追加', class: 'btn btn-primary', role: 'button' %>
               </div>
-            <% end %>
           </div>
       </div>
 

@@ -17,4 +17,5 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery-ui
+//= require nested_form_fields
 //= require_tree .

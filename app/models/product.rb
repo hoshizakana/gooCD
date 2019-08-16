@@ -7,6 +7,6 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :songs
 
   #削除フラグ用
-  scope :active,where(deleted:false)
+  #scope :active,where(deleted:false)
 
 end
