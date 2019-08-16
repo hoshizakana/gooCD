@@ -27,20 +27,22 @@ class AdminProductsController < ApplicationController
   end
 
   def edit
+		@product = Product.find(params[:id])
+    @artist = Artist.find(@product.artist_id)
   end
 
   private
   def product_params
     params.require(:product).permit(
-      :name, 
-      :artist_id, 
-      :label_id, 
-      :genre_id, 
-      :status, 
-      :image, 
-      :price, 
-      :stock, 
-      :release_date, 
+      :name,
+      :artist_id,
+      :label_id,
+      :genre_id,
+      :status,
+      :image,
+      :price,
+      :stock,
+      :release_date,
       songs_attributes:[:id, :product_id, :name, :disk]
     )
 
