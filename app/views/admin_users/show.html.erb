@@ -14,12 +14,35 @@
 		<div class="col-lg-10 col-lg-offset-1">
 			<h2>会員一覧</h2>
 
-<!-- form_with試す -->
-			<%= form_with(scope: :search, url: '/admin/users', method: :get local: true) do |f| %>
-				<%= f.label(:) %>
-				<%= f.label(:name User) %>
-				<%= f.text_field :name, value: @search_params[:id, :email, :phone, :name] %>
-
+			<!-- ransack試す -->
+			<%= search_form_for @search do |f| %>
+				<%= f.label :id_cont, "ID" %>
+				<%= f.search_field :id_cont %>
+				<%= f.label :email_cont, "メールアドレス" %>
+				<%= f.search_field :email_cont %>
+				<%= f.label :phone_cont, "電話番号" %>
+				<%= f.search_field :phone_cont %>
+				<!-- お名前検索を分割します -->
+				<%= f.label :last_name_cont, "お名前(姓)" %>
+				<%= f.search_field :last_name_cont %>
+				<%= f.label :first_name_cont, "お名前(名)" %>
+				<%= f.search_field :first_name_cont %>
+				<%= f.submit "検索" %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row index-field">
+		<div class="col-lg-10 col-lg-offset-1">
+			<table>
+				<tr>
+					<th>会員ID</th>
+					<th>会員名</th>
+					<th>電話番号</th>
+					<th>メールアドレス</th>
+					<th></th>
+				</tr>
+				<%=  %>
+			</table>
 		</div>
 	</div>
 </div>
