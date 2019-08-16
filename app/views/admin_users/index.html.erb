@@ -5,27 +5,35 @@
 
 
 <div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<%= render 'layouts/admin-nav' %>
+	<div class="row admin-nav-bar">
+		<div class="col-lg-12">
+			<%= render 'layouts/admin_nav' %>
 		</div>
 	</div>
-
-	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+	<div class="row user-search">
+		<div class="col-lg-10 col-lg-offset-1">
 			<h2>会員一覧</h2>
-			<label>ID</label>
-			<label>メールアドレス</label>
-			<label>電話番号</label>
-			<label>お名前(姓)</label>
-			<label>お名前(名)</label>
-			<button type="button" name="button">検索</button>
-		</div>
 
-		<!-- users index -->
-		<div class="index">
-			<caption>検索結果：○○件が該当しました。</caption>
-			<table>
+			<!-- ransack試す -->
+			<%= search_form_for @search do |f| %>
+				<%= f.label :id_cont, "ID" %>
+				<%= f.search_field :id_cont %>
+				<%= f.label :email_cont, "メールアドレス" %>
+				<%= f.search_field :email_cont %>
+				<%= f.label :phone_cont, "電話番号" %>
+				<%= f.search_field :phone_cont %>
+				<!-- お名前検索を分割します -->
+				<%= f.label :last_name_cont, "お名前(姓)" %>
+				<%= f.search_field :last_name_cont %>
+				<%= f.label :first_name_cont, "お名前(名)" %>
+				<%= f.search_field :first_name_cont %>
+				<%= f.submit "検索" %>
+			<% end %>
+		</div>
+	</div>
+	<div class="row user-index">
+		<div class="col-lg-10 col-lg-offset-1">
+			<table class="user-index-table">
 				<tr>
 					<th>会員ID</th>
 					<th>会員名</th>
@@ -33,15 +41,15 @@
 					<th>メールアドレス</th>
 					<th></th>
 				</tr>
-				<tr>
-					<td></td>
-				</tr>
-
-				</th>
+				<%= @result.each do |r| %>
+					<tr>
+						<td><%= r.id %></td>
+						<td><%= r.last_name + r.first_name %></td>
+						<td><%= r.phone %></td>
+						<td><%= r.email %></td>
+						<td><%= link_to 'admin/users/:id/show', "詳細へ" %></td>
+					</tr>
 			</table>
 		</div>
-
 	</div>
-
-
 </div>

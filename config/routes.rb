@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   delete '/artists/:id' => 'artists#destroy'
   get '/products' => 'products#index'
   get '/products/:id' => 'products#show'
-  get '/products/' =>'products#search' #担当者が自分で修正 
+  get '/products/' =>'products#search' #担当者が自分で修正
   patch '/users/:id' => 'users#update'
   get '/users/:id/edit' => 'users#edit'
   get '/users/:id/confirm' => 'users#destroy_confirm'

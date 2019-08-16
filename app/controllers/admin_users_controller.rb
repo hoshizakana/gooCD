@@ -1,6 +1,7 @@
 class AdminUsersController < ApplicationController
   def show
 		@user = User.find(params[:id])
+		@orders = Order.find(params[:user_id]) # 正しいのか？
   end
 
   def edit
@@ -8,8 +9,8 @@ class AdminUsersController < ApplicationController
   end
 
   def index
-		@search = Product.ransack(params[:q])
+		@search = User.ransack(params[:q])
 		@result = @search.result
-		@products = Product.all
+		# @users = User.all
   end
 end
