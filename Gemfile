@@ -71,3 +71,6 @@ gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'pry-byebug'
+
+# Ransack忘れてた
+gem 'ransack'
