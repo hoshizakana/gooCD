@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post '/cart_items' => 'cart#create'
   patch '/cart_items/:id' => 'cart#update'
   delete '/cart_items/:id' => 'cart#destroy'
-  post '/favorites/:product_id' => 'favorites#create'
-  delete '/favorites/:id' => 'favorites#destroy'
+  post '/favorites/:product_id' => 'favorites#favorite', as: 'favorite'
+  delete '/favorites/:id' => 'favorites#unfavorite', as: 'unfavorite'
   post '/orders' => 'orders#create'
   get '/orders/:user_id' => 'orders#process'
   get '/orders/:user_id/confirm' => 'orders#confirm'
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post '/artists' => 'artists#create'
   patch '/artists/:id' => 'artists#update'
   delete '/artists/:id' => 'artists#destroy'
+  get '/artists/:id/edit' => 'artists#edit' #ajax編集するために追加
   get '/products' => 'products#index'
   get '/products/:id' => 'products#show'
   get '/products/' =>'products#search' #担当者が自分で修正
