@@ -24,14 +24,16 @@
 
 <%# アーティストの一覧表示 %>
 <h3>アーティスト一覧</h3>
+<table class="table">
+  <thead>
+    <th>アーティスト名</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
 <% @artists.each do |artist| %>
-  <div>
-    <%= artist.id %>
-    <%= artist.name %>
-
-    <%= '---------' %>
-    <%= '編集' %>
-    <%= '保存'%>
-    <%= link_to '削除', "/artists/#{artist.id}", method: :delete %>
+  <div class="for_edit_artist">
+    <%= render 'artists/each_artist', each_artist: artist %>
   </div>
 <% end %>
+</table>
