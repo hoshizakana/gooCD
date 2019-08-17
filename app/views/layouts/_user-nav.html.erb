@@ -1,0 +1,22 @@
+<div class="header">
+    <div class="container">
+        <nav class="navbar navbar-main">
+        <div class="navbar-header">
+        <% if user_signed_in? %>
+            <span>gooCD</span>
+            <%= link_to '商品一覧', "/products", class: "glyphicon glyphicon-headphones headphones" %>
+        </div>
+        <div class="slidemenu">
+            <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'カートへ', "/#", class: "glyphicon glyphicon-shopping-cart cart" %><li>
+            <li><%= link_to ' マイページ', "/users/#{current_user.id}", class: "glyphicon glyphicon-user users" %></li>
+            <li><%= link_to 'ログアウト', "/users/sign_out", class: "glyphicon glyphicon-log-out logout" %></li>
+            <% else %>
+            <li><%= link_to 'ログイン', "/users/sign_in", class: "glyphicon glyphicon-log-in sign_in" %></li>
+            <li><%= link_to '会員登録', "/users/sign_up", class: "glyphicon glyphicon-edit sign_up" %><li>
+            <% end %>
+            </ul>
+        </div>
+        </nav>
+    </div>
+</div>
