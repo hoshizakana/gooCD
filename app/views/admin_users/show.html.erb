@@ -46,7 +46,7 @@
 				</tr>
 				<tr>
 					<th>住所</th>
-					<td colspan="5"><%= @user.address %></td>
+					<td colspan="5"><%= @user.adress %></td>
 				</tr>
 				<tr>
 					<th>削除フラグ</th>
@@ -59,6 +59,7 @@
 					</td>
 				</tr>
 			</table>
+			<%= link_to "編集", "/admin/users/#{@user.id}/edit" %>
 		</div>
 	</div>
 
