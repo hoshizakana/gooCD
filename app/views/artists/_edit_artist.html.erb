@@ -1,0 +1,9 @@
+
+<div class="each_artist row" data-artist="<%= @id_artist %>">
+  <%= form_with(model: @artist, :url => {:action => :update}, remote: true) do |form| %>
+    <div class="">
+      <%= form.text_field :name  %>
+      <%= form.submit '保存', data: { confirm: '投稿しますか？' }, class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>

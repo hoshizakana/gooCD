@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post '/artists' => 'artists#create'
   patch '/artists/:id' => 'artists#update'
   delete '/artists/:id' => 'artists#destroy'
+  get '/artists/:id/edit' => 'artists#edit' #ajax編集するために追加
   get '/products' => 'products#index'
   get '/products/:id' => 'products#show'
   get '/products/' =>'products#search' #担当者が自分で修正
