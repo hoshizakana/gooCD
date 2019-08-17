@@ -1,2 +1,47 @@
-<h1>Cart#index</h1>
-<p>Find me in app/views/cart/index.html.erb</p>
+<h1>
+	Cart#index
+	Saddy
+</h1>
+
+<div class="container">
+	<div class="row nav-bar">
+		<!-- 大くん作成中 -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-10 col-lg-offset-1">
+		<h2>
+			<%= current_user.last_name %>様カート
+		</h2>
+		<div class="row cart-index">
+			<div class="col-lg-9 cart-index-list">
+				<% @items.each do |item| %>
+					<div class="cart-item">
+						<div class="row item-detail">
+							<div class="col-lg-4 item-detail-image">
+								<%= attachment_image_tag item, :image, :fill, 60, 60, class: "jacket-img", fallback: "no_image.jpg" %>
+							</div>
+							<div class="col-lg-8 item-detail-text">
+								<p><%= item.name %></p>
+								<p><%= item.artist_id.name %></p>
+								<p><%= item.label.id.name %></p>
+								<p><%= item.release_date %></p>
+								<p><%= item.genre_id.name %></p>
+								<p>単価<%= item.price * 1.08 %></p> <!-- text-align: right; -->
+							</div>
+								<%= form_for(item) do |f| %>
+									<%= f.select_field :item_number, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9]] %>
+									<!-- f.submit "" 更新を非同期でやるという話 -->
+								<% end %>
+						</div>
+					</div>
+
+			</div>
+			<div class="col-lg-3 cart-total">
+
+			</div>
+
+		</div>
+	</div>
+</div>

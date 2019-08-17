@@ -5,7 +5,7 @@
 <h4>曲数</h4>
 <%= @product.songs.count %><br>
 ¥<%= @product.price %>税込価格
-<h4>カートに入れる</h4>
+<%= link_to ("/cart_items") %>
 <%= @product.artist.name %>
 <%= @product.label.name %>
 <%= @product.genre.name %>
