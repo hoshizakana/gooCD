@@ -1,3 +1,4 @@
+<%= render 'layouts/user-nav', users:  @user, user: current_user  %>
 <h1>会員情報編集</h1>
 <%= form_for @user, url: "/users/#{@user.id}" do |f| %>  
     <h4>名前(漢字)</h4>

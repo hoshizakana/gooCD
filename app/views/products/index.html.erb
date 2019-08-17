@@ -1,3 +1,4 @@
+<%= render 'layouts/user-nav', products:  @product, user: current_user  %>
 <h1>商品一覧</h1>
 <% @products.each do |product| %>
     <%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg',fallback: 'no_image.jpg', size: "40x40" %>
