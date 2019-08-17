@@ -15,9 +15,10 @@
 			<h2>会員一覧</h2>
 
 			<!-- ransack試す -->
-			<% search_form_for @search, url: 'admin/users' do |f| %>
-				<%= f.label :id_cont, "ID" %><br>
-				<%= f.search_field :id_cont %><br>
+			<%= search_form_for @search, url: 'users' do |f| %>
+				<%= f.label :id_eq, "ID" %><br>
+					<!-- ransackでは整数値の部分検索に非対応 -->
+				<%= f.search_field :id_eq %><br>
 				<%= f.label :email_cont, "メールアドレス" %><br>
 				<%= f.search_field :email_cont %><br>
 				<%= f.label :phone_cont, "電話番号" %><br>

@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   get '/admin/users' => 'admin_users#index'
   get '/admin/users/:id' => 'admin_users#show'
   get '/admin/users/:id/edit' => 'admin_users#edit'
-  patch '/admin/useres/:id' => 'admin_users#update'
+  patch '/admin/users/:id' => 'admin_users#update'
 #end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

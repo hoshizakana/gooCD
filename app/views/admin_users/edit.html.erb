@@ -20,7 +20,7 @@
 					<%= @user.id %>
 				</div>
 			</div>
-			<%= form_for(@user) do |f| %>
+			<%= form_for @user, url: "/admin/users/#{@user.id}" do |f| %>
 				<div class="row">
 					<div class="col-lg-2">
 						<label>名前（漢字）</label>
@@ -76,7 +76,7 @@
 						<label>住所</label>
 					</div>
 					<div class="col-lg-10">
-						<%= f.text_field :address %>
+						<%= f.text_field :adress %>
 					</div>
 				</div>
 				<div class="row">

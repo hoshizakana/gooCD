@@ -50,6 +50,11 @@
         　<label for="status">ステータス</label>
         　　<%= f.select :status, ["販売中", "販売停止中"], :prompt => "選択してください", id:"status"%>
           </div>
+
+					<div class="">
+						<label for="is_deleted">削除フラグ</label>
+						<%= f.check_box :is_deleted, {}, "true", "false" %>
+					</div>
       </div>
 
 
@@ -83,4 +88,3 @@
         <% end %>
   </div>
 </div>
-
