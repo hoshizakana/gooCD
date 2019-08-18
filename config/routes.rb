@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get '/' => 'homes#top'
   get '/ranking/:genre_id' => 'homes#ranking'
   get '/carts/:user_id' => 'cart#index'
-  post '/cart_items' => 'cart#create'
-  patch '/cart_items/:id' => 'cart#update'
+  get '/cart_items/:product_id' => 'cart#create' #'/cart_items'から変更、formがないのでget
+	patch '/cart_items/:id' => 'cart#update'
   delete '/cart_items/:id' => 'cart#destroy'
   post '/favorites/:product_id' => 'favorites#favorite', as: 'favorite'
   delete '/favorites/:id' => 'favorites#unfavorite', as: 'unfavorite'
