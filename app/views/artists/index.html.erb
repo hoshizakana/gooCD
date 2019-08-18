@@ -32,8 +32,6 @@
     <th></th>
   </thead>
 <% @artists.each do |artist| %>
-  <div class="for_edit_artist">
-    <%= render 'artists/each_artist', each_artist: artist %>
-  </div>
+      <%= render 'artists/each_artist', artist: artist %>
 <% end %>
 </table>
