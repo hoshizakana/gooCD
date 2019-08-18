@@ -33,5 +33,6 @@
   </thead>
 <% @artists.each do |artist| %>
       <%= render 'artists/each_artist', artist: artist %>
+      <%= render 'artists/each_artist_button', artist: artist %>
 <% end %>
 </table>

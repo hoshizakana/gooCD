@@ -9,6 +9,10 @@ class GenresController < ApplicationController
     else
       @genres = Genre.all
     end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -18,6 +22,24 @@ class GenresController < ApplicationController
     redirect_to ('/genres')
   end
 
+  def edit
+    @id_genre = Genre.find(params[:id]).id
+    @genre = Genre.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def update
+    @id_genre = Genre.find(params[:id]).id
+    @genre = Genre.find(params[:id])
+    @genre.update(genre_params)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
   def search
     @q = Genre.search(search_params)
     @genre = @q.result

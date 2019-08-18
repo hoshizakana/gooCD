@@ -22,9 +22,9 @@
 
 <%# レーベルの一覧表示 %>
 <h3>レーベル一覧</h3>
+<table class="table">
 <% @labels.each do |label| %>
-  <div>
-    <%= label.id %>
-    <%= label.name %>
-  </div>
+    <%= render 'labels/each_label', label: label %>
+    <%= render 'labels/each_label_button', label: label %>
 <% end %>
+</table>
