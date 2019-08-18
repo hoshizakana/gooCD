@@ -1,5 +1,6 @@
 <%= render 'layouts/user-nav', products:  @product, user: current_user  %>
 <h1>商品一覧</h1>
+
 <div class="main-layout">
     <div class="row">
         <% @products.each do |product| %>
@@ -11,3 +12,4 @@
         <% end %>
     </div>
 </div>
+
