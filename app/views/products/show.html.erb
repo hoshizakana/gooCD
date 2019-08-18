@@ -1,6 +1,6 @@
 
 <%= render 'layouts/user-nav', products:  @product, user: current_user  %>
- <div class="container">   
+ <div class="container">
     <div class="row">
         <div class="col-xs-5">
             <div class="left-content">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="product-buy">
                     ¥<%= @product.price %>税込価格
-                    <h4>カートに入れる</h4>
+                    <%= link_to "カートに入れる", "/cart_items/#{@product.id}" %>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="name">
                         <%= @product.label.name %>
-                        <%= @product.genre.name %>                          
+                        <%= @product.genre.name %>
                     </div>
                 </div>
                 <div class="song-index">
@@ -47,4 +47,3 @@
         </div>
     </div>
 </div>
-
