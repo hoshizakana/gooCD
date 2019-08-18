@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+	# get '/orders/:user_id' => 'orders#qwerty'
   get '/' => 'homes#top'
   get '/ranking/:genre_id' => 'homes#ranking'
   get '/carts/:user_id' => 'cart#index'
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   post '/favorites/:product_id' => 'favorites#favorite', as: 'favorite'
   delete '/favorites/:product_id' => 'favorites#unfavorite', as: 'unfavorite'
   post '/orders' => 'orders#create'
-  get '/orders/:user_id' => 'orders#process'
+  get '/orders/:user_id' => 'orders#procedure'
   get '/orders/:user_id/confirm' => 'orders#confirm'
   get '/orders/complete' => 'orders#complete'
   get '/genres' => 'genres#index'
