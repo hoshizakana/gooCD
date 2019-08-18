@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   get '/' => 'homes#top'
   get '/ranking/:genre_id' => 'homes#ranking'
   get '/carts/:user_id' => 'cart#index'
-  post '/cart_items' => 'cart#create'
-  patch '/cart_items/:id' => 'cart#update'
+  get '/cart_items/:product_id' => 'cart#create' #'/cart_items'から変更、formがないのでget
+	patch '/cart_items/:id' => 'cart#update'
   delete '/cart_items/:id' => 'cart#destroy'
   post '/favorites/:product_id' => 'favorites#favorite', as: 'favorite'
-  delete '/favorites/:id' => 'favorites#unfavorite', as: 'unfavorite'
+  delete '/favorites/:product_id' => 'favorites#unfavorite', as: 'unfavorite'
   post '/orders' => 'orders#create'
   get '/orders/:user_id' => 'orders#process'
   get '/orders/:user_id/confirm' => 'orders#confirm'
@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   get '/admin/users' => 'admin_users#index'
   get '/admin/users/:id' => 'admin_users#show'
   get '/admin/users/:id/edit' => 'admin_users#edit'
-  patch '/admin/useres/:id' => 'admin_users#update'
+  patch '/admin/users/:id' => 'admin_users#update'
 #end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

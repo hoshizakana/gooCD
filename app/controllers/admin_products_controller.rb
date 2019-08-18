@@ -55,12 +55,6 @@ class AdminProductsController < ApplicationController
     redirect_to ("/admin/products/#{product.id}")
   end
 
-  def destroy
-    self.deleted = true
-    save
-
-  end
-
 
   private
   def product_params
@@ -74,9 +68,9 @@ class AdminProductsController < ApplicationController
       :price,
       :stock,
       :release_date,
+			:is_deleted,
       songs_attributes:[:id, :product_id, :name, :disk]
     )
-
   end
 
   #管理者商品検索機能のストロングパラメーター

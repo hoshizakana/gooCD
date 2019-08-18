@@ -43,7 +43,11 @@
         </p>
         <p>
         <label>「削除フラグ」</label>
-        <%=  %>
+        <% if @product.is_deleted == false %>
+					<i class="fa fa-square-o"></i>
+				<% else %>
+				  <i class="fa fa-check-square-o"></i>削除済み
+				<% end %>
         </p>
 
       </div>

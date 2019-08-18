@@ -5,8 +5,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+		# @cart_item = CartItem.new
+			#-> form使わずにlinktoで飛ばすので、cart_itemを渡すことは不可能
   end
 
   def search
   end
+
 end
