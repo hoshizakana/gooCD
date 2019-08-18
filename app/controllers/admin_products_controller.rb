@@ -1,7 +1,7 @@
 class AdminProductsController < ApplicationController
   def new
     @product = Product.new
-    8.times { @product.songs.build }
+    @product.songs.build
     @artists = Artist.all  #リスト選択でなく、検索フォームからの検索に後で置き換え
     @genres = Genre.all
     @labels = Label.all   #リスト選択でなく、検索フォームからの検索に後で置き換え
@@ -53,6 +53,10 @@ class AdminProductsController < ApplicationController
     product.update(product_params)
     flash[:notice] = "更新されました。"
     redirect_to ("/admin/products/#{product.id}")
+  end
+
+  def destroy
+    @product = Product.find(params[:id]) 
   end
 
 
