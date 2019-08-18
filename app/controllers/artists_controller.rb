@@ -9,6 +9,10 @@ class ArtistsController < ApplicationController
     else
       @artists = Artist.all
     end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -20,11 +24,21 @@ class ArtistsController < ApplicationController
 
   def edit
     @id_artist = Artist.find(params[:id]).id
+    @artist = Artist.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
-
     @artist = Artist.find(params[:id])
+    @artist.update(artist_params)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    redirect_to ("/artists")
   end
 
   def destroy
@@ -47,6 +61,10 @@ class ArtistsController < ApplicationController
 
   def search_params
     params.require(:q).permit(:artist)
+  end
+
+  def set_variables
+    
   end
 
 end

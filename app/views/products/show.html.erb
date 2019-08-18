@@ -13,7 +13,9 @@
                     <%= @product.release_date %>
                     <h4>曲数</h4>
                     <%= @product.songs.count %><br>
+                    <!--いいね機能 -->
                     <%= render 'products/products', product: @product %>
+                    <!--いいね機能 -->
                 </div>
                 <div class="product-buy">
                     ¥<%= @product.price %>税込価格

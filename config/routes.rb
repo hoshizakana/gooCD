@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 	patch '/cart_items/:id' => 'cart#update'
   delete '/cart_items/:id' => 'cart#destroy'
   post '/favorites/:product_id' => 'favorites#favorite', as: 'favorite'
-  delete '/favorites/:id' => 'favorites#unfavorite', as: 'unfavorite'
+  delete '/favorites/:product_id' => 'favorites#unfavorite', as: 'unfavorite'
   post '/orders' => 'orders#create'
   get '/orders/:user_id' => 'orders#process'
   get '/orders/:user_id/confirm' => 'orders#confirm'
