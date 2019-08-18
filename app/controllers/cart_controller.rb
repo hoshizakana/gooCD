@@ -2,7 +2,7 @@ class CartController < ApplicationController
 
   def index
 		# カート内商品の一覧
-		@items = CartItem.where(user_id: current_user.id)
+		@cart_items = CartItem.where(user_id: current_user.id)
   end
 
 	def create
@@ -12,7 +12,7 @@ class CartController < ApplicationController
 		cart_item.item_number = 1
 		cart_item.save
 		flash[:notice] = "カートに入れました。"
-		redirect_to ("/products/#{@cart_item.product_id}") # 商品一覧から正しくproductが渡されるか？
+		redirect_to ("/products/#{cart_item.product_id}") # 商品一覧から正しくproductが渡されるか？
 	end
 	def update
 		# カート画面で、数量変更を送った時に動作する

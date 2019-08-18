@@ -1,0 +1,13 @@
+<div class="row item-detail">
+	<div class="col-lg-4 item-detail-image">
+		<%= attachment_image_tag product, :image, :fill, 60, 60, class: "jacket-img", fallback: "no_image.jpg" %>
+	</div>
+	<div class="col-lg-8 item-detail-text">
+		<p><%= product.name %></p>
+		<p><%= product.artist.name %></p>
+		<p><%= product.label.name %></p>
+		<p><%= product.release_date %></p>
+		<p><%= product.genre.name %></p>
+		<p>単価：<%= taxed_price_helper(product) %></p> <!-- text-align: right; -->
+	</div>
+</div>
