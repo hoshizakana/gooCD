@@ -1,7 +1,13 @@
 <%= render 'layouts/user-nav', products:  @product, user: current_user  %>
 <h1>商品一覧</h1>
-<% @products.each do |product| %>
-    <%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg',fallback: 'no_image.jpg', size: "40x40" %>
-    <%= link_to product.name, "/products/#{product.id}" %>
-    <%= link_to product.artist.name, "/products/#{product.id}" %>
-<% end %>
+<div class="main-layout">
+    <div class="row">
+        <% @products.each do |product| %>
+            <div class="col-lg-2 product-index">
+                <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150" %><br>
+                <%= link_to product.name, "/products/#{product.id}" %><br>
+                <%= link_to product.artist.name, "/products/#{product.id}" %><br>
+            </div>
+        <% end %>
+    </div>
+</div>
