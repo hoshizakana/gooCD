@@ -69,3 +69,38 @@
 				</div>
 	</div>
 </div>
+
+<%= form_for(@address_new) do |f| %>
+	<p>新しい住所の登録</p>
+	<table>
+		<tr>
+			<th>郵便番号：</th>
+			<td><%= f.text_field :postal_code %></td>
+		</tr>
+		<tr>
+			<th>住所：</th>
+			<td><%= f.text_area :address %></td>
+		</tr>
+		<tr>
+			<th>宛名：</th>
+			<td>(姓)</td>
+			<td><%= f.text_field :last_name %></td>
+			<td>(名)</td>
+			<td><%= f.text_field :first_name %></td>
+		</tr>
+		<tr>
+			<th>宛名(カナ)：</th>
+			<td>(セイ)</td>
+			<td><%= f.text_field :last_name_kana %></td>
+			<td>(メイ)</td>
+			<td><%= f.text_field :first_name_kana %></td>
+		</tr>
+		<tr>
+			<th>電話番号</th>
+			<td><%= f.text_field :phone %></td>
+		</tr>
+
+
+	</table>
+
+<% end %>
