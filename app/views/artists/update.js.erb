@@ -1,2 +1,2 @@
 
-$('.row[data-artist="' + <%= @id_artist %> + '"]').parent().html("<%= escape_javascript(render "each_artist", artist: @artist) %>");
+$('.row[data-artist="' + <%= @id_artist %> + '"]').html("<%= escape_javascript(render "each_artist", artist: @artist) %>");

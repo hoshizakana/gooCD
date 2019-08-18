@@ -21,9 +21,9 @@
 
 <%# ジャンルの一覧表示 %>
 <h3>ジャンル一覧</h3>
+<table class="table">
 <% @genres.each do |genre| %>
-  <div>
-    <%= genre.id %>
-    <%= genre.name %>
-  </div>
+      <%= render 'genres/each_genre', genre: genre %>
+      <%= render 'genres/each_genre_button', genre: genre %>
 <% end %>
+</table>

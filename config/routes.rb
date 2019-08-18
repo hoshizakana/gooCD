@@ -17,10 +17,12 @@ Rails.application.routes.draw do
   post '/genres' => 'genres#create'
   patch '/genres/:id' => 'genres#update'
   delete '/genres/:id' => 'genres#destroy'
+  get '/genres/:id/edit' => 'genres#edit' #ajax編集するために追加
   get '/labels' => 'labels#index'
   post '/labels' => 'labels#create'
   patch '/labels/:id' => 'labels#update'
   delete '/labels/:id' => 'labels#destroy'
+  get '/labels/:id/edit' => 'labels#edit' #ajax編集するために追加
   get '/artists' => 'artists#index'
   post '/artists' => 'artists#create'
   patch '/artists/:id' => 'artists#update'
