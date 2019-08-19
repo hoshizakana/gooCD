@@ -8,7 +8,7 @@
 
 # coding: utf-8
 
-300.times do |n|
+600.times do |n|
   email = "example-#{n+1}@hosizakana.com"
   password = "000000"
   address = "東京都渋谷神南101#{n+1}"
@@ -46,11 +46,11 @@ Genre.create!(name: "その他")
   Label.create!(name: "レーベル#{n+1}")
 end
 
-60.times do |n|
+600.times do |n|
   Product.create!(name: "CD商品名#{n+1}",
                   artist_id: "#{rand(1..5)}",
                   label_id: "#{rand(1..5)}",
-                  genre_id: "#{rand(1..7)}",
+                  genre_id: "#{rand(1..8)}",
                  status: "販売中",
                  image: open("#{Rails.root}/db/fixtures/img#{rand(1..9)}.jpeg"),
                  price: "#{rand(10000)}",
@@ -60,12 +60,12 @@ end
 end
 
 products = Product.order(:created_at).take(60)
-8.times do |n|
+5.times do |n|
   song = "曲名#{n+1}"
   products.each {|product| product.songs.create!(name: song, disk: 1)}
 end
 
-300.times do |n|
+600.times do |n|
   Favorite.create!(user_id: "#{n+1}",
-                   product_id: "#{rand(1..40)}")
+                   product_id: "#{rand(1..200)}")
 end
