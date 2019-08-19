@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+	# get '/orders/:user_id' => 'orders#qwerty'
   get '/' => 'homes#top'
   get '/ranking/:genre_id' => 'homes#ranking'
   get '/carts/:user_id' => 'cart#index'
@@ -9,17 +10,19 @@ Rails.application.routes.draw do
   post '/favorites/:product_id' => 'favorites#favorite', as: 'favorite'
   delete '/favorites/:product_id' => 'favorites#unfavorite', as: 'unfavorite'
   post '/orders' => 'orders#create'
-  get '/orders/:user_id' => 'orders#process'
+  get '/orders/:user_id' => 'orders#procedure'
   get '/orders/:user_id/confirm' => 'orders#confirm'
   get '/orders/complete' => 'orders#complete'
   get '/genres' => 'genres#index'
   post '/genres' => 'genres#create'
   patch '/genres/:id' => 'genres#update'
   delete '/genres/:id' => 'genres#destroy'
+  get '/genres/:id/edit' => 'genres#edit' #ajax編集するために追加
   get '/labels' => 'labels#index'
   post '/labels' => 'labels#create'
   patch '/labels/:id' => 'labels#update'
   delete '/labels/:id' => 'labels#destroy'
+  get '/labels/:id/edit' => 'labels#edit' #ajax編集するために追加
   get '/artists' => 'artists#index'
   post '/artists' => 'artists#create'
   patch '/artists/:id' => 'artists#update'
