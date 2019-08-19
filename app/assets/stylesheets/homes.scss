@@ -2,11 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//トップページのcss
 
 .ranking-2{
   height: 400px;
 }
 
+
+#skippr-container{
+  height: 300px;
+}
+.image1{
+background-image: url(live.jpeg);
+}
+.image2{
+background-image: url(mr_children.jpeg);
+}
+.image3{
+background-image: url(oneokrock.jpeg);
+}
+
+.top-1-product-name {
+  font-size: 30px;
+}
+.total-rank2-3 {
+  margin-top: 20px;
+}
+=======
 #rest-of-ranking{
   display:none;
 }
+
