@@ -12,43 +12,50 @@
 			<!-- render 'ジャンルガイド' 共用化せねば… -->
 		</div>
 		<div class="col-lg-10">
+			
 			<div class="row">
 				<h2>いいね！ランキング</h2>
 			</div>
+
 			<div class="row">
-				<div class="col-lg-7">
+		    <div class="row">
 					<p>No.1</p>
-					<!-- ジャケット画像 -->
 				</div>
+				
 				<div class="col-lg-5">
+					<%= attachment_image_tag @genre_ranked_product[0], :image, :fill, 300, 300, class: "jacket-img", fallback: "no_image.jpg" %>
+				</div>
+				<div class="col-lg-7">
 					<div class="row">
 						<div class="col-lg-12">
 							<p>
-								<%= @ranking[0].name %>
+								シングル/アルバム名: <%= @genre_ranked_product[0].name %>
 							</p>
 							<p>
-								<%= @ranking[0].artist.name %>
+								 アーティスト名: <%= Artist.find(@genre_ranked_product[0].artist_id).name %>　
 							</p>
 							<label>
-								<%= @ranking[0].genre.name %>
+								<%= Genre.find(@genre_ranked_product[0].artist_id).name %>
 							</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-6">
 							<p>
-								発売日：<%= @ranking[0].release_date %>
+								発売日：<%= @genre_ranked_product[0].release_date %>
 							</p>
 						</div>
 						<div class="col-lg-6">
 							<p>
-								税込価格：<%= @ranking[0].price * 1.08 %>円
+								税込価格：<%= @genre_ranked_product[0].price * 1.08 %>円
 							</p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-6">
-							<p>いいね数ってどうやって数えるんだ？</p>
+							<p>
+							いいね数：<%= Favorite.where(product_id: @genre_ranked_product[0].id).count %>
+							</p>
 						</div>
 						<div class="col-lg-6">
 							<p>いいねボタン</p>
@@ -56,6 +63,155 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class = "col-lg-6">
+					<div class ="row">
+						<p>No.2</p>
+					</div>
+					<div class="col-lg-6">
+					  <%= attachment_image_tag @genre_ranked_product[1], :image, :fill, 150, 150, class: "jacket-img", fallback: "no_image.jpg" %>
+				  </div>
+
+				  <div class="col-lg-6">
+						<div class="row">
+							<div class="col-lg-12">
+								<p>
+									シングル/アルバム名: <%= @genre_ranked_product[1].name %>
+								</p>
+								<p>
+									アーティスト名: <%= Artist.find(@genre_ranked_product[1].artist_id).name %>　
+								</p>
+								<label>
+									<%= Genre.find(@genre_ranked_product[1].artist_id).name %>
+								</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+								<p>
+								発売日：<%= @genre_ranked_product[1].release_date %>
+							 </p>
+						 </div>
+						 <div class="col-lg-6">
+							 <p>
+								税込価格：<%= @genre_ranked_product[1].price * 1.08 %>円
+							 </p>
+						 </div>
+					  </div>
+					  <div class="row">
+							<div class="col-lg-6">
+								<p>
+								いいね数：<%= Favorite.where(product_id: @genre_ranked_product[1].id).count %>
+								</p>
+							</div>
+							<div class="col-lg-6">
+								<p>いいねボタン</p>
+							</div>
+					 </div>
+				 </div>
+				</div>
+
+				<div class = "col-lg-6">
+					<div class ="row">
+						<p>No.3</p>
+					</div>
+					<div class="col-lg-6">
+					  <%= attachment_image_tag @genre_ranked_product[2], :image, :fill, 150, 150, class: "jacket-img", fallback: "no_image.jpg" %>
+				  </div>
+
+				  <div class="col-lg-6">
+						<div class="row">
+							<div class="col-lg-12">
+								<p>
+									シングル/アルバム名: <%= @genre_ranked_product[2].name %>
+								</p>
+								<p>
+									アーティスト名: <%= Artist.find(@genre_ranked_product[2].artist_id).name %>　
+								</p>
+								<label>
+									<%= Genre.find(@genre_ranked_product[2].artist_id).name %>
+								</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+								<p>
+								発売日：<%= @genre_ranked_product[2].release_date %>
+							 </p>
+						 </div>
+						 <div class="col-lg-6">
+							 <p>
+								税込価格：<%= @genre_ranked_product[2].price * 1.08 %>円
+							 </p>
+						 </div>
+					  </div>
+					  <div class="row">
+							<div class="col-lg-6">
+								<p>
+								いいね数：<%= Favorite.where(product_id: @genre_ranked_product[2].id).count %>
+								</p>
+							</div>
+							<div class="col-lg-6">
+								<p>いいねボタン</p>
+							</div>
+					 </div>
+				 </div>
+				</div>
+			</div>	
+
+
+
+				<% @genre_ranked_product.each.with_index(1) do |product,i| %>
+				<div class= "raw">
+					<div class = "col-lg-3">
+						<div class ="row">
+							<p>No.<%= i %></p>
+						</div>
+						<div class="col-lg-12">
+							<%= attachment_image_tag product, :image, :fill, 100, 100, class: "jacket-img", fallback: "no_image.jpg" %>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-lg-12">
+									<p>
+										シングル/アルバム名: <%= product.name %>
+									</p>
+									<p>
+										アーティスト名: <%= Artist.find(product.artist_id).name %>　
+									</p>
+									<label>
+										<%= Genre.find(product.genre_id).name %>
+									</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<p>
+									発売日：<%= product.release_date %>
+								</p>
+							</div>
+							<div class="col-lg-12">
+								<p>
+									税込価格：<%= product.price * 1.08 %>円
+								</p>
+							</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<p>
+									いいね数：<%= Favorite.where(product_id: product.id).count %>
+									</p>
+								</div>
+								<div class="col-lg-12">
+									<p>いいねボタン</p>
+								</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				 <% end %>
 
 		</div>
 
