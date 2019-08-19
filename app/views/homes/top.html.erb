@@ -1,11 +1,6 @@
-<h1>
-Saddy
-</h1>
-<p>いいね未実装につき、ランキングはid順に3つ表示</p>
-
+<%= render 'layouts/user-nav' %>
 <div class="container">
 
-	<%= render 'layouts/user-nav' %>
 	<!-- render検索バー -->
 
 	<div class="row">
@@ -27,7 +22,7 @@ Saddy
 				<% @genres.each do |g| %>
           <table class="table table-bordered">
             <tr>
-              <th><%= link_to g.name, "ranking/#{@genre_id}" %></th>
+              <th><%= link_to g.name, "ranking/#{g.id}" %></th>
             </tr>
             </table>
 				<% end %>
@@ -41,22 +36,22 @@ Saddy
 				</div>
 			</div>
 			<div class="row total-rank1">
-				<!-- ここで1位のCD情報を渡す -->
+<!-- ここで1位のCD情報を渡す -->
 				<div class="col-xs-1">
 					<p>1</p> <!-- 1位アイコン -->
 				</div>
 				<div class="col-xs-2">
 					<!-- ジャケット画像 -->
-					<%= attachment_image_tag @total_ranking[0], :image, :fill, 60, 60, class: "jacket-img", fallback: "no_image.jpg" %>
+					<%= attachment_image_tag @total_ranking[0], :image, :fill, 150, 150, class: "jacket-img", fallback: "no_image.jpg" %>
 				</div>
 				<div class="col-xs-9">
 					<div class="row">
-						<p>
+						<p class="col-xs-4 top-1-product-name">
 							<%= @total_ranking[0].name %>
 						</p>
 					</div>
 					<div class="row">
-						<p>
+						<p class="col-xs-4 top-1-product-name">
 							<%= @total_ranking[0].artist.name %>
 						</p>
 					</div>
@@ -67,15 +62,15 @@ Saddy
 				<% rank2 = @total_ranking[1] %>
 				<% rank3 = @total_ranking[2] %>
 
-				<!-- 2位 -->
+<!-- 2位 -->
 				<div class="col-lg-6">
-					<div class="col-lg-1">
+					<div class="col-lg-2">
 						<p>2</p> <!-- ランク数を受け取って表示 -->
 					</div>
-					<div class="col-lg-1">
-						<%= attachment_image_tag rank2, :image, :fill, 60, 60, class: "jacket-img", fallback: "no_image.jpg" %>
+					<div class="col-lg-3">
+						<%= attachment_image_tag rank2, :image, :fill, 90, 90, class: "jacket-img", fallback: "no_image.jpg" %>
 					</div>
-					<div class="col-lg-10">
+					<div class="col-lg-7">
 						<div class="row">
 							<div class="col-lg-12">
 								<p>
@@ -92,15 +87,15 @@ Saddy
 						</div>
 					</div>
 				</div>
-				<!-- 3位 -->
+<!-- 3位 -->
 				<div class="col-lg-6">
 					<div class="col-lg-1">
 						<p>3</p> <!-- ランク数を受け取って表示 -->
 					</div>
-					<div class="col-lg-1">
-						<%= attachment_image_tag rank3, :image, :fill, 60, 60, class: "jacket-img", fallback: "no_image.jpg" %>
+					<div class="col-lg-3">
+						<%= attachment_image_tag rank3, :image, :fill, 90, 90, class: "jacket-img", fallback: "no_image.jpg" %>
 					</div>
-					<div class="col-lg-10">
+					<div class="col-lg-7">
 						<div class="row">
 							<div class="col-lg-12">
 								<p>
