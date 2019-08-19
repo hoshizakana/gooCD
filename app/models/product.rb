@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   belongs_to :genre
   belongs_to :artist
   belongs_to :label
-  accepts_nested_attributes_for :songs
+  accepts_nested_attributes_for :songs, allow_destroy: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

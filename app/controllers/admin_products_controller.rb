@@ -55,6 +55,11 @@ class AdminProductsController < ApplicationController
     redirect_to ("/admin/products/#{product.id}")
   end
 
+  def destroy
+    @product = Product.find(params[:id]) 
+    redirect_to "admin/products"
+  end
+
 
   private
   def product_params
@@ -69,7 +74,7 @@ class AdminProductsController < ApplicationController
       :stock,
       :release_date,
 			:is_deleted,
-      songs_attributes:[:id, :product_id, :name, :disk]
+      songs_attributes:[:id, :product_id, :name, :disk, :_destroy]
     )
   end
 
