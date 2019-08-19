@@ -1,6 +1,4 @@
 <h1>
-Homes#top
-<br>
 Saddy
 </h1>
 <p>いいね未実装につき、ランキングはid順に3つ表示</p>
@@ -13,20 +11,26 @@ Saddy
 	<div class="row">
 		<div class="col-xs-12">
 			<!-- Todo Skipperを用いたヘッダ画像スライド -->
-			<!-- ヘッダ画像 -->
+      <div id="skippr-container">
+        <div id="theTarget">
+          <div class="image1"></div>
+          <div class="image2"></div>
+          <div class="image3"></div>
+        </div>
+      </div>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-2 genre-guide"><!-- こいつにpaddingあてればいい感じに余白ができる？ -->
-			<ul>
-				<li class="genre-head">ジャンルから</li>
+				<p class="genre-head">ジャンル別ランキング</p>
 				<% @genres.each do |g| %>
-					<li class="genre-list">
-						<%= g.name %>
-					</li>
+          <table class="table table-bordered">
+            <tr>
+              <th><%= link_to g.name, "ranking/#{@genre_id}" %></th>
+            </tr>
+            </table>
 				<% end %>
-			</ul>
 		</div>
 		<div class="col-lg-10">
 
