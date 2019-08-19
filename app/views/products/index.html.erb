@@ -9,13 +9,13 @@
                 <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150" %><br>
                 <%= link_to product.name, "/products/#{product.id}" %><br>
                 <%= link_to product.artist.name, "/products/#{product.id}" %><br>
+                  <!--いいね機能 -->
+                <%= render 'products/products', product: product %>
+                  <!--いいね機能 -->
             </div>
         <% end %>
     </div>
 </div>
 
-    <!--いいね機能 -->
-    <%= render 'products/products', product: product %>
-    <!--いいね機能 -->
 
 

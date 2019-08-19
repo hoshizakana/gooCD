@@ -1,5 +1,6 @@
+<div>
 <%= render 'layouts/admin-nav', products:  @product, user: current_user  %>
-
+</div>
 <%# 商品の検索フォーム %>
 
 <%= search_form_for @search, url: '/admin/products' do |f| %>

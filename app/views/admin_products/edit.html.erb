@@ -68,13 +68,14 @@
             　    <th>曲名</th>
             　    <th>ディスク番号</th>
                 </thead>
-                  <tr>
                     <%= f.nested_fields_for :songs, wrapper_tag: :tr do |q| %>
+                  <tr class="field">
                       <td><%= q.text_field :name %></td>
                       <td><%= q.text_field :disk ,placeholder:"" %></td>
                       <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
-                    <% end %>
+                      <td><%= link_to '曲削除', "/admin/products/#{@product.id}", method: :delete %></td>
                   </tr>
+                    <% end %>
               </table>
               <%= f.add_nested_fields_link :songs, '追加', class: 'btn btn-primary', role: 'button' %>
               </div>

@@ -1,7 +1,7 @@
 class AdminProductsController < ApplicationController
   def new
     @product = Product.new
-    @product.songs.build
+    8.times { @product.songs.build }
     @artists = Artist.all  #リスト選択でなく、検索フォームからの検索に後で置き換え
     @genres = Genre.all
     @labels = Label.all   #リスト選択でなく、検索フォームからの検索に後で置き換え
@@ -57,6 +57,7 @@ class AdminProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id]) 
+    redirect_to "admin/products"
   end
 
 
@@ -73,7 +74,7 @@ class AdminProductsController < ApplicationController
       :stock,
       :release_date,
 			:is_deleted,
-      songs_attributes:[:id, :product_id, :name, :disk]
+      songs_attributes:[:id, :product_id, :name, :disk, :_destroy]
     )
   end
 
