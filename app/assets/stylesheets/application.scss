@@ -73,10 +73,6 @@ color:#9d9d9d;
     background-color: rgba(255, 255, 255, 0.5);
  }
 
- .row {
-     margin: 100px 0 100px 0;
- }
-
  .login {
     padding: 0 25px;
     color: white;
@@ -114,7 +110,24 @@ color:#9d9d9d;
      margin-bottom: 30px;
  }
 
+ .product-wrapper{
+     margin:100px 0;
+ }
+
  .main-layout {
      text-align: center;
      margin: 150px 95px 0 95px;
+ }
+
+.Mottomiru{
+    position:relative;
+}
+
+ .Mottomiru-btn{
+     position:absolute;
+     top:50%;
+     left:50%;
+     -webkit-transform: translateY(-50%) translateX(-50%);
+     transform: translateY(-50%) translateX(-50%);
+     margin: 0 auto;
  }

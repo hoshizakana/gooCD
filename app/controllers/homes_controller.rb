@@ -8,10 +8,9 @@ class HomesController < ApplicationController
   end
 
   def ranking
-			@ranking = Product.where(genre_id: 1).limit(50)
-			@genres = Genre.all
-		# @fav_ranks = Product.find(Like.group(:product_id).order('count(product_id) desc').limit(3).pluck(:product_id))
-		# @fav_ranks_genre = @fav_ranks.select{ |product| product.genre_id == id } # どうやってgenreIDを渡すんだっけ？
-		# あとでモデルのメソッドに移したい
+
+			@all_ranked_product = Product.find(Favorite.group(:product_id).order('count(product_id) desc').limit(50).pluck(:product_id))
+			@genre_ranked_product = @all_ranked_product.select{ |product| product.genre_id == params[:genre_id].to_i }
+			
   end
 end
