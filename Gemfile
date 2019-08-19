@@ -73,4 +73,4 @@ gem 'kaminari'
 gem 'pry-byebug'
 gem 'ransack'
 gem 'nested_form_fields'
-
+gem 'rails-i18n'
