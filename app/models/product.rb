@@ -7,9 +7,9 @@ class Product < ApplicationRecord
   belongs_to :label
   accepts_nested_attributes_for :songs, allow_destroy: true
 
-  def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
-  end
+ # def favorited_by?(user)
+ #   favorites.find(user_id: user.id).exists?
+ # end
 
   #削除フラグ用
   #scope :active,where(deleted:false)
