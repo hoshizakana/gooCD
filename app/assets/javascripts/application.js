@@ -20,7 +20,6 @@
 //= require nested_form_fields
 //= require_tree .
 
-
 //トップページスライドショー//////////////
 $(document).ready(function () {
   $("#theTarget").skippr({
@@ -46,4 +45,11 @@ $(document).ready(function () {
       hidePrevious : false
   });
 });
-///////////////////////////////////////////
+
+$(function(){
+  $("#Mottomiru").click(function(){
+    $("#rest-of-ranking").show();
+    $("#Mottomiru").hide();
+  });
+});
+
