@@ -1,7 +1,7 @@
 <div class="header">
     <div class="container">
         <nav class="navbar navbar-main">
-          <div class="navbar-header">
+          
             <div class="slidemenu">
                   <ul class="nav navbar-nav navbar-left">
                     <li><%= link_to '受注一覧', "/admin/order" %><li>
@@ -17,14 +17,13 @@
                       </ul>
                     </li>
                   </ul>
-                  <div class="header-right">
-                    <li class="login">
-                      <%= link_to 'ログアウト', "/admins/sign_out", method: :delete, class: "glyphicon glyphicon-log-out logout" %>
-                    </li>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li><%= link_to 'ログアウト', "/admins/sign_out", method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+                  </ul>
                   </div>
               
             </div>
-          </div>
+          
         </nav>
     </div>
 </div>

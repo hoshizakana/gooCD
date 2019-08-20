@@ -1,46 +1,47 @@
 <%= render 'layouts/admin-nav', products:  @product, user: current_user  %>
 
 <%# 商品の検索フォーム %>
+<div class="admin-product">
+  <%= search_form_for @search, url: '/admin/products' do |f| %>
+    <div>
+    <%= f.label :name_cont, 'シングル/アルバム名' %>
+    <%= f.search_field :name_cont %>
+    </div>
 
-<%= search_form_for @search, url: '/admin/products' do |f| %>
-  <div>
-  <%= f.label :name_cont, 'シングル/アルバム名' %>
-  <%= f.search_field :name_cont %>
-  </div>
+    <div>
+    <%= f.label :name_cont, 'アーティスト名' %>
+    <%= f.search_field :artist_name_cont %>
+    </div>
 
-  <div>
-  <%= f.label :name_cont, 'アーティスト名' %>
-  <%= f.search_field :artist_name_cont %>
-  </div>
+    <div>
+    <%= f.label :genre_name_eq, 'ジャンル' %>
+    <%= f.collection_select :genre_name_eq, @genres, :name, :name, include_blank: '全てのジャンル' %>
+    </div>
 
-  <div>
-  <%= f.label :genre_name_eq, 'ジャンル' %>
-  <%= f.collection_select :genre_name_eq, @genres, :name, :name, include_blank: '全てのジャンル' %>
-  </div>
+    <div>
+    <%= f.label :name_cont, 'レーベル名' %>
+    <%= f.search_field :label_name_cont %>
+    </div>
 
-  <div>
-  <%= f.label :name_cont, 'レーベル名' %>
-  <%= f.search_field :label_name_cont %>
-  </div>
+    <div>
+    <%= f.label :name_cont, '在庫数' %>
+    <%= f.search_field :stock_gteq %>
 
-  <div>
-  <%= f.label :name_cont, '在庫数' %>
-  <%= f.search_field :stock_gteq %>
+    <%= f.label :name_cont, '~' %>
+    <%= f.search_field :stock_lteq %>
+    </div>
 
-  <%= f.label :name_cont, '~' %>
-  <%= f.search_field :stock_lteq %>
-  </div>
+    <p>
+    <%= f.label :starus_eq, 'ステータス' %>
+    <%= f.radio_button :status_eq, '', {:checked => true} %>指定なし
+    <%= f.radio_button :status_eq, '販売中' %>販売中
+    <%= f.radio_button :status_eq, '販売停止中' %>販売停止中
+    </div>
 
-  <p>
-  <%= f.label :starus_eq, 'ステータス' %>
-  <%= f.radio_button :status_eq, '', {:checked => true} %>指定なし
-  <%= f.radio_button :status_eq, '販売中' %>販売中
-  <%= f.radio_button :status_eq, '販売停止中' %>販売停止中
-  </div>
+    <div><%= f.submit '検索' %></div>
 
-  <div><%= f.submit '検索' %></div>
-
-<% end %>
+  <% end %>
+</div>
 
 
 <h3>商品一覧</h3>

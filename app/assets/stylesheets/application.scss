@@ -38,14 +38,15 @@ body {
 }
 
 
+
 .header {
  width: 100%;
  background-color: #008080;
+ display: inline-block;
  text-align: center;
  position: fixed;
  top: 0;
  z-index: 10;
-
  }
 
  .navbar-header{
@@ -59,9 +60,19 @@ body {
     font-size: 35px;
 }
 
+// .navbar-main {
+//     text-align: center;
+//     display: block;
+// }
+
+
+
+
 .navbar-nav > li > a {
 color:#9d9d9d;
  }
+
+
 
  .header-right {
     float: right;
@@ -70,7 +81,7 @@ color:#9d9d9d;
  }
 
  .header-right:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(17, 1, 1, 0.5);
  }
 
  .row {
@@ -117,4 +128,98 @@ color:#9d9d9d;
  .main-layout {
      text-align: center;
      margin: 150px 95px 0 95px;
+     
  }
+
+ 
+ 
+.product-date {
+    margin-top: 15px;
+}
+
+ .product-buy {
+     margin-top: 50px
+ }
+  .release-date {
+      margin-right: 95px; 
+  }
+
+  .songs-count {
+      margin-left: 95px; 
+  } 
+
+  .admin-product {
+      margin-top: 100px;
+  }
+
+  .buy-btn {
+      margin: 50px 15px 0 15px;
+  }
+
+  .user-logo {
+      margin-bottom: 10px;
+  }
+
+  .product-image {
+    border-radius: 85%;
+  }
+
+  .user-edit-image {
+      width: 100%;
+      background-image: url(life-is-music.jpg);
+      background-size: cover;
+  }
+
+
+  
+    .btn-flat-border {
+        display: inline-block;
+        padding: 0.3em 1em;
+        text-decoration: none;
+        color: #67c5ff;
+        border: solid 2px #67c5ff;
+        border-radius: 3px;
+        transition: .4s;
+      }
+      
+      .btn-flat-border:hover {
+        background: #67c5ff;
+        color: white;
+      }
+      
+  
+    .product-index {
+        overflow: hidden;	
+        transition-duration: 0.3s;	
+    }
+    .product-index:hover {
+        transform: scale(1.1);	
+        transition-duration: 0.3s;	
+        
+    }
+    // .opacity{
+    //     background:  rgba(255,255,255,1.0);
+    // }
+
+    // .opacity {
+    //     opacity: 0;
+    //     transition: 1s;
+    //     z-index: 0;
+        
+    // }
+
+    // .opacity_add {
+    //     opacity: 1;
+        
+    // }
+    .product-text {
+        text-decoration: none;
+
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+    
+    
+    
