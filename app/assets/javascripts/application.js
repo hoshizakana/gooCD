@@ -15,10 +15,17 @@
 //= require rails-ujs
 //= require activestorage
 //= require autocomplete-rails
-//= require turbolinks
+
 //= require bootstrap-sprockets
 //= require nested_form_fields
 //= require_tree .
+
+$(function(){
+  $("#Mottomiru").click(function(){
+    $("#rest-of-ranking").show();
+    $("#Mottomiru").hide();
+  });
+});
 
 //トップページスライドショー//////////////
 $(document).ready(function () {
@@ -46,10 +53,6 @@ $(document).ready(function () {
   });
 });
 
-$(function(){
-  $("#Mottomiru").click(function(){
-    $("#rest-of-ranking").show();
-    $("#Mottomiru").hide();
-  });
-});
+
+
 
