@@ -1,14 +1,17 @@
 
 <div class="favorite-link" id="favorite-link-<%= product.id %>">
-  <% if product.favorited_by?(current_user) %>
-    <%= link_to unfavorite_path(product.id), method: :delete, remote: true do %>
-      <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: red;"></span>
-      <%= product.favorites.count %> いいね
+  <% if user_signed_in? %>
+    <% if current_user.favorites.find_by(product_id: product.id) %> <%= link_to unfavorite_path(product.id), method: :delete, remote: true do %>
+        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: red;"></span>
+        <%= product.favorites.count %> いいね
+      <% end %>
+    <% else %>
+      <%= link_to favorite_path(product.id), method: :post, remote: true do %>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        <%= product.favorites.count %> いいね
+      <% end %>
     <% end %>
   <% else %>
-    <%= link_to favorite_path(product.id), method: :post, remote: true do %>
-      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-      <%= product.favorites.count %> いいね
-    <% end %>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><%= product.favorites.count %> いいね</span>
   <% end %>
 </div>
