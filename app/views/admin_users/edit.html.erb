@@ -1,0 +1,100 @@
+<h1>
+	AdminUsers#edit
+	Saddy
+</h1>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<%= render 'layouts/admin-nav' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<h2>会員情報編集</h2>
+			<div class="row">
+				<div class="col-lg-2">
+					<label>会員ID</label>
+				</div>
+				<div class="col-lg-10">
+					<%= @user.id %>
+				</div>
+			</div>
+			<%= form_for @user, url: "/admin/users/#{@user.id}" do |f| %>
+				<div class="row">
+					<div class="col-lg-2">
+						<label>名前（漢字）</label>
+					</div>
+					<div class="col-lg-5">
+						<label>姓</label>
+						<%= f.text_field :last_name %>
+					</div>
+					<div class="col-lg-5">
+						<label>名</label>
+						<%= f.text_field :first_name %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2">
+						<label>名前（カナ）</label>
+					</div>
+					<div class="col-lg-5">
+						<label>セイ</label>
+						<%= f.text_field :last_name %>
+					</div>
+					<div class="col-lg-5">
+						<label>メイ</label>
+						<%= f.text_field :first_name %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2">
+						<label>電話番号（ハイフン無し）</label>
+					</div>
+					<div class="col-lg-5">
+						<%= f.text_field :phone %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2">
+						<label>メールアドレス</label>
+					</div>
+					<div class="col-lg-10">
+						<%= f.email_field :email %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2">
+						<label>郵便番号</label>
+					</div>
+					<div class="col-lg-5">
+						<%= f.text_field :postal_code %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2">
+						<label>住所</label>
+					</div>
+					<div class="col-lg-10">
+						<%= f.text_field :adress %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2">
+						<label>削除フラグ</label>
+					</div>
+					<div class="col-lg-5">
+						<%= f.check_box :is_deleted, {}, "true", "false" %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<%= f.submit "更新" %><!-- text-align: right; -->
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+	</div>
+
+</div>

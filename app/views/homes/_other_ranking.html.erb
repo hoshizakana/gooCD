@@ -1,0 +1,39 @@
+   <%= genre_ranked_product.count %>
+    	<% genre_ranked_product.each.with_index(1) do |product,i| %>
+				<%# 10位までは何も表示しない %>
+				 <% if i <= 10 %>
+				 <% end %>
+
+				<%# 11位以降は以下のhtmlを表示する %>
+				 <% if i >10 %>
+						<div class = "col-lg-2 ranking-2">
+							<div class ="row">
+								<p>No.<%= i %></p>
+							</div>
+							<div class="col-lg-12">
+								<%= attachment_image_tag product, :image, :fill, 100, 100, class: "jacket-img", fallback: "no_image.jpg" %>
+							</div>
+
+							<div class="col-lg-12">
+										<p>
+											シングル/アルバム名: <%= product.name %>
+										</p>
+										<p>
+											アーティスト名: <%= Artist.find(product.artist_id).name %>　
+										</p>
+										<label>
+											<%= Genre.find(product.genre_id).name %>
+										</label>
+										<p>
+										発売日：<%= product.release_date %>
+									  </p>
+									  <p>
+										税込価格：<%= product.price * 1.08 %>円
+									  </p>
+										<!--いいね機能 -->
+                    <%= render 'products/products', product: product %>
+                    <!--いいね機能 -->
+						  </div>
+						</div>
+				<% end %>
+			<% end %>

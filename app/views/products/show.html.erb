@@ -1,0 +1,51 @@
+
+<%= render 'layouts/user-nav', products:  @product, user: current_user  %>
+ <div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="left-content">
+                <div class="name">
+                    <%= @product.name %><br>
+                </div>
+                <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350" %>
+                <div class="product-date">
+                    <h4>発売日</h4>
+                    <%= @product.release_date %>
+                    <h4>曲数</h4>
+                    <%= @product.songs.count %><br>
+                    <!--いいね機能 -->
+                    <%= render 'products/products', product: @product %>
+                    <!--いいね機能 -->
+                </div>
+                <div class="product-buy">
+                    ¥<%= @product.price %>税込価格
+                    <%= link_to "カートに入れる", "/cart_items/#{@product.id}" %>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="right-content">
+                <div class="text">
+                    <div class="artist-name">
+                        <%= @product.artist.name %><br>
+                    </div>
+                    <div class="name">
+                        <%= @product.label.name %>
+                        <%= @product.genre.name %>
+                    </div>
+                </div>
+                <div class="song-index">
+                    <div class="title">
+                        <%= @product.name %>
+                    </div>
+                    <div class="songs">
+                        <% @product.songs.each do |song| %><br>
+                            <%= song.disk %>
+                            <%= song.name %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

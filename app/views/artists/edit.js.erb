@@ -1,0 +1,1 @@
+$('.row[data-artist="' + <%= @id_artist %> + '"]').html("<%= escape_javascript(render "edit_artist", artist: @artist) %>");

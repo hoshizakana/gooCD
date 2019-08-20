@@ -1,0 +1,91 @@
+
+<%= render 'layouts/admin-nav' %>
+
+<div class='body'>
+        <h1>商品編集</h1>
+  <div class='container'>
+        <%= form_for @product, url: "/admin/products/#{@product.id}" do |f| %>
+    <div class='row'>
+      <div class='col-lg-5' style='float: left'>
+
+        <%# 商品の編集フォーム %>
+
+          <div>
+          　<label for="artist-name">アーティスト名</label>
+          　<%= f.collection_select(:artist_id,@artists,:id,:name) %>
+          </div>
+
+          <div>
+          　<label for="album-name">シングル/アルバム名</label>
+            <%= f.text_field :name, id:"album-name" %>
+          </div>
+
+          <div>
+            <label>ジャケット画像</label>
+              <%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'200x200' %>
+            <%= f.attachment_field :image  %>
+          </div>
+
+          <div>
+          　<label for="price">価格（税別価格）</label>
+            <%= f.text_field :price, id:"price" %>
+          </div>
+
+          <div>
+          　<label for="stock">在庫数</label>
+            <%= f.text_field :stock, id:"stock" %>
+          </div>
+
+          <div>
+          　<label for="artist-name">レーベル名</label>
+          　<%= f.collection_select :label_id, @labels, :id, :name %>
+          </div>
+
+          <div>
+        　<label for="genre">ジャンル</label>
+          　<%= f.collection_select(:genre_id,@genres,:id,:name) %>
+          </div>
+
+          <div>
+        　<label for="status">ステータス</label>
+        　　<%= f.select :status, ["販売中", "販売停止中"], :prompt => "選択してください", id:"status"%>
+          </div>
+
+					<div class="">
+						<label for="is_deleted">削除フラグ</label>
+						<%= f.check_box :is_deleted, {}, "true", "false" %>
+					</div>
+      </div>
+
+
+      <!-- 右側に表示 -->
+      <div class='col-lg-7' style='float: right'>
+      　<label>収録曲</label>
+          <div>
+            　<div>
+              <table class='table'>
+                <thead>
+            　    <th>曲名</th>
+            　    <th>ディスク番号</th>
+                </thead>
+                    <%= f.nested_fields_for :songs, wrapper_tag: :tr do |q| %>
+                  <tr class="field">
+                      <td><%= q.text_field :name %></td>
+                      <td><%= q.text_field :disk ,placeholder:"" %></td>
+                      <td><%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
+                      <td><%= link_to '曲削除', "/admin/products/#{@product.id}", method: :delete %></td>
+                  </tr>
+                    <% end %>
+              </table>
+              <%= f.add_nested_fields_link :songs, '追加', class: 'btn btn-primary', role: 'button' %>
+              </div>
+          </div>
+      </div>
+
+    </div>
+        <div>
+          <%= f.submit "更新", class:'btn btn-primary' %>
+        </div>
+        <% end %>
+  </div>
+</div>

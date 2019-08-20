@@ -1,0 +1,29 @@
+<%= render 'layouts/admin-nav' %>
+
+<h1>ジャンルマスタ編集</h1>
+
+<%# ジャンルが登録された場合、「投稿されました」の文字を表示 %>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+ <% end %> 
+
+<%# 検索フォーム（オートコンプリート） %>
+ <%= search_form_for @search, url: '/genres', method: :get, enforce_utf8: false do |f| %>
+   <%= autocomplete_field_tag 'genre[name]', nil, '/genres/autocomplete_product_name' %>
+   <%= f.submit '検索' %>
+ <% end %>
+
+<%# ジャンルの投稿フォーム %>
+<%= form_for(@genre) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "追加する" %>
+<% end %>
+
+<%# ジャンルの一覧表示 %>
+<h3>ジャンル一覧</h3>
+<table class="table">
+<% @genres.each do |genre| %>
+      <%= render 'genres/each_genre', genre: genre %>
+      <%= render 'genres/each_genre_button', genre: genre %>
+<% end %>
+</table>
