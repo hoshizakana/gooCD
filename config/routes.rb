@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 	# get '/orders/:user_id' => 'orders#qwerty'
   get '/' => 'homes#top'
+  get '/ranking/' => 'homes#ranking' #総合ランキング表示のために追加
   get '/ranking/:genre_id' => 'homes#ranking'
   get '/carts/:user_id' => 'cart#index'
   get '/cart_items/:product_id' => 'cart#create' #'/cart_items'から変更、formがないのでget

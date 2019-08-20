@@ -26,3 +26,9 @@ $(function(){
     $("#Mottomiru").hide();
   });
 });
+
+$(function(){
+  $(".product-index").mouseover(function(){
+    $(this).addClass("changecolor");
+  });
+});
