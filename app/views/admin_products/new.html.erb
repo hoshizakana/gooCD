@@ -59,23 +59,27 @@
   </div>
 
   <div>
-　<label>収録曲</label>
-  <%= f.fields_for :songs do |s| %>
 
-  <%# <% for num in 1..8 do %> 
+      　<label>収録曲</label>
+        
+          <div class="product_song_box", id="add_song_#{s}">
+          <table class="table product_song_table">
+                <thead>
+                  <tr class="js-product-song">
+              　    <th>曲名</th>
+              　    <th>ディスク番号</th>
+                    <th><button class="btn btn-danger" id="add_item_button">追加</button></th>
+                  </tr>
+                </thead>
+              <%= f.fields_for :songs do |s| %>
+                <tr class="js-product-song">
+                  <td><%= s.text_field :name %></td>
+                  <td><%= s.text_field :disk ,placeholder:"1" %></td>
+                  <td><%= s.check_box:_destroy, class: "song_delete" %></td>
+                </tr>
+              <% end %>
+          </table>
+          </div>
 
-  　<div>
-　    <label>曲名</label>
-      <%= s.text_field :name %>
-
-　    <label>ディスク番号</label>
-      <%= s.text_field :disk ,placeholder:"1" %>
-    </div>
-
-  <%# <% end %>   
-
-    
-  <% end %>
-
-  <%= f.submit "新規登録" %>
+  <%= f.submit "新規登録", class: 'btn btn-primary' %>
 <% end %>

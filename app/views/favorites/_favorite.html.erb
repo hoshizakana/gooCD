@@ -1,5 +1,8 @@
 
 <div class="favorite-link" id="favorite-link-<%= product.id %>">
+<% if controller.controller_name == 'homes' && controller.action_name == 'top' %>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><%= product.favorites.count %> いいね</span>
+<% else %>
   <% if user_signed_in? %>
     <% if current_user.favorites.find_by(product_id: product.id) %> <%= link_to unfavorite_path(product.id), method: :delete, remote: true do %>
         <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: red;"></span>
@@ -14,4 +17,5 @@
   <% else %>
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><%= product.favorites.count %> いいね</span>
   <% end %>
+<% end %>
 </div>
