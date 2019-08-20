@@ -30,7 +30,7 @@
 								 アーティスト名: <%= Artist.find(@ranked_product[0].artist_id).name %>　
 							</p>
 							<label>
-								<%= Genre.find(@ranked_product[0].artist_id).name %>
+								<%= Genre.find(@ranked_product[0].genre_id).name %>
 							</label>
 						</div>
 					</div>
@@ -83,7 +83,7 @@
 									アーティスト名: <%= Artist.find(@ranked_product[i].artist_id).name %>　
 								</p>
 								<label>
-									<%= Genre.find(@ranked_product[i].artist_id).name %>
+									<%= Genre.find(@ranked_product[i].genre_id).name %>
 								</label>
 							</div>
 						</div>
