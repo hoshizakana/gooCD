@@ -18,38 +18,38 @@
 				</div>
 				
 				<div class="col-lg-5">
-					<%= attachment_image_tag @genre_ranked_product[0], :image, :fill, 300, 300, class: "jacket-img", fallback: "no_image.jpg" %>
+					<%= attachment_image_tag @ranked_product[0], :image, :fill, 300, 300, class: "jacket-img", fallback: "no_image.jpg" %>
 				</div>
 				<div class="col-lg-7">
 					<div class="row">
 						<div class="col-lg-12">
 							<p>
-								シングル/アルバム名: <%= @genre_ranked_product[0].name %>
+								シングル/アルバム名: <%= @ranked_product[0].name %>
 							</p>
 							<p>
-								 アーティスト名: <%= Artist.find(@genre_ranked_product[0].artist_id).name %>　
+								 アーティスト名: <%= Artist.find(@ranked_product[0].artist_id).name %>　
 							</p>
 							<label>
-								<%= Genre.find(@genre_ranked_product[0].artist_id).name %>
+								<%= Genre.find(@ranked_product[0].artist_id).name %>
 							</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-6">
 							<p>
-								発売日：<%= @genre_ranked_product[0].release_date %>
+								発売日：<%= @ranked_product[0].release_date %>
 							</p>
 						</div>
 						<div class="col-lg-6">
 							<p>
-								税込価格：<%= @genre_ranked_product[0].price * 1.08 %>円
+								税込価格：<%= @ranked_product[0].price * 1.08 %>円
 							</p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-6">
 						<!--いいね機能 -->
-            <%= render 'products/products', product: @genre_ranked_product[1] %>
+            <%= render 'products/products', product: @ranked_product[1] %>
             <!--いいね機能 -->
 						</div>
 					</div>
@@ -58,7 +58,7 @@
 
 			<div class="row">
 
-			<% @genre_ranked_product.each.with_index(1) do |product,i| %>
+			<% @ranked_product.each.with_index(1) do |product,i| %>
 				<%# 1位は何も表示しない %>
 				 <% if i == 1 %>
 				 <% end %>		
@@ -70,39 +70,39 @@
 						<p>No.<%= i %></p>
 					</div>
 					<div class="col-lg-6">
-					  <%= attachment_image_tag @genre_ranked_product[i], :image, :fill, 200, 200, class: "jacket-img", fallback: "no_image.jpg" %>
+					  <%= attachment_image_tag @ranked_product[i], :image, :fill, 200, 200, class: "jacket-img", fallback: "no_image.jpg" %>
 				  </div>
 
 				  <div class="col-lg-6">
 						<div class="row">
 							<div class="col-lg-12">
 								<p>
-									シングル/アルバム名: <%= @genre_ranked_product[i].name %>
+									シングル/アルバム名: <%= @ranked_product[i].name %>
 								</p>
 								<p>
-									アーティスト名: <%= Artist.find(@genre_ranked_product[i].artist_id).name %>　
+									アーティスト名: <%= Artist.find(@ranked_product[i].artist_id).name %>　
 								</p>
 								<label>
-									<%= Genre.find(@genre_ranked_product[i].artist_id).name %>
+									<%= Genre.find(@ranked_product[i].artist_id).name %>
 								</label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-lg-6">
 								<p>
-								発売日：<%= @genre_ranked_product[i].release_date %>
+								発売日：<%= @ranked_product[i].release_date %>
 							 </p>
 						 </div>
 						 <div class="col-lg-6">
 							 <p>
-								税込価格：<%= @genre_ranked_product[i].price * 1.08 %>円
+								税込価格：<%= @ranked_product[i].price * 1.08 %>円
 							 </p>
 						 </div>
 					  </div>
 					  <div class="row">
 							<div class="col-lg-6">
 							<!--いいね機能 -->
-              <%= render 'products/products', product: @genre_ranked_product[i] %>
+              <%= render 'products/products', product: @ranked_product[i] %>
               <!--いいね機能 -->
 							</div>
 							<div class="col-lg-6">
@@ -118,7 +118,7 @@
 
 
 
-			<% @genre_ranked_product.each.with_index(1) do |product,i| %>
+			<% @ranked_product.each.with_index(1) do |product,i| %>
 				<%# 1位から3位までと、11位以降は何も表示しない %>
 				 <% if i <= 3 || i >= 11 %>
 				 <% end %>
@@ -162,7 +162,7 @@
 			</div>
 
 			<div id="rest-of-ranking">
-    	<% @genre_ranked_product.each.with_index(1) do |product,i| %>
+    	<% @ranked_product.each.with_index(1) do |product,i| %>
 				<%# 10位までは何も表示しない %>
 				 <% if i <= 10 %>
 				 <% end %>
