@@ -17,16 +17,16 @@
                                 <%= f.search_field :name_or_artist_name_or_songs_name_cont, class:"form-control search-form",style:"width:300px",placeholder:"商品名・アーティスト名・曲名で検索" %>
                                 <span class="input-group-btn">
                                     <%= f.submit "検索", class:"btn btn-default" %>
-                                </span>    
+                                </span>
                             　　 <% end %>
                             </div>
                           </div>
                         </li>
-                    </ul> 
+                    </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <% if user_signed_in? %>
-                            <li><%= link_to 'カートへ', "/#", class: "glyphicon glyphicon-shopping-cart cart" %><li>
+                            <li><%= link_to 'カートへ', "/carts/#{current_user.id}", class: "glyphicon glyphicon-shopping-cart cart" %><li>
                             <li><%= link_to ' マイページ', "/users/#{current_user.id}", class: "glyphicon glyphicon-user users" %></li>
                             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
                         <% else %>
