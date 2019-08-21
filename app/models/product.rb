@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   belongs_to :label
   accepts_nested_attributes_for :songs, allow_destroy: true
 #release_dateはseedの入れ方わかってないので、今はバリデーション外してます。
-  validates :name, :artist_id, :label_id, :genre_id, :status, :image_id, :price, :stock, :is_deleted, presence: true
+  validates :name, :artist_id, :label_id, :genre_id, :status, :price, :stock, presence: true
 
  # def favorited_by?(user)
  #   favorites.find(user_id: user.id).exists?
