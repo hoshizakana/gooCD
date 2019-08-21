@@ -57,8 +57,8 @@ class AdminProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id]) 
-    redirect_to "admin/products"
+    @product = Product.find(params[:id])
+    redirect_to "/admin/products/#{@product.id}/edit"
   end
 
 
