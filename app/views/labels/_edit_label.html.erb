@@ -1,0 +1,7 @@
+<div class="edit_label row" data-label="<%= @id_label %>">
+   <%= form_with(model: label, :url => {:action => :update}, remote: true) do |f| %>
+       <%= f.text_field :name  %>
+       <%= f.submit '保存', class: 'btn' %>
+     </div>
+   <% end %>
+ </div>

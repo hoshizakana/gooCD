@@ -32,13 +32,13 @@ class ArtistsController < ApplicationController
   end
 
   def update
+    @id_artist = Artist.find(params[:id]).id
     @artist = Artist.find(params[:id])
     @artist.update(artist_params)
     respond_to do |format|
       format.html
       format.js
     end
-    redirect_to ("/artists")
   end
 
   def destroy

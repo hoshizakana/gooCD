@@ -19,12 +19,13 @@ class AdminProductsController < ApplicationController
 
   def index
     @search = Product.ransack(params[:q])
-    @genres = Genre.all
+    @genres = Genre.page(params[:page])
     if params[:product] && params[:product][:name]
-      product_name = params[:product][:name]
-      @products = Product.where("name LIKE '%#{product_name}%'")
+      #product_name = params[:product][:name]
+      #@products = Product.where("name LIKE '%#{product_name}%'")
+      @products = Product.page(params[:page]).per(30)
     else
-      @products = @search.result.includes(:genre)
+      @products = @search.result.page(params[:page]).per(30).includes(:genre)
     end
   end
 
@@ -55,6 +56,11 @@ class AdminProductsController < ApplicationController
     redirect_to ("/admin/products/#{product.id}")
   end
 
+  def destroy
+    @product = Product.find(params[:id]) 
+    redirect_to "admin/products"
+  end
+
 
   private
   def product_params
@@ -69,7 +75,7 @@ class AdminProductsController < ApplicationController
       :stock,
       :release_date,
 			:is_deleted,
-      songs_attributes:[:id, :product_id, :name, :disk]
+      songs_attributes:[:id, :product_id, :name, :disk, :_destroy]
     )
   end
 

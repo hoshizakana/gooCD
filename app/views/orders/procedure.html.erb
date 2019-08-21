@@ -1,0 +1,106 @@
+<h1>
+	Orders#process
+	Saddy
+</h1>
+
+<div class="container">
+	<div class="row nav">
+		<div class="col-lg-12">
+			<%= render 'layouts/user-nav' %>
+		</div>
+	</div>
+
+	<div class="row ">
+		<div class="col-lg-10 col-lg-offset-1">
+			<h2>ご購入手続き</h2>
+			<div class="payment">
+				<div class="row">
+					<div class="col-lg-12 payment-title">
+						<p>お支払い情報</p><!-- inline-blockでmargin:0 auto; -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 payment-method">
+						<input type="radio" name="dummy" value="">銀行振込<br>
+						<input type="radio" name="dummy" value="">代引き<br>
+						<input type="radio" name="dummy" value="">クレジットカード決済<br>
+					</div>
+					<div class="col-lg-6 total">
+						<table>
+							<tr>
+								<th>お買い上げ商品：</th>
+								<td><%= total_items_helper(@cart_items) %>点</td>
+							</tr>
+							<tr>
+								<th>小計：</th>
+								<td><%= subtotal_helper(@cart_items) %>円</td>
+							</tr>
+							<tr>
+								<th>送料：</th>
+								<td>500円</td>
+							</tr>
+							<hr>
+							<tr>
+								<th>総計：</th>
+								<td><%= subtotal_helper(@cart_items) + 500 %>円</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="addresses">
+				<%= form_for(@addresses) do |f| %>
+					<% @addresses.each do |address| %>
+						<label><%= f.radio_button  %></label>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="col-lg-9 cart-index-list">
+					<% @cart_items.each do |cart_item| %>
+						<% product = Product.find(cart_item.product_id) %>
+						<div class="cart-item">
+							<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
+							<p>数量：<%= cart_item.item_number %></p>
+							<p>価格（税込）：<%= taxed_price_helper(product) * cart_item.item_number %>円</p>
+							<hr>
+						</div>
+					<% end %>
+				</div>
+	</div>
+</div>
+
+<%= form_for(@address_new) do |f| %>
+	<p>新しい住所の登録</p>
+	<table>
+		<tr>
+			<th>郵便番号：</th>
+			<td><%= f.text_field :postal_code %></td>
+		</tr>
+		<tr>
+			<th>住所：</th>
+			<td><%= f.text_area :address %></td>
+		</tr>
+		<tr>
+			<th>宛名：</th>
+			<td>(姓)</td>
+			<td><%= f.text_field :last_name %></td>
+			<td>(名)</td>
+			<td><%= f.text_field :first_name %></td>
+		</tr>
+		<tr>
+			<th>宛名(カナ)：</th>
+			<td>(セイ)</td>
+			<td><%= f.text_field :last_name_kana %></td>
+			<td>(メイ)</td>
+			<td><%= f.text_field :first_name_kana %></td>
+		</tr>
+		<tr>
+			<th>電話番号</th>
+			<td><%= f.text_field :phone %></td>
+		</tr>
+
+
+	</table>
+
+<% end %>

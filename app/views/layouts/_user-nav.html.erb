@@ -2,30 +2,50 @@
 
 <div class="header">
     <div class="container">
-        <nav class="navbar navbar-main">
-
-            <div class="logo">
-                <h4>GooCD</h4>
-            </div>
-                <% if user_signed_in? %>
-                <div class="slidemenu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          
+            <div class="slidemenu">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><%= link_to '', "/products", class: "glyphicon glyphicon-headphones headphones" %>
- 
+                        <li><%= link_to '', "/products", class: "glyphicon glyphicon-headphones cart" %></li>
+                        <li><%= link_to '商品一覧', "/#", id: "cart-hover", class: "cart-mouseover" %><li>
+                        <li>
+                            <div class="form-inline">
+                            <div class="input-group">
+                                <%= search_form_for @q, url: products_path do |f| %>
+                                <%= f.search_field :name_or_artist_name_or_songs_name_cont, class:"form-control search-form",style:"width:300px",placeholder:"商品名・アーティスト名・曲名で検索" %>
+                                <span class="input-group-btn">
+                                    <%= f.submit "検索", class:"btn btn-default" %>
+                                </span>    
+                            　　 <% end %>
+                            </div>
                         </li>
-                    </ul> 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><%= link_to '', "/#", class: "glyphicon glyphicon-shopping-cart cart" %><li>
-                        <li><%= link_to  '', "/users/#{current_user.id}", class: "glyphicon glyphicon-user users" %></li>
-                        <li><%= link_to '', "/users/sign_out", method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
-                        <% else %>
-                        <li><%= link_to 'ログイン', "/users/sign_in", class: "glyphicon glyphicon-log-in sign_in" %></li>
-                        <li><%= link_to '会員登録', "/users/sign_up", class: "glyphicon glyphicon-edit sign_up" %><li>
                     </ul>
-                </div>
-                <% end %>
+                   
+                
 
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if user_signed_in? %>
+                        <%= link_to "/#" do %>
+                            <%= link_to '', "/#", class: "glyphicon glyphicon-shopping-cart cart" %>
+                            <%= link_to 'カートに入れる', "/#", id: "cart-hover", class: "cart-mouseover" %>
+                        <% end %>
+                        <%= link_to "/users/#{current_user.id}" do %>
+                            <%= link_to '', "/users/#{current_user.id}", class: "glyphicon glyphicon-user cart" %>
+                            <%= link_to 'マイページ', "/users/#{current_user.id}", id: "cart-hover", class: "cart-mouseover" %>
+                        <% end %>
+                        <%= link_to "/users/sign_out" do %>
+                            <%= link_to '', "/users/sign_out", method: :delete, class: "glyphicon glyphicon-log-out cart" %>
+                            <%= link_to 'ログアウト', "/users/sign_out", id: "cart-hover", class: "cart-mouseover" %>
+                        <% end %>
+                        <% else %>
+                            <%= link_to 'ログイン', "/users/sign_in", class: "glyphicon glyphicon-log-in sign_in" %>
+                            <%= link_to '会員登録', "/users/sign_up", class: "glyphicon glyphicon-edit sign_up" %>
+                        <% end %>
+                    </ul>
+                  
+              
+            </div>
+          
         </nav>
     </div>
 </div>
-

@@ -1,0 +1,6 @@
+
+<td><%= link_to '編集', "genres/#{genre.id}/edit", remote: true %></td>
+<td><%= link_to '削除', "genres/#{genre.id}",
+                        remote: true, data: { confirm: '削除しますか？' },
+                        method: :delete %></td>
+</tr>

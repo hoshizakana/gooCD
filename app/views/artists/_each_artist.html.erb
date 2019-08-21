@@ -1,9 +1,2 @@
-
-      <tr>
-        <td class="each_artist row" data-artist="<%= artist.id %>"><%= artist.name %></td>
-        <td><%= link_to '編集', "artists/#{artist.id}/edit", remote: true %></td>
-        <td><%= link_to '削除', "artists/#{artist.id}",
-      remote: true, data: { confirm: '削除しますか？' },
-      method: :delete %>
-      </td>
-      </tr>
+<tr>
+<td class="each_artist row" data-artist="<%= artist.id %>"><%= artist.name %></td>
