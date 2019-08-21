@@ -3,7 +3,7 @@
 
 
 <div class="main-layout">
-    <div class="row">
+    <div class="row product-wrapper">
         <% @products.each do |product| %>
             <div class="col-lg-2 product-index">
                 <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150" %><br>
@@ -14,5 +14,6 @@
 								<!--いいね機能 -->
             </div>
         <% end %>
+        <%= paginate @products, class: "paginate" %>
     </div>
 </div>

@@ -1,0 +1,2 @@
+
+$('.row[data-genre="' + <%= @id_genre %> + '"]').html("<%= escape_javascript(render "each_genre", genre: @genre) %>");

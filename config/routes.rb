@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 	# get '/orders/:user_id' => 'orders#qwerty'
   get '/' => 'homes#top'
+  get '/ranking/' => 'homes#ranking' #総合ランキング表示のために追加
   get '/ranking/:genre_id' => 'homes#ranking'
   get '/carts/:user_id' => 'cart#index'
   get '/cart_items/:product_id' => 'cart#create' #'/cart_items'から変更、formがないのでget
@@ -17,10 +18,12 @@ Rails.application.routes.draw do
   post '/genres' => 'genres#create'
   patch '/genres/:id' => 'genres#update'
   delete '/genres/:id' => 'genres#destroy'
+  get '/genres/:id/edit' => 'genres#edit' #ajax編集するために追加
   get '/labels' => 'labels#index'
   post '/labels' => 'labels#create'
   patch '/labels/:id' => 'labels#update'
   delete '/labels/:id' => 'labels#destroy'
+  get '/labels/:id/edit' => 'labels#edit' #ajax編集するために追加
   get '/artists' => 'artists#index'
   post '/artists' => 'artists#create'
   patch '/artists/:id' => 'artists#update'
@@ -44,6 +47,7 @@ Rails.application.routes.draw do
   get '/admin/products/:id/edit' => 'admin_products#edit'
   post '/admin/products' => 'admin_products#create'
   patch '/admin/products/:id' => 'admin_products#update'
+  delete '/admin/products/:id' => 'admin_products#destroy'
 # admin_orders
   get '/admin/orders' => 'admin_orders#index'
   get '/admin/orders/:id' => 'admin_orders#show'
