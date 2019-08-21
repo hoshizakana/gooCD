@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :current_user_mypage
+
   def show
     @user = User.find(params[:id])
     @useraddresses = @user.addresses
@@ -29,6 +32,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :phone, :postal_code, :adress)
+  end
+
+  def current_user_mypage
+    if current_user.id != @user.id
+      redirect_to "/"
+    end
   end
 
 end
