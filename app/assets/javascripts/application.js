@@ -54,7 +54,17 @@ $(document).ready(function () {
   });
 });
 
-
+//未ログイン時にいいね押したらログインを促すアラートを表示
+$(document).ready(function(){
+  $(".iine").on("click", function(){
+    var title = confirm("「いいね」するにはログインが必要です。ログインページへ移動しますか？")
+    if ( title == true ){
+    window.location.href = "http://localhost:3000/users/sign_in"
+    }
+    else{
+    }
+  })
+});
 
 
 
