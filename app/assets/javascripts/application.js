@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require rails-ujs
+//= require cocoon
 //= require activestorage
 //= require autocomplete-rails
 
@@ -56,3 +57,24 @@ $(document).ready(function () {
 
 
 
+
+//動的にフォーム追加チャレンジしたけど。。。gem使います
+//$(function(){
+//  var song_num = $('.js-product-song').length;
+//  $(document).on('click', "#add_item_button", function(){
+//    var input =
+//    + '</tr>'
+//    + '<tr class="js-product-song">'
+//    + '<td><input type="text" name="product[songs_attributes][' + song_num + '][name]" id="product_song_attributes_' + song_num + '_name" ></td> '
+//    + '<td><input type="text" name="product[songs_attributes][' + song_num + '][disk]" id="product_song_attributes_' + song_num + '_disk" ></td> '
+//    + '<td><button type="button" id="song_delete">削除</button></td> '
+//    + '</tr>'
+//    $('.product_song_table').append(input);
+//  });
+//});
+//$(function(){
+//  $('#song_delete').on('click', function(){
+//    $('#song_delete').remove();
+//  });
+//});
+////////////////////////////////////////////////////////
