@@ -6,4 +6,5 @@ before_action :set_search
     @searched_products = @q.result(distinct: true)
   end
 
+	include ApplicationHelper, CartHelper
 end

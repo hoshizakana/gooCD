@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete '/favorites/:product_id' => 'favorites#unfavorite', as: 'unfavorite'
   post '/orders' => 'orders#create'
   get '/orders/:user_id' => 'orders#procedure'
-  get '/orders/:user_id/confirm' => 'orders#confirm'
+  post '/orders/:user_id/confirm' => 'orders#confirm'
   get '/orders/complete' => 'orders#complete'
   get '/genres' => 'genres#index'
   post '/genres' => 'genres#create'
