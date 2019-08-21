@@ -11,12 +11,18 @@ class AdminProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.price.to_i
-    product.stock.to_i
-    product.save
-    flash[:notice] = "保存されました。"
-    redirect_to ('/admin/products')
+    @product = Product.new(product_params)
+    @artists = Artist.all  #リスト選択でなく、検索フォームからの検索に後で置き換え
+    @genres = Genre.all
+    @labels = Label.all   #リスト選択でなく、検索フォームからの検索に後で置き換え
+    @product.price.to_i
+    @product.stock.to_i
+    if @product.save
+      flash[:notice] = "保存されました。"
+      redirect_to ('/admin/products')
+    else
+      render :new
+    end
   end
 
   def index
