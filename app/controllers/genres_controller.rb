@@ -1,4 +1,5 @@
 class GenresController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @search = Product.ransack(params[:q])

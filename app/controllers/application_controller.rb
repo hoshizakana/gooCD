@@ -15,4 +15,15 @@ before_action :set_search
     end
   end
 
+  def after_sign_out_path_for(resource)
+    # case resource
+    # when Admin
+    #   new_admin_session_path
+    # when User
+    #   "/"
+    # end
+
+    "/"
+  end
+
 end

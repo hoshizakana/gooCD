@@ -1,4 +1,6 @@
 class AdminProductsController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @product = Product.new
     @product.songs.build

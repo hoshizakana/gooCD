@@ -1,4 +1,6 @@
 class AdressesController < ApplicationController
+before_action :authenticate_admin!
+
 
 	def create
 		address = Address.new(address_params)
