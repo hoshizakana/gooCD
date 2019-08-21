@@ -23,7 +23,5 @@ class Product < ApplicationRecord
     end
   end
 
-  #削除フラグ用
-  #scope :active,where(deleted:false)
 
 end
