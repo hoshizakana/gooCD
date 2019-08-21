@@ -13,7 +13,7 @@
 	<div class="row ">
 		<div class="col-lg-10 col-lg-offset-1">
 			<h2>ご購入手続き</h2>
-			<%= form_for(@order) do |f| %>
+			<%= form_for(@order, url: "/orders/#{current_user.id}/confirm" ) do |f| %>
 				<div class="payment">
 					<div class="row">
 						<div class="col-lg-12 payment-title">
@@ -21,10 +21,10 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6 payment-method">
-							<input type="radio" name="dummy" value="">銀行振込<br>
-							<input type="radio" name="dummy" value="">代引き<br>
-							<input type="radio" name="dummy" value="">クレジットカード決済<br>
+						<div class="col-lg-6 payment-form">
+							<label><%= f.radio_button :payment,"銀行振込" %>銀行振込</label>
+							<label><%= f.radio_button :payment,"代引き" %>代引き</label>
+							<label><%= f.radio_button :payment,"クレジットカード決済" %>クレジットカード決済</label>
 						</div>
 						<div class="col-lg-6 total">
 							<table>
@@ -50,12 +50,53 @@
 					</div>
 				</div>
 
-				<div class="addresses">
-					<%= form_for(@addresses) do |f| %>
-						<% @addresses.each do |address| %>
-							<label><%= f.radio_button %></label>
+				<div class="row">
+					<div class="col-lg-12 addresses-title">
+						<p>お届け先</p>
+					</div>
+				</div>
+				<div class="row addresses">
+						<label><%= f.radio_button :address, "0" %>ご登録の住所へお届け</label>
+						<table class="address-table">
+							<tr>
+								<th>郵便番号：</th>
+								<td><%= current_user.postal_code %></td>
+							</tr>
+							<tr>
+								<th>住所：</th>
+								<td><%= current_user.adress %></td>
+							</tr>
+							<tr>
+								<th>宛名：</th>
+								<td><%= current_user.last_name %> <%=current_user.first_name %>様</td>
+							</tr>
+							<tr>
+								<th>電話番号：</th>
+								<td><%= current_user.phone %></td>
+							</tr>
+						</table>
+
+						<% @addresses.each do |address| %> <!-- userが登録している住所の一覧表示 -->
+							<label><%= f.radio_button :address, address.id %>下記住所へお届け</label>
+							<table>
+								<tr>
+									<th>郵便番号：</th>
+									<td><%= address.postal_code %></td>
+								</tr>
+								<tr>
+									<th>住所：</th>
+									<td><%= address.address %></td>
+								</tr>
+								<tr>
+									<th>宛名：</th>
+									<td><%= address.last_name %> <%= address.first_name %>様</td>
+								</tr>
+								<%= link_to "削除", "/addresses/#{address.id}", method: :delete %>
+							</table>
 						<% end %>
-					<% end %>
+
+<!-- のちほど住所登録ふぉーむをまーじ -->
+
 				</div>
 				<div class="col-lg-9 cart-index-list">
 						<% @cart_items.each do |cart_item| %>
@@ -68,43 +109,13 @@
 							</div>
 						<% end %>
 					</div>
-
-
+				<hr>
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<%= f.submit "戻る", params: "back" %>
+						<%= f.submit "確認画面へ" %>
+					</div>
+				</div>
 			<% end %>
 	</div>
 </div>
-
-<%= form_for(@address_new) do |f| %>
-	<p>新しい住所の登録</p>
-	<table>
-		<tr>
-			<th>郵便番号：</th>
-			<td><%= f.text_field :postal_code %></td>
-		</tr>
-		<tr>
-			<th>住所：</th>
-			<td><%= f.text_area :address %></td>
-		</tr>
-		<tr>
-			<th>宛名：</th>
-			<td>(姓)</td>
-			<td><%= f.text_field :last_name %></td>
-			<td>(名)</td>
-			<td><%= f.text_field :first_name %></td>
-		</tr>
-		<tr>
-			<th>宛名(カナ)：</th>
-			<td>(セイ)</td>
-			<td><%= f.text_field :last_name_kana %></td>
-			<td>(メイ)</td>
-			<td><%= f.text_field :first_name_kana %></td>
-		</tr>
-		<tr>
-			<th>電話番号</th>
-			<td><%= f.text_field :phone %></td>
-		</tr>
-
-
-	</table>
-
-<% end %>
