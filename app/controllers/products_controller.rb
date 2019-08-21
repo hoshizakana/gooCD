@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.page(params[:page]).reverse_order
-  end
+    if @searched_products
+     @products = @searched_products.page(params[:page]).reverse_order
+    else
+     @products = Product.page(params[:page]).reverse_order
+    end
+  end  
 
   def show
     @product = Product.find(params[:id])
