@@ -1,4 +1,6 @@
 class AdminUsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def show
 		@user = User.find(params[:id])
 		# @orders = Order.find(params[:user_id]) # 正しいのか？
