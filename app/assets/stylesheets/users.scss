@@ -10,10 +10,13 @@
 .sign_in_field {
   margin-top: 20px;
 }
+.sign-up-field {
+  margin-top: 15px;
+}
 
 .sign_in_box {
-  margin-top: 100px;
-  width: 350px;
+  margin-top: 50px;
+  width: 450px;
 }
 .sign-in-button {
   width: 350px;
@@ -24,4 +27,18 @@
 }
 .sign-in-button {
   width: 350px;
+}
+.sign-up-actions {
+  margin-top: 20px;
+}
+.sign-up-address-field {
+  width: 350px;
+  height: 35px;
+}
+.sign-up-label {
+  background-color: #999999;
+  color: #EEEEEE;
+  width: 160px;
+  text-align: center;
+  border-radius: 35px;
 }
