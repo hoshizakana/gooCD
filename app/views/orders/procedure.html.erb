@@ -22,46 +22,59 @@
 							<p>お届け先</p>
 						</div>
 					</div>
+
 					<div class="row addresses">
-						<label><%= f.radio_button :address, "0", checked: true %>ご登録の住所へお届け</label>
-						<table class="address-table">
-							<tr>
-								<th>郵便番号：</th>
-								<td><%= current_user.postal_code %></td>
-							</tr>
-							<tr>
-								<th>住所：</th>
-								<td><%= current_user.adress %></td>
-							</tr>
-							<tr>
-								<th>宛名：</th>
-								<td><%= current_user.last_name %> <%=current_user.first_name %>様</td>
-							</tr>
-							<tr>
-								<th>電話番号：</th>
-								<td><%= current_user.phone %></td>
-							</tr>
-						</table>
-						<%= link_to "新しい住所を登録する", "users/#{current_user.id}" %>
+					  <div class="panel panel-default col-lg-4">
+								<div class="panel-body">
+									<label><%= f.radio_button :address, "0", checked: true %>ご登録の住所へお届け</label>
+									<table class="address-table">
+										<tr>
+											<th>郵便番号：</th>
+											<td><%= current_user.postal_code %></td>
+										</tr>
+										<tr>
+											<th>住所：</th>
+											<td><%= current_user.adress %></td>
+										</tr>
+										<tr>
+											<th>宛名：</th>
+											<td><%= current_user.last_name %> <%=current_user.first_name %>様</td>
+										</tr>
+										<tr>
+											<th>電話番号：</th>
+											<td><%= current_user.phone %></td>
+										</tr>
+									</table>
+							</div>
+						</div>
+
+					</div>	
+
+          <div class="row">
 						<% @addresses.each do |address| %> <!-- userが登録している住所の一覧表示 -->
-							<label><%= f.radio_button :address, address.id %>下記住所へお届け</label>
-							<table>
-								<tr>
-									<th>郵便番号：</th>
-									<td><%= address.postal_code %></td>
-								</tr>
-								<tr>
-									<th>住所：</th>
-									<td><%= address.address %></td>
-								</tr>
-								<tr>
-									<th>宛名：</th>
-									<td><%= address.last_name %> <%= address.first_name %>様</td>
-								</tr>
-								<%= link_to "削除", "/addresses/#{address.id}", method: :delete %>
-							</table>
+							<div class="panel panel-default col-lg-4 float-left">
+								<div class="panel-body">
+										<label><%= f.radio_button :address, address.id %>下記住所へお届け</label>
+										<table>
+											<tr>
+												<th>郵便番号：</th>
+												<td><%= address.postal_code %></td>
+											</tr>
+											<tr>
+												<th>住所：</th>
+												<td><%= address.address %></td>
+											</tr>
+											<tr>
+												<th>宛名：</th>
+												<td><%= address.last_name %> <%= address.first_name %>様</td>
+											</tr>
+											<%= link_to "削除", "/addresses/#{address.id}", method: :delete %>
+										</table>
+								</div>
+							</div>
 						<% end %>
 					</div>
+
 				</div>
 
 				<div class="payment">
