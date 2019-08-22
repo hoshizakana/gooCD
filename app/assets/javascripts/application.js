@@ -99,14 +99,18 @@ $(document).ready(function(){
 
 $(function(){
   $(".cart").mouseover(function(){
-      $(".cart-mouseover").slideDown(600);
+      //$(".cart-mouseover").slideDown(600);
+      $(this).parent().find('.cart-mouseover').animate({scrollLeft:150});
+      $(this).parent().find('.cart-mouseover').show();
   });
 
   $('.cart').mouseout(function(){
 
-    $(".cart-mouseover").slideUp(600);
+    $(".cart-mouseover").hide(600);
     });
 });
+
+
 
 
 // $(function(){
@@ -185,4 +189,4 @@ $(document).ready(function(){
 //    $('#song_delete').remove();
 //  });
 //});
-////////////////////////////////////////////////////////
+
