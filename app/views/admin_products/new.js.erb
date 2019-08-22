@@ -1,0 +1,10 @@
+
+  $('#add_item_button').on('click', function(){
+    var input =
+    + '<tr class="js-product-song">'
+    + '<td><%= s.text_tield :name %></td> '
+    + '<td><%= s.text_tield :name %></td> '
+    + '<td><%= s.check_box:_destroy, class: "song_delete" %></td> '
+    + '</tr>'
+    $('.product_song_table').append(input);
+  })});

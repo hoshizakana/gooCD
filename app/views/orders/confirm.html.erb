@@ -1,2 +1,115 @@
-<h1>Orders#confirm</h1>
-<p>Find me in app/views/orders/confirm.html.erb</p>
+<h1>
+	Orders#confirm
+	Saddy
+</h1>
+
+<div class="container">
+
+	<div class="row nav-bar">
+		<div class="col-lg-12">
+			<%= render 'layouts/user-nav' %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<h2>お支払い情報</h2>
+			<%= form_for(@order) do |f| %>
+
+				<div class="destination">
+					<div class="row">
+						<div class="col-lg-12">
+							<table>
+								<tr>
+									<th>郵便番号：</th>
+									<td><%= @order.postal_code %></td>
+									<%= f.hidden_field :postal_code %>
+								</tr>
+								<tr>
+									<th>住所：</th>
+									<td><%= @order.address %></td>
+									<%= f.hidden_field :address %>
+								</tr>
+								<tr>
+									<th>宛名：</th>
+									<td><%= @order.last_name %> <%= @order.first_name %>様</td>
+									<%= f.hidden_field :last_name %>
+									<%= f.hidden_field :first_name %>
+								</tr>
+								<tr>
+									<th>宛名(カナ)：</th>
+									<td><%= @order.last_name_kana %> <%= @order.first_name_kana %>様</td>
+									<%= f.hidden_field :last_name_kana %>
+									<%= f.hidden_field :first_name_kana %>
+								</tr>
+								<tr>
+									<th>電話番号：</th>
+									<td><%= @order.phone %></td>
+									<%= f.hidden_field :phone %>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="payment">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="payment-title">
+								<h3>お支払い情報</h3><!-- inline-block; margin:0;padding:0;text-align: center; -->
+							</div>
+							<div class="col-lg-6">
+								<p><%= @order.payment %></p>
+								<%= f.hidden_field :payment %>
+								<p>　　メールにてお支払いをご案内致します。</p>
+							</div>
+							<div class="col-lg-6">
+								<tr>
+									<th>お買い上げ商品：</th>
+									<td><%= total_items_helper(@cart_items) %>点</td>
+								</tr>
+								<tr>
+									<th>小計：</th>
+									<td><%= subtotal_helper(@cart_items) %>円</td>
+								</tr>
+								<tr>
+									<th>送料：</th>
+									<td>500円</td>
+								</tr>
+								<hr>
+								<th>総計：</th>
+								<td><%= subtotal_helper(@cart_items) + 500 %>円</td>
+								<%= f.hidden_field :total_price, :value => subtotal_helper(@cart_items) + 500 %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="cart-index">
+					<div class="row">
+						<div class="col-lg-8 col-lg-offset-2 cart-index-list">
+							<% @cart_items.each do |cart_item| %>
+								<% product = Product.find(cart_item.product_id) %>
+								<div class="cart-item">
+									<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
+									<p>数量：<%= cart_item.item_number %></p>
+									<p>価格（税込）：<%= taxed_price_helper(product) * cart_item.item_number %>円</p>
+									<hr>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+
+				<div class="buttons">
+					<div class="row">
+						<%= link_to "戻る", "/carts/#{current_user.id}" %>
+						<%= f.submit "ご購入を確定する" %>
+					</div>
+				</div>
+
+			<% end %><!--form_for-->
+		</div>
+	</div>
+</div>

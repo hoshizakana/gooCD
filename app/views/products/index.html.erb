@@ -8,14 +8,13 @@
                 <%= link_to product.name, "/products/#{product.id}" %><br>
                 <%= link_to product.artist.name, "/products/#{product.id}" %><br>
             <% end %>
-                  <!--いいね機能 -->
-                <%= render 'products/products', product: product %>
-                  <!--いいね機能 -->
+
+								<!--いいね機能 -->
+								<%= render 'products/products', product: product %>
+								<!--いいね機能 -->
+
             </div>
         <% end %>
         <%= paginate @products, class: "paginate" %>
     </div>
 </div>
-
-
-

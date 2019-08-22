@@ -9,9 +9,7 @@ class HomesController < ApplicationController
     @rock_rank = @all_ranked_product.select{ |product| product.genre_id == 3.to_i }
   end
 
-	def ranking
-		
-			@ranked_product = Product.create_ranks(params[:genre_id]) #ランキングの計算ロジックはモデルメソッドとしてproduct.rbに記述
-
+  def ranking
+      @ranked_product = Product.create_ranks(params[:genre_id]) #ランキングの計算ロジックはモデルメソッドとしてproduct.rbに記述
   end
 end

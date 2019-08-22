@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   belongs_to :artist
   belongs_to :label
   accepts_nested_attributes_for :songs, allow_destroy: true
+#release_dateはseedの入れ方わかってないので、今はバリデーション外してます。
+  validates :name, :artist_id, :label_id, :genre_id, :status, :price, :stock, presence: true
 
  # def favorited_by?(user)
  #   favorites.find(user_id: user.id).exists?
@@ -23,7 +25,5 @@ class Product < ApplicationRecord
     end
   end
 
-  #削除フラグ用
-  #scope :active,where(deleted:false)
 
 end

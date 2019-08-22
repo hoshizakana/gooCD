@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+	before_action :authenticate_user!
 
   def index
 		# カート内商品の一覧

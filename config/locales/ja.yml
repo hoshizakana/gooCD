@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      product:
+        name : アルバム名/シングル名
+        artist_id: アーティスト名
+        label_id: レーベル名
+        genre_id: ジャンル名
+        status: 販売ステータス
+        image_id: ジャケット画像
+        price: 価格（税別価格）
+        stock: 在庫数
+        release_date: 発売日
+

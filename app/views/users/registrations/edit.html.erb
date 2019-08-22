@@ -1,16 +1,7 @@
-<h2><%= t('.title', resource: resource.model_name.human) %></h2>
+<h2>パスワード変更</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
-  <% end %>
 
   <div class="field">
     <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
@@ -32,12 +23,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t('.update') %>
+    <%# <%= f.submit t('.update') %>
+    <%= f.submit ('更新する') %>
+    <%= link_to "戻る", "/users/#{current_user.id}" %>
   </div>
 <% end %>
 
-<h3><%= t('.cancel_my_account') %></h3>
-
-<p><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %></p>
-
-<%= link_to t('devise.shared.links.back'), :back %>
