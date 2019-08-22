@@ -21,6 +21,37 @@
 //= require nested_form_fields
 //= require_tree .
 
+
+
+        
+// $(document).ready(function() {
+//     $(function(){
+//         $('.product-index').mouseover(function(){
+//             $(this).addClass('changeColor');
+//             var img = $(this).children('img');
+//             console.log(img.attr('src'));
+//             $('body').fadeIn(3000);
+//                 $('body').css('background-image','url('+img.attr('src')+')');
+//                 $('body').css('background-repeat','no-repeat');
+//                 $('body').css('background-size' ,'100%');
+//                 $('body').css('background-position', 'center');
+                
+//                 $('.opacity').addClass('opacity_add')
+//                 // $('.opacity').css('height' ,'100%');
+//                 // $('.opacity').css('background' ,'rgba(255,255,255,0.4)');
+                
+            
+
+
+//         });
+//         $('.product-index').mouseout(function(){
+//             $(this).removeClass('changeColor');
+//             $('body').css('background-image','none');
+//             $('.opacity').removeClass('opacity_add')
+//         });
+//      });
+
+// });
 $(function(){
   $("#Mottomiru").click(function(){
     $("#rest-of-ranking").show();
@@ -54,6 +85,30 @@ $(document).ready(function () {
   });
 });
 
+
+$(function(){
+  $(".cart").mouseover(function(){
+      $(".cart-mouseover").slideDown(600);
+  });
+
+  $('.cart').mouseout(function(){
+
+    $(".cart-mouseover").slideUp(600);
+    });
+});
+
+
+// $(function(){
+//   $(".users").mouseover(function(){
+//       $(".users-mouseover").slideDown(600);
+//   });
+
+//   $('.users').mouseout(function(){
+
+//     $(".users-mouseover").slideUp(600);
+//     });
+// });
+
 //未ログイン時にいいね押したらログインを促すアラートを表示
 $(document).ready(function(){
   $(".iine").on("click", function(){
@@ -67,6 +122,17 @@ $(document).ready(function(){
 });
 
 
+// $(function(){
+//   $(".log-out").mouseover(function(){
+//       $(".cart-mouseover").slideDown(600);
+//   });
+
+//   $('.log-out').mouseout(function(){
+
+
+//     $(".cart-mouseover").slideUp(600);
+//     });
+// });
 
 //動的にフォーム追加チャレンジしたけど。。。gem使います
 //$(function(){
@@ -88,3 +154,4 @@ $(document).ready(function(){
 //  });
 //});
 ////////////////////////////////////////////////////////
+
