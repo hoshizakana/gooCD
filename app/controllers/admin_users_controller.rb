@@ -12,7 +12,7 @@ class AdminUsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
-			flash[:notice] = "会員情報の編集が完了しました"
+			flash[:success] = "会員情報の編集が完了しました"
 			redirect_to ("/admin/users/#{@user.id}")
 		else
 			render :edit

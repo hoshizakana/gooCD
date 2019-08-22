@@ -37,8 +37,6 @@ body {
   clear: both;
 }
 
-
-
 .header {
  width: 100%;
  background-color: cadetblue;
@@ -168,7 +166,7 @@ color:#9d9d9d;
   } 
 
   .admin-product {
-      margin-top: 100px;
+      margin-top: 10px;
   }
 
   .buy-btn {
@@ -316,6 +314,9 @@ color:#9d9d9d;
 
 }
 
+.field_with_errors {
+  background-color: red;
+}
 .ranking-1-contents {
     margin-bottom: 30px;
     font-size: 30px;
