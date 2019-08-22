@@ -6,7 +6,7 @@
 				<h1 class="user-logo">User</h1>
 				<table class="table">
                     <tbody>
-                        <tr><th>マイページ</th><th> <%= link_to "会員情報編集", "/users/#{@user.id}/edit", class: "btn-flat-border" %> <%= link_to "パスワード変更", "", class: "btn-flat-border" %></th></tr>
+                        <tr><th>マイページ</th><th> <%= link_to "会員情報編集", "/users/#{@user.id}/edit", class: "btn-flat-border" %> <%= link_to "パスワード変更", "/users/edit", class: "btn-flat-border" %></th></tr>
                         <tr><td>会員番号</td><td><%= @user.id %></td></tr>
                         <tr><td>名前</td><td><%= @user.last_name %><%= @user.first_name %></td></tr>
                         <tr><td>名前(カナ)</td><td><%= @user.last_name_kana %><%= @user.first_name_kana %></td></tr>
