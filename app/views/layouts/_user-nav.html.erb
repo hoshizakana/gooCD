@@ -55,7 +55,7 @@
                         <div class='nav-contents'>                                           
                             <%= link_to "/users/sign_out" do %>                           
                                 <%= link_to '', "/users/sign_out", method: :delete, class: "glyphicon glyphicon-log-out cart" %>
-                                <%= link_to 'ログアウト', "/users/sign_out", class: "cart-mouseover cart-hover" %>
+                                <%= link_to 'ログアウト', "/users/sign_out", method: :delete, class: "cart-mouseover cart-hover" %>
                             <% end %>
                         </div>
 

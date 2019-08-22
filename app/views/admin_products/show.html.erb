@@ -69,9 +69,9 @@
             　    <th>曲名</th>
             　    <th>ディスク番号</th>
                 </thead>
-                  <% @product.songs.each do |song| %>
+                  <% @product.songs.each.with_index(1) do |song, n| %>
                     <tr>
-                      <td><%= song.id %></td>
+                      <td><%= n %></td>
                       <td><%= song.name %></td>
                       <td><%= song.disk %></td>
                     </tr>
