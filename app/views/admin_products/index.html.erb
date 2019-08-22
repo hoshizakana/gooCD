@@ -1,6 +1,17 @@
 <div>
 <%= render 'layouts/admin-nav', products:  @product, user: current_user  %>
 </div>
+<div class="container">
+<h2>商品一覧</h2>
+<h3>商品一覧</h3>
+  <div class="row">
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
+
 <%# 商品の検索フォーム %>
 <div class="admin-product">
   <%= search_form_for @search, url: '/admin/products' do |f| %>
@@ -39,14 +50,16 @@
     <%= f.radio_button :status_eq, '販売停止中' %>販売停止中
     </div>
 
-    <div><%= f.submit '検索' %></div>
+    <div><%= f.submit '検索', class: "btn btn-success" %></div>
 
   <% end %>
 </div>
 
 
-<h3>商品一覧</h3>
     <table class='table'>
+    <div class= "paginate">
+      <%= paginate @products, class: "paginate" %>
+    </div>
       <thead>
         <tr>
           <th>ID</th>
@@ -67,7 +80,7 @@
       <tr>
        <% @products.each do |product| %>
         <td><%= product.id %></td>
-        <td><%= '画像' %></td>
+        <td><%= attachment_image_tag product, :image, :fill, 20, 20, format:'jpeg', fallback:"no_image.jpg",size:'40x40' %></td>
         <td><%= link_to product.name, "/admin/products/#{product.id}" %></td>
         <td><%= product.genre.name %></td>
         <td><%= product.label.name %></td>
@@ -75,11 +88,15 @@
         <td><%= product.price %></td>
         <td><%= product.stock %></td>
         <td><%= product.status %></td>
-        <td><%= product.created_at %></td>
-        <td><%= product.updated_at %></td>
-        <td><%= link_to '詳細', "/admin/products/#{product.id}" %></td>
-        <td><%= link_to '編集', "/admin/products/#{product.id}/edit" %></td>
+        <td><%= product.created_at.strftime("%Y-%m-%d") %></td>
+        <td><%= product.updated_at.strftime("%Y-%m-%d")%></td>
+        <td><%= link_to '詳細', "/admin/products/#{product.id}", class: "btn btn-primary" %></td>
+        <td><%= link_to '編集', "/admin/products/#{product.id}/edit", class: "btn btn-info" %></td>
       </tr>
 <% end %>
-<%= paginate @products, class: "paginate" %>
     </table>
+    <div class= "paginate">
+      <%= paginate @products, class: "paginate" %>
+    </div>
+  </div>
+</div>

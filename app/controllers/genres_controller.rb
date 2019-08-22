@@ -17,10 +17,20 @@ class GenresController < ApplicationController
   end
 
   def create
-    genre = Genre.new(genre_params)
-    genre.save
-    flash[:notice] = "保存されました。"
-    redirect_to ('/genres')
+    @genre = Genre.new(genre_params)
+    @search = Product.ransack(params[:q])
+    if params[:genre] && params[:genre][:name]
+      genre_name = params[:genre][:name]
+      @genres = Genre.where("name LIKE '%#{genre_name}%'")
+    else
+      @genres = Genre.all
+    end
+    if @genre.save
+      flash[:success] = "「#{@genre.name}」が保存されました。"
+      redirect_to ('/genres')
+    else
+      render :index
+    end
   end
 
   def edit
@@ -44,6 +54,13 @@ class GenresController < ApplicationController
   def search
     @q = Genre.search(search_params)
     @genre = @q.result
+  end
+
+  def destroy
+    @genre = Genre.find(params[:id])
+    @genre.destroy
+    flash[:warning] = "「#{@genre.name}」が削除されました。"
+    redirect_to ("/genres")
   end
 
 

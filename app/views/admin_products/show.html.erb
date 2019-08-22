@@ -1,9 +1,16 @@
 <%= render 'layouts/admin-nav' %>
 
 <div class='body'>
-        <h1>商品詳細</h1>
   <div class='container'>
+        <h3>商品詳細</h3>
+        <h1>商品詳細</h1>
     <div class='row'>
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
       <div class='col-lg-3' style='float: left'>
 
         <p>
