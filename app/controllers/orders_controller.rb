@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
 			:address, #ここが問題だな
 			:phone, # 同様
 			:total_price, # subtotal_helper(cart_items)+500
-			:payment
+			:payment #抜けてた
 		)
 	end
 	def order_items_params
