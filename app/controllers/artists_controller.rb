@@ -1,5 +1,6 @@
 class ArtistsController < ApplicationController
-
+  before_action :authenticate_admin!
+  
   def index
     @search = Product.ransack(params[:q])
     @artist = Artist.new
