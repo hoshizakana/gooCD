@@ -2,7 +2,7 @@
 
 <div class="header">
     <div class="container ">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        
           
             <div class="slidemenu">
                     <ul class="nav navbar-nav navbar-left">
@@ -26,36 +26,34 @@
                         <% if user_signed_in? %>
 
                         <div class='nav-contents'>
-                        <%= link_to "/products" do %>
-                            <%= link_to '', "/products", class: "glyphicon glyphicon-headphones cart" %>
-                            <%= link_to '商品一覧', "/products", id: "cart-hover", class: "cart-mouseover" %>
-                        <% end %>
+                            <%= link_to "/products" do %>
+                                <%= link_to '', "/products", class: "glyphicon glyphicon-headphones cart" %>
+                                <%= link_to '商品一覧', "/products", class: "cart-mouseover cart-hover" %>
+                            <% end %>
                         </div>
                         <div class='nav-contents'>
-                        <%= link_to "/ranking" do %>
-                            <div style='display:inline-block'>
-                            <%= link_to '', "/ranking", class: "glyphicon glyphicon-king cart" %>
-                            <%= link_to 'ランキング', "/ranking", id: "cart-hover", class: "cart-mouseover" %>
-                        <% end %>
+                            <%= link_to "/ranking" do %>
+                                <%= link_to '', "/ranking", class: "glyphicon glyphicon-king cart" %>
+                                <%= link_to 'ランキング', "/ranking", class: "cart-mouseover cart-hover" %>
+                            <% end %>
                         </div>
                         <div class='nav-contents'>
-                        <%= link_to "/carts/#{current_user.id}" do %>
-                            <div style='display:inline-block'>
-                            <%= link_to '', "/carts/#{current_user.id}", class: "glyphicon glyphicon-shopping-cart cart" %>
-                            <%= link_to 'カートに入れる', "/carts/#{current_user.id}", id: "cart-hover", class: "cart-mouseover" %>
-                        <% end %>
+                            <%= link_to "/carts/#{current_user.id}" do %>
+                                <%= link_to '', "/carts/#{current_user.id}", class: "glyphicon glyphicon-shopping-cart cart" %>
+                                <%= link_to 'カートをみる', "/carts/#{current_user.id}", class: "cart-mouseover cart-hover" %>
+                            <% end %>
                         </div>
                         <div class='nav-contents'>              
-                        <%= link_to "/users/#{current_user.id}" do %>                  
-                            <%= link_to '', "/users/#{current_user.id}", class: "glyphicon glyphicon-user cart" %>
-                            <%= link_to 'マイページ', "/users/#{current_user.id}", id: "cart-hover", class: "cart-mouseover" %>
-                        <% end %>
+                            <%= link_to "/users/#{current_user.id}" do %>                  
+                                <%= link_to '', "/users/#{current_user.id}", class: "glyphicon glyphicon-user cart" %>
+                                <%= link_to 'マイページ', "/users/#{current_user.id}", class: "cart-mouseover cart-hover" %>
+                            <% end %>
                         </div>
                         <div class='nav-contents'>                                           
-                        <%= link_to "/users/sign_out" do %>                           
-                            <%= link_to '', "/users/sign_out", method: :delete, class: "glyphicon glyphicon-log-out cart" %>
-                            <%= link_to 'ログアウト', "/users/sign_out", id: "cart-hover", class: "cart-mouseover" %>
-                        <% end %>
+                            <%= link_to "/users/sign_out" do %>                           
+                                <%= link_to '', "/users/sign_out", method: :delete, class: "glyphicon glyphicon-log-out cart" %>
+                                <%= link_to 'ログアウト', "/users/sign_out", class: "cart-mouseover cart-hover" %>
+                            <% end %>
                         </div>
 
                         <% else %>
