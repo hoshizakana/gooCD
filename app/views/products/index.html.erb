@@ -7,6 +7,7 @@
                 <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150", class: 'product-image' %><br>
                 <%= link_to product.name, "/products/#{product.id}" %><br>
                 <%= link_to product.artist.name, "/products/#{product.id}" %><br>
+            <% end %>
 
 								<!--いいね機能 -->
 								<%= render 'products/products', product: product %>

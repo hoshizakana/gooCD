@@ -1,9 +1,9 @@
 
 <%# 商品の投稿フォーム %>
 <%= form_for @product,url: '/admin/products' do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
 
 <div class="container">
+  <%= render 'layouts/error_messages', model: f.object %>
   <div class="row">
     <div class="col-xs-5">
         <div>

@@ -1,5 +1,9 @@
 <h2><%= t('.sign_in') %></h2>
-
+<!-- エラーメッセージ -->
+<%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<!-- エラーメッセージ -->
+  <%- end -%>  
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
