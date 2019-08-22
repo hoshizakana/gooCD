@@ -1,7 +1,3 @@
-<h1>
-	AdminUsers#index
-	Saddy
-</h1>
 
 
 <div class="container">
@@ -23,11 +19,8 @@
 				<%= f.search_field :email_cont %><br>
 				<%= f.label :phone_cont, "電話番号" %><br>
 				<%= f.search_field :phone_cont %><br>
-				<!-- お名前検索を分割します -->
-				<%= f.label :last_name_cont, "お名前(姓)" %><br>
-				<%= f.search_field :last_name_cont %><br>
-				<%= f.label :first_name_cont, "お名前(名)" %><br>
-				<%= f.search_field :first_name_cont %><br>
+				<%= f.label :last_name_or_first_name_cont, "お名前" %><br>
+				<%= f.search_field :last_name_or_first_name_cont %><br>
 				<%= f.submit "検索" %><br>
 			<% end %>
 		</div>
