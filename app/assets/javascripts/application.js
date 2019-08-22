@@ -86,34 +86,15 @@ $(document).ready(function () {
 
 $(function(){
   $(".cart").mouseover(function(){
-      $(".cart-mouseover").slideDown(600);
+      //$(".cart-mouseover").slideDown(600);
+      $(this).parent().find('.cart-mouseover').animate({scrollLeft:150});
+      $(this).parent().find('.cart-mouseover').show();
   });
 
   $('.cart').mouseout(function(){
 
-    $(".cart-mouseover").slideUp(600);
+    $(".cart-mouseover").hide(600);
     });
 });
 
 
-// $(function(){
-//   $(".users").mouseover(function(){
-//       $(".users-mouseover").slideDown(600);
-//   });
-
-//   $('.users').mouseout(function(){
-
-//     $(".users-mouseover").slideUp(600);
-//     });
-// });
-
-// $(function(){
-//   $(".log-out").mouseover(function(){
-//       $(".cart-mouseover").slideDown(600);
-//   });
-
-//   $('.log-out').mouseout(function(){
-
-//     $(".cart-mouseover").slideUp(600);
-//     });
-// });
