@@ -107,6 +107,7 @@ $(function(){
       //$(".cart-mouseover").slideDown(600);
       $(this).parent().find('.cart-mouseover').show();
       $(this).parent().find('.cart-mouseover').animate({scrollLeft:150});
+
       
       target_obj = $(this).parent().find('.cart-mouseover');
       target_obj.mouseout(function(){

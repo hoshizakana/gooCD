@@ -1,20 +1,22 @@
 <%= render 'layouts/user-nav', products:  @product, user: current_user  %>
-<div class="main-layout">
-    <div class="row product-wrapper">
-        <% @products.each do |product| %>
-            <div class="col-lg-2 product-index">
-            <%= link_to "/products/#{product.id}" do %>
-                <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150", class: 'product-image' %><br>
-                <%= link_to product.name, "/products/#{product.id}" %><br>
-                <%= link_to product.artist.name, "/products/#{product.id}" %><br>
+
+    <div class="main-layout">
+        <div class="row product-wrapper">
+            <% @products.each do |product| %>
+                <div class="col-lg-2 product-index">
+                <%= link_to "/products/#{product.id}" do %>
+                    <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150", class: 'product-image' %><br>
+                    <%= link_to product.name, "/products/#{product.id}" %><br>
+                    <%= link_to product.artist.name, "/products/#{product.id}" %><br>
+                <% end %>
+
+                                    <!--いいね機能 -->
+                                    <%= render 'products/products', product: product %>
+                                    <!--いいね機能 -->
+
+                </div>
             <% end %>
-
-								<!--いいね機能 -->
-								<%= render 'products/products', product: product %>
-								<!--いいね機能 -->
-
-            </div>
-        <% end %>
-        <%= paginate @products, class: "paginate" %>
+            <%= paginate @products, class: "paginate" %>
+        </div>
     </div>
-</div>
+
