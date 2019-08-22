@@ -2,11 +2,12 @@
 <%# 商品の投稿フォーム %>
 <%= form_for @product,url: '/admin/products' do |f| %>
 
-<div class="container">
+  <!-- エラーメッセージ -->
   <%= render 'layouts/error_messages', model: f.object %>
+  <!-- -->
   <div class="row">
     <div class="col-xs-5">
-        <div>
+        >
         　<label for="artist-name">アーティスト名</label>
         　<%= f.collection_select(:artist_id,@artists,:id,:name) %>
         </div>

@@ -42,7 +42,7 @@
 								<td><%= current_user.phone %></td>
 							</tr>
 						</table>
-						<%= link_to "新しい住所を登録する", "users/#{current_user.id}" %>
+						<%= link_to "新しい住所を登録する", "users/#{current_user.id}", class: "btn btn-primary" %>
 						<% @addresses.each do |address| %> <!-- userが登録している住所の一覧表示 -->
 							<label><%= f.radio_button :address, address.id %>下記住所へお届け</label>
 							<table>
@@ -120,8 +120,8 @@
 				<div class="buttons">
 					<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
-							<%= link_to "戻る", "/carts/#{current_user.id}" %>
-							<%= f.submit "確認画面へ" %>
+							<%= link_to "戻る", "/carts/#{current_user.id}", class: "btn btn-warning" %>
+							<%= f.submit "確認画面へ", class: "btn btn-primary" %>
 						</div>
 					</div>
 				</div>
