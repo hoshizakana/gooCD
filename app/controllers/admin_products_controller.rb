@@ -1,7 +1,9 @@
 class AdminProductsController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @product = Product.new
-    8.times { @product.songs.build }
+    @product.songs.build
     @artists = Artist.all  #リスト選択でなく、検索フォームからの検索に後で置き換え
     @genres = Genre.all
     @labels = Label.all   #リスト選択でなく、検索フォームからの検索に後で置き換え
@@ -9,12 +11,18 @@ class AdminProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.price.to_i
-    product.stock.to_i
-    product.save
-    flash[:notice] = "保存されました。"
-    redirect_to ('/admin/products')
+    @product = Product.new(product_params)
+    @artists = Artist.all  #リスト選択でなく、検索フォームからの検索に後で置き換え
+    @genres = Genre.all
+    @labels = Label.all   #リスト選択でなく、検索フォームからの検索に後で置き換え
+    @product.price.to_i
+    @product.stock.to_i
+    if @product.save
+      flash[:notice] = "保存されました。"
+      redirect_to ('/admin/products')
+    else
+      render :new
+    end
   end
 
   def index
@@ -51,14 +59,14 @@ class AdminProductsController < ApplicationController
     product = Product.find(params[:id])
     product.price.to_i
     product.stock.to_i
-    product.update(product_params)
+    product.update(update_product_params)
     flash[:notice] = "更新されました。"
     redirect_to ("/admin/products/#{product.id}")
   end
 
   def destroy
-    @product = Product.find(params[:id]) 
-    redirect_to "admin/products"
+    @product = Product.find(params[:id])
+    redirect_to "/admin/products/#{@product.id}/edit"
   end
 
 
@@ -75,9 +83,26 @@ class AdminProductsController < ApplicationController
       :stock,
       :release_date,
 			:is_deleted,
+      songs_attributes:[:product_id, :name, :disk]
+    )
+  end
+  def update_product_params
+    params.require(:product).permit(
+      :name,
+      :artist_id,
+      :label_id,
+      :genre_id,
+      :status,
+      :image,
+      :price,
+      :stock,
+      :release_date,
+			:is_deleted,
       songs_attributes:[:id, :product_id, :name, :disk, :_destroy]
     )
   end
+
+
 
   #管理者商品検索機能のストロングパラメーター
   def search_params

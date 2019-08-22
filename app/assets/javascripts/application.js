@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require rails-ujs
+//= require cocoon
 //= require activestorage
 //= require autocomplete-rails
 
@@ -84,6 +85,7 @@ $(document).ready(function () {
   });
 });
 
+
 $(function(){
   $(".cart").mouseover(function(){
       $(".cart-mouseover").slideDown(600);
@@ -107,6 +109,19 @@ $(function(){
 //     });
 // });
 
+//未ログイン時にいいね押したらログインを促すアラートを表示
+$(document).ready(function(){
+  $(".iine").on("click", function(){
+    var title = confirm("「いいね」するにはログインが必要です。ログインページへ移動しますか？")
+    if ( title == true ){
+    window.location.href = "http://localhost:3000/users/sign_in"
+    }
+    else{
+    }
+  })
+});
+
+
 // $(function(){
 //   $(".log-out").mouseover(function(){
 //       $(".cart-mouseover").slideDown(600);
@@ -114,6 +129,29 @@ $(function(){
 
 //   $('.log-out').mouseout(function(){
 
+
 //     $(".cart-mouseover").slideUp(600);
 //     });
 // });
+
+//動的にフォーム追加チャレンジしたけど。。。gem使います
+//$(function(){
+//  var song_num = $('.js-product-song').length;
+//  $(document).on('click', "#add_item_button", function(){
+//    var input =
+//    + '</tr>'
+//    + '<tr class="js-product-song">'
+//    + '<td><input type="text" name="product[songs_attributes][' + song_num + '][name]" id="product_song_attributes_' + song_num + '_name" ></td> '
+//    + '<td><input type="text" name="product[songs_attributes][' + song_num + '][disk]" id="product_song_attributes_' + song_num + '_disk" ></td> '
+//    + '<td><button type="button" id="song_delete">削除</button></td> '
+//    + '</tr>'
+//    $('.product_song_table').append(input);
+//  });
+//});
+//$(function(){
+//  $('#song_delete').on('click', function(){
+//    $('#song_delete').remove();
+//  });
+//});
+////////////////////////////////////////////////////////
+

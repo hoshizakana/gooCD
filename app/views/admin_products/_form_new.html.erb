@@ -1,0 +1,85 @@
+
+<%# 商品の投稿フォーム %>
+<%= form_for @product,url: '/admin/products' do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-5">
+        <div>
+        　<label for="artist-name">アーティスト名</label>
+        　<%= f.collection_select(:artist_id,@artists,:id,:name) %>
+        </div>
+
+        <div>
+        　<label for="album-name">シングル/アルバム名</label>
+          <%= f.text_field :name, id:"album-name" %>
+        </div>
+
+        <div>
+          <label>ジャケット画像</label>
+          <div>
+            <%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'200x200' %>
+          </div>
+          <%= f.attachment_field :image  %>
+        </div>
+
+        <div>
+        　<label for="price">価格（税別価格）</label>
+          <%= f.text_field :price, id:"price" %>
+        </div>
+
+        <div>
+        　<label for="stock">在庫数</label>
+          <%= f.text_field :stock, id:"stock" %>
+        </div>
+
+        <div>
+        　<label for="artist-name">レーベル名</label>
+        　<%= f.collection_select(:label_id,@labels,:id,:name) %>
+        </div>
+
+        <div>
+      　<label for="genre">ジャンル</label>
+        　<%= f.collection_select(:genre_id,@genres,:id,:name) %>
+        </div>
+
+        <div>
+      　<label for="status">ステータス</label>
+      　　<%= f.select :status, ["販売中", "販売停止中"], :prompt => "選択してください", id:"status"%>
+        </div>
+
+        <div>
+      　<label for="release_date">発売日</label>
+        <%= f.date_field :release_date, id:"release_date" %>
+        </div>
+    </div>
+
+  <div class="col-xs-7">
+      　<label>収録曲</label>
+          <div class="product_song_box", id="add_song_#{s}">
+          <table class="table product_song_table">
+                <thead>
+                  <tr class="js-product-song">
+              　    <th>曲名</th>
+              　    <th>ディスク番号</th>
+                  </tr>
+                </thead>
+              <%= f.fields_for :songs do |song| %>
+                <tr class="js-product-song">
+                    <%= render "song_fields", f: song %>
+                </tr>
+              <% end %>
+          </table>
+          </div>
+          <div>
+              <%= link_to_add_association '追加', f, :songs, class: 'btn btn-primary' %>
+          </div>
+  </div>
+
+  </div>
+  <div>
+  <%= f.submit "新規登録", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+</div>
