@@ -93,7 +93,7 @@
         <td><%= link_to '詳細', "/admin/products/#{product.id}", class: "btn btn-primary" %></td>
         <td><%= link_to '編集', "/admin/products/#{product.id}/edit", class: "btn btn-info" %></td>
       </tr>
-<% end %>
+			<% end %>
     </table>
     <div class= "paginate">
       <%= paginate @products, class: "paginate" %>

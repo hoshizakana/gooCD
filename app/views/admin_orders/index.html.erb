@@ -1,2 +1,65 @@
-<h1>AdminOrders#index</h1>
-<p>Find me in app/views/admin_orders/index.html.erb</p>
+<h1>
+	AdminOrders#index<br>
+	Saddy
+</h1>
+
+<div class="container">
+
+	<div class="row admin-nav-bar">
+		<div class="col-lg-12">
+			<%= render '/layouts/admin-nav' %>
+		</div>
+	</div>
+
+	<div class="row user-search">
+		<div class="col-lg-10 col-lg-offset-1">
+			<h2>受注一覧</h2>
+			<!-- ransack試す -->
+			<div class="search_form">
+				<%= search_form_for @search, url: '/admin/orders' do |f| %>
+				<%= f.label :id_eq, "注文番号" %><br><!-- ransackでは整数値の部分検索に非対応 -->
+				<%= f.search_field :id_eq %><br>
+				<%= f.label :last_name_or_first_name, "名前" %><br>
+				<%= f.search_field :last_name_or_first_name_cont %><br>
+				<%= f.label :is_created_gteq_lteq, "注文日" %><br>
+				<%= f.search_field :created_at_gteq %>～
+				<%= f.search_field :created_at_lteq %><br>
+				<%= f.label :shipping_status_in, "ステータス" %><br>
+				<%= f.radio_button :shipping_status_eq, "", {:checked => true} %>全て
+				<%= f.radio_button :shipping_status_eq, "発送準備中" %>発送準備中
+				<%= f.radio_button :shipping_status_eq, "発送済み" %>発送済み
+				<%= f.radio_button :shipping_status_eq, "キャンセル" %>キャンセル<br>
+				<%= f.submit "検索" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row order-index">
+		<div class="col-lg-10 col-lg-offset-1">
+			<%= paginate @result, class: "paginate" %>
+			<table class="table order-index-table">
+				<tr>
+					<th>注文ID</th>
+					<th>お名前</th>
+					<th>注文日</th>
+					<th>対応状況</th>
+					<th>購入金額</th>
+					<th colspan="2"></th>
+				</tr>
+				<% @result.each do |r| %>
+					<tr>
+						<td><%= r.id %></td>
+						<td><%= r.last_name %><%= r.first_name %></td>
+						<td><%= r.created_at.strftime('%Y/%m/%d') %></td>
+						<td><%= r.shipping_status %></td>
+						<td><%= r.total_price %></td>
+						<td><%= link_to "詳細", "/admin/orders/#{r.id}" %></td>
+						<td><%= link_to "編集", "/admin/orders/#{r.id}/edit" %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+
+</div>

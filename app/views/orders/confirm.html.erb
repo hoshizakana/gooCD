@@ -14,15 +14,53 @@
 	<div class="row">
 		<div class="col-lg-10 col-lg-offset-1">
 			<h2>お支払い情報</h2>
-
 			<%= form_for(@order) do |f| %>
-				<div class="row payment">
-					<div class="col-lg-12">
-						<div class="payment-title">
-							<h3>お支払い情報</h3><!-- inline-block; margin:0;padding:0;text-align: center; -->
+
+				<div class="destination">
+					<div class="row">
+						<div class="col-lg-12">
+							<table>
+								<tr>
+									<th>郵便番号：</th>
+									<td><%= @order.postal_code %></td>
+									<%= f.hidden_field :postal_code %>
+								</tr>
+								<tr>
+									<th>住所：</th>
+									<td><%= @order.address %></td>
+									<%= f.hidden_field :address %>
+								</tr>
+								<tr>
+									<th>宛名：</th>
+									<td><%= @order.last_name %> <%= @order.first_name %>様</td>
+									<%= f.hidden_field :last_name %>
+									<%= f.hidden_field :first_name %>
+								</tr>
+								<tr>
+									<th>宛名(カナ)：</th>
+									<td><%= @order.last_name_kana %> <%= @order.first_name_kana %>様</td>
+									<%= f.hidden_field :last_name_kana %>
+									<%= f.hidden_field :first_name_kana %>
+								</tr>
+								<tr>
+									<th>電話番号：</th>
+									<td><%= @order.phone %></td>
+									<%= f.hidden_field :phone %>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="payment">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="payment-title">
+								<h3>お支払い情報</h3><!-- inline-block; margin:0;padding:0;text-align: center; -->
+							</div>
 							<div class="col-lg-6">
 								<p><%= @order.payment %></p>
-								<%= f.hidden_field :payment, :value => @order.payment  %>
+								<%= f.hidden_field :payment %>
 								<p>　　メールにてお支払いをご案内致します。</p>
 							</div>
 							<div class="col-lg-6">
@@ -46,58 +84,32 @@
 						</div>
 					</div>
 				</div>
-				<div class="row destination">
-					<table>
-						<tr>
-							<th>郵便番号：</th>
-							<td><%= @order.postal_code %></td>
-								<%= f.hidden_field :postal_code,:value => @order.postal_code  %>
-						</tr>
-						<tr>
-							<th>住所：</th>
-							<td><%= @order.address %></td>
-								<%= f.hidden_field :address,:value => @order.address %>
-						</tr>
-						<tr>
-							<th>宛名：</th>
-							<td><%= @order.last_name %> <%= @order.first_name %>様</td>
-								<%= f.hidden_field :last_name, :value => @order.last_name %>
-								<%= f.hidden_field :first_name, :value => @order.first_name %>
-						</tr>
-						<tr>
-							<th>宛名(カナ)：</th>
-							<td><%= @order.last_name_kana %> <%= @order.first_name_kana %>様</td>
-								<%= f.hidden_field :last_name_kana, :value => @order.last_name_kana %>
-								<%= f.hidden_field :first_name_kana, :value => @order.first_name_kana %>
-						</tr>
-						<tr>
-							<th>電話番号：</th>
-							<td><%= @order.phone %></td>
-								<%= f.hidden_field :phone, :value => @order.phone %>
-						</tr>
-					</table>
-				</div>
 
-				<div class="row items">
-					<div class="col-lg-8 col-lg-offset-2 cart-index-list">
-						<% @cart_items.each do |cart_item| %>
-							<% product = Product.find(cart_item.product_id) %>
-							<div class="cart-item">
-								<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
-								<p>数量：<%= cart_item.item_number %></p>
-								<p>価格（税込）：<%= taxed_price_helper(product) * cart_item.item_number %>円</p>
-								<hr>
-							</div>
-						<% end %>
+
+				<div class="cart-index">
+					<div class="row">
+						<div class="col-lg-8 col-lg-offset-2 cart-index-list">
+							<% @cart_items.each do |cart_item| %>
+								<% product = Product.find(cart_item.product_id) %>
+								<div class="cart-item">
+									<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
+									<p>数量：<%= cart_item.item_number %></p>
+									<p>価格（税込）：<%= taxed_price_helper(product) * cart_item.item_number %>円</p>
+									<hr>
+								</div>
+							<% end %>
+						</div>
 					</div>
 				</div>
 
-				<div class="row buttons">
-					<%= f.submit "戻る", params: "back" %>
-					<%= f.submit "ご購入を確定する" %>
+				<div class="buttons">
+					<div class="row">
+						<%= link_to "戻る", "/carts/#{current_user.id}" %>
+						<%= f.submit "ご購入を確定する" %>
+					</div>
 				</div>
-			<% end %>
+
+			<% end %><!--form_for-->
 		</div>
 	</div>
-
 </div>
