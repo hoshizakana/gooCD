@@ -68,9 +68,9 @@
 					<tr>
 						<td><%= order_item.product_id %></td>
 						<td><%= link_to order_item.product.name, "/admin/products/#{order_item.product.id}" %></td>
-						<td>\<%= order_item.product.price %></td>
-						<td><%= order_item.item_number %></td>
 						<td>\<%= order_item.price %></td>
+						<td><%= order_item.item_number %></td>
+						<td>\<%= price_multiple_helper(order_item) %></td>
 					</tr>
 				<% end %>
 			</table>
@@ -82,7 +82,7 @@
 					</tr>
 					<tr>
 						<th>合計</th>
-						<td>\<%= subtotal_helper(@order_items) + 500 %></td>
+						<td>\<%= taxed_price_helper(total_price_helper(@order_items)) %></td>
 					</tr>
 				</table>
 			</div>
