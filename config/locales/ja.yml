@@ -2,7 +2,7 @@ ja:
   activerecord:
     attributes:
       product:
-        name : アルバム名/シングル名
+        name : アルバム/シングル名
         artist_id: アーティスト名
         label_id: レーベル名
         genre_id: ジャンル名
@@ -11,4 +11,20 @@ ja:
         price: 価格（税別価格）
         stock: 在庫数
         release_date: 発売日
+      artist:
+        name: アーティスト名
+      genre:
+        name: ジャンル名
+      label:
+        name: レーベル名
+      product/songs:
+        name: 曲名
+        disk: ディスク番号
+  views:
+    pagination:
+      previous: "« 前ページ"
+      next:  "次ページ »"
+      truncate: "..."
+      First: "最初"
+      Last: "最後"
 

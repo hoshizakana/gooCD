@@ -97,16 +97,28 @@ $(document).ready(function(){
   })
 });
 
+// navbarの動き
+var target_obj = null;
 $(function(){
   $(".cart").mouseover(function(){
-      $(".cart-mouseover").slideDown(600);
+    if (target_obj  != null){
+      target_obj.hide();
+      }
+      //$(".cart-mouseover").slideDown(600);
+      $(this).parent().find('.cart-mouseover').show();
+      $(this).parent().find('.cart-mouseover').animate({scrollLeft:150});
+
+      
+      target_obj = $(this).parent().find('.cart-mouseover');
+      target_obj.mouseout(function(){
+      $(this).hide(600);
+        });
   });
 
-  $('.cart').mouseout(function(){
 
-    $(".cart-mouseover").slideUp(600);
-    });
-});
+ });
+
+
 
 
 // $(function(){
@@ -185,4 +197,4 @@ $(document).ready(function(){
 //    $('#song_delete').remove();
 //  });
 //});
-////////////////////////////////////////////////////////
+
