@@ -103,8 +103,8 @@
 
 				<div class="buttons">
 					<div class="row">
-						<%= link_to "戻る", "/carts/#{current_user.id}" %>
-						<%= f.submit "ご購入を確定する" %>
+						<%= link_to "戻る", "/carts/#{current_user.id}", class: "btn btn-danger" %>
+						<%= f.submit "ご購入を確定する", class: "btn btn-primary" %>
 					</div>
 				</div>
 

@@ -14,10 +14,20 @@ class LabelsController < ApplicationController
   end
 
   def create
-    label = Label.new(label_params)
-    label.save
-    flash[:notice] = "保存されました。"
-    redirect_to ('/labels')
+    @label = Label.new(label_params)
+    @search = Product.ransack(params[:q])
+    if params[:label] && params[:label][:name]
+      label_name = params[:label][:name]
+      @labels = Label.where("name like '%#{label_name}%'")
+    else
+      @labels = Label.all
+    end
+    if @label.save
+      flash[:success] = "「#{@label.name}」保存されました。"
+      redirect_to ('/labels')
+    else
+      render :index
+    end
   end
 
   def edit
@@ -37,6 +47,13 @@ class LabelsController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def destroy
+    @label = Label.find(params[:id])
+    @label.destroy
+    flash[:warning] = "「#{@label.name}」が削除されました"
+    redirect_to ("/labels")
   end
 
   private

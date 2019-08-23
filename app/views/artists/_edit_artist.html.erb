@@ -1,6 +1,7 @@
 
 <div class="edit_artist row" data-artist="<%= @id_artist %>">
   <%= form_with(model: artist, :url => {:action => :update}, remote: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
       <%= f.text_field :name  %>
       <%= f.submit '保存', class: 'btn' %>
     </div>

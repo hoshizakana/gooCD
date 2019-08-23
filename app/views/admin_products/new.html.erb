@@ -1,13 +1,16 @@
 <%= render 'layouts/admin-nav' %>
 <div class="admin-product">
-  <h1>商品新規登録</h1>
+<div class="container">
+  <h4>商品新規登録</h4>
+  <h2>商品新規登録</h2>
 
-  <%# 商品が登録された場合、「投稿されました」の文字を表示 %>
-  <% if flash[:notice] %>
-    <%= flash[:notice] %>
-  <% end %>
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
 
-  <%# 商品の投稿フォーム %>
-  <%= form_for @product,url: '/admin/products' do |f| %>
 
- <%= render 'form_new', product: @product %>
+
+  <%= render 'form_new' %>
