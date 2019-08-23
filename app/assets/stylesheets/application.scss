@@ -25,6 +25,10 @@ body {
     font-family: 'Noto Serif JP', sans-serif;
 }
 
+
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -47,7 +51,7 @@ body {
  z-index: 10;
  }
 
- 
+
 
  .navbar-header{
  font-size:25px;
@@ -134,13 +138,7 @@ color:#9d9d9d;
  .main-layout {
      text-align: center;
      margin: 150px 95px 0 95px;
-    
- }
 
-
-
- 
- 
 .product-date {
     margin-top: 15px;
 }
@@ -149,12 +147,12 @@ color:#9d9d9d;
      margin-top: 50px
  }
   .release-date {
-      margin-right: 95px; 
+      margin-right: 95px;
   }
 
   .songs-count {
-      margin-left: 95px; 
-  } 
+      margin-left: 95px;
+  }
 
   .admin-product {
       margin-top: 10px;
@@ -175,7 +173,7 @@ color:#9d9d9d;
 
 
 
-  
+
     .btn-flat-border {
         display: inline-block;
         padding: 0.3em 1em;
@@ -185,33 +183,33 @@ color:#9d9d9d;
         border-radius: 3px;
         transition: .4s;
       }
-      
+
       .btn-flat-border:hover {
         background: #67c5ff;
         color: white;
       }
-      
-  
+
+
     .product-index {
-        overflow: hidden;	
-        transition-duration: 0.3s;	
+        overflow: hidden;
+        transition-duration: 0.3s;
     }
     .product-index:hover {
-        transform: scale(1.1);	
-        transition-duration: 0.3s;	
-        
+        transform: scale(1.1);
+        transition-duration: 0.3s;
+
     }
 
     .total-rank1 {
-        overflow: hidden;	
+        overflow: hidden;
         transition-duration: 0.3s;
 
     }
 
     .total-rank1:hover {
-        transform: scale(1.1);	
-        transition-duration: 0.3s;	
-        
+        transform: scale(1.1);
+        transition-duration: 0.3s;
+
     }
     // .opacity{
     //     background:  rgba(255,255,255,1.0);
@@ -221,12 +219,12 @@ color:#9d9d9d;
     //     opacity: 0;
     //     transition: 1s;
     //     z-index: 0;
-        
+
     // }
 
     // .opacity_add {
     //     opacity: 1;
-        
+
     // }
     .product-text {
         text-decoration: none;
@@ -236,10 +234,10 @@ color:#9d9d9d;
     a:hover {
         text-decoration: none;
     }
-    
-    
-    
- 
+
+
+
+
 
 .Mottomiru{
     position:relative;
@@ -268,13 +266,13 @@ color:#9d9d9d;
 
 .top-products {
     margin: 50px 0 50px 0;
-    overflow: hidden;	
+    overflow: hidden;
     transition-duration: 0.3s;
 }
 
 .top-products:hover {
-    transform: scale(1.1);	
-    transition-duration: 0.3s;	
+    transform: scale(1.1);
+    transition-duration: 0.3s;
 }
 
 .top-contents {
@@ -285,25 +283,26 @@ color:#9d9d9d;
 .top-1-product-name {
     font-size: 35px;
     margin-left: 200px;
-    
+
 }
 
 .genre-rank1-2-3 {
     margin-bottom: 20px;
-    overflow: hidden;	
+    overflow: hidden;
     transition-duration: 0.3s;
-    
+
 }
 
 .genre-rank1-2-3:hover {
-    transform: scale(1.1);	
-    transition-duration: 0.3s;	
+    transform: scale(1.1);
+    transition-duration: 0.3s;
 }
 
 .genre-rank1-2-3 {
     margin-bottom: 10px;
 
 }
+
 
 .field_with_errors {
   background-color: red;
@@ -340,3 +339,7 @@ color:#9d9d9d;
 .nabvar-logo {
     background-image: url(logo.png);
 }
+  
+.admin-order-edit-disabler {
+	border: none;
+
