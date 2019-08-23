@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
 			@order.address = current_user.adress
 			@order.phone = current_user.phone
 		else
-			adr = Adress.find(order_params[:address].to_i)
+			adr = Address.find(order_params[:address].to_i)
 			@order.last_name = adr.last_name
 			@order.first_name = adr.first_name
 			@order.last_name_kana = adr.last_name_kana
