@@ -29,6 +29,7 @@ class Product < ApplicationRecord
     end
   end
 
+
 	# priceを税込価格で返す
 	def taxed_price
 		tp = self.price * consumption_tax # defined at models/concerns/common_module.rb
