@@ -27,6 +27,7 @@ class Product < ApplicationRecord
     end
   end
 
+
 	# priceを税込価格で返す
 	def taxed_price
 		tp = self.price * 1.08 # 8%
