@@ -306,7 +306,13 @@ a:hover {
 }
 
 .item-detail {
-  border: groove;
+	// border: groove; ちょっとダサいから打ち消し（やまだ）
+	height:150px;
+}
+
+.item-detail-image{
+	position:relative;
+	height:100%;
 }
 
 .nav-contents:hover {
@@ -348,4 +354,16 @@ a:hover {
 }
 .form-td-margin {
 	margin: 5px 0;
+}
+
+.jacket-img{
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform: translateY(-50%) translateX(-50%);
+	transform: translateY(-50%) translateX(-50%);
+}
+
+.procedure-btn-wrapper{
+	text-align:center;
 }
