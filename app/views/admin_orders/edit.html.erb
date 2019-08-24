@@ -71,7 +71,7 @@
 			<div class="add-order_item">
 				<%= form_for(@order_item, url: "/admin/orders/#{@order.id}") do |oif| %>
 					<%= oif.label "商品ID" %>
-					<%= oif.text_field :product_id %>
+					<%= oif.number_field :product_id, in:1..@products_number %>
 					<%= oif.submit "商品追加" %>
 				<% end %>
 		</div>

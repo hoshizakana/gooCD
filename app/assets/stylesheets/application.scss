@@ -298,6 +298,7 @@ a:hover {
 
 .user-edit {
   margin: 0 auto;
+	//これ使ってる？？？
 }
 
 .nav-contents {
@@ -319,7 +320,17 @@ a:hover {
   background-image: url(logo.png);
 }
 
+
+//Saddy
 .admin-order-edit-disabler {
-	//SADDY: 管理者受注編集画面用
+	//管理者受注編集画面用
 	border: none;
+}
+
+.text-center {
+	text-align: center;
+}
+.devise-form-center {
+	width: 350px;
+	margin: 15px auto;
 }
