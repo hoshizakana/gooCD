@@ -1,42 +1,33 @@
 module ApplicationHelper
+	# models/products.rb, order_itemにてtaxed_priceを定義
 
-	# 税率設定
-	@@tax = 1.08 # 8%
-
-	# 価格を税込にする
-	def taxed_price_helper(price)
-		# 単価,計,小計,総計の値を渡し、最後に税込額にする
-		# 例：taxed_price_helper(total_price_helper(@order))
-		taxed_price = price * @@tax
-		return taxed_price.floor
-	end
 
 	def price_multiple_helper(item) # cart_item or order_item
 		# 1商品あたりの計、税別価格×数量
 		multipled_price = 0
 		if item.attribute_present?(:price)
 			# order_itemには注文時価格(item.price)がある
-			multipled_price = item.price * item.item_number
+			multipled_price = item.taxed_price * item.item_number
 		else
 			# cart_itemにカート時価格(item.price)はあってはならない
 			# 商品価格を探してくるようにする
 			product = Product.find(item.product_id)
-			multipled_price = product.price * item.item_number
+			multipled_price = product.taxed_price * item.item_number
 		end
 		return multipled_price
 	end
 
 	def subtotal_price_helper(items) # cart_items or order_items
 		# カート・注文の小計を計算する
-		subtotal = 0 #宣言が必要らしい
+		subtotal = 0
 		if items[0].attribute_present?(:price)
 			items.each do |item|
-				subtotal += item.price * item.item_number
+				subtotal += price_multiple_helper(item)
 			end
 		else
 			items.each do |item|
 				product = Product.find(item.product_id)
-				subtotal += product.price * item.item_number
+				subtotal += price_multiple_helper(item)
 			end
 		end
 		return subtotal

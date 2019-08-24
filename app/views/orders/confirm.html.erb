@@ -70,7 +70,7 @@
 								</tr>
 								<tr>
 									<th>小計：</th>
-									<td><%= taxed_price_helper(subtotal_price_helper(@cart_items)) %>円</td>
+									<td><%= subtotal_price_helper(@cart_items) %>円</td>
 								</tr>
 								<tr>
 									<th>送料：</th>
@@ -78,8 +78,8 @@
 								</tr>
 								<hr>
 								<th>総計：</th>
-								<td><%= taxed_price_helper(total_price_helper(@cart_items)) %>円</td>
-								<%= f.hidden_field :total_price, :value => taxed_price_helper(total_price_helper(@cart_items)) %>
+								<td><%= total_price_helper(@cart_items) %>円</td>
+								<%= f.hidden_field :total_price, :value => total_price_helper(@cart_items) %>
 							</div>
 						</div>
 					</div>
@@ -93,7 +93,7 @@
 								<div class="cart-item">
 									<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
 									<p>数量：<%= cart_item.item_number %></p>
-									<p>価格（税込）：<%= taxed_price_helper(price_multiple_helper(cart_item)) %>円</p>
+									<p>価格（税込）：<%= price_multiple_helper(cart_item) %>円</p>
 									<hr>
 								</div>
 							<% end %>
