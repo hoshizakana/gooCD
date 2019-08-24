@@ -10,67 +10,105 @@
 		</div>
 	</div>
 
-	<%= form_for(@order) do |f| %>
 	<div class="row order-detail">
 		<div class="col-lg-10 col-lg-offset-1">
 			<h2>受注編集</h2>
-			<table>
-				<tr>
-					<th>注文番号</th>
-					<td><%= @order.id %><%= f.hidden_field :id %></td>
-				</tr>
-				<tr>
-					<th>対応状況</th>
-					<td>
-						<%= f.select :shipping_status, [
-						["発送準備中", "発送準備中"],
-						["発送済み", "発送済み"],
-						["キャンセル", "キャンセル"]
-						] %>
-					</td>
-				</tr>
-				<tr>
-					<th>注文者</th>
-					<td>
-						<%= @order.user.last_name %> <%= @order.user.first_name %>
-						<%= f.hidden_field :user_id %><!--発注者の名前自体は持たず、idを持っている-->
-					</td>
-				</tr>
-				<tr>
-					<th>注文日</th>
-					<td><%= @order.created_at.strftime('%Y/%m/%d') %><%= f.hidden_field :created_at %></td>
-				</tr>
-				<label>送付先</label><br>
-				<tr>
-					<th>お名前</th>
-					<td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
-				</tr>
-				<tr>
-					<th>お名前（カナ）</th>
-					<td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
-				</tr>
-				<tr>
-					<th>住所</th>
-					<td>
-						〒<%= f.text_field :postal_code %><br>
-						<%= f.text_field :address %>
-					</td>
-				</tr>
-				<tr>
-					<th>電話番号</th>
-					<td><%= f.text_field :phone %></td>
-				</tr>
-			</table>
+			<%= form_for(@order, url: "/admin/orders/#{@order.id}", method: :post) do |f| %>
+				<table>
+					<tr>
+						<th>注文番号</th>
+						<td><%= @order.id %><%= f.hidden_field :id %></td>
+					</tr>
+					<tr>
+						<th>対応状況</th>
+						<td>
+							<%= f.select :shipping_status, [
+							["発送準備中", "発送準備中"],
+							["発送済み", "発送済み"],
+							["キャンセル", "キャンセル"]
+							] %>
+						</td>
+					</tr>
+					<tr>
+						<th>注文者</th>
+						<td>
+							<%= @order.user.last_name %> <%= @order.user.first_name %>
+							<%= f.hidden_field :user_id %><!--発注者の名前自体は持たず、idを持っている-->
+						</td>
+					</tr>
+					<tr>
+						<th>注文日</th>
+						<td><%= @order.created_at.strftime('%Y/%m/%d') %><%= f.hidden_field :created_at %></td>
+					</tr>
+					<label>送付先</label><br>
+					<tr>
+						<th>お名前</th>
+						<td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
+					</tr>
+					<tr>
+						<th>お名前（カナ）</th>
+						<td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td>
+							〒<%= f.text_field :postal_code %><br>
+							<%= f.text_field :address %>
+						</td>
+					</tr>
+					<tr>
+						<th>電話番号</th>
+						<td><%= f.text_field :phone %></td>
+					</tr>
+				</table>
+				<%= f.submit %>
+				<% end %>
 		</div>
 	</div>
 
 	<div class="row order-items-detail">
 		<div class="col-lg-10 col-lg-offset-1">
-
+			<div class="add-order_item">
+				<%= form_for(@order_item, url: "/admin/orders/#{@order.id}") do |oif| %>
+					<%= oif.label "商品ID" %>
+					<%= oif.text_field :product_id %>
+					<%= oif.submit "商品追加" %>
+				<% end %>
+		</div>
+			<% @order_items.each do |order_item| %>
+				<%= form_for(order_item, url: "/admin/orders/#{@order.id}/#{order_item.id}") do |oif| %>
+					<table>
+						<tr>
+							<th>商品ID</th>
+							<th>商品名</th>
+							<th>購入時金額(税抜)</th>
+							<th>数量</th>
+							<th>計(税込)</th>
+						</tr>
+						<tr>
+							<td><%= order_item.product_id %><%= oif.hidden_field :product_id %></td>
+							<td><%= order_item.product.name %></td>
+							<td>￥<%= oif.text_field :price %></td>
+							<td><%= oif.text_field :item_number %></td>
+							<td>￥<%= price_multiple_helper(order_item) %></td><!--商品計-->
+							<td><%= oif.submit "更新" %></td>
+							<td><%= link_to "削除", "/admin/orders/#{@order.id}/#{order_item.id}", method: :delete %></td>
+						</tr>
+					</table>
+				<% end %>
+			<% end %>
+			<div class="order-price">
+				<table>
+					<tr>
+						<th>送料</th>
+						<td>￥500</td>
+					</tr>
+					<tr>
+						<th>合計(税込)</th>
+						<td>￥<%= total_price_helper(@order_items) %></td>
+					</tr>
+				</table>
 		</div>
 	</div>
-
-	<% end %>
-
 
 </div>

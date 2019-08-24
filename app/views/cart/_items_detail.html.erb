@@ -8,6 +8,6 @@
 		<p><%= product.label.name %></p>
 		<p><%= product.release_date %></p>
 		<p><%= product.genre.name %></p>
-		<p>単価：<%= taxed_price_helper(product) %></p> <!-- text-align: right; -->
+		<p>税込価格：<%= product.taxed_price %>円</p> <!-- text-align: right; -->
 	</div>
 </div>

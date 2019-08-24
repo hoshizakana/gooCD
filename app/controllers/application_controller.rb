@@ -15,5 +15,5 @@ before_action :set_search
     end
   end
 
-	include ApplicationHelper, CartHelper
+	include ApplicationHelper
 end

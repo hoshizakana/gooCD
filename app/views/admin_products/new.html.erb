@@ -1,6 +1,8 @@
 <%= render 'layouts/admin-nav' %>
 <div class="admin-product">
-  <h1>商品新規登録</h1>
+<div class="container">
+  <h4>商品新規登録</h4>
+  <h2>商品新規登録</h2>
 
     <%# フラッシュメッセージ %>
     <% flash.each do |message_type, message| %>
@@ -8,4 +10,7 @@
         <%= message %>
       </div>
     <% end %>
+
+
+
   <%= render 'form_new' %>

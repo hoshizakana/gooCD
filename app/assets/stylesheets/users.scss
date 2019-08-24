@@ -1,3 +1,44 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user_email, #user_password {
+  height: 35px;
+  width: 350px;
+}
+
+.sign_in_field {
+  margin-top: 20px;
+}
+.sign-up-field {
+  margin-top: 15px;
+}
+
+.sign_in_box {
+  margin-top: 50px;
+  width: 450px;
+}
+.sign-in-button {
+  width: 350px;
+}
+.sign-in-info-sign-up {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.sign-in-button {
+  width: 350px;
+}
+.sign-up-actions {
+  margin-top: 20px;
+}
+.sign-up-address-field {
+  width: 350px;
+  height: 35px;
+}
+.sign-up-label {
+  background-color: #999999;
+  color: #EEEEEE;
+  width: 160px;
+  text-align: center;
+  border-radius: 35px;
+}

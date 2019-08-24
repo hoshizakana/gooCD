@@ -54,6 +54,10 @@ Rails.application.routes.draw do
   get '/admin/orders/:id' => 'admin_orders#show'
   get '/admin/orders/:id/edit' => 'admin_orders#edit'
   patch '/admin/orders/:id' => 'admin_orders#update'
+	# order_items routes
+	post '/admin/orders/:id' => 'admin_orders#order_item_create'
+	patch '/admin/orders/:id/:order_item_id' => 'admin_orders#order_item_update'
+	delete '/admin/orders/:id/:order_item_id' => 'admin_orders#order_item_destroy'
 # admin_users
   get '/admin/users' => 'admin_users#index'
   get '/admin/users/:id' => 'admin_users#show'
