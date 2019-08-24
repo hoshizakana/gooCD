@@ -70,7 +70,7 @@
 								</tr>
 								<tr>
 									<th>小計：</th>
-									<td><%= subtotal_helper(@cart_items) %>円</td>
+									<td><%= subtotal_price_helper(@cart_items) %>円</td>
 								</tr>
 								<tr>
 									<th>送料：</th>
@@ -78,13 +78,12 @@
 								</tr>
 								<hr>
 								<th>総計：</th>
-								<td><%= subtotal_helper(@cart_items) + 500 %>円</td>
-								<%= f.hidden_field :total_price, :value => subtotal_helper(@cart_items) + 500 %>
+								<td><%= total_price_helper(@cart_items) %>円</td>
+								<%= f.hidden_field :total_price, :value => total_price_helper(@cart_items) %>
 							</div>
 						</div>
 					</div>
 				</div>
-
 
 				<div class="cart-index">
 					<div class="row">
@@ -94,7 +93,7 @@
 								<div class="cart-item">
 									<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
 									<p>数量：<%= cart_item.item_number %></p>
-									<p>価格（税込）：<%= taxed_price_helper(product) * cart_item.item_number %>円</p>
+									<p>価格（税込）：<%= price_multiple_helper(cart_item) %>円</p>
 									<hr>
 								</div>
 							<% end %>
@@ -104,8 +103,8 @@
 
 				<div class="buttons">
 					<div class="row">
-						<%= link_to "戻る", "/carts/#{current_user.id}" %>
-						<%= f.submit "ご購入を確定する" %>
+						<%= link_to "戻る", "/carts/#{current_user.id}", class: "btn btn-danger" %>
+						<%= f.submit "ご購入を確定する", class: "btn btn-primary" %>
 					</div>
 				</div>
 

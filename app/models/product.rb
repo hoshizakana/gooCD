@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+	include CommonModule
+
   attachment :image
   has_many :songs, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -27,5 +29,10 @@ class Product < ApplicationRecord
     end
   end
 
+	# priceを税込価格で返す
+	def taxed_price
+		tp = self.price * consumption_tax # defined at models/concerns/common_module.rb
+		return tp.ceil
+	end
 
 end
