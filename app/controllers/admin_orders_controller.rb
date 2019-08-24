@@ -14,6 +14,7 @@ class AdminOrdersController < ApplicationController
   def edit
 		@order = Order.find(params[:id])
 		@order_items = OrderItem.where(order_id: @order.id)
+		@products_number = Product.all.count
 		@order_item = OrderItem.new
   end
 	def update
