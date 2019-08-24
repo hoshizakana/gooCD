@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
 		cart_items = CartItem.where(user_id: current_user.id)
 		if cart_items.nil?
 			# cart_itemが空だったらredirect_to top
-			redirect_to ("/"), notice: "カートに商品がありません"
+			redirect_to ("/cart/#{current_user.id}"), notice: "カートに商品がありません"
 		else
 			#受け取ったaddress.idから、送り先を探し内容を保存しなおす
 			order = Order.new(order_params)
@@ -61,7 +61,9 @@ class OrdersController < ApplicationController
 				order.phone = adr.phone
 			end
 			# Order.saveしてからOrderItemにidを入れる
+			# binding.pry
 			if order.save
+			# order.save
 				cart_items.each do |cart_item|
 					#適合するcart_itemを取り出し、一つ一つをorder_itemに登録する
 					order_item = OrderItem.new
@@ -74,7 +76,7 @@ class OrdersController < ApplicationController
 				end
 				redirect_to ("/orders/complete") #購入完了ページへ
 			else
-				redirect_to ("/orders/#{current_user.id}") #購入失敗時、オーダートップへ
+				# redirect_to ("/orders/#{current_user.id}") #購入失敗時、オーダートップへ
 			end
 		end
 	end
