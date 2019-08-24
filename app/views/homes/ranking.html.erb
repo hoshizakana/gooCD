@@ -2,7 +2,7 @@
 <div class="container">
 	
 	<div class="row product-wrapper">
-		<div class="col-lg-2">
+		<div class="col-xs-2">
 			<!-- render 'ジャンルガイド' 共用化せねば… -->
 		</div>
 		<div class="col-lg-10">
@@ -39,12 +39,14 @@
 								<%= @ranked_product[0].release_date %>
 							</p>
 
-							<p>
-								<%= @ranked_product[0].price * 1.08 %>円
 							<p class="ranking-1-contents">
-						<!--いいね機能 -->
-            					<%= render 'products/products', product: @ranked_product[1] %>
-			<!--いいね機能 -->
+								<%= render 'products/products', product: @ranked_product[1] %>
+							
+								<!--いいね機能 --> 
+							
+								<%= @ranked_product[0].price * 1.08 %>円
+            					
+			
 							</p>
 						</div>
 					</div>
