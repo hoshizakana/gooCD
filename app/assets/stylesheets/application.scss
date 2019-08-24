@@ -322,11 +322,12 @@ a:hover {
 
 
 //Saddy
+.container {
+	padding-top: 50px;
+}
 .admin-order-edit-disabler {
-	//管理者受注編集画面用
 	border: none;
 }
-
 .text-center {
 	text-align: center;
 }
@@ -341,4 +342,10 @@ a:hover {
 
 .address-content{
 	padding:30px;
+}
+.line-height-adjust {
+	vertical-align: middle;
+}
+.form-td-margin {
+	margin: 5px 0;
 }
