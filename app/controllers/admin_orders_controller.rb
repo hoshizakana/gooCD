@@ -14,6 +14,7 @@ class AdminOrdersController < ApplicationController
   def edit
 		@order = Order.find(params[:id])
 		@order_items = OrderItem.where(order_id: @order.id)
+		@order_item = OrderItem.new
   end
 	def update
 		order = Order.find(params[:id])
@@ -24,6 +25,18 @@ class AdminOrdersController < ApplicationController
 			render :edit
 		end
 	end
+
+
+	# order_item
+	def order_item_create
+		order_item = OrderItem.new(order_item_params)
+		order_item.order_id = params[:id]
+		order_item.product_id = order_item_params[:product_id]
+		order_item.price = order_item.product.price
+		order_item.item_number = 1
+		order_item.save
+		redirect_to ("/admin/orders/#{params[:id]}/edit")
+	end
 	def order_item_update
 		order_item = OrderItem.find(params[:order_item_id])
 		if order_item.update(order_item_params)
@@ -33,6 +46,15 @@ class AdminOrdersController < ApplicationController
 			render :edit
 		end
 	end
+	def order_item_destroy
+		order_item = OrderItem.find(params[:order_item_id])
+		order_item.destroy
+		redirect_to ("/admin/orders/#{params[:id]}/edit")
+	end
+
+
+
+
 
 	private
 	def order_params
@@ -52,6 +74,6 @@ class AdminOrdersController < ApplicationController
 		)
 	end
 	def order_item_params
-		params.require(:order_item).permit(:product_id, :item_number, :order_id, :price)
+		params.require(:order_item).permit(:product_id)
 	end
 end

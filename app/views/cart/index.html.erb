@@ -1,64 +1,67 @@
-<h1>
-	Cart#index
-	Saddy
-</h1>
 
-			<%= render 'layouts/user-nav' %>
 <div class="container">
+
 	<div class="row nav-bar">
 		<div class="col-lg-12">
+			<%= render 'layouts/user-nav' %>
 		</div>
 	</div>
-</div>
 
-<div class="row">
-	<div class="col-lg-10 col-lg-offset-1">
-    <%# フラッシュメッセージ %>
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>">
-        <%= message %>
-      </div>
-    <% end %>
-		<h2>
-			<%= current_user.last_name %>様カート
-		</h2>
-		<% if @cart_items.count == 0 %>
-			<p>お客様のカートに、商品はありません。</p>
-		<% else %>
-			<div class="row cart-index">
-				<div class="col-lg-9 cart-index-list">
+	<div class="row flash-message">
+		<div class="col-lg-10 col-lg-offset-1">
+			<% flash.each do |message_type, message| %>
+				<div class="alert alert-<%= message_type %>">
+					<%# フラッシュメッセージ %>
+					<%= message %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row cart-body">
+		<div class="col-lg-10 col-lg-offset-1">
+			<h2><%= current_user.last_name %>様カート</h2>
+
+			<% if @cart_items.count == 0 %>
+				<p>お客様のカートに、商品はありません。</p>
+			<% else %>
+				<div class="row cart-index">
+					<div class="col-lg-9 cart-index-list">
 						<% @cart_items.each do |cart_item| %>
 							<% product = Product.find(cart_item.product_id) %>
 							<div class="cart-item">
 								<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
 								<%= form_for cart_item, url: "/cart_items/#{cart_item.id}" do |f| %>
-									<%= f.number_field :item_number %>
+									<%= f.number_field :item_number, in:1..99 %>
 									<%= f.submit "更新" %>
 									<!-- f.submit "" 更新を非同期でやるという話 -->
 								<% end %>
-								<p>価格（税込）：<%= taxed_price_helper(price_multiple_helper(cart_item)) %>円</p>
+								<p>税込価格：<%= price_multiple_helper(cart_item) %>円</p>
 								<hr>
 								<%= link_to '削除', "/cart_items/#{cart_item.id}", method: :delete, notice: "削除しました" %><!-- text-align: right -->
 							</div>
 						<% end %>
 
-				</div>
-				<div class="col-lg-3 cart-total">
-					<div class="row">
-						<table class="cart-total-show">
-							<tr>
-								<th>小計：</th>
-								<td><%= taxed_price_helper(subtotal_price_helper(@cart_items)) %>円</td>
-							</tr>
-							<tr>
-								<th>合計点数：</th>
-								<td><%= total_items_helper(@cart_items) %>点</td>
-							</tr>
-						</table>
 					</div>
-					<%= link_to 'ご購入手続きへ', "/orders/#{current_user.id}", class: "btn btn-primary" %>
+					<div class="col-lg-3 cart-total">
+						<div class="row">
+							<table class="cart-total-show">
+								<tr>
+									<th>小計：</th>
+									<td><%= subtotal_price_helper(@cart_items) %>円</td>
+								</tr>
+								<tr>
+									<th>合計点数：</th>
+									<td><%= total_items_helper(@cart_items) %>点</td>
+								</tr>
+							</table>
+						</div>
+						<%= link_to 'ご購入手続きへ', "/orders/#{current_user.id}", class: "btn btn-primary" %>
+					</div>
 				</div>
-			</div>
-		<% end %>
+			<% end %>
+		</div>
 	</div>
+
+
 </div>

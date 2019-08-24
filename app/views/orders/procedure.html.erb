@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row main">
 		<div class="col-lg-10 col-lg-offset-1">
 			<h2>ご購入手続き</h2>
 			<%= form_for(@order, url: "/orders/#{current_user.id}/confirm" ) do |f| %>
@@ -48,7 +48,7 @@
 							</div>
 						</div>
 
-					</div>	
+					</div>
 
           <div class="row">
 						<% @addresses.each do |address| %> <!-- userが登録している住所の一覧表示 -->
@@ -97,7 +97,7 @@
 								</tr>
 								<tr>
 									<th>小計：</th>
-									<td><%= taxed_price_helper(subtotal_price_helper(@cart_items)) %>円</td>
+									<td><%= subtotal_price_helper(@cart_items) %>円</td>
 								</tr>
 								<tr>
 									<th>送料：</th>
@@ -106,7 +106,7 @@
 								<hr>
 								<tr>
 									<th>総計：</th>
-									<td><%= taxed_price_helper(total_price_helper(@cart_items)) %>円</td>
+									<td><%= total_price_helper(@cart_items) %>円</td>
 								</tr>
 							</table>
 						</div>
@@ -121,7 +121,7 @@
 								<div class="cart-item">
 									<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
 									<p>数量：<%= cart_item.item_number %></p>
-									<p>価格（税込）：<%= taxed_price_helper(price_multiple_helper(cart_item)) %>円</p>
+									<p>価格（税込）：<%= price_multiple_helper(cart_item) %>円</p>
 									<hr>
 								</div>
 							<% end %>

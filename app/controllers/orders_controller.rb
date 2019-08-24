@@ -61,7 +61,6 @@ class OrdersController < ApplicationController
 				order.phone = adr.phone
 			end
 			# Order.saveしてからOrderItemにidを入れる
-			# OrderにtotalPrice入れなきゃマズい
 			if order.save
 				cart_items.each do |cart_item|
 					#適合するcart_itemを取り出し、一つ一つをorder_itemに登録する
@@ -75,7 +74,7 @@ class OrdersController < ApplicationController
 				end
 				redirect_to ("/orders/complete") #購入完了ページへ
 			else
-				redirect_to ("/order/#{current_user.id}") #購入失敗時、オーダートップへ
+				redirect_to ("/orders/#{current_user.id}") #購入失敗時、オーダートップへ
 			end
 		end
 	end
