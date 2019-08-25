@@ -36,9 +36,9 @@ Rails.application.routes.draw do
   get '/users/:id/edit' => 'users#edit'
   get '/users/:id/confirm' => 'users#destroy_confirm'
   get 'users/:id/orders' => 'users#orders'
-  get '/addresses' => 'addresses#new'
-  post '/addresses' => 'addresses#create'
-  delete '/addresses/:id' => 'addresses#destroy'
+  get '/addresses/:id' => 'addresses#new'
+  post '/addresses/:id' => 'addresses#create'
+  delete '/addresses/:screen_type/:id' => 'addresses#destroy'
 
 #Saddy's
   # admin_products
