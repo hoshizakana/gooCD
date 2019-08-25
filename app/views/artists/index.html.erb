@@ -1,38 +1,46 @@
 <%= render 'layouts/admin-nav' %>
+<div class="container">
+  <div class="row">
+    <h1>アーティストマスタ編集</h1>
 
-<h1>アーティストマスタ編集</h1>
-
-<%# アーティストが登録された場合、「投稿されました」の文字を表示 %>
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
- <% end %> 
-
-
-<%# 検索フォーム（オートコンプリート) %>
- <%= search_form_for @search, url: '/artists', method: :get, enforce_utf8: false, remote: true do |f| %>
-   <%= autocomplete_field_tag 'artist[name]', nil, '/artists/autocomplete_product_name' %>
-   <%= f.submit '検索' %>
- <% end %>
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
 
 
-<%# アーティストの投稿フォーム %>
-  <%= form_for(@artist) do |f| %>
-    <%= f.text_field :name %>
-    <%= f.submit "追加する" %>
-  <% end %>
+    <%# アーティストの投稿フォーム %>
+      <%= form_for(@artist) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <div>
+        <span><%= f.text_field :name %></span>
+        <span><%= f.submit "追加する" %></span>
+      </div>
+      <% end %>
+
+    <%# 検索フォーム（オートコンプリート) %>
+     <%= search_form_for @search, url: '/artists', method: :get, enforce_utf8: false, remote: true do |f| %>
+       <%= autocomplete_field_tag 'artist[name]', nil, '/artists/autocomplete_product_name' %>
+       <%= f.submit '検索' %>
+     <% end %>
 
 
-<%# アーティストの一覧表示 %>
-<h3>アーティスト一覧</h3>
-<table class="table">
-  <thead>
-    <th>アーティスト名</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </thead>
-<% @artists.each do |artist| %>
-      <%= render 'artists/each_artist', artist: artist %>
-      <%= render 'artists/each_artist_button', artist: artist %>
-<% end %>
-</table>
+
+    <%# アーティストの一覧表示 %>
+    <h3>アーティスト一覧</h3>
+    <table class="table">
+      <thead>
+        <th>アーティスト名</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <% @artists.each do |artist| %>
+            <%= render 'artists/each_artist', artist: artist %>
+            <%= render 'artists/each_artist_button', artist: artist %>
+      <% end %>
+    </table>
+    </div>
+  </div>

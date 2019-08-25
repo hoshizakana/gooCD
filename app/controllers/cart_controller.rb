@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+	before_action :authenticate_user!
 
   def index
 		# カート内商品の一覧
@@ -11,7 +12,7 @@ class CartController < ApplicationController
 		cart_item.user_id = current_user.id
 		cart_item.item_number = 1
 		cart_item.save
-		flash[:notice] = "カートに入れました。"
+    flash[:success] = "「#{cart_item.product.name}」をカートに入れました。"
 		redirect_to ("/products/#{cart_item.product_id}") # 商品一覧から正しくproductが渡されるか？
 	end
 	def update
@@ -25,7 +26,7 @@ class CartController < ApplicationController
 		# カート画面で、削除を送った時に動作する
 		cart_item = CartItem.find(params[:id])
 		cart_item.destroy
-		flash[:notice] = "カートから出しました。"
+    flash[:warning] = "「#{cart_item.product.name}」をカートから出しました。"
 		redirect_to ("/carts/#{current_user.id}")
 	end
 

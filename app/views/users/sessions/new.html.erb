@@ -1,26 +1,43 @@
-<h2><%= t('.sign_in') %></h2>
+<%= render 'layouts/user-nav', products:  @product, user: current_user  %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 sign_in_box">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 sign_in_box">
+          <!-- エラーメッセージ -->
+          <%- flash.each do |name, msg| -%>
+              <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+          <!--  -->
+            <%- end -%>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="sign_in_field devise-form-center">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "wide-form" %>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+            <div class="sign_in_field devise-form-center">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password", class: "wide-form" %>
+            </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="sign_in_field devise-form-center">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            <div class="actions devise-form-center">
+              <%= f.submit 'ログイン', class: "btn btn-primary sign-in-button" %>
+            </div>
+          <% end %>
+
+          <div class="sign-in-info-sign-up devise-form-center">
+          <%= render "users/shared/links" %>
+          </div>
+
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit t('.sign_in') %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

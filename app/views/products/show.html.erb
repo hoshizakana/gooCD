@@ -1,7 +1,13 @@
 
 <%= render 'layouts/user-nav', products:  @product, user: current_user  %>
  <div class="container">
-    <div class="row">
+    <div class="row product-wrapper">
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
         <div class="col-xs-6">
             <div class="left-content">
                 <div class="name">
@@ -9,17 +15,23 @@
                 </div>
                 <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350" %>
                 <div class="product-date">
-                    <h4>発売日</h4>
-                    <%= @product.release_date %>
-                    <h4>曲数</h4>
-                    <%= @product.songs.count %><br>
-                    <!--いいね機能 -->
-                    <%= render 'products/products', product: @product %>
-                    <!--いいね機能 -->
+                    <span class="release-date">発売日<%= @product.release_date %></span>
+
+                    <span class="songs-count">曲数<%= @product.songs.count %></span>
+
                 </div>
                 <div class="product-buy">
-                    ¥<%= @product.price %>税込価格
-                    <%= link_to "カートに入れる", "/cart_items/#{@product.id}" %>
+                    <div class="favorite">
+                        <%= render 'products/products', product: @product %>
+                    </div>
+                    <div class="price">
+                        ¥<%= @product.taxed_price %>（税込）
+                    </div>
+
+                    <div class="buy-btn">
+                        <%= link_to "カートに入れる", "/cart_items/#{@product.id}", class: "btn-flat-border btn-block" %>
+                    </div>
+
                 </div>
             </div>
         </div>

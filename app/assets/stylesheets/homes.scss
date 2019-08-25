@@ -5,21 +5,24 @@
 //トップページのcss
 
 .ranking-2{
-  height: 400px;
+  height: 600px;
 }
-
 
 #skippr-container{
-  height: 300px;
+  height: 400px;
 }
 .image1{
-background-image: url(live.jpeg);
+background-image: url(neon-color.jpg);
+background-position: center;
+
 }
 .image2{
-background-image: url(mr_children.jpeg);
+background-image: url(skipper7.png);
+background-position: center;
 }
 .image3{
-background-image: url(oneokrock.jpeg);
+background-image: url(skipper8.jpg);
+background-position: center;
 }
 
 .top-1-product-name {
@@ -28,8 +31,10 @@ background-image: url(oneokrock.jpeg);
 .total-rank2-3 {
   margin-top: 20px;
 }
-=======
 #rest-of-ranking{
   display:none;
+}
+.genre-rank1-2-3 {
+  margin-top: 5px;
 }
 

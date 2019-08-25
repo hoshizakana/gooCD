@@ -1,2 +1,99 @@
-<h1>AdminOrders#show</h1>
-<p>Find me in app/views/admin_orders/show.html.erb</p>
+<h1>
+	AdminOrders#show<br>
+	Saddy
+</h1>
+
+<div class="container">
+
+	<div class="row admin-nav-bar">
+		<div class="col-lg-12">
+			<%= render '/layouts/admin-nav' %>
+		</div>
+	</div>
+
+	<div class="row order-detail">
+		<div class="col-lg-10 col-lg-offset-1">
+			<h2>受注詳細</h2>
+			<table>
+				<tr>
+					<th>注文番号</th>
+					<td><%= @order.id %></td>
+				</tr>
+				<tr>
+					<th>対応状況</th>
+					<td><%= @order.shipping_status %></td>
+				</tr>
+				<tr>
+					<th>注文者</th>
+					<td><%= @order.user.last_name %> <%= @order.user.first_name %></td>
+				</tr>
+				<tr>
+					<th>注文日</th>
+					<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+				</tr>
+				<label>送付先</label><br>
+				<tr>
+					<th>お名前</th>
+					<td><%= @order.last_name %> <%= @order.first_name %></td>
+				</tr>
+				<tr>
+					<th>お名前（カナ）</th>
+					<td><%= @order.last_name_kana %> <%= @order.first_name_kana %></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td>
+						〒<%= @order.postal_code %><br>
+						<%= @order.address %>
+					</td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><%= @order.phone %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="row order-items-index">
+		<div class="col-lg-10 col-lg-offset-1">
+			<table>
+				<tr>
+					<th>商品ID</th>
+					<th>商品名</th>
+					<th>購入時金額(税抜)</th>
+					<th>数量</th>
+					<th>計(税込)</th>
+				</tr>
+				<% @order_items.each do |order_item| %>
+					<tr>
+						<td><%= order_item.product_id %></td>
+						<td><%= link_to order_item.product.name, "/admin/products/#{order_item.product.id}" %></td>
+						<td>￥<%= order_item.price %></td>
+						<td><%= order_item.item_number %></td>
+						<td>￥<%= price_multiple_helper(order_item) %></td>
+					</tr>
+				<% end %>
+			</table>
+			<div class="order-price">
+				<table>
+					<tr>
+						<th>送料</th>
+						<td>￥500</td>
+					</tr>
+					<tr>
+						<th>合計(税込)</th>
+						<td>￥<%= total_price_helper(@order_items) %></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="row buttons">
+		<div class="col-lg-10 col-lg-offset-1">
+			<%= link_to "編集", "/admin/orders/#{@order.id}/edit" %>
+		</div>
+	</div>
+
+</div>

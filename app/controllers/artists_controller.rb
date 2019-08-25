@@ -1,5 +1,6 @@
 class ArtistsController < ApplicationController
-
+  before_action :authenticate_admin!
+  
   def index
     @search = Product.ransack(params[:q])
     @artist = Artist.new
@@ -16,10 +17,24 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    artist = Artist.new(artist_params)
-    artist.save
-    flash[:notice] = "保存されました。"
-    redirect_to ('/artists')
+    @artist = Artist.new(artist_params)
+    @search = Product.ransack(params[:q])
+    if params[:artist] && params[:artist][:name]
+      artist_name = params[:artist][:name]
+      @artists = Artist.where("name LIKE '%#{artist_name}%'")
+    else
+      @artists = Artist.all
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    if @artist.save
+      flash[:success] = "「#{@artist.name}」が保存されました。"
+      redirect_to ('/artists')
+    else
+      render :index
+    end
   end
 
   def edit
@@ -34,17 +49,20 @@ class ArtistsController < ApplicationController
   def update
     @id_artist = Artist.find(params[:id]).id
     @artist = Artist.find(params[:id])
-    @artist.update(artist_params)
-    respond_to do |format|
-      format.html
-      format.js
+    if @artist.update(artist_params)
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      render :index
     end
   end
 
   def destroy
     @artist = Artist.find(params[:id])
     @artist.destroy
-    flash[:notice] = "削除されました。"
+    flash[:warning] = "「#{@artist.name}」削除されました。"
     redirect_to ('/artists')
   end
 

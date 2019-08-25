@@ -1,2 +1,84 @@
-<h1>AdminOrders#index</h1>
-<p>Find me in app/views/admin_orders/index.html.erb</p>
+<%= render '/layouts/admin-nav' %>
+
+<div class="container">
+
+	<div class="row order-search">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>受注一覧</h2>
+			<div class="search_form">
+				<%= search_form_for @search, url: '/admin/orders' do |f| %>
+					<table>
+						<tr>
+							<th><%= f.label :id_eq, "注文番号" %></th><!-- ransackでは整数値の部分検索に非対応 -->
+							<td><%= f.search_field :id_eq %></td>
+						</tr>
+						<tr>
+							<th><%= f.label :last_name_or_first_name, "名前" %></th>
+							<td><%= f.search_field :last_name_or_first_name_cont %></td>
+						</tr>
+						<tr>
+							<th><%= f.label :is_created_gteq_lteq, "注文日" %></th>
+							<td>
+								<%= f.search_field :created_at_gteq %>～
+								<%= f.search_field :created_at_lteq %>
+							</td>
+						</tr>
+						<tr>
+							<th><%= f.label :shipping_status_in, "ステータス" %></th>
+							<td>
+								<%= f.radio_button :shipping_status_eq, "", {:checked => true} %>全て
+
+							</td>
+						</tr>
+						<tr>
+							<th></th>
+							<td></td>
+						</tr>
+					</table>
+
+
+
+
+						<div class="form-margin">
+
+
+						<%= f.radio_button :shipping_status_eq, "発送準備中" %>発送準備中
+						<%= f.radio_button :shipping_status_eq, "発送済み" %>発送済み
+						<%= f.radio_button :shipping_status_eq, "キャンセル" %>キャンセル
+					</div>
+					<div class="form-margin">
+						<%= f.submit "検索" %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row order-index">
+		<div class="col-xs-10 col-xs-offset-1">
+			<%= paginate @result, class: "paginate" %>
+			<table class="table order-index-table">
+				<tr>
+					<th>注文ID</th>
+					<th>お名前</th>
+					<th>注文日</th>
+					<th>対応状況</th>
+					<th>購入金額(税込)</th>
+					<th colspan="2"></th>
+				</tr>
+				<% @result.each do |r| %>
+					<tr class="line-height-adjust">
+						<td class="line-height-adjust"><%= r.id %></td>
+						<td><%= r.last_name %><%= r.first_name %></td>
+						<td><%= r.created_at.strftime('%Y/%m/%d') %></td>
+						<td><%= r.shipping_status %></td>
+						<td><%= r.total_price %></td> <!--taxed-->
+						<td><%= link_to "詳細", "/admin/orders/#{r.id}", class:"btn btn-primary" %></td>
+						<td><%= link_to "編集", "/admin/orders/#{r.id}/edit", class:"btn btn-info" %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+
+</div>

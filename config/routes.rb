@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   post '/favorites/:product_id' => 'favorites#favorite', as: 'favorite'
   delete '/favorites/:product_id' => 'favorites#unfavorite', as: 'unfavorite'
   post '/orders' => 'orders#create'
-  get '/orders/:user_id' => 'orders#procedure'
-  get '/orders/:user_id/confirm' => 'orders#confirm'
+  post '/orders/:user_id/confirm' => 'orders#confirm'
   get '/orders/complete' => 'orders#complete'
+  get '/orders/:user_id' => 'orders#procedure'
   get '/genres' => 'genres#index'
   post '/genres' => 'genres#create'
   patch '/genres/:id' => 'genres#update'
@@ -36,8 +36,9 @@ Rails.application.routes.draw do
   get '/users/:id/edit' => 'users#edit'
   get '/users/:id/confirm' => 'users#destroy_confirm'
   get 'users/:id/orders' => 'users#orders'
-  post '/adresses' => 'adresses#create'
-  get '/adresses/:id' => 'adresses#destroy'
+  get '/addresses' => 'addresses#new'
+  post '/addresses' => 'addresses#create'
+  delete '/addresses/:id' => 'addresses#destroy'
 
 #Saddy's
   # admin_products
@@ -53,6 +54,10 @@ Rails.application.routes.draw do
   get '/admin/orders/:id' => 'admin_orders#show'
   get '/admin/orders/:id/edit' => 'admin_orders#edit'
   patch '/admin/orders/:id' => 'admin_orders#update'
+	# order_items routes
+	post '/admin/orders/:id' => 'admin_orders#order_item_create'
+	patch '/admin/orders/:id/:order_item_id' => 'admin_orders#order_item_update'
+	delete '/admin/orders/:id/:order_item_id' => 'admin_orders#order_item_destroy'
 # admin_users
   get '/admin/users' => 'admin_users#index'
   get '/admin/users/:id' => 'admin_users#show'
