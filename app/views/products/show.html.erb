@@ -13,6 +13,7 @@
                 <div class="name">
                     <%= @product.name %><br>
                 </div>
+                <div class="product-show-img"><div class="hanbaiteishichuu-show">販売停止中</div></div>
                 <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
                 <div class="product-date">
                     <span class="release-date">発売日<%= @product.release_date %></span>
@@ -32,8 +33,6 @@
                         </span>
 
                     </div>
-                    
-                    
 
                 </div>
             </div>

@@ -74,10 +74,13 @@
           <th>更新日</th>
           <th></th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
-      <tr>
        <% @products.each do |product| %>
+         <% if product.is_deleted == false %>
+     <tbody>
+      <tr class="">
         <td><%= product.id %></td>
         <td><%= attachment_image_tag product, :image, :fill, 20, 20, format:'jpeg', fallback:"no_image.jpg",size:'40x40' %></td>
         <td><%= link_to product.name, "/admin/products/#{product.id}" %></td>
@@ -89,9 +92,39 @@
         <td><%= product.status %></td>
         <td><%= product.created_at.strftime("%Y-%m-%d") %></td>
         <td><%= product.updated_at.strftime("%Y-%m-%d")%></td>
+        <% if product.is_deleted == true %>
+          <td>削除済商品</td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= link_to '詳細', "/admin/products/#{product.id}", class: "btn btn-primary" %></td>
         <td><%= link_to '編集', "/admin/products/#{product.id}/edit", class: "btn btn-info" %></td>
       </tr>
+     </tbody>
+      <% else %>
+     <tbody>
+      <tr class="admin-product-index">
+        <td><%= product.id %></td>
+        <td><%= attachment_image_tag product, :image, :fill, 20, 20, format:'jpeg', fallback:"no_image.jpg",size:'40x40' %></td>
+        <td><%= link_to product.name, "/admin/products/#{product.id}" %></td>
+        <td><%= product.genre.name %></td>
+        <td><%= product.label.name %></td>
+        <td><%= product.artist.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.status %></td>
+        <td><%= product.created_at.strftime("%Y-%m-%d") %></td>
+        <td><%= product.updated_at.strftime("%Y-%m-%d")%></td>
+        <% if product.is_deleted == true %>
+          <td>削除済商品</td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= link_to '詳細', "/admin/products/#{product.id}", class: "btn btn-primary" %></td>
+        <td><%= link_to '編集', "/admin/products/#{product.id}/edit", class: "btn btn-info" %></td>
+      </tr>
+     </tbody>
+      <% end %>
 			<% end %>
     </table>
     <div class= "paginate">

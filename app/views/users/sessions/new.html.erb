@@ -4,11 +4,12 @@
     <div class="col-xs-12 sign_in_box">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3 sign_in_box">
-          <!-- エラーメッセージ -->
-          <%- flash.each do |name, msg| -%>
-              <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-          <!--  -->
-            <%- end -%>
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="sign_in_field devise-form-center">
               <%= f.label :email %><br />
