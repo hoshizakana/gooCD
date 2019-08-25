@@ -1,6 +1,15 @@
 ja:
   activerecord:
     attributes:
+      user:
+        last_name: お名前（姓）
+        first_name: お名前（名）
+        last_name_kana: お名前（セイ）
+        first_name_kana: お名前（メイ）
+        phone: 電話番号
+        adress: 住所
+        postal_code: 郵便番号
+        email: メールアドレス
       product:
         name : アルバム/シングル名
         artist_id: アーティスト名

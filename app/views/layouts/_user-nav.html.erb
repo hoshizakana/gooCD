@@ -1,60 +1,92 @@
-<div class="header">
-  <div class="slidemenu">
-    <ul class="nav navbar-nav navbar-left">
-      <div class="navbar-logo"></div>
-    </ul>
 
-    <ul class="nav navbar-nav navbar-left">
-      <li>
-        <div class="form-inline">
-          <div class="input-group">
-            <%= search_form_for @q, url: products_path do |f| %>
-              <%= f.search_field :name_or_artist_name_or_songs_name_cont, class:"form-control search-form",style:"width:300px",placeholder:"商品名・アーティスト名・曲名で検索" %>
-              <span class="input-group-btn">
-                <%= f.submit "検索", class:"btn btn-default" %>
-              </span>
-            <% end %>
-          </div>
-        </div>
-      </li>
-    </ul>
+    
 
-    <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-        <div class='nav-contents'>
-          <%= link_to "/products" do %>
-          <%= link_to '', "/products", class: "glyphicon glyphicon-headphones cart" %>
-          <%= link_to '商品一覧', "/products", class: "cart-mouseover cart-hover" %>
-          <% end %>
+        <div class="slidemenu">
+            
+
+                <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <span><%= link_to image_tag('logo.png'), '/' %></span></li>
+                        <li>
+                            <div class="form-inline">
+                            <div class="input-group">
+                                
+                                <%= search_form_for @q, url: products_path do |f| %>
+                                <%= f.search_field :name_or_artist_name_or_songs_name_cont, class:"form-control search-form",style:"width:300px",placeholder:"商品名・アーティスト名・曲名で検索" %>
+                                <span class="input-group-btn">
+                                    <%= f.submit "検索", class:"btn btn-default" %>
+                                </span>
+                            　　 <% end %>
+                            </div>
+                        </li>
+                </ul>
+
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <% if user_signed_in? %>
+
+                    <div class='nav-contents'>
+                        <%= link_to "/products",class:"nav-content" do %>
+                            <%= link_to '', "/products", class: "glyphicon glyphicon-headphones cart" %>
+                            <%= link_to '商品一覧', "/products", class: "cart-mouseover cart-hover" %>
+                        <% end %>
+                    </div>
+                    <div class='nav-contents'>
+                        <%= link_to "/ranking" do %>
+                            <%= link_to '', "/ranking", class: "glyphicon glyphicon-king cart" %>
+                            <%= link_to 'ランキング', "/ranking", class: "cart-mouseover cart-hover" %>
+                        <% end %>
+                    </div>
+                    <div class='nav-contents'>
+                        <%= link_to "/carts/#{current_user.id}" do %>
+                            <%= link_to '', "/carts/#{current_user.id}", class: "glyphicon glyphicon-shopping-cart cart" %>
+                            <%= link_to 'カートをみる', "/carts/#{current_user.id}", class: "cart-mouseover cart-hover" %>
+                        <% end %>
+                    </div>
+                    <div class='nav-contents'>              
+                        <%= link_to "/users/#{current_user.id}" do %>                  
+                            <%= link_to '', "/users/#{current_user.id}", class: "glyphicon glyphicon-user cart" %>
+                            <%= link_to 'マイページ', "/users/#{current_user.id}", class: "cart-mouseover cart-hover" %>
+                        <% end %>
+                    </div>
+                    <div class='nav-contents'>                                           
+                        <%= link_to "/users/sign_out" do %>                           
+                            <%= link_to '', "/users/sign_out", method: :delete, class: "glyphicon glyphicon-log-out cart" %>
+                            <%= link_to 'ログアウト', "/users/sign_out", method: :delete, class: "cart-mouseover cart-hover" %>
+                        <% end %>
+                    </div>
+
+
+                    <% else %>
+                    <div class='nav-contents'>
+                        <%= link_to "/products" do %>
+                            <%= link_to '', "/products", class: "glyphicon glyphicon-headphones cart" %>
+                            <%= link_to '商品一覧', "/products", class: "cart-mouseover cart-hover" %>
+                        <% end %>
+                    </div>
+                    <div class='nav-contents'>
+                        <%= link_to "/ranking" do %>
+                            <%= link_to '', "/ranking", class: "glyphicon glyphicon-king cart" %>
+                            <%= link_to 'ランキング', "/ranking", class: "cart-mouseover cart-hover" %>
+                        <% end %>
+                    </div>
+
+                    <div class='nav-contents'>
+                        <%= link_to "/users/sign_in" do %>   
+                            <%= link_to '', "/users/sign_in", class: "glyphicon glyphicon-log-in cart" %>
+                            <%= link_to 'ログイン', "/users/sign_in", class: "cart-mouseover cart-hover" %>
+                        <% end %> 
+                    </div>
+                    <div class='nav-contents'>
+                        <%= link_to "/users/sign_up" do %>
+                            <%= link_to '', "/users/sign_up", class: "glyphicon glyphicon-edit cart" %>
+                            <%= link_to '会員登録', "/users/sign_up", class: "cart-mouseover cart-hover" %>
+                        <% end %>
+
+                    </div>
+                <% end %>
+                </ul>
+            
         </div>
-        <div class='nav-contents'>
-          <%= link_to "/ranking" do %>
-          <%= link_to '', "/ranking", class: "glyphicon glyphicon-king cart" %>
-          <%= link_to 'ランキング', "/ranking", class: "cart-mouseover cart-hover" %>
-          <% end %>
-        </div>
-        <div class='nav-contents'>
-          <%= link_to "/carts/#{current_user.id}" do %>
-          <%= link_to '', "/carts/#{current_user.id}", class: "glyphicon glyphicon-shopping-cart cart" %>
-          <%= link_to 'カートをみる', "/carts/#{current_user.id}", class: "cart-mouseover cart-hover" %>
-          <% end %>
-        </div>
-        <div class='nav-contents'>
-          <%= link_to "/users/#{current_user.id}" do %>
-          <%= link_to '', "/users/#{current_user.id}", class: "glyphicon glyphicon-user cart" %>
-          <%= link_to 'マイページ', "/users/#{current_user.id}", class: "cart-mouseover cart-hover" %>
-          <% end %>
-        </div>
-        <div class='nav-contents'>
-          <%= link_to "/users/sign_out" do %>
-          <%= link_to '', "/users/sign_out", method: :delete, class: "glyphicon glyphicon-log-out cart" %>
-          <%= link_to 'ログアウト', "/users/sign_out", method: :delete, class: "cart-mouseover cart-hover" %>
-          <% end %>
-        </div>
-      <% else %>
-        <%= link_to 'ログイン', "/users/sign_in", class: "glyphicon glyphicon-log-in sign_in" %>
-        <%= link_to '会員登録', "/users/sign_up", class: "glyphicon glyphicon-edit sign_up" %>
-      <% end %>
-    </ul>
-  </div>
+    </nav>
 </div>

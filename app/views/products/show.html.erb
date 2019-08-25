@@ -8,12 +8,21 @@
         <%= message %>
       </div>
     <% end %>
+      <div class="favorite-message">
+      </div>
         <div class="col-xs-6">
             <div class="left-content">
                 <div class="name">
                     <%= @product.name %><br>
                 </div>
-                <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350" %>
+                <% if @product.status == "販売中" %>
+                  <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
+                <% else %>
+                  <div class="discontinued-box-show">
+                    <div class="discontinued-box-3"><div class="hanbaiteishichuu-show">販売停止中</div></div>
+                      <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
+                    </div>
+                <% end %>
                 <div class="product-date">
                     <span class="release-date">発売日<%= @product.release_date %></span>
 
@@ -25,11 +34,12 @@
                         <%= render 'products/products', product: @product %>
                     </div>
                     <div class="price">
-                        ¥<%= @product.taxed_price %>（税込）
-                    </div>
 
-                    <div class="buy-btn">
-                        <%= link_to "カートに入れる", "/cart_items/#{@product.id}", class: "btn-flat-border btn-block" %>
+                        ¥<%= @product.price %>(税込価格)
+                        <span class="buy-btn">
+                            <%= link_to "カートに入れる", "/cart_items/#{@product.id}", class: "btn-flat-border" %>
+                        </span>
+
                     </div>
 
                 </div>

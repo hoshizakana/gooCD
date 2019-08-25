@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
   def index
     if @searched_products
-     @products = @searched_products.page(params[:page]).reverse_order
+      @products = @searched_products.where(is_deleted: ["false"]).page(params[:page]).reverse_order
     else
-     @products = Product.page(params[:page]).reverse_order
+      @products = Product.where(is_deleted: ["false"]).page(params[:page]).reverse_order
     end
-  end  
+  end
 
   def show
     @product = Product.find(params[:id])

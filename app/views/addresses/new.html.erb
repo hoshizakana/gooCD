@@ -3,7 +3,7 @@
     <div class="row　">
         <div class="col-lg-6">
 					<h1 class="user-logo">送付先住所 登録</h1>
-						<%= form_for(@address) do |f| %> 
+						<%= form_for(@address,url:"/addresses/#{params[:id]}") do |f| %> 
 							<%= render 'layouts/error_messages', model: f.object %>
 							<div class="form-group"> 
 									

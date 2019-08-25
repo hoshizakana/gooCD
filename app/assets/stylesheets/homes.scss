@@ -12,16 +12,16 @@
   height: 400px;
 }
 .image1{
-background-image: url(neon-color.jpg);
+background-image: url(abcwave2.png);
 background-position: center;
 
 }
 .image2{
-background-image: url(skipper7.png);
+background-image: url(abcwave2.png);
 background-position: center;
 }
 .image3{
-background-image: url(skipper8.jpg);
+background-image: url(abcwave2.png);
 background-position: center;
 }
 
@@ -37,4 +37,15 @@ background-position: center;
 .genre-rank1-2-3 {
   margin-top: 5px;
 }
-
+.notice {
+  color: black;
+  background-color: #99FFCC;
+  text-align: center;
+  width: 80%;
+  height: 40px;
+  margin: 0 auto;
+}
+.alert {
+  color: black;
+  background-color: pink;
+}

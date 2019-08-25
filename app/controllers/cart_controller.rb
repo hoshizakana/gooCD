@@ -7,14 +7,26 @@ class CartController < ApplicationController
   end
 
 	def create
-		# 商品詳細画面で「カートに入れる」ボタンを押したときに動作する、新しいカート商品を保存する
-		cart_item = CartItem.new(cart_item_params)
-		cart_item.user_id = current_user.id
-		cart_item.item_number = 1
-		cart_item.save
-    flash[:success] = "「#{cart_item.product.name}」をカートに入れました。"
-		redirect_to ("/products/#{cart_item.product_id}") # 商品一覧から正しくproductが渡されるか？
-	end
+		#既に登録済みのカートアイテムを検索し、cart_itemに代入
+		cart_item = CartItem.where(user_id: current_user.id).where(product_id: cart_item_params[:product_id])
+
+		# もし登録済みのカートアイテムがあったら、登録済みのカートアイテムの数量に1を足す
+		if cart_item.present?
+			cart_item[0].item_number += 1
+			cart_item[0].save
+			flash[:success] = "「#{cart_item[0].product.name}」をカートに追加しました。"
+			redirect_to ("/products/#{cart_item[0].product_id}") # 商品一覧から正しくproductが渡されるか？
+			else
+		# 登録済みのカートアイテムがない場合、新たにカートアイテムを作成	
+		cart_new_item = CartItem.new(cart_item_params)
+		cart_new_item.user_id = current_user.id
+		cart_new_item.item_number = 1
+		cart_new_item.save
+    flash[:success] = "「#{cart_new_item.product.name}」をカートに追加しました。"
+		redirect_to ("/products/#{cart_new_item.product_id}") # 商品一覧から正しくproductが渡されるか？
+		end
+	end	
+
 	def update
 		# カート画面で、数量変更を送った時に動作する
 		cart_item = CartItem.find(params[:id])
@@ -22,6 +34,7 @@ class CartController < ApplicationController
 		flash[:notice] = "更新しました。"
 		redirect_to ("/carts/#{current_user.id}")
 	end
+
 	def destroy
 		# カート画面で、削除を送った時に動作する
 		cart_item = CartItem.find(params[:id])

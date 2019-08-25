@@ -8,19 +8,26 @@
   </div>
 </div>
 
+
 <div class="container">
-	<div class="row">
+	<div class="row top-page">
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+      <div class="<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
 		<div class="col-lg-2 genre-guide">
 				<p class="genre-head">ジャンル別ランキング</p>
 				<% @genres.each do |g| %>
-          <table class="table table-bordered">
+          <table class="table">
             <tr>
-              <th><%= link_to g.name, "ranking/#{g.id}" %></th>
+              <th><%= link_to g.name, "ranking/#{g.id}", class: "btn-flat-border btn-block"  %></th>
             </tr>
             </table>
 				<% end %>
 		</div>
-		<div class="col-lg-10">
+		<div class="col-lg-10 ">
 
 			<!-- 総合ランキング -->
 			<div class="row total-ranking">
@@ -31,11 +38,12 @@
 			<div class="row total-rank1">
 <!-- ここで1位のCD情報を渡す -->
 				<div class="col-xs-1 product-index">
-				<%= link_to "/products/#{@all_ranked_product[0].id}" do %>
+				
 					<p>1</p> <!-- 1位アイコン -->
 				</div>
 				<div class="col-xs-2">
 					<!-- ジャケット画像 -->
+					<%= link_to "/products/#{@all_ranked_product[0].id}" do %>
 					<%= attachment_image_tag @all_ranked_product[0], :image, :fill, 250, 250, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
 				</div>
 				<div class="col-xs-9 ">
