@@ -41,6 +41,7 @@ body {
   clear: both;
 }
 
+//navbar関連
 .header {
 	width: 100%;
 	background-color: cadetblue;
@@ -51,11 +52,10 @@ body {
 	z-index: 10;
 }
 
-
-
 .navbar-header{
 	font-size:25px;
 	color:#9d9d9d;
+  height: 60px;
 }
 
 .logo {
@@ -91,18 +91,36 @@ color:#9d9d9d;
   margin-bottom:0;
 }
 
-
  .navbar-right {
-    margin: 13px 50px 0 0;
+    margin: 10px 50px 0 0;
  }
 
  .navbar-left {
      margin-left: 80px;
  }
 
-
 .right-content {
 	text-align: center;
+}
+
+.navbar-left{
+	position:relative;
+}
+
+.nav-contents {
+  display:inline-block;
+  height: 50px;
+}
+
+.nav-contents:hover {
+  background: #67c5ff;
+  opacity: 0.6;
+  color: white;
+  border-radius: 10px;
+}
+
+.nabvar-logo {
+  background-image: url(logo.png);
 }
 
 .artist-name {
@@ -312,9 +330,7 @@ a:hover {
 	margin: 0 auto;
 }
 
-.navbar-left{
-	position:relative;
-}
+
 
 .input-group{
 	margin-top:15px;
@@ -381,9 +397,6 @@ a:hover {
 	//これ使ってる？？？
 }
 
-.nav-contents {
-  display:inline-block;
-}
 
 .item-detail {
 	// border: groove; ちょっとダサいから打ち消し（やまだ）
@@ -394,6 +407,7 @@ a:hover {
 	position:relative;
 	height:100%;
 }
+
 
 .nav-contents:hover {
 
@@ -425,7 +439,7 @@ a:hover {
 
 //Saddy
 .container {
-	padding-top: 50px;
+	padding-top: 60px;
 }
 .admin-order-edit-disabler {
 	border: none;
@@ -452,6 +466,9 @@ a:hover {
 	margin: 5px 0;
 }
 
+#skippr-container {
+  margin-top: 60px;
+}
 
 .jacket-img{
 	position:absolute;
@@ -490,4 +507,3 @@ a {
 .table>thead>tr>th, .table>thead>tr>td, .table>tbody>tr>th, .table>tbody>tr>td, .table>tfoot>tr>th, .table>tfoot>tr>td {
   vertical-align: middle;
 }
-

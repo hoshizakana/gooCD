@@ -24,8 +24,11 @@
 							</td>
 						</tr>
 						<tr>
-							<th></th>
-							<td></td>
+							<th><%= f.label :shipping_status_in, "ステータス" %></th>
+							<td>
+								<%= f.radio_button :shipping_status_eq, "", {:checked => true} %>全て
+
+							</td>
 						</tr>
 						<tr>
 							<th></th>
@@ -36,12 +39,9 @@
 
 
 
-					<div class="form-margin">
-
-					</div>
 						<div class="form-margin">
-						<%= f.label :shipping_status_in, "ステータス" %>
-						<%= f.radio_button :shipping_status_eq, "", {:checked => true} %>全て
+
+
 						<%= f.radio_button :shipping_status_eq, "発送準備中" %>発送準備中
 						<%= f.radio_button :shipping_status_eq, "発送済み" %>発送済み
 						<%= f.radio_button :shipping_status_eq, "キャンセル" %>キャンセル
