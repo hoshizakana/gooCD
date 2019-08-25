@@ -1,22 +1,16 @@
 <%= render 'layouts/user-nav' %>
-<div class="row">
-		<div class="col-xs-12">
-			<!-- Todo Skipperを用いたヘッダ画像スライド -->
-      <div id="skippr-container">
-        <div id="theTarget">
-          <div class="image1"></div>
-          <div class="image2"></div>
-          <div class="image3"></div>
-        </div>
-      </div>
-		</div>
-	</div>
+
+<div id="skippr-container">
+  <div id="theTarget">
+    <div class="image1"></div>
+    <div class="image2"></div>
+    <div class="image3"></div>
+  </div>
+</div>
+
 <div class="container">
-
-
-
 	<div class="row">
-		<div class="col-lg-2 genre-guide"><!-- こいつにpaddingあてればいい感じに余白ができる？ -->
+		<div class="col-lg-2 genre-guide">
 				<p class="genre-head">ジャンル別ランキング</p>
 				<% @genres.each do |g| %>
           <table class="table table-bordered">
@@ -54,15 +48,15 @@
 						<p class="col-xs-4 top-1-product-name">
 							<%= @all_ranked_product[0].artist.name %>
 						</p>
-						
+
 				<% end %>
-				
+
            <!--いいね機能 -->
            <!--いいね機能 -->
             <p><%= render 'products/products', product: @all_ranked_product[0] %></p>
            <!--いいね機能 -->
 					</div>
-				
+
 				</div>
 			</div>
 			<div class="row total-rank2-3">
@@ -80,7 +74,7 @@
 						<%= attachment_image_tag rank2, :image, :fill, 170, 170, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
 					</div>
 					<div class="col-lg-7 ">
-					
+
 						<div class="row">
 							<div class="col-lg-12 top-contents">
 								<p>
@@ -162,7 +156,7 @@
                   			  <p><%= @jpop_rank[0].name %></p>
 							  <p><%= @jpop_rank[0].artist.name %></p>
 							<% end %>
-				  
+
                    <!--いいね機能 -->
                   <p><%= render 'products/products', product: @jpop_rank[0] %></p>
                    <!--いいね機能 -->
@@ -172,7 +166,7 @@
 <!-- j-pop 2位 -->
 						<div class="row genre-rank1-2-3">
 							<div class="col-lg-1">
-							
+
 								<p>第<%= 2 %>位</p>
 							</div>
 							<div class="col-lg-3">
@@ -184,7 +178,7 @@
                   				<p><%= @jpop_rank[1].name %></p>
 								  <p><%= @jpop_rank[1].artist.name %></p>
 							<% end %>
-				  
+
                    <!--いいね機能 -->
                   <p><%= render 'products/products', product: @jpop_rank[1] %></p>
                    <!--いいね機能 -->
