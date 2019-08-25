@@ -35,19 +35,18 @@
 							</p>
 
 								<%= Genre.find(@ranked_product[0].genre_id).name %>
-	
+
 							<p class="ranking-1-contents">
 								<%= @ranked_product[0].release_date %>
 							</p>
 
 							<p class="ranking-1-contents">
 								<%= render 'products/products', product: @ranked_product[1] %>
-							
+
 								<!--いいね機能 --> 
-							
-								<%= @ranked_product[0].price * 1.08 %>円
-            					
-			
+
+          <%# @ranked_product[0].price * 1.08 %><!--ランキングには価格表示しない--?>
+
 							</p>
 						</div>
 					</div>
@@ -60,7 +59,7 @@
 			<% @ranked_product.each.with_index(1) do |product,i| %>
 				<%# 1位は何も表示しない %>
 				 <% if i == 1 %>
-				 <% end %>		
+				 <% end %>
 
 				<%# 2位と3位を表示 %>
 				 <% if i >1 && i <= 3 %>
@@ -91,7 +90,7 @@
 							 	</p>
 						 
 							 	<p>
-									<%= @ranked_product[i].price * 1.08 %>円
+									<%# @ranked_product[i].price * 1.08 %>
 								 </p>
 								 <p>
 								 	<%= render 'products/products', product: @ranked_product[i] %>
@@ -148,7 +147,7 @@
 										<%= product.release_date %>
 									  </p>
 									  <p>
-										<%= product.price * 1.08 %>円
+										<%# product.price * 1.08 %>
 									  </p>
 										<!--いいね機能 -->
                     <%= render 'products/products', product:product %>
@@ -194,7 +193,7 @@
 										<%= product.release_date %>
 									  </p>
 									  <p>
-										<%= product.price * 1.08 %>円
+										<%# product.price * 1.08 %>
 									  </p>
 										<!--いいね機能 -->
                     <%= render 'products/products', product: product %>

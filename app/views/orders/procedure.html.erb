@@ -20,30 +20,38 @@
 
 										<div class="panel-body">
 											<div class="row addresses">
-												<div class="col-lg-4">
-																	<div class="address-content">
-																			<label><%= f.radio_button :address, "0", checked: true %>ご登録の住所へお届け</label>
-																			<table class="address-table">
-																					<tr>
-																							<th>郵便番号：</th>
-																							<td><%= current_user.postal_code %></td>
-																					</tr>
-																					<tr>
-																							<th>住所：</th>
-																							<td><%= current_user.adress %></td>
-																					</tr>
-																					<tr>
-																							<th>宛名：</th>
-																							<td><%= current_user.last_name %> <%=current_user.first_name %>様</td>
-																					</tr>
-																					<tr>
-																							<th>電話番号：</th>
-																							<td><%= current_user.phone %></td>
-																					</tr>
-																			</table>
-																	</div>
-													</div>
-											</div>
+											<%# 　<div class="test"> %>
+																<div class="col-lg-4">
+																				<div class="address-content">
+																						<label><%= f.radio_button :address, "0", checked: true %>ご登録の住所へお届け</label>
+																						<table class="address-table">
+																								<tr>
+																										<th>郵便番号：</th>
+																										<td><%= current_user.postal_code %></td>
+																								</tr>
+																								<tr>
+																										<th>住所：</th>
+																										<td><%= current_user.adress %></td>
+																								</tr>
+																								<tr>
+																										<th>宛名：</th>
+																										<td><%= current_user.last_name %> <%=current_user.first_name %>様</td>
+																								</tr>
+																								<tr>
+																										<th>電話番号：</th>
+																										<td><%= current_user.phone %></td>
+																								</tr>
+																						</table>
+																				</div>
+																</div>
+
+															<div class="col-lg-4 address-content">
+                                                                    <%# 遷移元のページの情報を送付先住所の登録画面に持たせるため、URLにフラグとして2をもたせる %>
+                                                                   <%= link_to "送付先住所を登録する", "/addresses/2", class: "btn btn-primary"  %>
+															</div>
+													<%# </div> %>
+												</div>
+												
 
 											<div class="row">
 														<% @addresses.each do |address| %> <!-- userが登録している住所の一覧表示 -->
@@ -63,7 +71,7 @@
 																										<th>宛名：</th>
 																										<td><%= address.last_name %> <%= address.first_name %>様</td>
 																								</tr>
-																								<%= link_to "削除", "/addresses/#{address.id}", method: :delete %>
+                                                                                                <%= link_to '削除', "/addresses/2/#{address.id}", method: :delete, data: {confirm:"本当に削除しますか？"} %></td>
 																						</table>
 																		</div>
 																</div>
@@ -101,9 +109,9 @@
                                     <th>送料：</th>
                                     <td>500円</td>
                                 </tr>
-															<tr>
+                                <tr>
                                 <td colspan="2"><hr class="payment-hr"></td>
-															</tr>	
+                                </tr>	
                                 <tr>
                                     <th>総計：</th>
                                     <td><%= total_price_helper(@cart_items) %>円</td>
@@ -133,10 +141,10 @@
                 <div class="buttons">
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
-												    <div class="procedure-btn-wrapper">
-															<%= link_to "戻る", "/carts/#{current_user.id}", class: "btn btn-warning text-center"  %>
-															<%= f.submit "確認画面へ", class: "btn btn-primary text-center" %>
-														</div>
+                            <div class="procedure-btn-wrapper">
+                                    <%= link_to "戻る", "/carts/#{current_user.id}", class: "btn btn-warning text-center"  %>
+                                    <%= f.submit "確認画面へ", class: "btn btn-primary text-center" %>
+                            </div>
                         </div>
                     </div>
                 </div>

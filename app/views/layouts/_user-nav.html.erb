@@ -28,7 +28,7 @@
                     <% if user_signed_in? %>
 
                     <div class='nav-contents'>
-                        <%= link_to "/products" do %>
+                        <%= link_to "/products",class:"nav-content" do %>
                             <%= link_to '', "/products", class: "glyphicon glyphicon-headphones cart" %>
                             <%= link_to '商品一覧', "/products", class: "cart-mouseover cart-hover" %>
                         <% end %>

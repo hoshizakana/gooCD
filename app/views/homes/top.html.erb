@@ -16,6 +16,12 @@
 
 
 	<div class="row top-page">
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+      <div class="<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
 		<div class="col-lg-2 genre-guide"><!-- こいつにpaddingあてればいい感じに余白ができる？ -->
 				<p class="genre-head">ジャンル別ランキング</p>
 				<% @genres.each do |g| %>
