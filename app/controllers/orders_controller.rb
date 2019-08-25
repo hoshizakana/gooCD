@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   def procedure
 		@order = Order.new
 		@cart_items = CartItem.where(user_id: current_user.id)
-		if @cart_items.nil?
-			redirect_to ("/"), notice: "カートに商品がありません。"
+		if @cart_items.count == 0
+      redirect_to ("/carts/#{current_user.id}"), notice: "カートに商品がありません。"
 		end
 		@addresses = Address.where(user_id: current_user.id)
   end

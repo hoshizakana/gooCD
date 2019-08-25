@@ -2,6 +2,8 @@
 
     <div class="main-layout">
         <div class="row product-wrapper">
+      <div class="favorite-message">
+      </div>
             <% @products.each do |product| %>
                     <div class="col-lg-2 product-index">
                         <%= link_to "/products/#{product.id}" do %>

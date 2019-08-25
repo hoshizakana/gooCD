@@ -3,11 +3,13 @@ class FavoritesController < ApplicationController
 
   def favorite
     favorite = current_user.favorites.new(product_id: @product.id)
+    flash.now[:success] = "#{@product.name}にいいねしました"
     favorite.save
   end
 
   def unfavorite
     favorite = current_user.favorites.find_by(product_id: @product.id)
+    flash.now[:warning] = "#{@product.name}のいいねを外しました"
     favorite.destroy
   end
 
