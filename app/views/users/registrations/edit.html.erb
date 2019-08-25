@@ -1,31 +1,45 @@
-<h2>パスワード変更</h2>
+<%= render 'layouts/user-nav', user: current_user  %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 sign_in_box">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-4 sign_in_box">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+            <h2>パスワード変更</h2>
 
-  <div class="field">
-    <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-    <% end %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="sign-up-field">
+                <%= f.label :password %> <br/>
+                <%= f.password_field :password, autocomplete: "new-password", class: "sign-up-address-field" %>
+                <% if @minimum_password_length %>
+                  <br />
+                  <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+                <% end %>
+              </div>
+
+              <div class="sign-up-field">
+                <%= f.label :password_confirmation %><br/>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "sign-up-address-field" %>
+              </div>
+
+              <div class="sign-up-field">
+                <%= f.label :current_password %> <br />
+                <%= f.password_field :current_password, autocomplete: "current-password", class: "sign-up-address-field" %>
+              </div>
+
+              <div class="actions">
+                <%# <%= f.submit t('.update') %>
+                <%= f.submit ('更新する'), class: "btn-flat-border" %>
+                <%= link_to "戻る", "/users/#{current_user.id}", class: "btn-flat-border" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%# <%= f.submit t('.update') %>
-    <%= f.submit ('更新する') %>
-    <%= link_to "戻る", "/users/#{current_user.id}" %>
-  </div>
-<% end %>
-
+</div>
