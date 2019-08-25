@@ -494,4 +494,7 @@ a:hover {
 .nav-content{
 	display:block;
 }
-
+//テーブル上下中央寄せ
+.table>thead>tr>th, .table>thead>tr>td, .table>tbody>tr>th, .table>tbody>tr>td, .table>tfoot>tr>th, .table>tfoot>tr>td {
+  vertical-align: middle;
+}

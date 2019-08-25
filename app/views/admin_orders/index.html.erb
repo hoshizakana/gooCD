@@ -19,8 +19,8 @@
 						<tr>
 							<th><%= f.label :is_created_gteq_lteq, "注文日" %></th>
 							<td>
-								<%= f.search_field :created_at_gteq %>～
-								<%= f.search_field :created_at_lteq %>
+								<%= f.date_field :created_at_gteq %>～
+								<%= f.date_field :created_at_lteq_end_of_day %>
 							</td>
 						</tr>
 						<tr>

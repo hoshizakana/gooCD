@@ -8,8 +8,10 @@
                           <% if product.status == "販売中" %>
                                 <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150", class: 'product-image' %><br>
                           <% else %>
-                            <div class="discontinued-box-2"><div class="hanbaiteishichuu">販売停止中</div></div>
-                                    <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150", class: 'product-image' %><br>
+                            <div class="discontinued-box">
+                              <div class="discontinued-box-2"><div class="hanbaiteishichuu">販売停止中</div></div>
+                              <%= attachment_image_tag product, :image, :fill, 200, 200, format: 'jpeg',fallback: 'no_image.jpg', size: "150x150", class: 'product-image' %><br>
+                            </div>
                           <% end %>
                           <%= link_to product.name, "/products/#{product.id}" %><br>
                           <%= link_to product.artist.name, "/products/#{product.id}" %><br>
