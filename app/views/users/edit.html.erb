@@ -10,6 +10,7 @@
              <h1 class="user-logo">Users Edit</h1>
                 <h1 class="user-logo">編集</h1>
                 <div class="form-group"> 
+  <%= render 'layouts/error_messages', model: f.object %>
                     <table class="table">
                         <tbody>
                             <tr><th>(姓)</th><th> <%= f.text_field :last_name, class: "form-control" %> </th></tr>
