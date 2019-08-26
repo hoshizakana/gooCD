@@ -41,25 +41,37 @@
             <div class="right-content">
                 <div class="text">
                     <div class="artist-name">
-                        <%= @product.artist.name %><br>
+                        <span class="name-show"><%= @product.artist.name %>☑<br></span>
                     </div>
                     <div class="name">
-                        <%= @product.label.name %>
-                        <%= @product.genre.name %>
+                        <span class="name-show"><%= @product.label.name %>☑</span>
+                        <span class="name-show"><%= @product.genre.name %>☑</span>
                     </div>
+                    
+                        
+                    
                 </div>
                 <div class="song-index">
                     <div class="title">
                         <%= @product.name %>
                     </div>
                     <div class="songs">
-                        <% @product.songs.each do |song| %><br>
-                            <%= song.disk %>
-                            <%= song.name %>
-                        <% end %>
-                    </div>
+                    <div class="form-group"> 
+                    <table class="table">
+                    <% @product.songs.each do |song| %>
+                        <tbody>
+                            <tr><th><%= song.disk %>.</th><th><%= song.name %> </th></tr>
+                            <tr><th></th><th></th></tr>
+                        </tbody>
+                    <% end %>
+                     </table>  
+                
+                     
                 </div>
             </div>
         </div>
+
+            
+
     </div>
 </div>

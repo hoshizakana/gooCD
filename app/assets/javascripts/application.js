@@ -105,8 +105,8 @@ $(function(){
       target_obj.hide();
       }
       //$(".cart-mouseover").slideDown(600);
-      $(this).parent().find('.cart-mouseover').show();
-      $(this).parent().find('.cart-mouseover').animate({scrollLeft:100});
+      $(this).parent().find('.cart-mouseover').show(600);
+      $(this).parent().find('.cart-mouseover').animate({scrollLeft:70});
 
       
       target_obj = $(this).parent().find('.cart-mouseover');

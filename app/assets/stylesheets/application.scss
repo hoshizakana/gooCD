@@ -106,22 +106,28 @@ color:#9d9d9d;
 }
 
 .artist-name {
-	font-size: 70px;
+    font-size: 70px;
 }
 
 .name {
-	font-size: 50px;
+    font-size: 50px;
+    
+}
+
+.name-show {
+    border-bottom: dotted 3px #333 ;
 }
 
 .title {
 	margin-top: 30px;
-	font-size: 50px;
+    font-size: 50px;
+    
 }
 
 .songs {
 	font-size: 30px;
-	text-align: left;
-	padding-left: 80px;
+	text-align: center;
+	
 }
 
 .left-content {
@@ -182,7 +188,12 @@ color:#9d9d9d;
       margin: 50px 15px 0 15px;
   }
 
-
+  .song-index {
+    margin-top: 35px;
+    border: double 5px #3a3e3f;
+    border-radius: 30px;
+    padding: 0 10px 0 10px;
+  }
 
   .user-logo {
       margin-bottom: 10px;
@@ -376,10 +387,7 @@ a:hover {
   list-style: none;
 }
 
-.user-edit {
-  margin: 0 auto;
-	//これ使ってる？？？
-}
+
 
 .nav-contents {
   display:inline-block;
@@ -490,4 +498,47 @@ a {
 .table>thead>tr>th, .table>thead>tr>td, .table>tbody>tr>th, .table>tbody>tr>td, .table>tfoot>tr>th, .table>tfoot>tr>td {
   vertical-align: middle;
 }
+
+.genre-tag {
+    color: white;
+    font-size: 35px;
+    display: inline-block;
+    border: double 5px #4ec4d3;
+    background-color: gray;
+    border-radius: 30px;
+    position: center;
+    padding: 0 10px 0 10px;
+}
+
+.genre-tag-2-3 {
+    color: white;
+    display: inline-block;
+    border: double 5px #4ec4d3;
+    background-color: gray;
+    border-radius: 30px;
+    position: center;
+    padding: 0 10px 0 10px;
+}
+
+.genre-tag-2-3-4 {
+    font-size: 100%;
+    color: white;
+    display: inline-block;
+    border: double 5px #4ec4d3;
+    background-color: gray;
+    border-radius: 30px;
+    position: center;
+    padding: 0 10px 0 10px;
+}
+
+
+
+.song-name {
+    font-size: 50px;
+}
+
+.genre-font-size {
+    
+}
+
 
