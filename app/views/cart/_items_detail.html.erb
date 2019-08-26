@@ -1,4 +1,4 @@
-<div class="row item-detail panel panel-default padding10 test-size">
+<div class="row item-detail panel panel-default padding10">
 	<div class="col-lg-4 item-detail-image">
 		<%= attachment_image_tag product, :image, :fill, 100, 100, class: "jacket-img", fallback: "no_image.jpg" %>
 	</div>
@@ -7,7 +7,7 @@
 		<p><%= product.artist.name %></p>
 		<p><%= product.label.name %></p>
 		<p><%= product.release_date %></p>
-		<p><%= product.genre.name %></p>
+		<p class="genre-tag-2-3-4"><%= product.genre.name %></p>
 		<p>税込価格：<%= product.taxed_price %>円</p> <!-- text-align: right; -->
 	</div>
 </div>

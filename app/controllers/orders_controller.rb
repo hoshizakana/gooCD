@@ -33,11 +33,11 @@ class OrdersController < ApplicationController
 
 	def create
 		cart_items = CartItem.where(user_id: current_user.id)
-		if cart_items.nil?
+		if cart_items.empty?
 			# cart_itemが空だったらredirect_to top
-			redirect_to ("/cart/#{current_user.id}"), notice: "カートに商品がありません"
+			redirect_to ("/carts/#{current_user.id}"), notice: "カートに商品がありません"
 		else
-		 
+
 			# カートの注文数が在庫数を超えていないかチェック　超えていたらカート画面にリダイレクト
 			cart_items.each do |cart_item|
 				product = Product.find(cart_item.product_id)
@@ -81,7 +81,7 @@ class OrdersController < ApplicationController
 					order_item.order_id = order.id
 					order_item.price = order_item.product.price
 					order_item.save
-					
+
 					# 在庫数をカートの数量だけ減らす
 					product = Product.find(cart_item.product_id)
 					product.stock -= cart_item.item_number
