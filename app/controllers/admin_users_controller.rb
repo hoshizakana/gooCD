@@ -21,7 +21,7 @@ class AdminUsersController < ApplicationController
 
   def index
 		@search = User.ransack(params[:q])
-		@result = @search.result
+		@result = @search.result.page(params[:page]).per(30).order('created_at desc')
 		# @users = User.all これなしでも、全件表示可能
 		# resultには空条件で検索した結果（つまりすべてのレコード）が入る為
   end

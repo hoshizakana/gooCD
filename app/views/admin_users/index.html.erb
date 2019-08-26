@@ -27,6 +27,9 @@
 	</div>
 	<div class="row user-index">
 		<div class="col-lg-10 col-lg-offset-1">
+			<div class="paginate">
+				<%= paginate @result, class: "paginate" %>
+			</div>
 			<table class="table user-index-table">
 				<tr>
 					<th>会員ID</th>
@@ -41,10 +44,13 @@
 						<td><%= r.last_name %><%= r.first_name %></td>
 						<td><%= r.phone %></td>
 						<td><%= r.email %></td>
-						<td><%= link_to "詳細へ", "/admin/users/#{r.id}" %></td>
+						<td><%= link_to "詳細", "/admin/users/#{r.id}", class: "btn btn-success"%></td>
 					</tr>
 				<% end %>
 			</table>
+			<div class="paginate">
+				<%= paginate @result, class: "paginate" %>
+			</div>
 		</div>
 	</div>
 </div>
