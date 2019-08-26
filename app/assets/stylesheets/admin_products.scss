@@ -17,7 +17,7 @@
 }
 .add-song-button {
   position: absolute;
-  top: 48px;
+  top: 82px;
   right: 32px;
 }
 .remove_fields {
@@ -25,6 +25,7 @@
 }
 .song-table-right {
   position: relative;
+  margin-top: -17px;
 }
 .song-edit-table {
   position: relative;
@@ -47,5 +48,23 @@
   margin-bottom: -5px;
 }
 h1, .admin-product-page {
-  margin-bottom: 30px;
+}
+.kensaku-button {
+  width: 300px;
+  margin: 0 auto;
+}
+.admin-hr {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.admin-product-input-form {
+  margin-top: 20px;
+}
+.product-new-label {
+  text-align: center;
+  background-color: #b0c4de;
+  height: 30px;
+  border-radius: 10px;
+  padding-top: 4px;
+  font-size: 20px;
 }

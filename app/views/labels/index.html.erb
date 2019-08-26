@@ -3,28 +3,33 @@
   <div class="row">
 
     <h1>レーベルマスタ編集</h1>
+    <hr class="admin-hr">
+      <%# フラッシュメッセージ %>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>">
+          <%= message %>
+        </div>
+      <% end %>
 
-    <%# フラッシュメッセージ %>
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>">
-        <%= message %>
+    <div class="master-index-box">
+      <div class="master-index-form">
+    <%# レーベルの投稿フォーム %>
+      <p class="product-new-label">レーベル追加登録</p>
+    <%= form_for(@label) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <div class="master-add-form-box">
+      <%= f.text_field :name, class: "master-add-form" %>
+      <%= f.submit "追加する", class: "btn btn-primary btn-xs master-button" %>
       </div>
     <% end %>
 
-
-    <%# レーベルの投稿フォーム %>
-    <%= form_for(@label) do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
-      <%= f.text_field :name %>
-      <%= f.submit "追加する" %>
-    <% end %>
-
     <%# 検索フォーム（オートコンプリート） %>
+      <p class="product-new-label">検索フォーム</p>
      <%= search_form_for @search, url: '/labels', method: :get, enforce_utf8: false do |f| %>
-       <%= autocomplete_field_tag 'label[name]', nil, '/labels/autocomplete_product_name' %>
-       <%= f.submit '検索' %>
+       <%= autocomplete_field_tag 'label[name]', nil, '/labels/autocomplete_product_name', class: "master-add-form" %>
+       <%= f.submit '検索', class: "btn btn-success btn-xs master-button" %>
      <% end %>
-
+      </div>
     <%# レーベルの一覧表示 %>
     <h3>レーベル一覧</h3>
     <table class="table">
@@ -33,5 +38,6 @@
         <%= render 'labels/each_label_button', label: label %>
     <% end %>
     </table>
+    </div>
   </div>
 </div>

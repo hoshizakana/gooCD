@@ -1,8 +1,8 @@
 
 <div class="edit_genre row" data-genre="<%= @id_genre %>">
   <%= form_with(model: genre, :url => {:action => :update}, remote: true) do |f| %>
-      <%= f.text_field :name  %>
-      <%= f.submit '保存', class: 'btn' %>
+      <%= f.text_field :name, class: "master-edit-form"  %>
+      <%= f.submit '保存', class: 'btn btn-info btn-xs' %>
     </div>
   <% end %>
 </div>

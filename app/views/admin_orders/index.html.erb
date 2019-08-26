@@ -1,13 +1,13 @@
 <%= render '/layouts/admin-nav' %>
-
 <div class="container">
-
-	<div class="row order-search">
-		<div class="col-xs-10 col-xs-offset-1">
 			<h2>受注一覧</h2>
+      <hr class="admin-hr">
+	<div class="row order-search">
+		<div class="col-xs-6 col-xs-offset-3">
+    <p class="product-new-label">検索フォーム</h3>
 			<div class="search_form">
 				<%= search_form_for @search, url: '/admin/orders' do |f| %>
-					<table>
+					<table class="table">
 						<tr>
 							<th><%= f.label :id_eq, "注文番号" %></th><!-- ransackでは整数値の部分検索に非対応 -->
 							<td><%= f.search_field :id_eq %></td>
@@ -25,29 +25,15 @@
 						</tr>
 						<tr>
 							<th><%= f.label :shipping_status_in, "ステータス" %></th>
-							<td>
-								<%= f.radio_button :shipping_status_eq, "", {:checked => true} %>全て
-
-							</td>
-						</tr>
-						<tr>
-							<th></th>
-							<td></td>
+							<td><%= f.radio_button :shipping_status_eq, "", {:checked => true} %>全て
+							<%= f.radio_button :shipping_status_eq, "発送準備中" %>発送準備中
+							<%= f.radio_button :shipping_status_eq, "発送済み" %>発送済み
+							<%= f.radio_button :shipping_status_eq, "キャンセル" %>キャンセル</td>
 						</tr>
 					</table>
 
-
-
-
-						<div class="form-margin">
-
-
-						<%= f.radio_button :shipping_status_eq, "発送準備中" %>発送準備中
-						<%= f.radio_button :shipping_status_eq, "発送済み" %>発送済み
-						<%= f.radio_button :shipping_status_eq, "キャンセル" %>キャンセル
-					</div>
-					<div class="form-margin">
-						<%= f.submit "検索" %>
+					<div class="kensaku-button">
+						<%= f.submit "検索", class: "btn btn-success product-shinkitouroku" %>
 					</div>
 				<% end %>
 			</div>
@@ -55,7 +41,7 @@
 	</div>
 
 	<div class="row order-index">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-xs-10 col-xs-offset-1 admin-order-rireki">
 			<%= paginate @result, class: "paginate" %>
 			<table class="table order-index-table">
 				<tr>
