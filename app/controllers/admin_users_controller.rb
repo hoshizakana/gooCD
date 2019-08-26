@@ -4,6 +4,7 @@ class AdminUsersController < ApplicationController
   def show
 		@user = User.find(params[:id])
 		# @orders = Order.find(params[:user_id]) # 正しいのか？
+    @orders = Order.where(user_id: params[:id]).page(params[:page]).per(10)
   end
 
   def edit
