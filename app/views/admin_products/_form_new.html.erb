@@ -7,56 +7,27 @@
   <!-- -->
   <div class="row">
     <div class="col-xs-5">
-        >
-        　<label for="artist-name">アーティスト名</label>
-        　<%= f.collection_select(:artist_id,@artists,:id,:name) %>
-        </div>
-
-        <div>
-        　<label for="album-name">シングル/アルバム名</label>
-          <%= f.text_field :name, id:"album-name" %>
-        </div>
-
-        <div>
-          <label>ジャケット画像</label>
-          <div>
-            <%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'200x200' %>
-          </div>
-          <%= f.attachment_field :image  %>
-        </div>
-
-        <div>
-        　<label for="price">価格（税別価格）</label>
-          <%= f.text_field :price, id:"price" %>
-        </div>
-
-        <div>
-        　<label for="stock">在庫数</label>
-          <%= f.text_field :stock, id:"stock" %>
-        </div>
-
-        <div>
-        　<label for="artist-name">レーベル名</label>
-        　<%= f.collection_select(:label_id,@labels,:id,:name) %>
-        </div>
-
-        <div>
-      　<label for="genre">ジャンル</label>
-        　<%= f.collection_select(:genre_id,@genres,:id,:name) %>
-        </div>
-
-        <div>
-      　<label for="status">ステータス</label>
-      　　<%= f.select :status, ["販売中", "販売停止中"], :prompt => "選択してください", id:"status"%>
-        </div>
-
-        <div>
-      　<label for="release_date">発売日</label>
-        <%= f.date_field :release_date, id:"release_date" %>
-        </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>項目</td>
+            <td>商品情報入力欄</td>
+          </tr>
+        <tbody>
+        <tr><th class="admin-product-new-label">アーティスト名</th><th><%= f.collection_select(:artist_id,@artists,:id,:name) %></th></tr>
+        <tr><th class="admin-product-new-label">シングル/アルバム名</th><th><%= f.text_field :name, id:"album-name" %></th></tr>
+        <tr><th class="admin-product-new-label">ジャケット画像</th><th><%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'100x100' %><%= f.attachment_field :image  %></th></tr>
+        <tr><th class="admin-product-new-label">価格（税別価格）</th><th><%= f.text_field :price, id:"price" %></th></tr>
+        <tr><th class="admin-product-new-label">在庫数</th><th><%= f.text_field :stock, id:"stock" %></th></tr>
+        <tr><th class="admin-product-new-label">レーベル名</th><th><%= f.collection_select(:label_id,@labels,:id,:name) %></th></tr>
+        <tr><th class="admin-product-new-label">ジャンル</th><th><%= f.collection_select(:genre_id,@genres,:id,:name) %></th></tr>
+        </tr><th class="admin-product-new-label">ステータス</th><th><%= f.select :status, ["販売中", "販売停止中"], :prompt => "選択してください", id:"status"%></th></tr>
+        </tr><th class="admin-product-new-label">発売日</th><th><%= f.date_field :release_date, id:"release_date" %></th></tr>
+        </tbody>
+      </table>
     </div>
 
-  <div class="col-xs-7">
+  <div class="col-xs-5 col-xs-offset-1 song-table-right">
       　<label>収録曲</label>
           <div class="product_song_box", id="add_song_#{s}">
           <table class="table product_song_table">
@@ -73,11 +44,10 @@
               <% end %>
           </table>
           </div>
-          <div>
-              <%= link_to_add_association '追加', f, :songs, class: 'btn btn-primary' %>
+          <div class="add-song-button">
+              <%= link_to_add_association '行追加', f, :songs, class: 'btn btn-primary btn-xs' %>
           </div>
   </div>
-
   </div>
   <div>
   <%= f.submit "新規登録", class: 'btn btn-primary' %>
