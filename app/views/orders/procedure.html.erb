@@ -105,8 +105,12 @@
 					</div>
 				</div>
 
-				<div class="cart-index">
-					<div class="row">
+				<!-- お買い上げ商品 -->
+				<div class="cart-index panel panel-success">
+					<div class="panel-heading">
+						<h4 class="text-center">お買い上げ商品</h4>
+					</div>
+					<div class="row panel-body">
 						<div class="col-xs-8 col-xs-offset-2 cart-index-list">
 							<% @cart_items.each do |cart_item| %><!--Todo cart_item.productに直す-->
 								<% product = Product.find(cart_item.product_id) %>
@@ -120,8 +124,6 @@
 						</div>
 					</div>
 				</div>
-
-				<hr>
 
 				<div class="buttons">
 					<div class="row">

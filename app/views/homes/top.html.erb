@@ -20,23 +20,23 @@
       </div>
     <% end %>
 
-		<div class="col-lg-2 genre-guide">
+		<div class="col-xs-2 genre-guide">
 		<%# ジャンル別ランキングのリンクを部分テンプレートから呼び出し %>
 			<%= render 'layouts/genre-guide' %>
 		</div>
 
-		<div class="col-lg-10 ">
+		<div class="col-xs-10 ">
 
 			<!-- 総合ランキング -->
 			<div class="row total-ranking">
-				<div class="col-lg-12">
+				<div class="col-xs-12">
 					<p>いいね！ランキング</p> <!-- text-align: center; -->
 				</div>
 			</div>
 			<div class="row total-rank1">
 <!-- ここで1位のCD情報を渡す -->
 				<div class="col-xs-1 product-index">
-				
+
 					<p>1</p> <!-- 1位アイコン -->
 				</div>
 				<div class="col-xs-2">
@@ -71,25 +71,25 @@
 				<% rank3 = @all_ranked_product[2] %>
 
 <!-- 2位 -->
-				<div class="col-lg-6 top-products">
-					<div class="col-lg-2">
+				<div class="col-xs-6 top-products">
+					<div class="col-xs-2">
 						<p>2</p> <!-- ランク数を受け取って表示 -->
 					</div>
-					<div class="col-lg-3 ">
+					<div class="col-xs-3 ">
 					<%= link_to "/products/#{@all_ranked_product[1].id}" do %>
 						<%= attachment_image_tag rank2, :image, :fill, 170, 170, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
 					</div>
-					<div class="col-lg-7 ">
+					<div class="col-xs-7 ">
 
 						<div class="row">
-							<div class="col-lg-12 top-contents">
+							<div class="col-xs-12 top-contents">
 								<p>
 									<%= rank2.name %>
 								</p>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-lg-12 top-contents">
+							<div class="col-xs-12 top-contents">
 								<p>
 									<%= rank2.artist.name %>
 								</p>
@@ -102,24 +102,24 @@
 					</div>
 				</div>
 <!-- 3位 -->
-				<div class="col-lg-6 top-products">
-					<div class="col-lg-1">
+				<div class="col-xs-6 top-products">
+					<div class="col-xs-1">
 						<p>3</p> <!-- ランク数を受け取って表示 -->
 					</div>
-					<div class="col-lg-3 ">
+					<div class="col-xs-3 ">
 					<%= link_to "/products/#{@all_ranked_product[2].id}" do %>
 						<%= attachment_image_tag rank3, :image, :fill, 150, 150, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image'  %>
 					</div>
-					<div class="col-lg-7">
+					<div class="col-xs-7">
 						<div class="row">
-							<div class="col-lg-12 top-contents">
+							<div class="col-xs-12 top-contents">
 								<p>
 									<%= rank3.name %>
 								</p>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-lg-12 top-contents">
+							<div class="col-xs-12 top-contents">
 								<p>
 									<%= rank3.artist.name %>
 								</p>
@@ -142,22 +142,22 @@
 
 			<!-- ジャンルごとランキング -->
 			<div class="row genre-ranking">
-				<div class="col-lg-6 ranking-1">
+				<div class="col-xs-6 ranking-1">
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-xs-12">
 							<p>J-pop いいね！ランキング</p>
 						</div>
 					</div>
 <!-- j-pop 1位 -->
 						<div class="row genre-rank1-2-3">
-							<div class="col-lg-1">
+							<div class="col-xs-1">
 								<p>第<%= 1 %>位</p>
 							</div>
-							<div class="col-lg-3">
+							<div class="col-xs-3">
 							<%= link_to "/products/#{@jpop_rank[0].id}" do %>
 								<%= attachment_image_tag @jpop_rank[0], :image, :fill, 80, 80, class: "jacket-img", fallback: "no_image.jpg",class: 'product-image' %>
 							</div>
-							<div class="col-lg-7">
+							<div class="col-xs-7">
 								<div class="row">
                   			  <p><%= @jpop_rank[0].name %></p>
 							  <p><%= @jpop_rank[0].artist.name %></p>
@@ -171,15 +171,15 @@
 						</div>
 <!-- j-pop 2位 -->
 						<div class="row genre-rank1-2-3">
-							<div class="col-lg-1">
+							<div class="col-xs-1">
 
 								<p>第<%= 2 %>位</p>
 							</div>
-							<div class="col-lg-3">
+							<div class="col-xs-3">
 							<%= link_to "/products/#{@jpop_rank[1].id}" do %>
 								<%= attachment_image_tag @jpop_rank[1], :image, :fill, 80, 80, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
 							</div>
-							<div class="col-lg-7">
+							<div class="col-xs-7">
 								<div class="row">
                   				<p><%= @jpop_rank[1].name %></p>
 								  <p><%= @jpop_rank[1].artist.name %></p>
@@ -193,14 +193,14 @@
 						</div>
 <!-- j-pop 3位 -->
 						<div class="row genre-rank1-2-3">
-							<div class="col-lg-1">
+							<div class="col-xs-1">
 								<p>第<%= 3 %>位</p>
 							</div>
-							<div class="col-lg-3">
+							<div class="col-xs-3">
 							<%= link_to "/products/#{@jpop_rank[1].id}" do %>
 								<%= attachment_image_tag @jpop_rank[2], :image, :fill, 80, 80, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
 							</div>
-							<div class="col-lg-7">
+							<div class="col-xs-7">
 								<div class="row">
                   				<p><%= @jpop_rank[2].name %></p>
 								  <p><%= @jpop_rank[2].artist.name %></p>
@@ -212,7 +212,7 @@
 							</div>
 						</div>
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-xs-12">
 							<p>もっと見る</p> <!-- text-align: right; linktoに直す -->
 						</div>
 					</div>
@@ -220,22 +220,22 @@
 
 <!-- ROCK ランキング -->
 			<div class="row genre-ranking">
-				<div class="col-lg-6">
+				<div class="col-xs-6">
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-xs-12">
 							<p>rock いいね！ランキング</p>
 						</div>
 					</div>
 <!-- rock 1位 -->
 						<div class="row genre-rank1-2-3">
-							<div class="col-lg-1">
+							<div class="col-xs-1">
 								<p>第<%= 1 %>位</p>
 							</div>
-							<div class="col-lg-3">
+							<div class="col-xs-3">
 							<%= link_to "/products/#{@rock_rank[0].id}" do %>
 								<%= attachment_image_tag @rock_rank[0], :image, :fill, 80, 80, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
 							</div>
-							<div class="col-lg-7">
+							<div class="col-xs-7">
 								<div class="row">
                   				<p><%= @rock_rank[0].name %></p>
 								<p><%= @rock_rank[0].artist.name %></p>
@@ -248,14 +248,14 @@
 						</div>
 <!-- rock 2位 -->
 						<div class="row genre-rank1-2-3">
-							<div class="col-lg-1">
+							<div class="col-xs-1">
 								<p>第<%= 2 %>位</p>
 							</div>
-							<div class="col-lg-3">
+							<div class="col-xs-3">
 							<%= link_to "/products/#{@rock_rank[1].id}" do %>
 								<%= attachment_image_tag @rock_rank[1], :image, :fill, 80, 80, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
 							</div>
-							<div class="col-lg-7">
+							<div class="col-xs-7">
 								<div class="row">
                   				<p><%= @rock_rank[1].name %></p>
 								<p><%= @rock_rank[1].artist.name %></p>
@@ -268,14 +268,14 @@
 						</div>
 <!-- rock 3位 -->
 						<div class="row genre-rank1-2-3">
-							<div class="col-lg-1">
+							<div class="col-xs-1">
 								<p>第<%= 3 %>位</p>
 							</div>
-							<div class="col-lg-3">
+							<div class="col-xs-3">
 							<%= link_to "/products/#{@rock_rank[2].id}" do %>
 								<%= attachment_image_tag @rock_rank[2], :image, :fill, 80, 80, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
 							</div>
-							<div class="col-lg-7">
+							<div class="col-xs-7">
 								<div class="row">
                   				<p><%= @rock_rank[2].name %></p>
 								  <p><%= @rock_rank[2].artist.name %></p>
@@ -287,7 +287,7 @@
 							</div>
 						</div>
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-xs-12">
 							<p>もっと見る</p> <!-- text-align: right; linktoに直す -->
 						</div>
 					</div>
