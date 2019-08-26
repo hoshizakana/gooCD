@@ -1,13 +1,9 @@
-<div class="row nav-bar">
-	<div class="col-lg-12">
-		<%= render 'layouts/user-nav' %>
-	</div>
-</div>
+<%= render 'layouts/user-nav' %>
 
 <div class="container">
 
 	<div class="row flash-message">
-		<div class="col-lg-10 col-lg-offset-1">
+		<div class="col-xs-10 col-xs-offset-1">
 			<% flash.each do |message_type, message| %>
 				<div class="alert alert-<%= message_type %>">
 					<%# フラッシュメッセージ %>
@@ -18,33 +14,33 @@
 	</div>
 
 	<div class="row cart-body">
-		<div class="col-lg-10 col-lg-offset-1">
+		<div class="col-xs-9 col-xs-offset-1">
 			<h2><%= current_user.last_name %>様カート</h2>
 
 			<% if @cart_items.count == 0 %>
 				<p>お客様のカートに、商品はありません。</p>
 			<% else %>
 				<div class="row cart-index">
-					<div class="col-lg-9 cart-index-list">
+					<div class="col-xs-8 cart-index-list">
 						<% @cart_items.each do |cart_item| %>
 							<% product = Product.find(cart_item.product_id) %>
 							<div class="cart-item">
 								<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
-								<%= form_for cart_item, url: "/cart_items/#{cart_item.id}" do |f| %>
-									<%= f.number_field :item_number, in:1..99 %>
-									<%= f.submit "更新" %>
-									<!-- f.submit "" 更新を非同期でやるという話 -->
-								<% end %>
-								<p>税込価格：<%= price_multiple_helper(cart_item) %>円</p>
-								<hr>
-								<%= link_to '削除', "/cart_items/#{cart_item.id}", method: :delete, notice: "削除しました" %><!-- text-align: right -->
+								<div class="text-right">
+									<%= form_for cart_item, url: "/cart_items/#{cart_item.id}" do |f| %>
+										<%= f.number_field :item_number, in:1..99 %>
+										<%= f.submit "更新" %>
+									<% end %>
+									<p class="line-height">税込価格：<%= price_multiple_helper(cart_item) %>円</p>
+									<hr class="hr-margin">
+									<%= link_to '削除', "/cart_items/#{cart_item.id}", method: :delete, notice: "削除しました", class:"text-right" %><!-- text-align: right -->
+								</div>
 							</div>
 						<% end %>
-
 					</div>
-					<div class="col-lg-3 cart-total">
+					<div class="col-xs-2 col-xs-offset-1 cart-total">
 						<div class="row">
-							<table class="cart-total-show">
+							<table class="cart-total-show line-height">
 								<tr>
 									<th>小計：</th>
 									<td><%= subtotal_price_helper(@cart_items) %>円</td>
