@@ -47,7 +47,7 @@
 				</div>
 
 				<div class="payment panel panel-warning">
-					<div class="panel-heading bgc-yellow">
+					<div class="panel-heading">
 						<h4 class="text-center">お支払い情報</h4>
 					</div>
 					<div class="row panel-body">
@@ -83,15 +83,18 @@
 					</div>
 				</div>
 
-				<div class="cart-index">
-					<div class="row">
+				<div class="cart-index panel panel-success">
+					<div class="panel-heading">
+						<h4 class="text-center">お買い上げ商品</h4>
+					</div>
+					<div class="row panel-body">
 						<div class="col-xs-12 cart-index-list">
 							<% @cart_items.each do |cart_item| %>
 								<% product = Product.find(cart_item.product_id) %>
 								<div class="cart-item">
 									<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
 									<p class="text-right">数量：<%= cart_item.item_number %></p>
-									<p class="text-right">価格（税込）：<%= price_multiple_helper(cart_item) %>円</p>
+									<p class="text-right">価格(税込)：<%= price_multiple_helper(cart_item) %>円</p>
 									<hr>
 								</div>
 							<% end %>
