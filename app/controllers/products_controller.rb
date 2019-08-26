@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    # @products = Product.all
+    # @product_show = @products.artists.where(params[:id])
 		# @cart_item = CartItem.new
 			#-> form使わずにlinktoで飛ばすので、cart_itemを渡すことは不可能
   end

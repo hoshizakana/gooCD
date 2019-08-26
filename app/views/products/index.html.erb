@@ -16,7 +16,7 @@
                             </div>
                           <% end %>
                           <%= link_to product.name, "/products/#{product.id}" %><br>
-                          <%= link_to product.artist.name, "/products/#{product.id}" %><br>
+                          <%= link_to product.artist.name, "/products/#{product.id}", class: 'index-name-2-3-4' %><br>
                         <% end %>
                           <!--いいね機能 -->
                           <%= render 'products/products', product: product %>
