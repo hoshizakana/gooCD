@@ -18,8 +18,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 body {
     font-family: 'Noto Serif JP', sans-serif;
@@ -41,6 +41,11 @@ body {
   clear: both;
 }
 
+ul {
+  list-style: none;
+}
+
+//navbar関連
 .header {
 	width: 100%;
 	background-color: cadetblue;
@@ -51,11 +56,10 @@ body {
 	z-index: 10;
 }
 
-
-
 .navbar-header{
 	font-size:25px;
 	color:#9d9d9d;
+  height: 60px;
 }
 
 .logo {
@@ -91,18 +95,36 @@ color:#9d9d9d;
   margin-bottom:0;
 }
 
-
  .navbar-right {
-    margin: 13px 50px 0 0;
+    margin: 10px 50px 0 0;
  }
 
  .navbar-left {
      margin-left: 80px;
  }
 
-
 .right-content {
 	text-align: center;
+}
+
+.navbar-left{
+	position:relative;
+}
+
+.nav-contents {
+  display:inline-block;
+  height: 50px;
+}
+
+.nav-contents:hover {
+  background: #67c5ff;
+  opacity: 0.6;
+  color: white;
+  border-radius: 10px;
+}
+
+.nabvar-logo {
+  background-image: url(logo.png);
 }
 
 .artist-name {
@@ -173,12 +195,12 @@ color:#9d9d9d;
      margin-top: 50px
  }
   .release-date {
-      margin-right: 95px; 
+      margin-right: 95px;
   }
 
   .songs-count {
-      margin-left: 95px; 
-  } 
+      margin-left: 95px;
+  }
 
   .admin-product {
       margin-top: 10px;
@@ -206,7 +228,7 @@ color:#9d9d9d;
 
 
 
-  
+
     .btn-flat-border {
         display: inline-block;
         padding: 0.3em 1em;
@@ -216,33 +238,33 @@ color:#9d9d9d;
         border-radius: 3px;
         transition: .4s;
       }
-      
+
       .btn-flat-border:hover {
         background: #67c5ff;
         color: white;
       }
-      
-  
+
+
     .product-index {
-        overflow: hidden;	
-        transition-duration: 0.3s;	
+        overflow: hidden;
+        transition-duration: 0.3s;
     }
     .product-index:hover {
-        transform: scale(1.1);	
-        transition-duration: 0.3s;	
-        
+        transform: scale(1.1);
+        transition-duration: 0.3s;
+
     }
 
     .total-rank1 {
-        overflow: hidden;	
+        overflow: hidden;
         transition-duration: 0.3s;
 
     }
 
     .total-rank1:hover {
-        transform: scale(1.1);	
-        transition-duration: 0.3s;	
-        
+        transform: scale(1.1);
+        transition-duration: 0.3s;
+
     }
 
     .product-text {
@@ -253,7 +275,7 @@ color:#9d9d9d;
     a:hover {
         text-decoration: none;
     }
-    
+
 
 .buy-btn {
 	margin: 50px 15px 0 15px;
@@ -323,9 +345,7 @@ a:hover {
 	margin: 0 auto;
 }
 
-.navbar-left{
-	position:relative;
-}
+
 
 .input-group{
 	margin-top:15px;
@@ -389,9 +409,6 @@ a:hover {
 
 
 
-.nav-contents {
-  display:inline-block;
-}
 
 .item-detail {
 	// border: groove; ちょっとダサいから打ち消し（やまだ）
@@ -402,6 +419,7 @@ a:hover {
 	position:relative;
 	height:100%;
 }
+
 
 .nav-contents:hover {
 
@@ -421,7 +439,7 @@ a:hover {
 
 .genre-guide {
     position: sticky;
-    top: 120px;
+    top: 40px;
     z-index: 0;
 }
 
@@ -433,7 +451,7 @@ a:hover {
 
 //Saddy
 .container {
-	padding-top: 50px;
+	padding-top: 60px;
 }
 .admin-order-edit-disabler {
 	border: none;
@@ -444,6 +462,9 @@ a:hover {
 .devise-form-center {
 	width: 350px;
 	margin: 15px auto;
+}
+.inline-blocker {
+  display: inline-block;
 }
 
 .payment-hr{
@@ -459,6 +480,41 @@ a:hover {
 .form-td-margin {
 	margin: 5px 0;
 }
+.floater {
+  float: left;
+}
+.marginer {
+  margin: 10px;
+}
+.padding10 {
+  padding: 10px;
+}
+.inline-blocker {
+  display: inline-block;
+}
+.bordered {
+  border: 1px solid #BBB;
+}
+// .order-item-info {
+//   border: 1px solid;
+// }
+.font-size20 {
+  font-size: 20px;
+}
+.font-size16 {
+  font-size: 16px;
+}
+.text-right {
+  text-align: right;
+}
+
+
+
+#skippr-container {
+  // margin-top: 60px; navバーの位置がおかしくなるため無効化
+
+}
+
 
 
 .jacket-img{
@@ -484,12 +540,32 @@ a:hover {
     color: black;
 }
 
+.genre-guide-item{
+}
+
+.genre-guide-item-link{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  height:45px;
+  line-height:45px;
+  padding:0 10px;
+  background-color:#f5f5f5;
+  transition:0.1s all ease 0s;
+  margin-bottom:5px;
+}
+
+.genre-guide-item-link:hover{
+  color:white;
+  background-color:#696969;
+}
+
 a {
     color: black;
     text-decoration: none;
   }
 
-  
+
 
 .nav-content{
 	display:block;
@@ -498,6 +574,7 @@ a {
 .table>thead>tr>th, .table>thead>tr>td, .table>tbody>tr>th, .table>tbody>tr>td, .table>tfoot>tr>th, .table>tfoot>tr>td {
   vertical-align: middle;
 }
+
 
 .genre-tag {
     color: white;
@@ -542,3 +619,9 @@ a {
 }
 
 
+
+.paginate {
+  text-align: center;
+  width: 700px;
+  margin: 0 auto;
+}

@@ -13,10 +13,27 @@
   z-index: 2;
   border-radius: 35px;
 }
+.discontinued-box-3 {
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  position: absolute;
+  background-color: #696969;
+  opacity: 0.7;
+  z-index: 2;
+  border-radius: 35px;
+}
 .discontinued-box {
   width: 150px;
   height: 150px;
   position: relative;
+  margin: 0 auto;
+}
+.discontinued-box-show {
+  width: 350px;
+  height: 350px;
+  position: relative;
+  margin: 0 auto;
 }
 .product-show-img {
   width: 350px;

@@ -1,15 +1,18 @@
 <%= render 'layouts/user-nav' %>
 <div class="container">
-<%= render 'layouts/genre-guide' %>
 	
 	<div class="row product-wrapper">
-		<div class="col-xs-2">
-			<!-- render 'ジャンルガイド' 共用化せねば… -->
+		<div class="col-xs-2 genre-guide">
+			<%= render 'layouts/genre-guide' %>
 		</div>
 		<div class="col-lg-10 ">
 			
 			<div class="row">
-				<h2>いいね！ランキング</h2>
+        <% if @genre %>
+          <h2><%= @genre.name %>         いいね！ランキング</h2>
+        <% else %> 
+          <h2>総合いいね！ランキング</h2>
+        <% end %>
 			</div>
 
 			<div class="row total-rank1">

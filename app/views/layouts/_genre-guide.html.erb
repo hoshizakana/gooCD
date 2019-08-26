@@ -1,16 +1,14 @@
-
-    
-        
-            <div class="col-lg-2 genre-guide"><!-- こいつにpaddingあてればいい感じに余白ができる？ -->
-                    <p class="genre-head">ジャンル別ランキング</p>
-                    <% @genres.each do |g| %>
-            <table class="table">
-                <tr>
-                <th><%= link_to g.name, "ranking/#{g.id}", class: "btn-flat-border btn-block"  %></th>
-                </tr>
-                </table>
-                    <% end %>
-            </div>
-        
-    
-
+<p class="genre-head">ジャンル別ランキング</p>
+<div class="genre-guide-item">
+  <%= link_to "/ranking/", class: "genre-guide-item-link" do %>
+    <span>総合</span>
+    <span class="glyphicon glyphicon-menu-right"></span>
+  <% end %>
+  <% @genres.each do |g| %>
+    <%= link_to "/ranking/#{g.id}", class: "genre-guide-item-link" do %>
+        <span><%= g.name %></span>
+        <span class="glyphicon glyphicon-menu-right"></span>
+    <% end %>
+  <% end %>
+</div>
+  

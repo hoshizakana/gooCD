@@ -11,22 +11,27 @@
 			<h2>会員一覧</h2>
 
 			<!-- ransack試す -->
-			<%= search_form_for @search, url: 'users' do |f| %>
-				<%= f.label :id_eq, "ID" %><br>
-					<!-- ransackでは整数値の部分検索に非対応 -->
-				<%= f.search_field :id_eq %><br>
-				<%= f.label :email_cont, "メールアドレス" %><br>
-				<%= f.search_field :email_cont %><br>
-				<%= f.label :phone_cont, "電話番号" %><br>
-				<%= f.search_field :phone_cont %><br>
-				<%= f.label :last_name_or_first_name_cont, "お名前" %><br>
-				<%= f.search_field :last_name_or_first_name_cont %><br>
-				<%= f.submit "検索" %><br>
-			<% end %>
+        <table class="table">
+          <%= search_form_for @search, url: 'users' do |f| %>
+            <th><%= f.label :id_eq, "ID" %><br>
+              <!-- ransackでは整数値の部分検索に非対応 -->
+            <th><%= f.search_field :id_eq %><br>
+            <th><%= f.label :email_cont, "メールアドレス" %><br>
+            <th><%= f.search_field :email_cont %><br>
+            <th><%= f.label :phone_cont, "電話番号" %><br>
+            <th><%= f.search_field :phone_cont %><br>
+            <th><%= f.label :last_name_or_first_name_cont, "お名前" %><br>
+            <th><%= f.search_field :last_name_or_first_name_cont %><br>
+            <th><%= f.submit "検索" %><br>
+          <% end %>
+        </table>
 		</div>
 	</div>
 	<div class="row user-index">
 		<div class="col-lg-10 col-lg-offset-1">
+			<div class="paginate">
+				<%= paginate @result, class: "paginate" %>
+			</div>
 			<table class="table user-index-table">
 				<tr>
 					<th>会員ID</th>
@@ -41,10 +46,13 @@
 						<td><%= r.last_name %><%= r.first_name %></td>
 						<td><%= r.phone %></td>
 						<td><%= r.email %></td>
-						<td><%= link_to "詳細へ", "/admin/users/#{r.id}" %></td>
+						<td><%= link_to "詳細", "/admin/users/#{r.id}", class: "btn btn-success"%></td>
 					</tr>
 				<% end %>
 			</table>
+			<div class="paginate">
+				<%= paginate @result, class: "paginate" %>
+			</div>
 		</div>
 	</div>
 </div>
