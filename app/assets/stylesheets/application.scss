@@ -18,8 +18,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 body {
     font-family: 'Noto Serif JP', sans-serif;
@@ -427,7 +427,7 @@ a:hover {
 
 .genre-guide {
     position: sticky;
-    top: 120px;
+    top: 40px;
     z-index: 0;
 }
 
@@ -467,7 +467,7 @@ a:hover {
 }
 
 #skippr-container {
-  margin-top: 60px;
+  // margin-top: 60px; navバーの位置がおかしくなるため無効化
 }
 
 .jacket-img{
