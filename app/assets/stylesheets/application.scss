@@ -493,6 +493,24 @@ a:hover {
     color: black;
 }
 
+.genre-guide-item{
+  height:45px;
+  margin-bottom:5px;
+  
+}
+
+.genre-guide-item-link{
+  display:block;
+  height:45px;
+  line-height:45px;
+  padding-left:10px;
+  background-color:#f5f5f5;
+}
+
+.genre_icon{
+  float:right;
+}
+
 a {
     color: black;
     text-decoration: none;

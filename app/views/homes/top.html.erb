@@ -22,11 +22,12 @@
 		<div class="col-lg-2 genre-guide">
 				<p class="genre-head">ジャンル別ランキング</p>
 				<% @genres.each do |g| %>
-          <table class="table">
-            <tr>
-              <th><%= link_to g.name, "ranking/#{g.id}", class: "btn-flat-border btn-block"  %></th>
-            </tr>
-            </table>
+				   <div class="genre-guide-item">
+						 <%= link_to "ranking/#{g.id}", class: "genre-guide-item-link" do %>
+						  <%= g.name %>
+						 	<div class="genre-icon"><span class="glyphicon glyphicon-menu-right"></span></div>
+						 <% end %>
+					 </div>
 				<% end %>
 		</div>
 		<div class="col-lg-10 ">
