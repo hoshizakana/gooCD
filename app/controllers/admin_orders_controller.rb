@@ -3,7 +3,7 @@ class AdminOrdersController < ApplicationController
 
   def index
 		@search = Order.ransack(params[:q])
-		@result = @search.result.page(params[:page]).per(10)
+		@result = @search.result.page(params[:page]).per(10).order('updated_at desc')
   end
 
   def show
