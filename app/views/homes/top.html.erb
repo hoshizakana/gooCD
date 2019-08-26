@@ -19,16 +19,12 @@
         <%= message %>
       </div>
     <% end %>
+
 		<div class="col-lg-2 genre-guide">
-				<p class="genre-head">ジャンル別ランキング</p>
-				<% @genres.each do |g| %>
-          <table class="table">
-            <tr>
-              <th><%= link_to g.name, "ranking/#{g.id}", class: "btn-flat-border btn-block"  %></th>
-            </tr>
-            </table>
-				<% end %>
+		<%# ジャンル別ランキングのリンクを部分テンプレートから呼び出し %>
+			<%= render 'layouts/genre-guide' %>
 		</div>
+
 		<div class="col-lg-10 ">
 
 			<!-- 総合ランキング -->

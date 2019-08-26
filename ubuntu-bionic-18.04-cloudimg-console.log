@@ -1,0 +1,4 @@
+[260203.895945] Out of memory: Kill process 1490 (ruby2.5) score 479 or sacrifice child
+[260203.923576] Killed process 1490 (ruby2.5) total-vm:1643188kB, anon-rss:482404kB, file-rss:0kB, shmem-rss:0kB
+[263841.919850] Out of memory: Kill process 1886 (ruby2.5) score 483 or sacrifice child
+[263841.951477] Killed process 1886 (ruby2.5) total-vm:1565412kB, anon-rss:485844kB, file-rss:0kB, shmem-rss:0kB
