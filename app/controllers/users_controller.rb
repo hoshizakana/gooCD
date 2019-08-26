@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @useraddresses = @user.addresses
+    @orders = Order.where(user_id: current_user.id)
   end
 
   def edit

@@ -54,9 +54,6 @@ class AdminOrdersController < ApplicationController
 	end
 
 
-
-
-
 	private
 	def order_params
 		params.require(:order).permit(
