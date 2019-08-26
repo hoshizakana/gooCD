@@ -1,2 +1,68 @@
-<h1>Users#orders</h1>
-<p>Find me in app/views/users/orders.html.erb</p>
+<%= render "layouts/user-nav" %>
+
+<div class="container">
+	<div class="row order-history">
+		<div class="col-xs-10 col-xs-offset-1">
+
+			<h2><%= current_user.last_name %>様購入履歴</h2>
+			<%= paginate @orders, class: "paginate" %>
+			<% @orders.each do |o| %>
+				<div class="order-info bordered padding10">
+					<div class="row order-info-header">
+						<div class="col-xs-9">
+							<table class="inline-blocker table order-index-table">
+								<tr>
+									<th>注文日</th>
+									<th>合計</th>
+									<th>お届け先</th>
+								</tr>
+								<tr>
+									<td><%= o.created_at.strftime('%Y年%m月%d日') %></td>
+									<td><%= o.total_price %>円</td>
+									<td><%= o.address %></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-xs-3 text-right">
+							<label class="inline-blocker"><%= o.shipping_status %></label>
+							<p class="inline-blocker">注文番号： <%= o.id %></p>
+						</div>
+					</div>
+					<hr>
+					<div class="order-info-items">
+						<% order_items = order_items_getter(o) %>
+						<% order_items.each do |oi| %>
+							<div class="row order-item-info marginer">
+								<div class="col-xs-4">
+									<%= attachment_image_tag oi.product, :image, :fill, 200, 200, format:'jpeg', fallback: 'no_image.jpg', size: "200x200", class: 'product-image' %>
+								</div>
+								<div class="col-xs-4">
+									<ul>
+										<li class="font-size20"><%= oi.product.name %></li>
+										<li><%= oi.product.artist.name %></li>
+										<li><%= oi.product.genre.name %></li>
+										<li><%= oi.product.label.name %></li>
+										<li>発売日：<%= oi.product.release_date %></li>
+										<li>価格(税込)：<%= oi.product.taxed_price %>円</li>
+									</ul>
+								</div>
+								<div class="col-xs-4">
+									<ul>
+										<li>数量： <%= oi.item_number %></li>
+										<li>計： <%= price_multiple_helper(oi) %>円</li>
+									</ul>
+								</div>
+							</div>
+						<% end %>
+						<hr>
+						<div class="text-right">
+							<p>送料： 500円　　総額： <%= o.total_price %>円</p>
+						</div>
+					</div>
+				</div>
+				<hr>
+			<% end %>
+		</div>
+	</div>
+
+</div>

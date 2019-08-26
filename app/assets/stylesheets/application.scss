@@ -41,6 +41,10 @@ body {
   clear: both;
 }
 
+ul {
+  list-style: none;
+}
+
 //navbar関連
 .header {
 	width: 100%;
@@ -451,6 +455,9 @@ a:hover {
 	width: 350px;
 	margin: 15px auto;
 }
+.inline-blocker {
+  display: inline-block;
+}
 
 .payment-hr{
 	margin:10px 0;
@@ -464,6 +471,33 @@ a:hover {
 }
 .form-td-margin {
 	margin: 5px 0;
+}
+.floater {
+  float: left;
+}
+.marginer {
+  margin: 10px;
+}
+.padding10 {
+  padding: 10px;
+}
+.inline-blocker {
+  display: inline-block;
+}
+.bordered {
+  border: 1px solid #BBB;
+}
+// .order-item-info {
+//   border: 1px solid;
+// }
+.font-size20 {
+  font-size: 20px;
+}
+.font-size16 {
+  font-size: 16px;
+}
+.text-right {
+  text-align: right;
 }
 
 
