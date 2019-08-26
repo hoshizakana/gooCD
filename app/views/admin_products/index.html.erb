@@ -3,6 +3,7 @@
 </div>
 <div class="container">
 <h2>商品一覧</h2>
+<hr class="admin-hr">
   <div class="row">
     <%# フラッシュメッセージ %>
     <% flash.each do |message_type, message| %>
@@ -12,7 +13,8 @@
     <% end %>
 
 <%# 商品の検索フォーム %>
-<div class="admin-product">
+<div class="col-xs-6 col-xs-offset-3 admin-product">
+  <p class="product-new-label">検索フォーム</h3>
   <%= search_form_for @search, url: '/admin/products' do |f| %>
     <table class="table">
       <tr>
@@ -50,9 +52,7 @@
         <%= f.radio_button :status_eq, '販売停止中' %>販売停止中</th>
       </tr>
     </table>
-
-    <div><%= f.submit '検索', class: "btn btn-success product-shinkitouroku" %></div>
-
+      <div class="kensaku-button"><%= f.submit '検索', class: "btn btn-success product-shinkitouroku" %></div>
   <% end %>
 </div>
 

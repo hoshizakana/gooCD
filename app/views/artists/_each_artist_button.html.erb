@@ -1,5 +1,7 @@
-<td><%= link_to '編集', "artists/#{artist.id}/edit", remote: true %></td>
+<td><%= link_to '編集', "artists/#{artist.id}/edit", class: "btn btn-success btn-xs", remote: true %></td>
 <td><%= link_to '削除', "artists/#{artist.id}",
                         data: { confirm: '削除しますか？' },
-                        method: :delete %></td>
+                        method: :delete,
+                        class: "btn btn-danger btn-xs"%>
+</td>
 </tr>
