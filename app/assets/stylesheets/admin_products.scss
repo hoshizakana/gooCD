@@ -6,3 +6,31 @@
 .admin-product-index {
   background-color: #999999;
 }
+.nested-fields {
+  margin-left: 8px;
+}
+.nested-fields > input {
+  margin-right: 6%;
+}
+.product_song_box {
+  margin-bottom: -25px;
+}
+.add-song-button {
+  position: absolute;
+  top: 48px;
+  right: 32px;
+}
+.remove_fields {
+  margin-left: 1px;
+}
+.song-table-right {
+  position: relative;
+}
+.song-edit-table {
+  position: relative;
+}
+.add-song-button-edit {
+  position: absolute;
+  top: 30px;
+  right: 119px;
+}
