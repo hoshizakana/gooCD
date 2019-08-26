@@ -1,0 +1,18 @@
+<div class="row genre-rank1-2-3">
+  <div class="col-lg-1">
+    <p>第<%= i %>位</p>
+  </div>
+  <div class="col-lg-3">
+    <%= link_to "/products/#{ranked_product.id}" do %>
+      <%= attachment_image_tag ranked_product, :image, :fill, 80, 80, class: "jacket-img", fallback: "no_image.jpg",class: 'product-image' %>
+  </div>
+  <div class="col-lg-7">
+      <p><%= ranked_product.name %></p>
+      <p><%= ranked_product.artist.name %></p>
+      <% end %>
+
+        <!--いいね機能 -->
+      <p><%= render 'products/products', product: ranked_product %></p>
+        <!--いいね機能 -->
+  </div>
+</div>
