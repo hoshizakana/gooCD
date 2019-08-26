@@ -14,42 +14,44 @@
 <%# 商品の検索フォーム %>
 <div class="admin-product">
   <%= search_form_for @search, url: '/admin/products' do |f| %>
-    <div>
-    <%= f.label :name_cont, 'シングル/アルバム名' %>
-    <%= f.search_field :name_cont %>
-    </div>
+    <table class="table">
+      <tr>
+        <th><%= f.label :name_cont, 'シングル/アルバム名' %></th>
+        <th><%= f.search_field :name_cont %></th>
+      </tr>
 
-    <div>
-    <%= f.label :name_cont, 'アーティスト名' %>
-    <%= f.search_field :artist_name_cont %>
-    </div>
+      <tr>
+        <th><%= f.label :name_cont, 'アーティスト名' %></th>
+        <th><%= f.search_field :artist_name_cont %></th>
+      </tr>
 
-    <div>
-    <%= f.label :genre_name_eq, 'ジャンル' %>
-    <%= f.collection_select :genre_name_eq, @genres, :name, :name, include_blank: '全てのジャンル' %>
-    </div>
+      <tr>
+        <th><%= f.label :genre_name_eq, 'ジャンル' %></th>
+        <th><%= f.collection_select :genre_name_eq, @genres, :name, :name, include_blank: '全てのジャンル' %></th>
+      </tr>
 
-    <div>
-    <%= f.label :name_cont, 'レーベル名' %>
-    <%= f.search_field :label_name_cont %>
-    </div>
+      <tr>
+        <th><%= f.label :name_cont, 'レーベル名' %></th>
+        <th><%= f.search_field :label_name_cont %></th>
+      </tr>
 
-    <div>
-    <%= f.label :name_cont, '在庫数' %>
-    <%= f.search_field :stock_gteq %>
+      <tr>
+        <th><%= f.label :name_cont, '在庫数' %></th>
+        <th><%= f.search_field :stock_gteq %>
 
-    <%= f.label :name_cont, '~' %>
-    <%= f.search_field :stock_lteq %>
-    </div>
+        <%= f.label :name_cont, '~' %>
+        <%= f.search_field :stock_lteq %></th>
+      </tr>
 
-    <p>
-    <%= f.label :starus_eq, 'ステータス' %>
-    <%= f.radio_button :status_eq, '', {:checked => true} %>指定なし
-    <%= f.radio_button :status_eq, '販売中' %>販売中
-    <%= f.radio_button :status_eq, '販売停止中' %>販売停止中
-    </div>
+      <tr>
+        <th><%= f.label :starus_eq, 'ステータス' %></th>
+        <th><%= f.radio_button :status_eq, '', {:checked => true} %>指定なし
+        <%= f.radio_button :status_eq, '販売中' %>販売中
+        <%= f.radio_button :status_eq, '販売停止中' %>販売停止中</th>
+      </tr>
+    </table>
 
-    <div><%= f.submit '検索', class: "btn btn-success" %></div>
+    <div><%= f.submit '検索', class: "btn btn-success product-shinkitouroku" %></div>
 
   <% end %>
 </div>
