@@ -41,6 +41,10 @@ body {
   clear: both;
 }
 
+ul {
+  list-style: none;
+}
+
 //navbar関連
 .header {
 	width: 100%;
@@ -185,12 +189,12 @@ color:#9d9d9d;
      margin-top: 50px
  }
   .release-date {
-      margin-right: 95px; 
+      margin-right: 95px;
   }
 
   .songs-count {
-      margin-left: 95px; 
-  } 
+      margin-left: 95px;
+  }
 
   .admin-product {
       margin-top: 10px;
@@ -213,7 +217,7 @@ color:#9d9d9d;
 
 
 
-  
+
     .btn-flat-border {
         display: inline-block;
         padding: 0.3em 1em;
@@ -223,33 +227,33 @@ color:#9d9d9d;
         border-radius: 3px;
         transition: .4s;
       }
-      
+
       .btn-flat-border:hover {
         background: #67c5ff;
         color: white;
       }
-      
-  
+
+
     .product-index {
-        overflow: hidden;	
-        transition-duration: 0.3s;	
+        overflow: hidden;
+        transition-duration: 0.3s;
     }
     .product-index:hover {
-        transform: scale(1.1);	
-        transition-duration: 0.3s;	
-        
+        transform: scale(1.1);
+        transition-duration: 0.3s;
+
     }
 
     .total-rank1 {
-        overflow: hidden;	
+        overflow: hidden;
         transition-duration: 0.3s;
 
     }
 
     .total-rank1:hover {
-        transform: scale(1.1);	
-        transition-duration: 0.3s;	
-        
+        transform: scale(1.1);
+        transition-duration: 0.3s;
+
     }
 
     .product-text {
@@ -260,7 +264,7 @@ color:#9d9d9d;
     a:hover {
         text-decoration: none;
     }
-    
+
 
 .buy-btn {
 	margin: 50px 15px 0 15px;
@@ -451,6 +455,9 @@ a:hover {
 	width: 350px;
 	margin: 15px auto;
 }
+.inline-blocker {
+  display: inline-block;
+}
 
 .payment-hr{
 	margin:10px 0;
@@ -465,10 +472,42 @@ a:hover {
 .form-td-margin {
 	margin: 5px 0;
 }
+.floater {
+  float: left;
+}
+.marginer {
+  margin: 10px;
+}
+.padding10 {
+  padding: 10px;
+}
+.inline-blocker {
+  display: inline-block;
+}
+.bordered {
+  border: 1px solid #BBB;
+}
+// .order-item-info {
+//   border: 1px solid;
+// }
+.font-size20 {
+  font-size: 20px;
+}
+.font-size16 {
+  font-size: 16px;
+}
+.text-right {
+  text-align: right;
 
+  
+  
+ 
 #skippr-container {
   // margin-top: 60px; navバーの位置がおかしくなるため無効化
+
 }
+
+
 
 .jacket-img{
 	position:absolute;
@@ -498,7 +537,7 @@ a {
     text-decoration: none;
   }
 
-  
+
 
 .nav-content{
 	display:block;
