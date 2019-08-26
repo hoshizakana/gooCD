@@ -2,13 +2,50 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.paginate {
-  width: 400px;
-  margin: 0 auto;
-}
+
 .admin-product-index {
   background-color: #999999;
-
 }
-
-
+.nested-fields {
+  margin-left: 8px;
+}
+.nested-fields > input {
+  margin-right: 6%;
+}
+.product_song_box {
+  margin-bottom: -25px;
+}
+.add-song-button {
+  position: absolute;
+  top: 48px;
+  right: 32px;
+}
+.remove_fields {
+  margin-left: 1px;
+}
+.song-table-right {
+  position: relative;
+}
+.song-edit-table {
+  position: relative;
+}
+.add-song-button-edit {
+  position: absolute;
+  top: 30px;
+  right: 119px;
+}
+.product-shinkitouroku-box {
+  width: 500px;
+  margin: 0 auto;
+}
+.product-shinkitouroku {
+ width: 100%;
+ height: 40px;
+ font-size: 30px;
+}
+.edit-song-table {
+  margin-bottom: -5px;
+}
+h1, .admin-product-page {
+  margin-bottom: 30px;
+}

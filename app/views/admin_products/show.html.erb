@@ -2,8 +2,7 @@
 
 <div class='body'>
   <div class='container'>
-        <h3>商品詳細</h3>
-        <h1>商品詳細</h1>
+        <h1 class="admin-product-page">商品詳細</h1>
     <div class='row'>
     <%# フラッシュメッセージ %>
     <% flash.each do |message_type, message| %>
@@ -11,51 +10,53 @@
         <%= message %>
       </div>
     <% end %>
-      <div class='col-lg-3' style='float: left'>
+      <div class='col-lg-5' style='float: left'>
+        <table class="table">
 
+        <tr>
+        <th>「商品ID」</th>
+        <th><%= @product.id %></th>
+        </tr>
         <p>
-        <label>「商品ID」</label>
-        <%= @product.id %>
-        </p>
+        <th>「アーティスト名」</th>
+        <th><%= @product.artist.name %></th>
+        <tr>
+        <th>「シングル/アルバム名」</th>
+        <th><%= @product.name %></th>
+        </tr>
         <p>
-        <label>「アーティスト名」</label>
-        <%= @product.artist.name %>
+        <th>「ジャケット画像」</th>
+        <th><%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'100x100' %></th>
+        </tr>
         <p>
-        <label>「シングル/アルバム名」</label>
-        <%= @product.name %>
-        </p>
-        <p>
-        <label>「ジャケット画像」</label>
-      <%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'200x200' %>
-        </p>
-        <p>
-        <label>「価格（税別価格）」</label>
-        <%= @product.price %>
-        </p>
-        <p>
-        <label>「在庫数」</label>
-        <%= @product.stock %>
-        </p>
-        <p>
-        <label>「レーベル名」</label>
-        <%= @product.label.name %>
-        </p>
-        <p>
-        <label>「ジャンル」</label>
-        <%= @product.genre.name %>
-        </p>
-        <p>
-        <label>「ステータス」</label>
-        <%= @product.status %>
-        </p>
-        <p>
-        <label>「削除フラグ」</label>
+        <th>「価格（税別価格）」</th>
+        <th><%= @product.price %></th>
+        </tr>
+        <tr>
+        <th>「在庫数」</th>
+        <th><%= @product.stock %></th>
+        </tr>
+        <tr>
+        <th>「レーベル名」</th>
+        <th><%= @product.label.name %></th>
+        </tr>
+        <tr>
+        <th>「ジャンル」</th>
+        <th><%= @product.genre.name %></th>
+        </tr>
+        <tr>
+        <th>「ステータス」</th>
+        <th><%= @product.status %></th>
+        </tr>
+        <tr>
+        <th>「削除フラグ」</th>
         <% if @product.is_deleted == false %>
-					<i class="fa fa-square-o"></i>
+          <th><i class="fa fa-square-o"></i></th>
 				<% else %>
-				  <i class="fa fa-check-square-o"></i>削除済み
+          <th><i class="fa fa-check-square-o"></i>削除済み</th>
 				<% end %>
-        </p>
+        </tr>
+        </table>
 
       </div>
 
@@ -82,7 +83,7 @@
 
     </div>
         <div>
-          <%= link_to '編集', "/admin/products/#{@product.id}/edit", class:'btn btn-primary' %>
+          <%= link_to '編集', "/admin/products/#{@product.id}/edit", class:'btn btn-primary product-shinkitouroku' %>
         </div>
 
   </div>

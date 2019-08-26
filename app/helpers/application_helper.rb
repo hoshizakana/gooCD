@@ -46,4 +46,8 @@ module ApplicationHelper
 		return total_items #returnで指定しないと表示が変だった
 	end
 
+	def order_items_getter(order)
+		return order_items = OrderItem.where(order_id: order.id)
+	end
+
 end
