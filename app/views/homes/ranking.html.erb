@@ -14,7 +14,7 @@
         <% if @genre %>
           <h2><%= @genre.name %>         いいね！ランキング</h2>
         <% else %> 
-          <h2>総合いいね！ランキング</h2>
+          <h2 class="ranking-title">総合いいね！ランキング</h2>
         <% end %>
 			</div>
 
@@ -116,9 +116,6 @@
 					  </div>
 					  <div class="row">
 							<div class="col-lg-6">
-							<!--いいね機能 -->
-              
-              <!--いいね機能 -->
 							</div>
 							<div class="col-lg-6">
 
@@ -236,3 +233,4 @@
 		</div>
 	</div>
 </div>
+	<%= render 'layouts/footer' %>
