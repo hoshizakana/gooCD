@@ -105,13 +105,13 @@ $(function(){
       target_obj.hide();
       }
       //$(".cart-mouseover").slideDown(600);
-      $(this).parent().find('.cart-mouseover').show(300);
+      $(this).parent().find('.cart-mouseover').show(400);
       $(this).parent().find('.cart-mouseover').animate({scrollLeft:70});
 
       
       target_obj = $(this).parent().find('.cart-mouseover');
       target_obj.mouseout(function(){
-      $(this).hide(300);
+      $(this).hide(400);
         });
   });
 
