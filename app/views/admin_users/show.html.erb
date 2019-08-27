@@ -3,37 +3,34 @@
 <div class="container">
 	<div class="row admin-nav-bar">
 		<div class="col-lg-12">
+			<h2>会員情報詳細</h2>
+      <hr class="admin-hr">
 		</div>
 	</div>
 
 	<div class="row user-show">
-		<div class="col-lg-10 col-lg-offset-1">
-			<h2>会員情報詳細</h2>
-			<h2>会員情報詳細</h2>
-    <%# フラッシュメッセージ %>
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>">
-        <%= message %>
-      </div>
-    <% end %>
-			<table class="user-show-table">
+		<div class="col-lg-7 col-lg-offset-1">
+        <%# フラッシュメッセージ %>
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>">
+            <%= message %>
+          </div>
+        <% end %>
+			<table class="table user-show-table">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>内容</th>
+          </tr>
+        </thead>
 				<tr>
-					<th>ID</th>
-					<td colspan="5"><%= @user.id %></td>
+					<th>ID</th><td colspan="5"><%= @user.id %></td></tr>
+				<tr>
+					<th>名前（漢字）</th><td>(姓)<%= @user.last_name %></td><td>(名)<%= @user.first_name %></td>
 				</tr>
 				<tr>
-					<th>名前（漢字）</th>
-					<td>(姓)</td>
-					<td><%= @user.last_name %></td>
-					<td>(名)</td>
-					<td><%= @user.first_name %></td>
-				</tr>
-				<tr>
-					<th>名前（カナ）</th>
-					<td>(セイ)</td>
-					<td><%= @user.last_name_kana %></td>
-					<td>(メイ)</td>
-					<td><%= @user.first_name_kana %></td>
+					<th>名前（カナ）</th><td>(セイ)<%= @user.last_name_kana %></td>
+					<td>(メイ)<%= @user.first_name_kana %></td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
@@ -62,23 +59,35 @@
 					</td>
 				</tr>
 			</table>
-			<%= link_to "編集", "/admin/users/#{@user.id}/edit" %>
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 admin-user-edit-button-box">
+          <%= link_to "会員情報編集", "/admin/users/#{@user.id}/edit", class: "btn btn-primary admin-user-edit-button" %>
+        </div>
+      </div>
 		</div>
 	</div>
 
+    <hr class="admin-hr">
 	<div class="row order-history">
 		<div class="col-lg-10 col-lg-offset-1">
 			<h3>購入履歴</h3>
-			<table class="order-history-table">
+			<table class="table order-history-table">
+        <thead>
+          <tr>
+            <td>注文ID</td>
+            <td>注文日</td>
+            <td>対応状況</td>
+            <td>購入金額</td>
+          </tr>
+        </thead>
 				<tr>
-					<th>注文ID</th>
-					<th>注文日</th>
-					<th>対応状況</th>
-					<th>購入金額</th>
-				</tr>
-				<tr>
-					<!-- ここに購入履歴を繰り返し表示 -->
-					<!-- かつ、プルダウンリストを非同期更新でステータス変更 -->
+          <% @orders.each do |order| %>
+					<!-- プルダウンリストを非同期更新でステータス変更 -->
+              <td><%= order.id %></td>
+              <td><%= order.created_at %></td>
+              <td><%= order.shipping_status %></td>
+              <td><%= order.total_price%></td>
+          <% end %>
 				</tr>
 			</table>
 
