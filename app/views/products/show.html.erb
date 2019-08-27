@@ -1,32 +1,32 @@
 
 <%= render 'layouts/user-nav', products:  @product, user: current_user  %>
- <div class="container">
+<div class="container">
     <div class="row product-wrapper">
-    <div class="favorite-message">
-      <!-- いいねしました表示がでる -->
-    </div>
-    <%# フラッシュメッセージ %>
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>">
-        <%= message %>
-      </div>
-    <% end %>
+        <div class="favorite-message">
+        <!-- いいねしました表示がでる -->
+        </div>
+        <%# フラッシュメッセージ %>
+        <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>">
+            <%= message %>
+        </div>
+        <% end %>
         <div class="col-xs-6">
             <div class="left-content">
                 <div class="name">
                     <%= @product.name %><br>
                 </div>
                 <% if @product.status == "販売中" %>
-                  <div class="product-show"></div>
-                  <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
+                    <div class="product-show"></div>
+                    <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
                 <% else %>
-                  <div class="product-show-img"><div class="hanbaiteishichuu-show">販売停止中</div></div>
-                  <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
+                    <div class="product-show-img"><div class="hanbaiteishichuu-show">販売停止中</div></div>
+                    <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
                 <% end %>
-                  <div class="product-date">
+                    <div class="product-date">
                     <span class="release-date">発売日<%= @product.release_date %></span>
                     <span class="songs-count">曲数<%= @product.songs.count %></span>
-                  </div>
+                    </div>
                 <div class="product-buy">
                     <div class="favorite">
                         <%= render 'products/products', product: @product %>
@@ -52,43 +52,42 @@
                     <div class="name">
                         <span class="name-show"><%= @product.label.name %><i class="fas fa-check"></i></span>
                         <span class="name-show"><%= @product.genre.name %><i class="fas fa-check"></i></span>
-                    </div>
-                    
-                        
-                    
+                    </div> 
                 </div>
                 <div class="song-index">
                     <div class="title">
                         <span class="name-show"><i class="fas fa-play-circle"></i><%= @product.name %></span>
                     </div>
                     <div class="songs">
-                    <div class="form-group"> 
-                    <table class="table">
-                    <% @product.songs.each do |song| %>
-                        <tbody>
-                            <tr><th><%= song.disk %>.</th><th><%= song.name %> </th></tr>
-                            <tr><th></th><th></th></tr>
-                        </tbody>
-                    <% end %>
-                     </table>  
-                
-                     
-                </div>
+                        <div class="form-group"> 
+                            <table class="table">
+                            <% @product.songs.each do |song| %>
+                                <tbody>
+                                    <tr><th><%= song.disk %>.</th><th><%= song.name %> </th></tr>
+                                    <tr><th></th><th></th></tr>
+                                </tbody>
+                            <% end %>
+                            </table>                          
+                        </div>
+                    </div>    
+                </div>    
             </div>
         </div>
-        
     </div>
-   
-</div>
-<div class="col-lg-12 show-product-index">
-    <p class="show-name"><%= @product.artist.name %>の他の作品</p>  
+
+    <div class="col-lg-12 show-product-index">
+        <p class="show-name"><%= @product.artist.name %>の他の作品</p>  
+    </div>
+
+    <div id="items">
+        <%= render "products-item", :window => 6 %>
+    </div>
+    <div class="col-lg-12">
+        <div class="row more-btn">
+            <%= link_to_next_page @products, 'more', remote: 'true', id: 'more_link', class: "btn-flat-border" %>
+        </div>
+    </div>    
 </div>
 
-<div id="items">
-    <%= render "products-item", :window => 6 %>
-</div>
-<div class="col-lg-12">
-    <div class="row more-btn">
-        <%= link_to_next_page @products, 'more', remote: 'true', id: 'more_link', class: "btn-flat-border" %>
-    </div>
-</div>
+
+<%= render 'layouts/footer' %>
