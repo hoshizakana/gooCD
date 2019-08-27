@@ -27,11 +27,11 @@
 			<%= render 'layouts/genre-guide' %>
 		</div>
 
-		<div class="col-lg-10 ">
+		<div class="col-lg-10">
 
 			<!-- 総合ランキング -->
 			<div class="row total-ranking">
-				<div class="col-lg-12">
+				<div class="col-lg-12 ">
 					<h2>いいね！ランキング</h2> <!-- text-align: center; -->
 				</div>
 			</div>
@@ -103,7 +103,7 @@
 
 			<div class="row">
 				<div class="col-xs-12">
-					<p>もっと見る</p> <!-- text-align: right;,linktoに直す -->
+				<%= link_to "もっとみる", "/ranking" %>
 				</div>
 
 			</div>
@@ -117,7 +117,7 @@
 					<% @jpop_rank[0..2].each.with_index(1) do |ranked_product,i| %>
 						<%= render 'homes/toppage-ranking-content', ranked_product: ranked_product,i:i  %>
 					<% end %>	
-							<p>もっと見る</p> <!-- text-align: right; linktoに直す -->
+							<%= link_to "もっとみる", "/ranking/1" %>　
 				</div>
 
 			<!-- ROCK ランキング -->
@@ -126,7 +126,7 @@
 					<% @rock_rank[0..2].each.with_index(1) do |ranked_product,i| %>
 						<%= render 'homes/toppage-ranking-content', ranked_product: ranked_product,i:i  %>
 					<% end %>
-							<p>もっと見る</p> <!-- text-align: right; linktoに直す -->
+						<%= link_to "もっとみる", "/ranking/2" %>　
 				</div>
 			<hr>
 		</div>

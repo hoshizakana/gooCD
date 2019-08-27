@@ -48,7 +48,7 @@ ul {
 //navbar関連
 .header {
 	width: 100%;
-	background-color: cadetblue;
+	background-color: rgb(158, 158, 160);
 	display: inline-block;
 	text-align: center;
 	position: fixed;
@@ -129,6 +129,7 @@ color:#9d9d9d;
 
 .artist-name {
     font-size: 70px;
+    position: center;
 }
 
 .name {
@@ -145,6 +146,7 @@ color:#9d9d9d;
     font-size: 50px;
 
 }
+
 
 .songs {
 	font-size: 30px;
@@ -223,7 +225,7 @@ color:#9d9d9d;
 
   .product-image {
     border-radius: 35px;
-    box-shadow: 4px 4px;
+    border: solid 2px #67c5ff;
   }
 
 
@@ -631,6 +633,7 @@ a {
 }
 
 .genre-font-size {
+  
 
 }
 
@@ -662,3 +665,8 @@ a {
 .more-btn {
     float: right;
 }
+
+.more-btn {
+  float: right;
+}
+

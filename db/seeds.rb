@@ -26,12 +26,11 @@
              )
 end
 
-Artist.create!(name: "hosizakana")
-Artist.create!(name: "米津玄氏")
-Artist.create!(name: "daoko")
-Artist.create!(name: "あいみょん")
-Artist.create!(name: "安室奈美恵")
-Artist.create!(name: "ラストアイドル")
+ Artist.create!(name: "あいみょん")
+ Artist.create!(name: "lilbunb")
+ Artist.create!(name: "安室奈美恵")
+ Artist.create!(name: "daoko")
+ Artist.create!(name: "ラストアイドル")
 
 Genre.create!(name: "J-pop")
 Genre.create!(name: "K-pop")
@@ -46,26 +45,79 @@ Genre.create!(name: "その他")
   Label.create!(name: "レーベル#{n+1}")
 end
 
-600.times do |n|
-  Product.create!(name: "CD商品名#{n+1}",
-                  artist_id: "#{rand(1..5)}",
-                  label_id: "#{rand(1..5)}",
-                  genre_id: "#{rand(1..8)}",
+100.times do |n|
+  Product.create!(name: "ベストアルバム#{n+1}",
+                  artist_id: 1,
+                  label_id: "#{1}",
+                  genre_id: "#{1}",
                  status: "販売中",
-                 image: open("#{Rails.root}/db/fixtures/img#{rand(1..9)}.jpeg"),
+                 image: open("#{Rails.root}/db/fixtures/img1.jpeg"),
                  price: "#{rand(10000)}",
-                 stock: "#{rand(500)}",
-                 is_deleted: false
-                 )
+                 stock: "#{rand(100)}",
+                 is_deleted: false)
+  Product.create!(name: "ベストアルバム#{n+1}",
+                  artist_id: 2,
+                  label_id: "#{2}",
+                  genre_id: "#{8}",
+                 status: "販売中",
+                 image: open("#{Rails.root}/db/fixtures/img2.jpeg"),
+                 price: "#{rand(10000)}",
+                 stock: "#{rand(100)}",
+                 is_deleted: false)
+  Product.create!(name: "ベストアルバム#{n+1}",
+                  artist_id: 3,
+                  label_id: "#{3}",
+                  genre_id: "#{6}",
+                 status: "販売中",
+                 image: open("#{Rails.root}/db/fixtures/img3.jpeg"),
+                 price: "#{rand(10000)}",
+                 stock: "#{rand(100)}",
+                 is_deleted: false)
 end
 
-products = Product.order(:created_at).take(60)
+products = Product.order(:created_at).take(600)
 5.times do |n|
   song = "曲名#{n+1}"
   products.each {|product| product.songs.create!(name: song, disk: 1)}
 end
 
-600.times do |n|
+100.times do |n|
   Favorite.create!(user_id: "#{n+1}",
-                   product_id: "#{rand(1..200)}")
+                   product_id: "#{rand(1..10)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(10..20)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(21..30)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(31..40)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(40..50)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(51..60)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(61..70)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(71..80)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(81..90)}")
+end
+100.times do |n|
+  Favorite.create!(user_id: "#{n+1}",
+                   product_id: "#{rand(91..100)}")
 end
