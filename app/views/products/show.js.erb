@@ -1,0 +1,5 @@
+
+$('#items').append("<%= escape_javascript(render 'products-item', object: @products) %>")
+$("#more_link").replaceWith("<%= escape_javascript(
+  link_to_next_page(@products, 'more', remote: true, id: 'more_link', class: "btn-flat-border")
+) %>");
