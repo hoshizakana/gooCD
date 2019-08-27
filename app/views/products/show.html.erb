@@ -2,6 +2,9 @@
 <%= render 'layouts/user-nav', products:  @product, user: current_user  %>
  <div class="container">
     <div class="row product-wrapper">
+    <div class="favorite-message">
+      <!-- いいねしました表示がでる -->
+    </div>
     <%# フラッシュメッセージ %>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>">
@@ -13,14 +16,17 @@
                 <div class="name">
                     <%= @product.name %><br>
                 </div>
-                <div class="product-show-img"><div class="hanbaiteishichuu-show">販売停止中</div></div>
-                <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
-                <div class="product-date">
+                <% if @product.status == "販売中" %>
+                  <div class="product-show"></div>
+                  <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
+                <% else %>
+                  <div class="product-show-img"><div class="hanbaiteishichuu-show">販売停止中</div></div>
+                  <%= attachment_image_tag @product, :image, :fill, 350, 350, format: 'jpeg',fallback: 'no_image.jpg', size: "350x350", class: 'product-image' %>
+                <% end %>
+                  <div class="product-date">
                     <span class="release-date">発売日<%= @product.release_date %></span>
-
                     <span class="songs-count">曲数<%= @product.songs.count %></span>
-
-                </div>
+                  </div>
                 <div class="product-buy">
                     <div class="favorite">
                         <%= render 'products/products', product: @product %>
@@ -86,8 +92,3 @@
         <%= link_to_next_page @products, 'more', remote: 'true', id: 'more_link', class: "btn-flat-border" %>
     </div>
 </div>
-
-
-
-   
-       
