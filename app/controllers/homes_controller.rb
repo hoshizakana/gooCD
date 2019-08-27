@@ -7,7 +7,7 @@ class HomesController < ApplicationController
   end
 
   def ranking
-      @ranked_product = Product.create_ranks(params[:genre_id]) #ランキングの計算ロジックはモデルメソッドとしてproduct.rbに記述
+      @ranked_product = Product.includes([:artist,:genre]).create_ranks(params[:genre_id])#ランキングの計算ロジックはモデルメソッドとしてproduct.rbに記述
       @genres = Genre.all
       if params[:genre_id]
         @genre = Genre.find(params[:genre_id])
