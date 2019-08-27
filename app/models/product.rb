@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   belongs_to :artist
   belongs_to :label
   accepts_nested_attributes_for :songs, allow_destroy: true
-  paginates_per 6
+  paginates_per 30
 #release_dateはseedの入れ方わかってないので、今はバリデーション外してます。
   validates :name, :artist_id, :label_id, :genre_id, :status, :price, :stock, presence: true
 
