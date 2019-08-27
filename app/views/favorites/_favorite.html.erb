@@ -1,5 +1,5 @@
 
-<div class="favorite-link" id="favorite-link-<%= product.id %>">
+<div class="favorite-link<%= %>%" id="favorite-link-<%= product.id %>">
 <% if controller.controller_name == 'homes' && controller.action_name == 'top' %>
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><%= product.favorites.count %> いいね</span>
 <% else %>

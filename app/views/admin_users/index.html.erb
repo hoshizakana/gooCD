@@ -36,13 +36,25 @@
 					<th></th>
 				</tr>
 				<% @result.each do |r| %>
-					<tr>
-						<td><%= r.id %></td>
-						<td><%= r.last_name %><%= r.first_name %></td>
-						<td><%= r.phone %></td>
-						<td><%= r.email %></td>
-						<td><%= link_to "詳細", "/admin/users/#{r.id}", class: "btn btn-success"%></td>
-					</tr>
+          <% if r.is_deleted == false %>
+            <tr>
+              <td><%= r.id %></td>
+              <td><%= r.last_name %><%= r.first_name %></td>
+              <td><%= r.phone %></td>
+              <td><%= r.email %></td>
+              <td></td>
+              <td><%= link_to "詳細", "/admin/users/#{r.id}", class: "btn btn-success"%></td>
+            </tr>
+          <% else %>
+            <tr class="admin-product-index">
+              <td><%= r.id %></td>
+              <td><%= r.last_name %><%= r.first_name %></td>
+              <td><%= r.phone %></td>
+              <td><%= r.email %></td>
+              <td>削除済ユーザー</td>
+              <td><%= link_to "詳細", "/admin/users/#{r.id}", class: "btn btn-success"%></td>
+            </tr>
+          <% end %>
 				<% end %>
 			</table>
 			<div class="paginate">

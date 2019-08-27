@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   get '/admin/orders' => 'admin_orders#index'
   get '/admin/orders/:id' => 'admin_orders#show'
   get '/admin/orders/:id/edit' => 'admin_orders#edit'
-  patch '/admin/orders/:id' => 'admin_orders#update'
+  patch '/admin/orderss/:id' => 'admin_orders#update' #下の/admin/orders/:idと被っててたのでとりあえずorderssに変更しました。
 	# order_items routes
 	post '/admin/orders/:id' => 'admin_orders#order_item_create'
 	patch '/admin/orders/:id/:order_item_id' => 'admin_orders#order_item_update'
