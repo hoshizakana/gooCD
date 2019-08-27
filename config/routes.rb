@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   patch '/users/:id' => 'users#update'
   get '/users/:id/edit' => 'users#edit'
   get '/users/:id/confirm' => 'users#destroy_confirm'
+  patch '/users/:id/destroy' => 'users#soft_destroy'
   get 'users/:id/orders' => 'users#orders'
   get '/addresses/:id' => 'addresses#new'
   post '/addresses/:id' => 'addresses#create'

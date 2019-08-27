@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  def active_for_authentication?
+    super && !is_deleted
+  end
+  def inactive_message
+   !is_deleted ? super : :deleted_account
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
         validates :last_name, presence: true
@@ -15,4 +22,8 @@ class User < ApplicationRecord
 				 has_many :cart_items, dependent: :destroy
 				 has_many :order, dependent: :destroy
          has_many :favorites, dependent: :destroy
+
+
+
+
 end
