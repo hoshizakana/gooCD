@@ -2,8 +2,15 @@
 <div class="container">
   <h2>受注詳細</h2>
   <hr class="admin-hr">
+      <%# フラッシュメッセージ %>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>">
+          <%= message %>
+        </div>
+      <% end %>
+
 	<div class="row order-detail">
-		<div class="col-lg-10 col-lg-offset-1">
+		<div class="col-lg-6 col-lg-offset-3">
 			<table class="table">
         <thead>
           <tr>
@@ -76,12 +83,18 @@
 				<% end %>
 			</table>
       <div class="row">
-        <div class="col-xs-4 col-xs-offset-8 order-price">
-              <p class="admin-order-total-price">送料
-              <span class="admin-order-total-price-span">￥500</span></p>
-              <p class="admin-order-total-price-1">合計(税込)
-              <span class="admin-order-total-price-span-1">￥<%= total_price_helper(@order_items) %></span></p>
-        </div>
+            <div class="col-xs-5 col-xs-offset-7 order-price">
+              <table class="table">
+                <tr>
+                  <th>送料</th>
+                  <td>￥500</td>
+                </tr>
+                <tr>
+                  <th class=>合計(税込)</th>
+                  <td>￥<%= total_price_helper(@order_items) %></td>
+                </tr>
+              </table>
+            </div>
       </div>
 		</div>
 	</div>
