@@ -223,6 +223,7 @@ color:#9d9d9d;
 
   .product-image {
     border-radius: 35px;
+    box-shadow: 4px 4px;
   }
 
 
@@ -286,7 +287,9 @@ color:#9d9d9d;
 }
 
 .product-image {
-	border-radius: 35px;
+    border-radius: 35px;
+    border: solid 2px #918a8a;
+    
 }
 
 .btn-flat-border {
@@ -637,4 +640,25 @@ a {
   text-align: center;
   width: 700px;
   margin: 0 auto;
+}
+
+.show-image {
+    margin-top: 50px;
+}
+
+.show-name {
+    font-size: 35px;
+}
+
+.show-product-index {
+    margin-top: 150px;
+}
+
+.more-index {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.more-btn {
+    float: right;
 }
