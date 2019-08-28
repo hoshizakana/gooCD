@@ -68,8 +68,7 @@
 
 			<div class="row total-rank2-3">
 
-			<% @ranked_product[1..2].each.with_index(1) do |product,i| %>
-			<% binding.pry %>
+			<% @ranked_product.each.with_index(1) do |product,i| %>
 				<%# 1位は何も表示しない %>
 				 <% if i == 1 %>
 				 <% end %>
