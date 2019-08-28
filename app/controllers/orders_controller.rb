@@ -10,24 +10,7 @@ class OrdersController < ApplicationController
 
   def confirm
 		@order = Order.new(order_params)
-		if @order.address.to_i == 0
-			@order.last_name = current_user.last_name
-			@order.first_name = current_user.first_name
-			@order.last_name_kana = current_user.last_name_kana
-			@order.first_name_kana = current_user.first_name_kana
-			@order.postal_code = current_user.postal_code
-			@order.address = current_user.adress
-			@order.phone = current_user.phone
-		else
-			adr = Address.find(order_params[:address].to_i)
-			@order.last_name = adr.last_name
-			@order.first_name = adr.first_name
-			@order.last_name_kana = adr.last_name_kana
-			@order.first_name_kana = adr.first_name_kana
-			@order.postal_code = adr.postal_code
-			@order.address = adr.address
-			@order.phone = adr.phone
-		end
+		@order.set_order(order_params[:address], current_user.id)
 		@cart_items = CartItem.where(user_id: current_user.id)
   end
 
@@ -42,26 +25,7 @@ class OrdersController < ApplicationController
 			order.user_id = current_user.id
 			order.shipping_status = "発送準備中"
 			order.total_price = total_price_helper(cart_items)
-			if order_params[:address].to_i == 0
-				order.last_name = current_user.last_name
-				order.first_name = current_user.first_name
-				order.last_name_kana = current_user.last_name_kana
-				order.first_name_kana = current_user.first_name_kana
-				order.postal_code = current_user.postal_code
-				order.address = current_user.adress
-				order.phone = current_user.phone
-			else
-				adr = Address.find(order_params[:address].to_i)
-				order.last_name = adr.last_name
-				order.first_name = adr.first_name
-				order.last_name_kana = adr.last_name_kana
-				order.first_name_kana = adr.first_name_kana
-				order.postal_code = adr.postal_code
-				order.address = adr.address
-				order.phone = adr.phone
-			end
 			# Order.saveしてからOrderItemにidを入れる
-			# binding.pry
 			if order.save
 			# order.save
 				cart_items.each do |cart_item|
