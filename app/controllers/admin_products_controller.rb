@@ -64,7 +64,7 @@ class AdminProductsController < ApplicationController
     @product.price.to_i
     @product.stock.to_i
     if @product.update(update_product_params)
-      flash[:success] = "更新されました。"
+      flash[:success] = "商品情報が更新されました。"
       redirect_to ("/admin/products/#{@product.id}")
     else
       render :edit

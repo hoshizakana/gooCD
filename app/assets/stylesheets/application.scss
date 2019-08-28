@@ -130,8 +130,8 @@ color:#9d9d9d;
 }
 
 .artist-name {
-    font-size: 70px;
-    position: center;
+    font-size: 50px;
+    text-align: center;
 }
 
 .name {
@@ -157,7 +157,10 @@ color:#9d9d9d;
 }
 
 .left-content {
-	text-align: center;
+  text-align: center;
+  position: sticky;
+  top: 90px;
+  z-index: 0;
 }
 
 .product-index {
@@ -166,7 +169,7 @@ color:#9d9d9d;
 }
 
 .product-wrapper{
-	margin:100px 0;
+	margin:60px 0;
 }
 
 .main-layout {
@@ -260,11 +263,18 @@ color:#9d9d9d;
 
     }
 
+    .total-rank{
+      margin-bottom:30px;
+    }
+
     .total-rank1 {
         overflow: hidden;
         transition-duration: 0.3s;
-
     }
+
+    .total-rank1 {
+      font-size:30px;
+    }    
 
     .total-rank1:hover {
         transform: scale(1.1);
@@ -388,8 +398,8 @@ a:hover {
 .genre-rank1-2-3 {
 	margin-bottom: 20px;
 	overflow: hidden;
-    transition-duration: 0.3s;
-    text-align: center;
+  transition-duration: 0.3s;
+  text-align: center;
 }
 
 .genre-rank1-2-3:hover {
@@ -439,7 +449,7 @@ a:hover {
 
 
 .top-page {
-    margin-top: 50px;
+    margin-top: 70px;
 }
 
 .genre-guide {
@@ -528,10 +538,10 @@ a:hover {
 .line-height {
   line-height: 2;
 }
-#skippr-container {
-  margin-top: 69px;
+// #skippr-container {
+//   margin-top: 69px;
 
-}
+// }
 
 
 
@@ -628,13 +638,13 @@ a {
 
 
 
+
 .song-name {
     font-size: 50px;
 }
 
 .genre-font-size {
-  
-
+  font-size: 100%;
 }
 
 
@@ -654,7 +664,9 @@ a {
 }
 
 .show-product-index {
-    margin-top: 150px;
+
+    margin-top: 50px;
+
 }
 
 .more-index {
@@ -680,4 +692,23 @@ a {
 
 .complete-message{
   margin-top:100px;
+}
+
+
+
+.ranking-1-text {
+  display: block;
+  text-align: center;
+
+.same-artist-products-wrapper{
+  margin-bottom:50px;
+}
+
+.mypage-btn-wrapper{
+  text-align:center;
+}
+
+.notice,.alert{
+  width:100%;
+  line-height:40px;
 }
