@@ -1,4 +1,8 @@
 class OrdersController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:procedure, :confirm, ]
+
   def procedure
 		@order = Order.new
 		@cart_items = CartItem.where(user_id: current_user.id)
@@ -140,4 +144,10 @@ class OrdersController < ApplicationController
 			:phone
 		)
 	end
+  def correct_user
+    @user = User.find(params[:user_id])
+    if current_user.id != @user.id
+      redirect_to "/"
+    end
+  end
 end
