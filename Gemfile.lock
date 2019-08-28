@@ -104,6 +104,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (2.2.0)
+      i18n (>= 0.8)
     ffi (1.11.1)
     font-awesome-sass (5.9.0)
       sassc (>= 1.11)
@@ -309,6 +311,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  faker
   font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
