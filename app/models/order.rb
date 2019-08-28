@@ -5,26 +5,27 @@ class Order < ApplicationRecord
 	accepts_nested_attributes_for :order_items, allow_destroy: true
 	# a_n_a_fで「reject_if: all_blank」とすると、order_itemなしでorderが保存できるようになる
 
-	def set_order(index)
-		if index.to_i == 0
-			@order.last_name = current_user.last_name
-			@order.first_name = current_user.first_name
-			@order.last_name_kana = current_user.last_name_kana
-			@order.first_name_kana = current_user.first_name_kana
-			@order.postal_code = current_user.postal_code
-			@order.address = current_user.adress
-			@order.phone = current_user.phone
+	def set_order(address_index,user_id)
+		current_user = User.find(user_id)
+		if address_index.to_i == 0
+			self.last_name = current_user.last_name
+			self.first_name = current_user.first_name
+			self.last_name_kana = current_user.last_name_kana
+			self.first_name_kana = current_user.first_name_kana
+			self.postal_code = current_user.postal_code
+			self.address = current_user.adress
+			self.phone = current_user.phone
 		else
-			adr.Address.find(index.to_i)
-			@order.last_name = adr.last_name
-			@order.first_name = adr.first_name
-			@order.last_name_kana = adr.last_name_kana
-			@order.first_name_kana = adr.first_name_kana
-			@order.postal_code = adr.postal_code
-			@order.address = adr.address
-			@order.phone = adr.phone
+			adr.Address.find(adress_index.to_i)
+			self.last_name = adr.last_name
+			self.first_name = adr.first_name
+			self.last_name_kana = adr.last_name_kana
+			self.first_name_kana = adr.first_name_kana
+			self.postal_code = adr.postal_code
+			self.address = adr.address
+			self.phone = adr.phone
 		end
-
+	end
 
 
 
