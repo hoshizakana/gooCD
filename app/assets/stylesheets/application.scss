@@ -71,12 +71,10 @@ ul {
 }
 
 .cart{
-
 font-size: 40px;
 margin-right: 30px;
 color: darkslategray;
 opacity: 0.7;
-
 }
 
 .cart-hover{
@@ -97,13 +95,16 @@ color:#9d9d9d;
   margin-bottom:0;
 }
 
- .navbar-right {
+.admin-navbar-right {
+	 margin: 0 50px 0 0;
+}
+ .user-navbar-right {
     margin: 10px 50px 0 0;
  }
 
- .navbar-left {
-     margin-left: 80px;
- }
+.navbar-left {
+	margin-left: 80px;
+}
 
 .right-content {
 	text-align: center;
@@ -130,34 +131,33 @@ color:#9d9d9d;
 }
 
 .artist-name {
-    font-size: 70px;
-    position: center;
+    font-size: 50px;
+    text-align: center;
 }
 
 .name {
-    font-size: 50px;
-
+  font-size: 50px;
 }
 
 .name-show {
-    border-bottom: dotted 3px #333 ;
+  border-bottom: dotted 3px #333 ;
 }
 
 .title {
 	margin-top: 30px;
-    font-size: 50px;
-
+  font-size: 50px;
 }
-
 
 .songs {
 	font-size: 30px;
 	text-align: center;
-
 }
 
 .left-content {
-	text-align: center;
+  text-align: center;
+  position: sticky;
+  top: 90px;
+  z-index: 0;
 }
 
 .product-index {
@@ -166,7 +166,7 @@ color:#9d9d9d;
 }
 
 .product-wrapper{
-	margin:100px 0;
+	margin:60px 0;
 }
 
 .main-layout {
@@ -195,92 +195,91 @@ color:#9d9d9d;
 }
 
 
- .product-buy {
-     margin-top: 50px
- }
-  .release-date {
-      margin-right: 95px;
-  }
+.product-buy {
+	margin-top: 50px
+}
+.release-date {
+  margin-right: 95px;
+}
 
-  .songs-count {
-      margin-left: 95px;
-  }
+.songs-count {
+  margin-left: 95px;
+}
 
-  .admin-product {
-      margin-top: 10px;
-  }
+.admin-product {
+  margin-top: 10px;
+}
 
-  .buy-btn {
-      margin: 50px 15px 0 15px;
-  }
+.buy-btn {
+  margin: 50px 15px 0 15px;
+}
 
-  .song-index {
-    margin-top: 35px;
-    border: double 5px #3a3e3f;
-    border-radius: 30px;
-    padding: 0 10px 0 10px;
-  }
+.song-index {
+  margin-top: 35px;
+  border: double 5px #3a3e3f;
+  border-radius: 30px;
+  padding: 0 10px 0 10px;
+}
 
-  .user-logo {
-      margin-bottom: 10px;
-  }
+.user-logo {
+  margin-bottom: 10px;
+}
 
-  .product-image {
-    border-radius: 35px;
-    border: solid 2px #67c5ff;
-  }
+.product-image {
+  border-radius: 35px;
+  border: solid 2px #67c5ff;
+}
 
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
 
+.btn-flat-border:hover {
+  background: #67c5ff;
+  color: white;
+}
 
+.product-index {
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
 
+.product-index:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
 
-    .btn-flat-border {
-        display: inline-block;
-        padding: 0.3em 1em;
-        text-decoration: none;
-        color: #67c5ff;
-        border: solid 2px #67c5ff;
-        border-radius: 3px;
-        transition: .4s;
-      }
+.total-rank{
+  margin-bottom:30px;
+}
 
-      .btn-flat-border:hover {
-        background: #67c5ff;
-        color: white;
-      }
+.total-rank1 {
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
 
+.total-rank1 {
+	font-size:30px;
+}
 
-    .product-index {
-        overflow: hidden;
-        transition-duration: 0.3s;
-    }
-    .product-index:hover {
-        transform: scale(1.1);
-        transition-duration: 0.3s;
+.total-rank1:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
 
-    }
+.product-text {
+  text-decoration: none;
+}
 
-    .total-rank1 {
-        overflow: hidden;
-        transition-duration: 0.3s;
-
-    }
-
-    .total-rank1:hover {
-        transform: scale(1.1);
-        transition-duration: 0.3s;
-
-    }
-
-    .product-text {
-        text-decoration: none;
-
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
-
+a:hover {
+  text-decoration: none;
+}
 
 .buy-btn {
 	margin: 50px 15px 0 15px;
@@ -293,7 +292,6 @@ color:#9d9d9d;
 .product-image {
     border-radius: 35px;
     border: solid 2px #918a8a;
-    
 }
 
 .btn-flat-border {
@@ -315,6 +313,7 @@ color:#9d9d9d;
   overflow: hidden;
   transition-duration: 0.3s;
 }
+
 .product-index:hover {
   transform: scale(1.1);
   transition-duration: 0.3s;
@@ -352,16 +351,12 @@ a:hover {
 	margin: 0 auto;
 }
 
-
-
 .input-group{
 	margin-top:15px;
 }
 
 .total-rank1 {
-
-    margin: 50px 0 50px 50px;
-
+	margin: 50px 0 50px 50px;
 }
 
 .top-products {
@@ -388,8 +383,8 @@ a:hover {
 .genre-rank1-2-3 {
 	margin-bottom: 20px;
 	overflow: hidden;
-    transition-duration: 0.3s;
-    text-align: center;
+  transition-duration: 0.3s;
+  text-align: center;
 }
 
 .genre-rank1-2-3:hover {
@@ -425,27 +420,24 @@ a:hover {
 	height:100%;
 }
 
-
 .nav-contents:hover {
-
-    background: whitesmoke;
-    opacity: 0.7;
-    border-radius: 10px;
+  background: whitesmoke;
+  opacity: 0.7;
+  border-radius: 10px;
 }
 
 .nav-logo {
-    margin-top: 6px;
+  margin-top: 6px;
 }
 
-
 .top-page {
-    margin-top: 50px;
+  margin-top: 70px;
 }
 
 .genre-guide {
-    position: sticky;
-    top: 90px;
-    z-index: 0;
+  position: sticky;
+  top: 90px;
+  z-index: 0;
 }
 
 
@@ -464,7 +456,6 @@ a:hover {
 .text-center {
   text-align: center;
 }
-
 .devise-form-center {
 	width: 350px;
 	margin: 15px auto;
@@ -472,11 +463,9 @@ a:hover {
 .inline-blocker {
   display: inline-block;
 }
-
 .payment-hr{
 	margin:10px 0;
 }
-
 .address-content{
 	padding:30px;
 }
@@ -528,11 +517,7 @@ a:hover {
 .line-height {
   line-height: 2;
 }
-#skippr-container {
-  margin-top: 69px;
-
-}
-
+//Saddy's ここまで
 
 
 .jacket-img{
@@ -548,17 +533,13 @@ a:hover {
 	margin-bottom:100px;
 }
 
-
 .ranking-index {
-    margin-left: 250px;
+  margin-left: 250px;
 }
 
 .ranking-color {
-    display: inline-block;
-    color: black;
-}
-
-.genre-guide-item{
+  display: inline-block;
+  color: black;
 }
 
 .genre-guide-item-link{
@@ -581,7 +562,7 @@ a:hover {
 a {
     color: black;
     text-decoration: none;
-  }
+}
 
 
 
@@ -592,7 +573,6 @@ a {
 .table>thead>tr>th, .table>thead>tr>td, .table>tbody>tr>th, .table>tbody>tr>td, .table>tfoot>tr>th, .table>tfoot>tr>td {
   vertical-align: middle;
 }
-
 
 .genre-tag {
     color: white;
@@ -626,18 +606,13 @@ a {
     padding: 0 10px 0 10px;
 }
 
-
-
 .song-name {
     font-size: 50px;
 }
 
 .genre-font-size {
-  
-
+  font-size: 100%;
 }
-
-
 
 .paginate {
   text-align: center;
@@ -654,7 +629,7 @@ a {
 }
 
 .show-product-index {
-    margin-top: 150px;
+    margin-top: 50px;
 }
 
 .more-index {
@@ -680,4 +655,22 @@ a {
 
 .complete-message{
   margin-top:100px;
+}
+
+.ranking-1-text {
+  display: block;
+  text-align: center;
+}
+
+.same-artist-products-wrapper{
+  margin-bottom:50px;
+}
+
+.mypage-btn-wrapper{
+  text-align:center;
+}
+
+.notice,.alert{
+  width:100%;
+  line-height:40px;
 }

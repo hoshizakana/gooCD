@@ -5,7 +5,7 @@
             <li>
                 <div class="form-inline">
                 <div class="input-group">
-                    
+
                     <%= search_form_for @q, url: products_path do |f| %>
                     <%= f.search_field :name_or_artist_name_or_songs_name_cont, class:"form-control search-form",style:"width:300px",placeholder:"商品名・アーティスト名・曲名で検索" %>
                     <span class="input-group-btn">
@@ -15,8 +15,8 @@
                 </div>
             </li>
         </ul>
-        
-        <ul class="nav navbar-nav navbar-right">
+
+        <ul class="nav navbar-nav navbar-right user-navbar-right">
             <% if user_signed_in? %>
 
                 <div class='nav-contents'>
@@ -25,7 +25,7 @@
                         <%= link_to '商品一覧', "/products", class: "cart-mouseover cart-hover" %>
                     <% end %>
                 </div>
-                
+
                 <div class='nav-contents'>
                     <%= link_to "/ranking" do %>
                         <%= link_to '', "/ranking", class: "glyphicon glyphicon-king cart" %>
@@ -40,15 +40,15 @@
                     <% end %>
                 </div>
 
-                <div class='nav-contents'>              
-                    <%= link_to "/users/#{current_user.id}" do %>                  
+                <div class='nav-contents'>
+                    <%= link_to "/users/#{current_user.id}" do %>
                         <%= link_to '', "/users/#{current_user.id}", class: "glyphicon glyphicon-user cart" %>
                         <%= link_to 'マイページ', "/users/#{current_user.id}", class: "cart-mouseover cart-hover" %>
                     <% end %>
                 </div>
 
-                <div class='nav-contents'>                                           
-                    <%= link_to "/users/sign_out" do %>                           
+                <div class='nav-contents'>
+                    <%= link_to "/users/sign_out" do %>
                         <%= link_to '', "/users/sign_out", method: :delete, class: "glyphicon glyphicon-log-out cart" %>
                         <%= link_to 'ログアウト', "/users/sign_out", method: :delete, class: "cart-mouseover cart-hover" %>
                     <% end %>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class='nav-contents'>
-                    <%= link_to "/users/sign_in" do %>   
+                    <%= link_to "/users/sign_in" do %>
                         <%= link_to '', "/users/sign_in", class: "glyphicon glyphicon-log-in cart" %>
                         <%= link_to 'ログイン', "/users/sign_in", class: "cart-mouseover cart-hover" %>
                     <% end %>

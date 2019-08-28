@@ -10,7 +10,7 @@ before_action :authenticate_user!
 		@address = Address.new(address_params)
 		@address.user_id = current_user.id
 		if @address.save
-			flash[:notice] = "保存しました"
+			flash[:success] = "送付先住所を保存しました。"
 			# URLのパラメータが 1 の場合、マイページに遷移させる
 			if params[:id].to_i == 1
 				redirect_to "/users/#{current_user.id}"	
@@ -32,6 +32,7 @@ before_action :authenticate_user!
 	def destroy
 		address = Address.find(params[:id])
 		address.destroy
+		flash[:success] = "送付先住所を削除しました。"
 		# URLのパラメータが 1 の場合、マイページに遷移させる
 		if params[:screen_type].to_i == 1
 			redirect_to "/users/#{current_user.id}"	

@@ -5,9 +5,9 @@ class Order < ApplicationRecord
 	accepts_nested_attributes_for :order_items, allow_destroy: true
 	# a_n_a_fで「reject_if: all_blank」とすると、order_itemなしでorderが保存できるようになる
 
-	def set_order(address_index,user_id)
+	def set_order(index, user_id)
 		current_user = User.find(user_id)
-		if address_index.to_i == 0
+		if index.to_i == 0
 			self.last_name = current_user.last_name
 			self.first_name = current_user.first_name
 			self.last_name_kana = current_user.last_name_kana
@@ -16,7 +16,7 @@ class Order < ApplicationRecord
 			self.address = current_user.adress
 			self.phone = current_user.phone
 		else
-			adr.Address.find(adress_index.to_i)
+			adr = Address.find(index.to_i)
 			self.last_name = adr.last_name
 			self.first_name = adr.first_name
 			self.last_name_kana = adr.last_name_kana
@@ -25,8 +25,8 @@ class Order < ApplicationRecord
 			self.address = adr.address
 			self.phone = adr.phone
 		end
-	end
 
+	end
 
 
 end
