@@ -95,23 +95,21 @@ color:#9d9d9d;
   margin-bottom:0;
 }
 
-.admin-navbar-right {
-	 margin: 0 50px 0 0;
+.navbar-right {
+	margin: 0 50px 0 0;
 }
- .user-navbar-right {
-    margin: 10px 50px 0 0;
- }
+
+#nav-adjuster{
+	padding-top: 12px;
+}
 
 .navbar-left {
 	margin-left: 80px;
+	position:relative;
 }
 
 .right-content {
 	text-align: center;
-}
-
-.navbar-left{
-	position:relative;
 }
 
 .nav-contents {
