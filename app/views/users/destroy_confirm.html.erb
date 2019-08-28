@@ -1,2 +1,23 @@
-<h1>Users#destroy_confirm</h1>
-<p>Find me in app/views/users/destroy_confirm.html.erb</p>
+<%= render "layouts/user-nav" %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>退会確認</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<p><%= @user.last_name %>様</p>
+			<p class="text-center">本当に退会しますか？</p>
+			<div class="row buttons">
+				<div class="col-xs-2 col-xs-offset-2">
+					<%= link_to "戻る", "/users/#{@user.id}", class: "btn btn-info" %>
+				</div>
+				<div class="col-xs-2 col-xs-offset-4">
+					<%= link_to "退会する", "/users/#{@user.id}/destroy", method: :patch, class:"btn btn-danger" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

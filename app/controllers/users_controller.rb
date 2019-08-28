@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:show, :edit, :update, :orders]
+  before_action :correct_user, only: [:show, :edit, :update, :orders, :destroy_confirm]
 
   def show
     @user = User.find(params[:id])
@@ -23,6 +23,19 @@ class UsersController < ApplicationController
   end
 
   def destroy_confirm
+    @user = current_user
+  end
+  def soft_destroy
+    user = current_user
+    addstr = Date.today.strftime("%Y.%m.%d")
+    user.email += addstr
+    user.is_deleted = true
+    if user.update(user_destroy_params)
+      flash[:success] = "退会しました"
+      redirect_to destroy_user_session_path, method: :delete
+    else
+      redirect_to "show"
+    end
   end
 
   def orders
@@ -33,6 +46,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :phone, :postal_code, :adress)
+  end
+  def user_destroy_params
+    params.permit(:email, :is_deleted)
   end
 
   def correct_user
