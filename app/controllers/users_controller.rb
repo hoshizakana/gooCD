@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "プロフィールの編集が完了しました。"
+      flash[:success] = "プロフィールの編集が完了しました。"
       redirect_to ("/users/#{@user.id}")
     else
       render :edit
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     user.email += addstr
     user.is_deleted = true
     if user.update(user_destroy_params)
-      flash[:notice] = "退会しました"
+      flash[:success] = "退会しました"
       redirect_to destroy_user_session_path, method: :delete
     else
       redirect_to "show"

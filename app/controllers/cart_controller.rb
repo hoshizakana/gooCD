@@ -39,7 +39,7 @@ class CartController < ApplicationController
 		# カート画面で、数量変更を送った時に動作する
 		cart_item = CartItem.find(params[:id])
 		cart_item.update(cart_item_number_params)
-		flash[:notice] = "数量を変更しました。"
+		flash[:success] = "数量を変更しました。"
 		redirect_to ("/carts/#{current_user.id}")
 	end
 

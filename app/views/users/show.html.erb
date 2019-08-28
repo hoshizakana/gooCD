@@ -1,14 +1,16 @@
 <%= render 'layouts/user-nav', users:  @user, user: current_user  %>
 
 <div class="container">
+
+<%# フラッシュメッセージ %>
+<% flash.each do |message_type, message| %>
+	<div class="alert alert-<%= message_type %>">
+		<%= message %>
+	</div>
+<% end %>
+
 	<div class="row product-wrapper">
 		<div class="col-xs-12">
-			<%# フラッシュメッセージ %>
-			<% flash.each do |message_type, message| %>
-				<div class="alert alert-<%= message_type %>">
-					<%= message %>
-				</div>
-			<% end %>
 			<h1 class="user-logo">マイページ</h1>
 			<table class="table">
 				<tbody>
@@ -19,6 +21,10 @@
 							<%= link_to "パスワード変更", "/users/edit", class: "btn-flat-border" %>
 							<%# 遷移元のページの情報を送付先住所の登録画面に持たせるため、URLにフラグとして1をもたせる %>
 							<%= link_to "送付先住所登録", "/addresses/1", class: "btn-flat-border" %>
+							<%= link_to "購入履歴", "/users/#{current_user.id}/orders", class: "btn-flat-border"%>
+							<%= link_to "退会", "/users/#{current_user.id}/destroy_confirm", class:"btn-flat-border" %>							
+						</th>
+						<th>
 						</th>
 					</tr>
 					<tr>
@@ -68,7 +74,6 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
 
 	<div class="row links">
 		<div class="col-xs-6 col-xs-offset-3">
