@@ -3,6 +3,7 @@
     <div class="main-layout">
         <div class="row product-wrapper">
       <div class="favorite-message">
+        <!-- いいねしました表示がでる -->
       </div>
             <% @products.each do |product| %>
                     <div class="col-lg-2 product-index">
@@ -26,4 +27,8 @@
             <%= paginate @products, class: "btn-flat-border paginate" %>
         </div>
     </div>
+
+<%= render 'layouts/footer' %>
+
+
 

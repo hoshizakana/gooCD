@@ -4,7 +4,7 @@
 
 
 .admin-product-index {
-  background-color: #999999;
+  background-color: #DDDDDD;
 }
 .nested-fields {
   margin-left: 8px;
@@ -20,6 +20,11 @@
   top: 82px;
   right: 32px;
 }
+.add-song-button-edit {
+  position: absolute;
+  top: 85px;
+  right: 119px;
+}
 .remove_fields {
   margin-left: 1px;
 }
@@ -29,11 +34,6 @@
 }
 .song-edit-table {
   position: relative;
-}
-.add-song-button-edit {
-  position: absolute;
-  top: 30px;
-  right: 119px;
 }
 .product-shinkitouroku-box {
   width: 500px;
@@ -67,4 +67,14 @@ h1, .admin-product-page {
   border-radius: 10px;
   padding-top: 4px;
   font-size: 20px;
+}
+.product-new-label-edit {
+  text-align: center;
+  background-color: #b0c4de;
+  height: 30px;
+  border-radius: 10px;
+  padding-top: 4px;
+  font-size: 20px;
+  margin-top: 19px;
+  margin-bottom: 29px;
 }

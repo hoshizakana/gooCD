@@ -27,110 +27,114 @@
 			<%= render 'layouts/genre-guide' %>
 		</div>
 
-		<div class="col-lg-10 ">
+		<div class="col-lg-10">
 
 			<!-- 総合ランキング -->
 			<div class="row total-ranking">
 				<div class="col-lg-12">
-					<h2>いいね！ランキング</h2> <!-- text-align: center; -->
+					<h2 class="ranking-title">いいね！ランキング</h2> <!-- text-align: center; -->
 				</div>
-			</div>
-
-			<div class="row total-rank1">
-				<div class="col-xs-1 product-index">
-					<p>1位</p> <!-- 1位アイコン -->
-				</div>
-				<div class="col-xs-2">
-					<!-- ジャケット画像 -->
-					<%= link_to "/products/#{@all_ranked_product[0].id}" do %>
-					<%= attachment_image_tag @all_ranked_product[0], :image, :fill, 250, 250, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
-				</div>
-				<div class="col-xs-9 ">
-					<div class="row">
-						<p class="col-xs-4 top-1-product-name">
-							<%= @all_ranked_product[0].name %>
-						</p>
-					</div>
-					<div class="row">
-						<p class="col-xs-4 top-1-product-name">
-							<%= @all_ranked_product[0].artist.name %>
-						</p>
-					<% end %>
-
-           <!--いいね機能 -->
-            <p><%= render 'products/products', product: @all_ranked_product[0] %></p>
-           <!--いいね機能 -->
-					</div>
-
-				</div>
-			</div>
-
-			<div class="row total-rank2-3">
-			<!-- 2位と3位をeach文で繰り返し表示　htmlの修正箇所をなるべく少なくするため! -->
-				<% @all_ranked_product[1..2].each.with_index(2) do |ranked_product,i| %>
-					<div class="col-lg-6 top-products">
-						<div class="col-lg-2">
-							<p><%= i %>位</p> <!-- ランク数を受け取って表示 -->
-						</div>
-						<div class="col-lg-3 ">
-						<%= link_to "/products/#{ranked_product.id}" do %>
-							<%= attachment_image_tag ranked_product, :image, :fill, 170, 170, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
-						</div>
-						<div class="col-lg-7 ">
-
-							<div class="row">
-								<div class="col-lg-12 top-contents">
-									<p>
-										<%= ranked_product.name %>
-									</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-12 top-contents">
-									<p>
-										<%= ranked_product.artist.name %>
-									</p>
-						<% end %>
-						<!--いいね機能 -->
-							<p><%= render 'products/products', product: ranked_product %></p>
-						<!--いいね機能 -->
-								</div>
-							</div>
-						</div>
-					</div>
-				<% end%>
 			</div>
 
 			<div class="row">
-				<div class="col-xs-12">
-					<p>もっと見る</p> <!-- text-align: right;,linktoに直す -->
+				<div class="row total-rank1">
+					<div class="col-xs-2 product-index">
+						<h2>1位<h2> <!-- 1位アイコン -->
+					</div>
+					<div class="col-xs-2">
+						<!-- ジャケット画像 -->
+						<%= link_to "/products/#{@all_ranked_product[0].id}" do %>
+						<%= attachment_image_tag @all_ranked_product[0], :image, :fill, 250, 250, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
+					</div>
+					<div class="col-xs-8 ">
+						<div class="row">
+							<p class="col-xs-4 top-1-product-name">
+								<%= @all_ranked_product[0].name %>
+							</p>
+						</div>
+						<div class="row">
+							<p class="col-xs-4 top-1-product-name">
+								<%= @all_ranked_product[0].artist.name %>
+							</p>
+						<% end %>
+
+						<!--いいね機能 -->
+							<p><%= render 'products/products', product: @all_ranked_product[0] %></p>
+						<!--いいね機能 -->
+						</div>
+
+					</div>
 				</div>
 
+				<div class="row total-rank2-3">
+				<!-- 2位と3位をeach文で繰り返し表示　htmlの修正箇所をなるべく少なくするため! -->
+					<% @all_ranked_product[1..2].each.with_index(2) do |ranked_product,i| %>
+						<div class="col-lg-6 top-products">
+							<div class="col-lg-2">
+								<p><%= i %>位</p> <!-- ランク数を受け取って表示 -->
+							</div>
+							<div class="col-lg-3 ">
+							<%= link_to "/products/#{ranked_product.id}" do %>
+								<%= attachment_image_tag ranked_product, :image, :fill, 170, 170, class: "jacket-img", fallback: "no_image.jpg", class: 'product-image' %>
+							</div>
+							<div class="col-lg-7 ">
+
+								<div class="row">
+									<div class="col-lg-12 top-contents">
+										<p>
+											<%= ranked_product.name %>
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12 top-contents">
+										<p>
+											<%= ranked_product.artist.name %>
+										</p>
+							<% end %>
+							<!--いいね機能 -->
+								<p><%= render 'products/products', product: ranked_product %></p>
+							<!--いいね機能 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end%>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12">
+						<%= link_to "もっとみる", "/ranking" %>
+					</div>
+				</div>
 			</div>
-			<hr>
 
 			<!-- ジャンルごとランキング -->
+			<div class="row top-genre-ranking">
 				<div class="col-lg-6">
 
-							<p>J-pop いいね！ランキング</p>
+							<h4 class="ranking-title">J-pop いいね！ランキング</h4>
 					
 					<% @jpop_rank[0..2].each.with_index(1) do |ranked_product,i| %>
 						<%= render 'homes/toppage-ranking-content', ranked_product: ranked_product,i:i  %>
 					<% end %>	
-							<p>もっと見る</p> <!-- text-align: right; linktoに直す -->
+							<%= link_to "もっとみる", "/ranking/1" %>　
 				</div>
 
 			<!-- ROCK ランキング -->
 				<div class="col-lg-6">
-							<p>rock いいね！ランキング</p>
+							<h4 class="ranking-title">rock いいね！ランキング</h4>
 					<% @rock_rank[0..2].each.with_index(1) do |ranked_product,i| %>
 						<%= render 'homes/toppage-ranking-content', ranked_product: ranked_product,i:i  %>
 					<% end %>
-							<p>もっと見る</p> <!-- text-align: right; linktoに直す -->
+						<%= link_to "もっとみる", "/ranking/2" %>　
 				</div>
-			<hr>
+				<hr>
+			</div>
 		</div>
 
 		<!-- render 'homes/footer' -->
 
 </div>
+
+	<%= render 'layouts/footer' %>

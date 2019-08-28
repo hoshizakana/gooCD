@@ -5,23 +5,23 @@
 //トップページのcss
 
 .ranking-2{
-  height: 600px;
+  height: 450px;
 }
 
 #skippr-container{
-  height: 400px;
+  height: 700px;
 }
 .image1{
-background-image: url(abcwave2.png);
+background-image: url(music-wallpaper.jpg);
 background-position: center;
 
 }
 .image2{
-background-image: url(abcwave2.png);
+background-image: url(music-wallpaper1.jpg);
 background-position: center;
 }
 .image3{
-background-image: url(abcwave2.png);
+background-image: url(music2.jpg);
 background-position: center;
 }
 
@@ -48,4 +48,81 @@ background-position: center;
 .alert {
   color: black;
   background-color: pink;
+}
+//販売停止中のグレー背景
+.product-ranking-img-1 {
+  width: 350px;
+  height: 350px;
+  position: absolute;
+  background-color: #696969;
+  opacity: 0.7;
+  z-index: 2;
+  border-radius: 35px;
+}
+.product-ranking-img-2 {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  background-color: #696969;
+  opacity: 0.7;
+  z-index: 2;
+  border-radius: 35px;
+}
+.product-ranking-img-3 {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  margin-left: 10px;
+  background-color: #696969;
+  opacity: 0.7;
+  z-index: 2;
+  border-radius: 35px;
+}
+.product-ranking-img-4 {
+  width: 102px;
+  height: 102px;
+  position: absolute;
+  background-color: #696969;
+  opacity: 0.7;
+  z-index: 2;
+  border-radius: 35px;
+}
+//販売停止中の文字
+.hanbaiteishichuu-ranking-2 {
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  margin: 100px 50px 0 50px;
+  width: 150px;
+  background-color: blue;
+  border-radius: 35px;
+}
+.hanbaiteishichuu-ranking-3 {
+  text-align: center;
+  color: white;
+  font-size: 9px;
+  margin: 80px 25px 0 25px;
+  width: 100px;
+  background-color: blue;
+  border-radius: 35px;
+}
+.hanbaiteishichuu-ranking-4 {
+  text-align: center;
+  color: white;
+  font-size: 9px;
+  margin: 45px 10px 0 10px;
+  width: 80px;
+  background-color: blue;
+  border-radius: 35px;
+}
+
+.footer{
+  position:absolute;
+  height:60px;
+  background-color:#9d9d9d;
+  text-align: center;
+  padding:20px;
+  margin-top:150px;
+  bottom:0;
+  width:100%;
 }

@@ -21,13 +21,15 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-body {
-    font-family: 'Noto Serif JP', sans-serif;
+html{
+  min-height: 100%;
+  position: relative;
 }
 
-
-
-
+body {
+    font-family: "メイリオ", "Lucida Grande", Verdana, "ＭＳ Ｐゴシック", sans-serif;
+    margin-bottom:100px;
+}
 
 * {
   margin: 0;
@@ -48,7 +50,7 @@ ul {
 //navbar関連
 .header {
 	width: 100%;
-	background-color: cadetblue;
+	background-color: rgb(158, 158, 160);
 	display: inline-block;
 	text-align: center;
 	position: fixed;
@@ -129,6 +131,7 @@ color:#9d9d9d;
 
 .artist-name {
     font-size: 70px;
+    position: center;
 }
 
 .name {
@@ -145,6 +148,7 @@ color:#9d9d9d;
     font-size: 50px;
 
 }
+
 
 .songs {
 	font-size: 30px;
@@ -223,6 +227,7 @@ color:#9d9d9d;
 
   .product-image {
     border-radius: 35px;
+    border: solid 2px #67c5ff;
   }
 
 
@@ -286,7 +291,9 @@ color:#9d9d9d;
 }
 
 .product-image {
-	border-radius: 35px;
+    border-radius: 35px;
+    border: solid 2px #918a8a;
+    
 }
 
 .btn-flat-border {
@@ -407,9 +414,6 @@ a:hover {
   list-style: none;
 }
 
-
-
-
 .item-detail {
 	// border: groove; ちょっとダサいから打ち消し（やまだ）
 	height:180px;
@@ -458,8 +462,9 @@ a:hover {
 	border: none;
 }
 .text-center {
-	text-align: center;
+  text-align: center;
 }
+
 .devise-form-center {
 	width: 350px;
 	margin: 15px auto;
@@ -628,6 +633,7 @@ a {
 }
 
 .genre-font-size {
+  
 
 }
 
@@ -637,4 +643,41 @@ a {
   text-align: center;
   width: 700px;
   margin: 0 auto;
+}
+
+.show-image {
+    margin-top: 50px;
+}
+
+.show-name {
+    font-size: 35px;
+}
+
+.show-product-index {
+    margin-top: 150px;
+}
+
+.more-index {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.more-btn {
+    float: right;
+}
+
+.more-btn {
+  float: right;
+}
+
+.ranking-title{
+  padding: .25em 0 .5em .75em;
+  border-left: 6px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-weight:600;
+  color:#696969;
+}
+
+.complete-message{
+  margin-top:100px;
 }

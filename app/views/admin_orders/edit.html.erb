@@ -3,9 +3,15 @@
   <h2>受注編集</h2>
   <hr class="admin-hr">
 	<div class="row order-detail">
-		<div class="col-lg-10 col-lg-offset-1">
-			<%= form_for(@order, url: "/admin/orders/#{@order.id}", method: :post) do |f| %>
+		<div class="col-lg-6 col-lg-offset-3">
+			<%= form_for(@order, url: "/admin/orderss/#{@order.id}", method: :patch) do |f| %>
 				<table class="table">
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>情報</th>
+            </tr>
+          </thead>
 					<tr>
 						<th>注文番号</th>
 						<td><%= @order.id %><%= f.hidden_field :id %></td>
@@ -56,8 +62,8 @@
 					</tr>
 				</table>
         <div class="row">
-          <div class="col-xs-5 col-xs-offset-3 admin-order-edit-form">
-            <%= f.submit class: "btn btn-primary order-edit-kousinsuru " %>
+          <div class="col-xs-5 col-xs-offset-1 admin-order-edit-form">
+            <%= f.submit "受注情報を更新する", class: "btn btn-primary order-edit-kousinsuru " %>
           </div>
         </div>
 				<% end %>

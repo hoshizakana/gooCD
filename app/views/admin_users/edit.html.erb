@@ -1,97 +1,34 @@
 <%= render 'layouts/admin-nav' %>
 <div class="container">
-			<h2>会員情報編集</h2>
-      <hr class="admin-hr">
-	<div class="row">
-		<div class="col-lg-12">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-lg-10 col-lg-offset-1">
-			<div class="row">
-				<div class="col-lg-2">
-					<label>会員ID</label>
-				</div>
-				<div class="col-lg-10">
-					<%= @user.id %>
-				</div>
-			</div>
-			<%= form_for @user, url: "/admin/users/#{@user.id}" do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
-				<div class="row">
-					<div class="col-lg-2">
-						<label>名前（漢字）</label>
-					</div>
-					<div class="col-lg-5">
-						<label>姓</label>
-						<%= f.text_field :last_name %>
-					</div>
-					<div class="col-lg-5">
-						<label>名</label>
-						<%= f.text_field :first_name %>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-2">
-						<label>名前（カナ）</label>
-					</div>
-					<div class="col-lg-5">
-						<label>セイ</label>
-						<%= f.text_field :last_name_kana %>
-					</div>
-					<div class="col-lg-5">
-						<label>メイ</label>
-						<%= f.text_field :first_name_kana %>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-2">
-						<label>電話番号（ハイフン無し）</label>
-					</div>
-					<div class="col-lg-5">
-						<%= f.text_field :phone %>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-2">
-						<label>メールアドレス</label>
-					</div>
-					<div class="col-lg-10">
-						<%= f.email_field :email %>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-2">
-						<label>郵便番号</label>
-					</div>
-					<div class="col-lg-5">
-						<%= f.text_field :postal_code %>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-2">
-						<label>住所</label>
-					</div>
-					<div class="col-lg-10">
-						<%= f.text_field :adress %>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-2">
-						<label>削除フラグ</label>
-					</div>
-					<div class="col-lg-5">
-						<%= f.check_box :is_deleted, {}, "true", "false" %>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<%= f.submit "更新" %><!-- text-align: right; -->
-					</div>
-				</div>
-			<% end %>
-		</div>
-
-	</div>
-
+  <h2>会員情報編集</h2>
+  <hr class="admin-hr">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <%= form_for @user, url: "/admin/users/#{@user.id}" do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
+            <table class="table">
+                    <tr><th>会員ID</th><th><%= @user.id %></th></tr>
+                    <tr><th>名前（漢字）</th>
+                      <th>姓<%= f.text_field :last_name %>名<%= f.text_field :first_name %></th></tr>
+                    <tr><th>名前（カナ）
+                    <th>セイ<%= f.text_field :last_name_kana %>メイ<%= f.text_field :first_name_kana %></th></tr>
+                    <tr><th>電話番号（ハイフン無し）</th>
+                      <th><%= f.text_field :phone %></th></tr>
+                    <tr><th>メールアドレス</th>
+                      <th><%= f.email_field :email %></th></tr>
+                    <tr><th>郵便番号</th>
+                      <th><%= f.text_field :postal_code %></th></tr>
+                    <tr><th>住所</th>
+                      <th><%= f.text_field :adress %></th></tr>
+                    <tr><th>削除フラグ</th>
+                      <th><%= f.check_box :is_deleted, {}, "true", "false" %></th></tr>
+            </table>
+              <div class="row">
+                <div class="col-xs-5 col-xs-offset-3">
+                  <%= f.submit "更新", class: "btn btn-primary admin-user-edit-button" %><!-- text-align: right; -->
+                </div>
+              </div>
+        <% end %>
+    </div>
+  </div>
 </div>

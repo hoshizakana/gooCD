@@ -28,8 +28,8 @@
 								<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
 								<div class="text-right">
 									<%= form_for cart_item, url: "/cart_items/#{cart_item.id}" do |f| %>
-										<%= f.select :item_number, options_for_select((1..product.stock).to_a) %>
-										<%= f.submit "更新" %>
+										<%= f.select :item_number, options_for_select((1..product.stock).to_a,{selected: cart_item.item_number}) %>
+										<%= f.submit "変更" %>
 									<% end %>
 									<p class="line-height">税込価格：<%= price_multiple_helper(cart_item) %>円</p>
 									<hr class="hr-margin">
@@ -57,6 +57,7 @@
 			<% end %>
 		</div>
 	</div>
-
-
 </div>
+
+	<%= render 'layouts/footer' %>
+
