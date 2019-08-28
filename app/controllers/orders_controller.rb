@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
   def confirm
 		@order = Order.new(order_params)
-		@order.set_order(order_params[:address], current_user.id)
+		@order.set_order(order_params[:address], current_user.id) # defined at models/order.rb
 		@cart_items = CartItem.where(user_id: current_user.id)
   end
 
