@@ -33,7 +33,6 @@ class UsersController < ApplicationController
     if user.update(user_destroy_params)
       flash[:notice] = "退会しました"
       redirect_to destroy_user_session_path, method: :delete
-      binding.pry
     else
       redirect_to "show"
     end
