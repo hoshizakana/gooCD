@@ -25,6 +25,7 @@ class Order < ApplicationRecord
 			self.address = adr.address
 			self.phone = adr.phone
 		end
+  end
 
 	end
 
