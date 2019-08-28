@@ -130,8 +130,8 @@ color:#9d9d9d;
 }
 
 .artist-name {
-    font-size: 70px;
-    position: center;
+    font-size: 50px;
+    text-align: center;
 }
 
 .name {
@@ -157,7 +157,10 @@ color:#9d9d9d;
 }
 
 .left-content {
-	text-align: center;
+  text-align: center;
+  position: sticky;
+  top: 90px;
+  z-index: 0;
 }
 
 .product-index {
@@ -628,13 +631,13 @@ a {
 
 
 
+
 .song-name {
     font-size: 50px;
 }
 
 .genre-font-size {
-  
-
+  font-size: 100%;
 }
 
 
@@ -654,7 +657,7 @@ a {
 }
 
 .show-product-index {
-    margin-top: 150px;
+    margin-top: 50px;
 }
 
 .more-index {
@@ -680,4 +683,10 @@ a {
 
 .complete-message{
   margin-top:100px;
+}
+
+
+.ranking-1-text {
+  display: block;
+  text-align: center;
 }
