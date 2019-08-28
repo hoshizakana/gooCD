@@ -1,10 +1,19 @@
 
 <%= render 'layouts/user-nav', products:  @product, user: current_user  %>
 <div class="container">
+
+    <%# フラッシュメッセージ %>
+    <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>">
+        <%= message %>
+    </div>
+    <% end %>
+
     <div class="row product-wrapper">
         <div class="favorite-message">
         <!-- いいねしました表示がでる -->
         </div>
+
         <%# フラッシュメッセージ %>
         <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>">
@@ -13,6 +22,7 @@
         <% end %>
         <div class="col-xs-6 left-content">
             
+
                 <div class="name">
                     <%= @product.name %><br>
                 </div>
@@ -75,16 +85,18 @@
         </div>
     </div>
 
-    <div class="col-lg-12 show-product-index">
-        <p class="show-name"><%= @product.artist.name %>の他の作品</p>  
-    </div>
+    <div class="same-artist-products-wrapper">
+        <div class="col-lg-12 show-product-index">
+            <p class="show-name"><%= @product.artist.name %>の他の作品</p>  
+        </div>
 
-    <div id="items">
-        <%= render "products-item", :window => 6 %>
-    </div>
-    <div class="col-lg-12">
-        <div class="row more-btn">
-            <%= link_to_next_page @products, 'more', remote: 'true', id: 'more_link', class: "btn-flat-border" %>
+        <div id="items">
+            <%= render "products-item", :window => 6 %>
+        </div>
+        <div class="col-lg-12">
+            <div class="row more-btn">
+                <%= link_to_next_page @products, 'more', remote: 'true', id: 'more_link', class: "btn-flat-border" %>
+            </div>
         </div>
     </div>    
 </div>

@@ -2,6 +2,13 @@
 
 <div class="container">
 
+<%# フラッシュメッセージ %>
+<% flash.each do |message_type, message| %>
+	<div class="alert alert-<%= message_type %>">
+		<%= message %>
+	</div>
+<% end %>
+
 	<div class="row main">
 		<div class="col-xs-10 col-xs-offset-1">
 			<h2>ご購入手続き</h2>

@@ -41,7 +41,7 @@ class AdminOrdersController < ApplicationController
 	def order_item_update
 		order_item = OrderItem.find(params[:order_item_id])
 		if order_item.update(order_item_params)
-			flash[:notice] = "受注商品情報の編集が完了しました"
+			flash[:success] = "受注商品情報の編集が完了しました。"
 			redirect_to ("/admin/orders/#{order_item.order_id}")
 		else
 			render :edit

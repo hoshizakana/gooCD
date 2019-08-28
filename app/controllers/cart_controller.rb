@@ -1,5 +1,6 @@
 class CartController < ApplicationController
 	before_action :authenticate_user!
+	before_action :correct_user, only: [:index]
 
   def index
 		# カート内商品の一覧
@@ -9,6 +10,7 @@ class CartController < ApplicationController
 	def create
 		#既に登録済みのカートアイテムを検索し、cart_itemに代入
 		cart_item = CartItem.where(user_id: current_user.id).where(product_id: cart_item_params[:product_id])
+
 		cart_new_item = CartItem.new(cart_item_params)
     product = Product.find(cart_new_item.product_id)
     # もし商品が販売中だったらカート追加の処理に入る
@@ -37,7 +39,7 @@ class CartController < ApplicationController
 		# カート画面で、数量変更を送った時に動作する
 		cart_item = CartItem.find(params[:id])
 		cart_item.update(cart_item_number_params)
-		flash[:notice] = "数量を変更しました。"
+		flash[:success] = "数量を変更しました。"
 		redirect_to ("/carts/#{current_user.id}")
 	end
 
@@ -55,5 +57,11 @@ class CartController < ApplicationController
 	end
 	def cart_item_number_params
 		params.require(:cart_item).permit(:item_number)
+	end
+	def correct_user
+		@user = User.find(params[:user_id])
+		if current_user.id != @user.id
+			redirect_to "/"
+		end
 	end
 end
