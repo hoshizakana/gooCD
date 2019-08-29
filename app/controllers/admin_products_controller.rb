@@ -17,12 +17,21 @@ class AdminProductsController < ApplicationController
     @labels = Label.all   #リスト選択でなく、検索フォームからの検索に後で置き換え
     @product.price.to_i
     @product.stock.to_i
-    if @product.save
-      flash[:success] = "「#{@product.name}」が保存されました。"
-      redirect_to ('/admin/products')
-    else
+
+    if product_params[:stock].to_i == 0 && product_params[:status] == "販売中"
+      flash[:danger] = "在庫数0でステータス「販売中」を登録することはできません。"
       render :new
+    else
+
+      if @product.save
+        flash[:success] = "「#{@product.name}」が保存されました。"
+        redirect_to ('/admin/products')
+      else
+        render :new
+      end
+
     end
+
   end
 
   def index
@@ -63,11 +72,19 @@ class AdminProductsController < ApplicationController
     @labels = Label.all   #リスト選択でなく、検索フォームからの検索に後で置き換え
     @product.price.to_i
     @product.stock.to_i
-    if @product.update(update_product_params)
-      flash[:success] = "商品情報が更新されました。"
-      redirect_to ("/admin/products/#{@product.id}")
-    else
+
+    if update_product_params[:stock].to_i == 0 && update_product_params[:status] == "販売中"
+      flash[:danger] = "在庫数0でステータス「販売中」を登録することはできません。"
       render :edit
+    else
+
+      if @product.update(update_product_params)
+        flash[:success] = "商品情報が更新されました。"
+        redirect_to ("/admin/products/#{@product.id}")
+      else
+        render :edit
+      end
+
     end
   end
 
