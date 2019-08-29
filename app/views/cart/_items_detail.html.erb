@@ -8,6 +8,6 @@
 		<p><%= product.label.name %></p>
 		<p><%= product.release_date %></p>
 		<p class="genre-tag-2-3-4"><%= product.genre.name %></p>
-		<p>税込価格：<%= product.taxed_price %>円</p> <!-- text-align: right; -->
+		<p>税込価格：<%= converting_to_jpy(product.taxed_price) %>円</p> <!-- text-align: right; -->
 	</div>
 </div>

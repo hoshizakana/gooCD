@@ -94,7 +94,7 @@
 								</tr>
 								<tr>
 									<th>小計：</th>
-									<td><%= subtotal_price_helper(@cart_items) %>円</td>
+									<td><%= converting_to_jpy(subtotal_price_helper(@cart_items)) %>円</td>
 								</tr>
 								<tr>
 									<th>送料：</th>
@@ -105,7 +105,7 @@
 								</tr>
 								<tr>
 									<th>総計：</th>
-									<td><%= total_price_helper(@cart_items) %>円</td>
+									<td><%= converting_to_jpy(total_price_helper(@cart_items)) %>円</td>
 								</tr>
 							</table>
 						</div>
@@ -124,7 +124,7 @@
 								<div class="cart-item">
 									<%= render '/cart/items_detail', product: product, cart_item: cart_item %>
 									<p class="text-right">数量：<%= cart_item.item_number %></p>
-									<p class="text-right">価格(税込)：<%= price_multiple_helper(cart_item) %>円</p>
+									<p class="text-right">価格(税込)：<%= converting_to_jpy(price_multiple_helper(cart_item)) %>円</p>
 									<hr>
 								</div>
 							<% end %>

@@ -8,11 +8,11 @@
         <%= message %>
     </div>
     <% end %>
-
-    <div class="row product-wrapper">
         <div class="favorite-message">
         <!-- いいねしました表示がでる -->
         </div>
+
+    <div class="row product-wrapper">
           <div class="col-xs-6 left-content">
                 <div class="name">
                     <%= @product.name %><br>
@@ -33,7 +33,7 @@
                         <%= render 'products/products', product: @product %>
                     </div>
                     <div class="show-page-price">
-                        ¥<%= @product.price %>(税込価格)
+                        ¥<%= converting_to_jpy(@product.price) %>(税込価格)
                     </div>
                     <div class="col-xs-3 col-xs-offset-2 cartniireru-box">
                         <%= link_to "カートに入れる", "/cart_items/#{@product.id}", class: "btn-flat-border cartniireru" %>

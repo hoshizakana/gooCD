@@ -80,9 +80,9 @@
 					<tr>
 						<td><%= order_item.product_id %></td>
 						<td><%= link_to order_item.product.name, "/admin/products/#{order_item.product.id}" %></td>
-						<td>￥<%= order_item.price %></td>
+						<td>￥<%= converting_to_jpy(order_item.price) %></td>
 						<td><%= order_item.item_number %></td>
-						<td>￥<%= price_multiple_helper(order_item) %></td>
+						<td>￥<%= converting_to_jpy(price_multiple_helper(order_item)) %></td>
 					</tr>
 				<% end %>
 			</table>
@@ -95,7 +95,7 @@
                 </tr>
                 <tr>
                   <th class=>合計(税込)</th>
-                  <td>￥<%= total_price_helper(@order_items) %></td>
+                  <td>￥<%= converting_to_jpy(total_price_helper(@order_items)) %></td>
                 </tr>
               </table>
             </div>

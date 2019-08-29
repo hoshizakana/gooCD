@@ -31,7 +31,7 @@
 										<%= f.select :item_number, options_for_select((1..product.stock).to_a,{selected: cart_item.item_number}) %>
 										<%= f.submit "変更" %>
 									<% end %>
-									<p class="line-height">税込価格：<%= price_multiple_helper(cart_item) %>円</p>
+									<p class="line-height">税込価格：<%= converting_to_jpy(price_multiple_helper(cart_item)) %>円</p>
 									<hr class="hr-margin">
 									<%= link_to '削除', "/cart_items/#{cart_item.id}", method: :delete, notice: "削除しました", class:"text-right" %><!-- text-align: right -->
 								</div>
@@ -43,7 +43,7 @@
 							<table class="cart-total-show line-height">
 								<tr>
 									<th>小計：</th>
-									<td><%= subtotal_price_helper(@cart_items) %>円</td>
+									<td><%= converting_to_jpy(subtotal_price_helper(@cart_items)) %>円</td>
 								</tr>
 								<tr>
 									<th>合計点数：</th>
