@@ -18,7 +18,7 @@
 								</tr>
 								<tr>
 									<td><%= o.created_at.strftime('%Y年%m月%d日') %></td>
-									<td><%= o.total_price %>円</td>
+									<td><%= converting_to_jpy(o.total_price) %>円</td>
 									<td><%= o.address %></td>
 								</tr>
 							</table>
@@ -43,20 +43,20 @@
 										<li><%= oi.product.genre.name %></li>
 										<li><%= oi.product.label.name %></li>
 										<li>発売日：<%= oi.product.release_date %></li>
-										<li>価格(税込)：<%= oi.product.taxed_price %>円</li>
+										<li>価格(税込)：<%= converting_to_jpy(oi.product.taxed_price) %>円</li>
 									</ul>
 								</div>
 								<div class="col-xs-4">
 									<ul>
 										<li>数量： <%= oi.item_number %></li>
-										<li>計： <%= price_multiple_helper(oi) %>円</li>
+										<li>計： <%= converting_to_jpy(price_multiple_helper(oi)) %>円</li>
 									</ul>
 								</div>
 							</div>
 						<% end %>
 						<hr>
 						<div class="text-right">
-							<p>送料： 500円　　総額： <%= o.total_price %>円</p>
+							<p>送料： 500円　　総額： <%= converting_to_jpy(o.total_price) %>円</p>
 						</div>
 					</div>
 				</div>

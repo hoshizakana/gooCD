@@ -98,7 +98,7 @@
 							<td><%= order_item.product.name %></td>
 							<td>￥<%= oif.text_field :price %></td>
 							<td><%= oif.text_field :item_number %></td>
-							<td>￥<%= price_multiple_helper(order_item) %></td><!--商品計-->
+							<td>￥<%= converting_to_jpy(price_multiple_helper(order_item)) %></td><!--商品計-->
 							<td><%= oif.submit "更新", class: "btn btn-primary" %></td>
 							<td><%= link_to "削除", "/admin/orders/#{@order.id}/#{order_item.id}", method: :delete, class: "btn btn-danger" %></td>
 						</tr>
@@ -114,7 +114,7 @@
                 </tr>
                 <tr>
                   <th>合計(税込)</th>
-                  <td>￥<%= total_price_helper(@order_items) %></td>
+                  <td>￥<%= converting_to_jpy(total_price_helper(@order_items)) %></td>
                 </tr>
               </table>
             </div>

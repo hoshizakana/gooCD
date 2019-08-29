@@ -31,7 +31,7 @@
         </tr>
         <p>
         <th>「価格（税別価格）」</th>
-        <th><%= @product.price %></th>
+        <th><%= converting_to_jpy(@product.price) %></th>
         </tr>
         <tr>
         <th>「在庫数」</th>

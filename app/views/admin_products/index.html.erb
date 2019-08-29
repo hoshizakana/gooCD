@@ -89,7 +89,7 @@
         <td><%= product.genre.name %></td>
         <td><%= product.label.name %></td>
         <td><%= product.artist.name %></td>
-        <td><%= product.price %></td>
+        <td><%= converting_to_jpy(product.price) %></td>
         <td><%= product.stock %></td>
         <td><%= product.status %></td>
         <td><%= product.created_at.strftime("%Y-%m-%d") %></td>
