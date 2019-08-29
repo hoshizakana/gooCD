@@ -22,7 +22,7 @@
 							<%# 遷移元のページの情報を送付先住所の登録画面に持たせるため、URLにフラグとして1をもたせる %>
 							<%= link_to "送付先住所登録", "/addresses/1", class: "btn-flat-border" %>
 							<%= link_to "購入履歴", "/users/#{current_user.id}/orders", class: "btn-flat-border"%>
-							<%= link_to "退会", "/users/#{current_user.id}/destroy_confirm", class:"btn-flat-border" %>							
+							<%= link_to "退会", "/users/#{current_user.id}/confirm", class:"btn-flat-border" %>							
 						</th>
 						<th>
 						</th>
@@ -75,11 +75,5 @@
 			</table>
 		</div>
 
-	<div class="row links">
-		<div class="col-xs-6 col-xs-offset-3">
-			<%= link_to "購入履歴", "/users/#{current_user.id}/orders", class: "btn btn-primary floater marginer"%>
-			<%= link_to "退会", "/users/#{current_user.id}/confirm", class:"btn btn-warning floater marginer" %>
-		</div>
-	</div>
 
 </div>
