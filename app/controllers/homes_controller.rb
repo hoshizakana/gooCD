@@ -4,6 +4,15 @@ class HomesController < ApplicationController
     @all_ranked_product = Product.create_ranks(params[:genre_id])
     @jpop_rank = @all_ranked_product.select{ |product| product.genre_id == 1.to_i }
     @rock_rank = @all_ranked_product.select{ |product| product.genre_id == 3.to_i }
+
+    if flash[:notice] == "ログインしました。"
+      flash.delete(:notice)
+      flash[:success] = "ログインしました。"
+    
+    elsif flash[:notice] == "ログアウトしました。"
+      flash.delete(:notice)
+      flash[:success] = "ログアウトしました。"
+    end
   end
 
   def ranking
