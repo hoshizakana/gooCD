@@ -112,9 +112,9 @@
 				<!--上記ボタン押下後、下記が表示される-->
 				<div id="rest-of-ranking">
     			<% @ranked_product[10..@ranked_product.size-1].each.with_index(11) do |product,i| %>
-						<div class="col-xs-2 genre-rank1-2-3">
+						<div class="col-xs-2 genre-rank10-">
 							<div class"row">
-								<p>No.<%= i %></p>
+								<p><%= i %>位</p>
 							</div>
 							<%= link_to "/products/#{product.id}" do %>
 								<div class="col-xs-12">

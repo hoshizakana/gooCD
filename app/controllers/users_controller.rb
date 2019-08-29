@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def orders
-    @orders = Order.where(user_id: current_user.id).page(params[:page]).per(10)
+    @orders = Order.where(user_id: current_user.id).page(params[:page]).per(10).order('updated_at desc')
   end
 
   private
