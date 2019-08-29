@@ -16,6 +16,15 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     end
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope ==  :admin
+      admin_orders_path
+    else
+      "/"
+    end
+  end
+
+
   protected
 
   def configure_permitted_parameters
