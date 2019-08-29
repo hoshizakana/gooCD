@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
 			cart_items.each do |cart_item|
 				product = Product.find(cart_item.product_id)
 				if product.stock - cart_item.item_number < 0
-					flash[:notice] = "注文数が在庫数を超えたため、購入に失敗しました。"
+					flash[:warning] = "注文数が在庫数を超えたため、購入に失敗しました。"
 					redirect_to ("/cart/#{current_user.id}")
 				end
 			end
