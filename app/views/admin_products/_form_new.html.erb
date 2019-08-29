@@ -18,7 +18,7 @@
           <tbody>
           <tr><th class="admin-product-new-label">アーティスト名</th><th><%= f.collection_select(:artist_id,@artists,:id,:name) %></th></tr>
           <tr><th class="admin-product-new-label">シングル/アルバム名</th><th><%= f.text_field :name, id:"album-name" %></th></tr>
-          <tr><th class="admin-product-new-label">ジャケット画像</th><th><%= attachment_image_tag @product, :image, :fill, 200, 200, format:'jpeg', fallback:"no_image.jpg",size:'100x100' %><%= f.attachment_field :image  %></th></tr>
+          <tr><th class="admin-product-new-label">ジャケット画像</th><th><%= f.attachment_field :image  %></th></tr>
           <tr><th class="admin-product-new-label">価格（税別価格）</th><th><%= f.text_field :price, id:"price" %></th></tr>
           <tr><th class="admin-product-new-label">在庫数</th><th><%= f.text_field :stock, id:"stock" %></th></tr>
           <tr><th class="admin-product-new-label">レーベル名</th><th><%= f.collection_select(:label_id,@labels,:id,:name) %></th></tr>
