@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
   def soft_destroy
     user = current_user
-    addstr = Date.today.strftime("%Y.%m.%d")
+    addstr = DateTime.now.strftime("%Y.%m.%d.%h.%m.%s")
     user.email += addstr
     user.is_deleted = true
     if user.update(user_destroy_params)
