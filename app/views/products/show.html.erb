@@ -14,15 +14,6 @@
         <!-- いいねしました表示がでる -->
         </div>
 
-        <%# フラッシュメッセージ %>
-        <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>">
-            <%= message %>
-        </div>
-        <% end %>
-        <div class="col-xs-6 left-content">
-            
-
                 <div class="name">
                     <%= @product.name %><br>
                 </div>
