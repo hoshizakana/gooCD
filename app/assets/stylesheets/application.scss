@@ -171,7 +171,8 @@ color:#9d9d9d;
 
 .product-index {
 	margin-bottom: 30px;
-	background-color: white;
+  background-color: white;
+  height:260px;
 }
 
 .product-wrapper{
@@ -378,9 +379,37 @@ a:hover {
 	overflow: hidden;
   transition-duration: 0.3s;
   text-align: center;
+  height:360px;
 }
 
 .genre-rank1-2-3:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+
+.genre-rank10- {
+  font-size:12px;
+	margin-bottom: 20px;
+	overflow: hidden;
+  transition-duration: 0.3s;
+  text-align: center;
+  height:280px;
+}
+
+.genre-rank10-:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+
+.top-genre-rank1-2-3 {
+	margin-bottom: 20px;
+	overflow: hidden;
+  transition-duration: 0.3s;
+  text-align: center;
+  height:140px;
+}
+
+.top-genre-rank1-2-3:hover {
   transform: scale(1.1);
   transition-duration: 0.3s;
 }
