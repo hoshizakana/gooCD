@@ -8,15 +8,21 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   end
 
   def after_sign_in_path_for(resource)
+    flash.delete(:notice)
+    flash[:success] = "ログインしました。"
     case resource
     when Admin
       admin_orders_path
+      
     when User
       "/"
     end
   end
 
   def after_sign_out_path_for(resource_or_scope)
+    flash.delete(:notice)
+    flash[:success] = "ログアウトしました。"
+
     if resource_or_scope ==  :admin
       admin_orders_path
     else
