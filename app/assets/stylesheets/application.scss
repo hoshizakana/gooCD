@@ -134,9 +134,17 @@ color:#9d9d9d;
     font-size: 50px;
     text-align: center;
 }
+.show-artist-name {
+    font-size: 50px;
+    text-align: left;
+}
 
 .name {
   font-size: 50px;
+}
+.product-show-genre-label-name {
+  font-size: 30px;
+  text-align: left;
 }
 
 .name-show {
@@ -179,35 +187,19 @@ color:#9d9d9d;
 }
 
 .product-buy {
-	margin-top: 50px
+	margin-top: 20px
 }
 
 .release-date {
-	margin-right: 95px;
+	margin-right: 85px;
 }
 
 .songs-count {
-	margin-left: 95px;
+	margin-left: 85px;
 }
 
 .admin-product {
 	margin-top: 10px;
-}
-
-
-.product-buy {
-	margin-top: 50px
-}
-.release-date {
-  margin-right: 95px;
-}
-
-.songs-count {
-  margin-left: 95px;
-}
-
-.admin-product {
-  margin-top: 10px;
 }
 
 .buy-btn {
@@ -401,7 +393,7 @@ a:hover {
 }
 .ranking-1-contents {
   margin-bottom: 30px;
-  font-size: 60px;
+  font-size: 30px;
 }
 
 .ranking-1-contents1 {
@@ -673,4 +665,24 @@ a {
 .notice,.alert{
   width:100%;
   line-height:40px;
+}
+.favorite-show-icon {
+  font-size: 30px;
+}
+.show-page-price {
+  font-size: 25px;
+}
+.cartniireru {
+  width: 320px;
+}
+.cartniireru-box {
+  width: 320px;
+  margin-top: 20px;
+}
+.product-show-song-label {
+  font-size: 15px;
+  margin-right: 36px;
+}
+.product-show-artist-label {
+  font-size: 15px;
 }

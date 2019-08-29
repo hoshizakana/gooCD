@@ -13,7 +13,7 @@
         <div class="favorite-message">
         <!-- いいねしました表示がでる -->
         </div>
-
+          <div class="col-xs-6 left-content">
                 <div class="name">
                     <%= @product.name %><br>
                 </div>
@@ -29,29 +29,31 @@
                     <span class="songs-count">曲数<%= @product.songs.count %></span>
                     </div>
                 <div class="product-buy">
-                    <div class="favorite">
+                    <div class="favorite-show-icon">
                         <%= render 'products/products', product: @product %>
                     </div>
-                    <div class="price">
-
+                    <div class="show-page-price">
                         ¥<%= @product.price %>(税込価格)
-                        <span class="buy-btn">
-                            <%= link_to "カートに入れる", "/cart_items/#{@product.id}", class: "btn-flat-border" %>
-                        </span>
-
                     </div>
-
+                    <div class="col-xs-3 col-xs-offset-2 cartniireru-box">
+                        <%= link_to "カートに入れる", "/cart_items/#{@product.id}", class: "btn-flat-border cartniireru" %>
+                    </div>
                 </div>
             
         </div>
         <div class="col-xs-6">
             <div class="right-content">
                 <div class="text">
-                    <div class="artist-name">
+                    <div class="show-artist-name">
+                        <span class="product-show-artist-label">アーティスト</span>
                         <span class="name-show"><%= @product.artist.name %><i class="fas fa-check"></i><br></span>
                     </div>
-                    <div class="name">
+                    <div class="product-show-genre-label-name">
+                        <span class="product-show-song-label">レーベル</span>
                         <span class="name-show"><%= @product.label.name %><i class="fas fa-check"></i></span>
+                    </div> 
+                    <div class="product-show-genre-label-name">
+                        <span class="product-show-song-label">ジャンル</span>
                         <span class="name-show"><%= @product.genre.name %><i class="fas fa-check"></i></span>
                     </div> 
                 </div>
@@ -62,6 +64,12 @@
                     <div class="songs">
                         <div class="form-group"> 
                             <table class="table">
+                              <thead>
+                                <tr>
+                                  <td>💿</td>
+                                  <td>曲名</td>
+                                </tr>
+                              </thead>
                             <% @product.songs.each do |song| %>
                                 <tbody>
                                     <tr><th><%= song.disk %>.</th><th><%= song.name %> </th></tr>
